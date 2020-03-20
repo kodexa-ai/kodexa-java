@@ -16,7 +16,7 @@ import java.util.*;
 
 /**
  * A Kodexa document is a representation of a set of content which combines content, metadata
- * and also features it is the core model for handling content
+ * and features it is the core model for handling content
  */
 <span class="pc bnc" id="L21" title="All 50 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -42,52 +42,64 @@ public class Document {
 <span class="fc" id="L42">    private String uuid = UUID.randomUUID().toString();</span>
 <span class="fc" id="L43">    private String version;</span>
 
+    /**
+     * Convert the document to JSON
+     *
+     * @param pretty include spacing and new lines if true
+     * @return JSON representation of document
+     */
     public String toJson(boolean pretty) {
         try {
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">            if (pretty) {</span>
-<span class="nc" id="L48">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (pretty) {</span>
+<span class="nc" id="L54">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
             } else {
-<span class="fc" id="L50">                return OBJECT_MAPPER.writeValueAsString(this);</span>
+<span class="fc" id="L56">                return OBJECT_MAPPER.writeValueAsString(this);</span>
             }
-<span class="nc" id="L52">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L53">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
+<span class="nc" id="L58">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L59">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
         }
     }
 
+    /**
+     * Create a new instance of a Document from JSON string
+     *
+     * @param json String representation of the document JSON
+     * @return De-serialized Document
+     */
     public static Document fromJson(String json) {
         try {
-<span class="nc" id="L59">            return OBJECT_MAPPER.readValue(json, Document.class);</span>
-<span class="nc" id="L60">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L61">            throw new KodexaException(&quot;Unable to convert to Document from JSON&quot;, e);</span>
+<span class="nc" id="L71">            return OBJECT_MAPPER.readValue(json, Document.class);</span>
+<span class="nc" id="L72">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L73">            throw new KodexaException(&quot;Unable to convert to Document from JSON&quot;, e);</span>
         }
     }
 
     public static Document fromMsgPack(byte[] bytes) {
         try {
-<span class="fc" id="L67">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);</span>
-<span class="nc" id="L68">        } catch (IOException e) {</span>
-<span class="nc" id="L69">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
+<span class="fc" id="L79">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);</span>
+<span class="nc" id="L80">        } catch (IOException e) {</span>
+<span class="nc" id="L81">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
         }
     }
 
     public static Document fromMsgPack(File file) {
         try {
-<span class="nc" id="L75">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);</span>
-<span class="nc" id="L76">        } catch (IOException e) {</span>
-<span class="nc" id="L77">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
+<span class="nc" id="L87">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);</span>
+<span class="nc" id="L88">        } catch (IOException e) {</span>
+<span class="nc" id="L89">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
         }
     }
 
     public byte[] toMsgPack() {
         try {
-<span class="nc" id="L83">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
-<span class="nc" id="L84">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L85">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
+<span class="nc" id="L95">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
+<span class="nc" id="L96">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L97">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
         }
     }
 
     public String toJson() throws JsonProcessingException {
-<span class="fc" id="L90">        return toJson(false);</span>
+<span class="fc" id="L102">        return toJson(false);</span>
     }
 
 }
