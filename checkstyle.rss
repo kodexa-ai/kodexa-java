@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>kodexa-java - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2020</copyright>
+    <copyright>&#169;2020 Kodexa</copyright>
     <item>
       <title>File: 32,
              Errors: 385,
