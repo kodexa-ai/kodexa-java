@@ -1,13 +1,11 @@
 # Kodexa Java 
 
-
 A Java implementation of the Kodexa Content Model.
-
 
 Documentation & Examples
 ---
 
-For more information on how to use Kodexa see https://developer.kodexa.com
+For more information on how to use Kodexa see https://developer.kodexa.com/clients/java
 
 Set-up
 ---

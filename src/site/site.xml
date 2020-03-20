@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Maven Lombok Plugin">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.8</version>
+  </skin>
+  <custom>
+    <fluidoSkin>
+      <ohloh>
+        <projectId>kodexa-java</projectId>
+      </ohloh>
+      <twitter>
+        <user>kodexa_ai</user>
+      </twitter>
+    </fluidoSkin>
+  </custom>
+  <publishDate position="right" format="yyyy-MM-dd"/>
+  <version position="right"/>
+  <body>
+    <breadcrumbs>
+      <item name="Kodexa" href="https://www.kodexa.com/" />
+      <item name="Maven" href="http://awhitford.github.com/lombok.maven/" />
+    </breadcrumbs>
+    <menu name="Overview">
+      <item name="Introduction" href="index.html" />
+    </menu>
+    <menu ref="modules" />
+    <menu ref="reports" />
+  </body>
+</project>
