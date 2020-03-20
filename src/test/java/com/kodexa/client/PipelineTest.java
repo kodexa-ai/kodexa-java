@@ -13,6 +13,7 @@ import com.kodexa.client.store.MsgPackDocumentStore;
 import com.kodexa.client.store.TableStore;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.io.IOException;
 @Slf4j
 public class PipelineTest {
 
-    //@Ignore
+    @Ignore
     @Test
     public void kodexaPipeline() throws IOException {
         KodexaCloud.setUrl("http://localhost:8080");
@@ -51,7 +52,7 @@ public class PipelineTest {
 
     }
 
-    //    @Ignore
+    @Ignore
     @Test
     public void pipelineToLayout() throws IOException {
         KodexaCloud.setUrl("http://localhost:8080");
