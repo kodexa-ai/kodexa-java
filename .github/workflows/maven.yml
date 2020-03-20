@@ -35,7 +35,7 @@ jobs:
         mkdir -p ~/.m2
         echo "<settings><servers><server><id>github</id><username>kodexa-ai</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
         mvn versions:set -DnewVersion=$CURRENT_VERSION
-        mvn deploy
+        mvn deploy site
     - name: Deploy GitHub Page
       uses: peaceiris/actions-gh-pages@v3
       with:
