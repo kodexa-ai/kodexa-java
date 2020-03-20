@@ -2,6 +2,9 @@ package com.kodexa.client.cloud;
 
 import lombok.Data;
 
+/**
+ * The configuration object (static) for the connection to Kodexa
+ */
 @Data
 public class KodexaCloud {
 
