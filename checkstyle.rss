@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020 Kodexa</copyright>
     <item>
-      <title>File: 31,
-             Errors: 391,
+      <title>File: 39,
+             Errors: 397,
              Warnings: 0,
              Infos: 0
       </title>
@@ -69,7 +69,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  9
                 </td>
               </tr>
                           <tr>
@@ -126,6 +126,20 @@ under the License.
                 </td>
                 <td>
                   7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.KodexaCloudService.java">com/kodexa/client/cloud/KodexaCloudService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
                 </td>
               </tr>
                           <tr>
@@ -195,7 +209,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.KodexaCloudPipeline.java">com/kodexa/client/cloud/KodexaCloudPipeline.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  38
                 </td>
               </tr>
                           <tr>
@@ -209,7 +237,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  15
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.registry.package-info.java">com/kodexa/client/registry/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -242,6 +284,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.steps.package-info.java">com/kodexa/client/steps/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.CloudSession.java">com/kodexa/client/cloud/CloudSession.java</a>
                 </td>
                 <td>
@@ -256,7 +312,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.KodexaPipeline.java">com/kodexa/client/cloud/KodexaPipeline.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.package-info.java">com/kodexa/client/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -265,7 +321,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  38
+                  2
                 </td>
               </tr>
                           <tr>
@@ -307,7 +363,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  17
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.package-info.java">com/kodexa/client/cloud/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -377,7 +447,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  5
                 </td>
               </tr>
                           <tr>
@@ -424,6 +494,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.package-info.java">com/kodexa/client/sink/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.package-info.java">com/kodexa/client/pipeline/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.ProcessingStatus.java">com/kodexa/client/cloud/ProcessingStatus.java</a>
                 </td>
                 <td>
@@ -447,7 +545,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  6
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.package-info.java">com/kodexa/client/connectors/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.package-info.java">com/kodexa/client/store/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -461,21 +587,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  26
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.cloud.KodexaService.java">com/kodexa/client/cloud/KodexaService.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  29
+                  25
                 </td>
               </tr>
                       </tbody>

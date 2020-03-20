@@ -9,8 +9,8 @@
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> com.kodexa.client;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.cloud.KodexaCloud;
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.cloud.KodexaPipeline;
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.cloud.KodexaService;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.cloud.KodexaCloudPipeline;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.cloud.KodexaCloudService;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.cloud.Options;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.connectors.FolderConnector;
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> com.kodexa.client.pipeline.Pipeline;
@@ -37,7 +37,7 @@
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>          SourceRegistry.getInstance().addConnector(<strong class="jxr_keyword">new</strong> FolderConnector());
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>          MsgPackDocumentStore msgPackDocumentStore = <strong class="jxr_keyword">new</strong> MsgPackDocumentStore(<span class="jxr_string">"/tmp/msgpack"</span>, <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>          KodexaPipeline pipeline = <strong class="jxr_keyword">new</strong> KodexaPipeline(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"pdf-example"</span>, <strong class="jxr_keyword">new</strong> FolderConnector(<span class="jxr_string">"/Users/pdodds/tmp"</span>, <span class="jxr_string">"form*.pdf"</span>));
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          KodexaCloudPipeline pipeline = <strong class="jxr_keyword">new</strong> KodexaCloudPipeline(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"pdf-example"</span>, <strong class="jxr_keyword">new</strong> FolderConnector(<span class="jxr_string">"/Users/pdodds/tmp"</span>, <span class="jxr_string">"form*.pdf"</span>));
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>          pipeline.setSink(msgPackDocumentStore);
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>          PipelineContext context = pipeline.run();
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  
@@ -53,7 +53,7 @@
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>          MsgPackDocumentStore msgPackDocumentStore = <strong class="jxr_keyword">new</strong> MsgPackDocumentStore(<span class="jxr_string">"/tmp/msgpack"</span>, <strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>          Pipeline pipeline = <strong class="jxr_keyword">new</strong> Pipeline(<strong class="jxr_keyword">new</strong> FolderConnector(<span class="jxr_string">"/Users/pdodds/tmp"</span>, <span class="jxr_string">"form*.pdf"</span>));
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"pdf-parse"</span>, Options.start().attachSource()));
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaCloudService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"pdf-parse"</span>, Options.start().attachSource()));
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>          pipeline.setSink(msgPackDocumentStore);
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>          PipelineContext context = pipeline.run();
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  
@@ -70,13 +70,13 @@
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>          InMemorySink sink = <strong class="jxr_keyword">new</strong> InMemorySink();
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>          MsgPackDocumentStore msgPackDocumentStore = <strong class="jxr_keyword">new</strong> MsgPackDocumentStore(<span class="jxr_string">"/tmp/msgpack.backup"</span>);
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>          Pipeline pipeline = <strong class="jxr_keyword">new</strong> Pipeline(msgPackDocumentStore);
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"node-tagger"</span>,
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaCloudService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"node-tagger"</span>,
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>                  Options.start()
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>                          .set(<span class="jxr_string">"type_re"</span>, <span class="jxr_string">"line"</span>)
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>                          .set(<span class="jxr_string">"content_re"</span>, <span class="jxr_string">"^(F.?itchConnect|feeds)$|^Technical.*3&#92;&#92;.1.$"</span>)
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>                          .set(<span class="jxr_string">"tag_name"</span>, <span class="jxr_string">"page_header"</span>)));
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"pattern-table-tag"</span>,
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaCloudService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"pattern-table-tag"</span>,
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>                  Options.start()
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>                          .set(<span class="jxr_string">"table_tag_name"</span>, <span class="jxr_string">"Chapter9"</span>)
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>                          .set(<span class="jxr_string">"page_start_re"</span>, <span class="jxr_string">"^Chapter 9.*Layout$"</span>)
@@ -86,7 +86,7 @@
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>                          .set(<span class="jxr_string">"tags_to_ignore_re"</span>, <span class="jxr_string">"page_(header|footer)|ignore"</span>)
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>                          .set(<span class="jxr_string">"col_space_multiplier"</span>, 2.0)));
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"tagged-table-extract"</span>,
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          pipeline.addStep(<strong class="jxr_keyword">new</strong> KodexaCloudService(<span class="jxr_string">"kodexa"</span>, <span class="jxr_string">"tagged-table-extract"</span>,
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>                  Options.start()
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>                          .set(<span class="jxr_string">"store_name"</span>, <span class="jxr_string">"chapter9"</span>)
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>                          .set(<span class="jxr_string">"table_tag_name"</span>, <span class="jxr_string">"Chapter9"</span>)

@@ -5,7 +5,7 @@ kodexa-java,com.kodexa.client.store,MsgPackDocumentStore,68,0,0,0,18,0,6,0,6,0
 kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore,212,0,8,0,40,0,15,0,11,0
 kodexa-java,com.kodexa.client.store,TableStore,44,0,0,0,7,0,4,0,4,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
-kodexa-java,com.kodexa.client,ContentFeature,212,35,42,0,0,6,27,9,6,9
+kodexa-java,com.kodexa.client,ContentFeature,172,32,34,0,0,5,22,8,5,8
 kodexa-java,com.kodexa.client,Document,300,101,51,1,14,16,33,17,7,17
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
 kodexa-java,com.kodexa.client,ContentNode,240,51,48,0,0,7,29,12,5,12
@@ -13,12 +13,12 @@ kodexa-java,com.kodexa.client.sink,InMemorySink,26,0,0,0,7,0,5,0,5,0
 kodexa-java,com.kodexa.client.cloud,CloudSession,83,0,14,0,2,0,14,0,7,0
 kodexa-java,com.kodexa.client.cloud,CloudSessionType,24,0,0,0,3,0,1,0,1,0
 kodexa-java,com.kodexa.client.cloud,ServiceMessage,390,48,70,0,5,11,55,4,20,4
-kodexa-java,com.kodexa.client.cloud,KodexaPipeline,228,0,6,0,46,0,10,0,7,0
+kodexa-java,com.kodexa.client.cloud,KodexaCloudPipeline,228,0,6,0,46,0,10,0,7,0
 kodexa-java,com.kodexa.client.cloud,Options,34,0,0,0,9,0,6,0,6,0
-kodexa-java,com.kodexa.client.cloud,KodexaService,204,0,4,0,36,0,8,0,6,0
 kodexa-java,com.kodexa.client.cloud,ProcessingException,191,0,30,0,6,0,27,0,12,0
 kodexa-java,com.kodexa.client.cloud,AbstractKodexaSession,282,0,12,0,53,0,11,0,5,0
 kodexa-java,com.kodexa.client.cloud,ProcessingStatus,0,34,0,0,0,4,0,1,0,1
+kodexa-java,com.kodexa.client.cloud,KodexaCloudService,204,0,4,0,36,0,8,0,6,0
 kodexa-java,com.kodexa.client.cloud,CloudExecution,126,0,22,0,3,0,20,0,9,0
 kodexa-java,com.kodexa.client.cloud,KodexaCloud,48,0,6,0,9,0,13,0,10,0
 kodexa-java,com.kodexa.client.registry,SourceRegistry,68,0,4,0,13,0,7,0,5,0

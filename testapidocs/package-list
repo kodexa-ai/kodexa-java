@@ -1,1 +1,8 @@
 com.kodexa.client
+com.kodexa.client.cloud
+com.kodexa.client.connectors
+com.kodexa.client.pipeline
+com.kodexa.client.registry
+com.kodexa.client.sink
+com.kodexa.client.steps
+com.kodexa.client.store

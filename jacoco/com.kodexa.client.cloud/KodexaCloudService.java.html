@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KodexaCloudService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.cloud</a> &gt; <span class="el_source">KodexaCloudService.java</span></div><h1>KodexaCloudService.java</h1><pre class="source lang-java linenums">package com.kodexa.client.cloud;
+
+import com.kodexa.client.Document;
+import com.kodexa.client.KodexaException;
+import com.kodexa.client.pipeline.PipelineContext;
+import com.kodexa.client.registry.SourceRegistry;
+import com.kodexa.client.steps.PipelineStep;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ * A step that is hosted in the Kodexa Cloud
+ */
+<span class="nc" id="L26">@Slf4j</span>
+public class KodexaCloudService extends AbstractKodexaSession implements PipelineStep {
+
+    private final Options options;
+
+    public KodexaCloudService(String organizationSlug, String serviceSlug) {
+<span class="nc" id="L32">        this(organizationSlug, serviceSlug, new Options());</span>
+<span class="nc" id="L33">    }</span>
+
+    public KodexaCloudService(String organizationSlug, String serviceSlug, Options options) {
+<span class="nc" id="L36">        super(organizationSlug, serviceSlug);</span>
+<span class="nc" id="L37">        this.options = options;</span>
+<span class="nc" id="L38">    }</span>
+
+    @Override
+    public Document process(Document document, PipelineContext context) {
+
+<span class="nc" id="L43">        CloudSession session = this.createSession(CloudSessionType.service);</span>
+<span class="nc" id="L44">        CloudExecution execution = executeService(session, document, context);</span>
+<span class="nc" id="L45">        waitForExecution(session, execution);</span>
+<span class="nc" id="L46">        return document;</span>
+    }
+
+    private CloudExecution executeService(CloudSession session, Document document, PipelineContext context) {
+<span class="nc" id="L50">        log.info(&quot;Executing service in Kodexa&quot;);</span>
+<span class="nc" id="L51">        try (CloseableHttpClient client = HttpClientBuilder.create()</span>
+<span class="nc" id="L52">                .setDefaultRequestConfig(getRequestConfig())</span>
+<span class="nc" id="L53">                .build()) {</span>
+<span class="nc" id="L54">            String url = KodexaCloud.getUrl() + &quot;/api/sessions/&quot; + session.getId() + &quot;/execute&quot;;</span>
+<span class="nc" id="L55">            log.info(&quot;Connecting to [&quot; + url + &quot;]&quot;);</span>
+<span class="nc" id="L56">            HttpPost post = new HttpPost(url);</span>
+<span class="nc" id="L57">            post.addHeader(&quot;x-access-token&quot;, KodexaCloud.getAccessToken());</span>
+
+<span class="nc" id="L59">            MultipartEntityBuilder builder = MultipartEntityBuilder.create();</span>
+
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            if (options.isAttachSource()) {</span>
+<span class="nc" id="L62">                InputStream inputStream = SourceRegistry.getInstance().getSource(document);</span>
+<span class="nc" id="L63">                ByteArrayBody fileBody = new ByteArrayBody(IOUtils.toByteArray(inputStream), &quot;test.doc&quot;);</span>
+<span class="nc" id="L64">                builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);</span>
+<span class="nc" id="L65">                builder.addPart(&quot;file&quot;, fileBody);</span>
+            }
+
+<span class="nc" id="L68">            StringBody optionsBody = new StringBody(jsonOm.writeValueAsString(options.get()), ContentType.APPLICATION_JSON);</span>
+<span class="nc" id="L69">            builder.addPart(&quot;options&quot;, optionsBody);</span>
+
+<span class="nc" id="L71">            post.setEntity(builder.build());</span>
+<span class="nc" id="L72">            HttpResponse response = client.execute(post);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
+<span class="nc" id="L74">                throw new KodexaException(&quot;Unable to create session on Kodexa, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
+            }
+<span class="nc" id="L76">            CloudExecution cloudExecution = jsonOm.readValue(response.getEntity().getContent(), CloudExecution.class);</span>
+<span class="nc" id="L77">            log.info(&quot;Execution created [&quot; + cloudExecution + &quot;]&quot;);</span>
+<span class="nc" id="L78">            return cloudExecution;</span>
+<span class="nc" id="L79">        } catch (IOException e) {</span>
+<span class="nc" id="L80">            throw new KodexaException(&quot;Unable to create session on Kodexa&quot;, e);</span>
+        }
+    }
+
+    @Override
+    public String getName() {
+<span class="nc" id="L86">        return &quot;Kodexa Service [&quot; + KodexaCloud.getUrl() + &quot;/&quot; + organizationSlug + &quot;/&quot; + serviceSlug + &quot;]&quot;;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
