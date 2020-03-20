@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Maven Lombok Plugin">
+<project name="Kodexa Java Client">
   <skin>
     <groupId>org.apache.maven.skins</groupId>
     <artifactId>maven-fluido-skin</artifactId>
@@ -20,7 +20,7 @@
   <body>
     <breadcrumbs>
       <item name="Kodexa" href="https://www.kodexa.com/" />
-      <item name="Maven" href="http://awhitford.github.com/lombok.maven/" />
+      <item name="Developer Portal" href="https://developer.kodexa.com" />
     </breadcrumbs>
     <menu name="Overview">
       <item name="Introduction" href="index.html" />
