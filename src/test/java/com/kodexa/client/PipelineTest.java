@@ -36,6 +36,7 @@ public class PipelineTest {
         Assert.assertTrue(msgPackDocumentStore.getCount() == 1);
     }
 
+    @Ignore
     @Test
     public void kodexaService() throws IOException {
         KodexaCloud.setUrl("http://localhost:8080");
