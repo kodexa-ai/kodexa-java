@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServiceMessage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.cloud</a> &gt; <span class="el_source">ServiceMessage.java</span></div><h1>ServiceMessage.java</h1><pre class="source lang-java linenums">package com.kodexa.client.cloud;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kodexa.client.Document;
+import com.kodexa.client.KodexaException;
+import lombok.Data;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * A service message is a request/response object for the Kodexa platform
+ */
+<span class="pc bnc" id="L20" title="All 70 branches missed.">@Data</span>
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ServiceMessage {
+
+    private final static ObjectMapper OBJECT_MAPPER;
+
+    static {
+<span class="fc" id="L27">        OBJECT_MAPPER = new ObjectMapper();</span>
+<span class="fc" id="L28">        OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+<span class="fc" id="L29">    }</span>
+
+<span class="pc" id="L31">    private String uuid = UUID.randomUUID().toString();</span>
+<span class="pc" id="L32">    private String version = &quot;1.0.0&quot;;</span>
+
+<span class="pc" id="L34">    private ProcessingStatus status = ProcessingStatus.PENDING;</span>
+<span class="pc" id="L35">    private ProcessingException exception = null;</span>
+
+<span class="pc" id="L37">    private Map&lt;String, String&gt; metadata = new HashMap&lt;&gt;();</span>
+<span class="pc" id="L38">    private Map&lt;String, Object&gt; options = new HashMap&lt;&gt;();</span>
+<span class="pc" id="L39">    private Map&lt;String, Map&lt;String, Object&gt;&gt; stores = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L41">    private Document document;</span>
+
+    public static ServiceMessage from(InputStream inputStream) throws IOException {
+<span class="nc" id="L44">        return OBJECT_MAPPER.readValue(inputStream, ServiceMessage.class);</span>
+    }
+
+    public String toJson() {
+        try {
+<span class="nc" id="L49">            return OBJECT_MAPPER.writeValueAsString(this);</span>
+<span class="nc" id="L50">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L51">            throw new KodexaException(&quot;Unable to serialize service message&quot;, e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

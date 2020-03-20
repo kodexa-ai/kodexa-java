@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonDocumentStore.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.store</a> &gt; <span class="el_source">JsonDocumentStore.java</span></div><h1>JsonDocumentStore.java</h1><pre class="source lang-java linenums">package com.kodexa.client.store;
+
+import com.kodexa.client.Document;
+import com.kodexa.client.KodexaException;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+<span class="nc" id="L11">@Slf4j</span>
+public class JsonDocumentStore extends AbstractFileSystemDocumentStore {
+
+    @Override
+    protected String getExtension() {
+<span class="nc" id="L16">        return &quot;json&quot;;</span>
+    }
+
+    public JsonDocumentStore(String path) {
+<span class="nc" id="L20">        super(path, false);</span>
+<span class="nc" id="L21">    }</span>
+
+    public JsonDocumentStore(String path, boolean forceInitialize) {
+<span class="nc" id="L24">        super(path, forceInitialize);</span>
+<span class="nc" id="L25">    }</span>
+
+    @Override
+    public void sink(Document document) {
+        try {
+<span class="nc" id="L30">            readIndex();</span>
+<span class="nc" id="L31">            FileUtils.writeStringToFile(getFile(document.getUuid()), document.toJson(), Charset.defaultCharset());</span>
+<span class="nc" id="L32">            index.add(document.getUuid());</span>
+<span class="nc" id="L33">            saveIndex();</span>
+<span class="nc" id="L34">        } catch (IOException e) {</span>
+<span class="nc" id="L35">            throw new KodexaException(&quot;Unable to write document to store&quot;, e);</span>
+<span class="nc" id="L36">        }</span>
+
+<span class="nc" id="L38">    }</span>
+
+    @Override
+    public Document getDocument(int position) {
+        try {
+<span class="nc" id="L43">            return Document.fromJson(FileUtils.readFileToString(getFile(index.get(position)), Charset.defaultCharset()));</span>
+<span class="nc" id="L44">        } catch (IOException e) {</span>
+<span class="nc" id="L45">            throw new KodexaException(&quot;Unable to read the document at index &quot; + position, e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
