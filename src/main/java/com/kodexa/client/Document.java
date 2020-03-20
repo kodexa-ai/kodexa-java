@@ -16,7 +16,7 @@ import java.util.*;
 
 /**
  * A Kodexa document is a representation of a set of content which combines content, metadata
- * and also features it is the core model for handling content
+ * and features it is the core model for handling content
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -42,6 +42,12 @@ public class Document {
     private String uuid = UUID.randomUUID().toString();
     private String version;
 
+    /**
+     * Convert the document to JSON
+     *
+     * @param pretty include spacing and new lines if true
+     * @return JSON representation of document
+     */
     public String toJson(boolean pretty) {
         try {
             if (pretty) {
@@ -54,6 +60,12 @@ public class Document {
         }
     }
 
+    /**
+     * Create a new instance of a Document from JSON string
+     *
+     * @param json String representation of the document JSON
+     * @return De-serialized Document
+     */
     public static Document fromJson(String json) {
         try {
             return OBJECT_MAPPER.readValue(json, Document.class);
