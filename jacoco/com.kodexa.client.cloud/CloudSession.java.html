@@ -3,11 +3,19 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-<span class="nc bnc" id="L6" title="All 14 branches missed.">@Data</span>
+/**
+ * An instance of a session in the Kodexa Cloud
+ * &lt;p&gt;
+ * A session is created using access tokens to allow you to set-up and the run either actions or pipelines
+ */
+<span class="nc bnc" id="L11" title="All 14 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CloudSession {
 
-<span class="nc" id="L10">    private String id;</span>
+    /**
+     * The unique ID of the cloud session
+     */
+<span class="nc" id="L18">    private String id;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

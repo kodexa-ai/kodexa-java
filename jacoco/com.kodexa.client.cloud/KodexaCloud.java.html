@@ -2,28 +2,31 @@
 
 import lombok.Data;
 
-<span class="nc bnc" id="L5" title="All 6 branches missed.">@Data</span>
+/**
+ * The configuration object (static) for the connection to Kodexa
+ */
+<span class="nc bnc" id="L8" title="All 6 branches missed.">@Data</span>
 public class KodexaCloud {
 
-<span class="nc" id="L8">    private static String accessToken = null;</span>
+<span class="nc" id="L11">    private static String accessToken = null;</span>
 
     public static String getAccessToken() {
-<span class="nc" id="L11">        return KodexaCloud.accessToken;</span>
+<span class="nc" id="L14">        return KodexaCloud.accessToken;</span>
     }
 
     public static void setAccessToken(String accessToken) {
-<span class="nc" id="L15">        KodexaCloud.accessToken = accessToken;</span>
-<span class="nc" id="L16">    }</span>
+<span class="nc" id="L18">        KodexaCloud.accessToken = accessToken;</span>
+<span class="nc" id="L19">    }</span>
 
-<span class="nc" id="L18">    private static String url = &quot;https://cloud.kodexa.com&quot;;</span>
+<span class="nc" id="L21">    private static String url = &quot;https://cloud.kodexa.com&quot;;</span>
 
     public static String getUrl() {
-<span class="nc" id="L21">        return KodexaCloud.url;</span>
+<span class="nc" id="L24">        return KodexaCloud.url;</span>
     }
 
     public static void setUrl(String url) {
-<span class="nc" id="L25">        KodexaCloud.url = url;</span>
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L28">        KodexaCloud.url = url;</span>
+<span class="nc" id="L29">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
