@@ -12,19 +12,39 @@ import java.util.Set;
  */
 <span class="nc" id="L13">public class PipelineContext {</span>
 
-<span class="nc" id="L15">    public Map&lt;String, DataStore&gt; stores = new HashMap&lt;String, DataStore&gt;();</span>
+    /**
+     * The available stores
+     */
+<span class="nc" id="L18">    public Map&lt;String, DataStore&gt; stores = new HashMap&lt;String, DataStore&gt;();</span>
 
+    /**
+     * Get a specific store
+     *
+     * @param name the name of the store to get
+     * @return The instance of the store (or null if not found)
+     */
     public DataStore getStore(String name) {
-<span class="nc" id="L18">        return stores.get(name);</span>
+<span class="nc" id="L27">        return stores.get(name);</span>
     }
 
+    /**
+     * Return a set of the names of the stores in the pipeline
+     *
+     * @return set of names
+     */
     public Set&lt;String&gt; getStoreNames() {
-<span class="nc" id="L22">        return stores.keySet();</span>
+<span class="nc" id="L36">        return stores.keySet();</span>
     }
 
+    /**
+     * Add the given store to the pipeline context
+     *
+     * @param name the name of the store
+     * @param store The implementation of the store
+     */
     public void addStore(String name, DataStore store) {
-<span class="nc" id="L26">        stores.put(name, store);</span>
-<span class="nc" id="L27">    }</span>
+<span class="nc" id="L46">        stores.put(name, store);</span>
+<span class="nc" id="L47">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

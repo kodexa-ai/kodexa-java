@@ -14,87 +14,90 @@ import org.msgpack.jackson.dataformat.MessagePackFactory;
 
 import java.io.IOException;
 
-<span class="nc" id="L17">@Slf4j</span>
+/**
+ * Abstract base for both Cloud Service and Cloud Pipelines in Kodexa
+ */
+<span class="nc" id="L20">@Slf4j</span>
 public abstract class AbstractKodexaSession {
 
     protected final static ObjectMapper messagePackOm;
     protected final static ObjectMapper jsonOm;
 
     static {
-<span class="nc" id="L24">        messagePackOm = new ObjectMapper(new MessagePackFactory());</span>
-<span class="nc" id="L25">        messagePackOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+<span class="nc" id="L27">        messagePackOm = new ObjectMapper(new MessagePackFactory());</span>
+<span class="nc" id="L28">        messagePackOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
 
-<span class="nc" id="L27">        jsonOm = new ObjectMapper();</span>
-<span class="nc" id="L28">        jsonOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
-<span class="nc" id="L29">    }</span>
+<span class="nc" id="L30">        jsonOm = new ObjectMapper();</span>
+<span class="nc" id="L31">        jsonOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+<span class="nc" id="L32">    }</span>
 
     protected final String organizationSlug;
     protected final String serviceSlug;
 
 
-<span class="nc" id="L35">    public AbstractKodexaSession(String organizationSlug, String serviceSlug) {</span>
-<span class="nc" id="L36">        this.organizationSlug = organizationSlug;</span>
-<span class="nc" id="L37">        this.serviceSlug = serviceSlug;</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L38">    public AbstractKodexaSession(String organizationSlug, String serviceSlug) {</span>
+<span class="nc" id="L39">        this.organizationSlug = organizationSlug;</span>
+<span class="nc" id="L40">        this.serviceSlug = serviceSlug;</span>
+<span class="nc" id="L41">    }</span>
 
     protected void waitForExecution(CloudSession session, CloudExecution execution) {
-<span class="nc" id="L41">        String status = execution.getStatus();</span>
-<span class="nc bnc" id="L42" title="All 4 branches missed.">        while (execution.getStatus().equals(&quot;PENDING&quot;) || execution.getStatus().equals(&quot;RUNNING&quot;)) {</span>
-<span class="nc" id="L43">            try (CloseableHttpClient client = HttpClientBuilder.create()</span>
-<span class="nc" id="L44">                    .setDefaultRequestConfig(getRequestConfig())</span>
-<span class="nc" id="L45">                    .build()) {</span>
-<span class="nc" id="L46">                Thread.sleep(1000);</span>
-<span class="nc" id="L47">                String url = KodexaCloud.getUrl() + &quot;/api/sessions/&quot; + session.getId() + &quot;/executions/&quot; + execution.getId();</span>
-<span class="nc" id="L48">                HttpGet post = new HttpGet(url);</span>
-<span class="nc" id="L49">                post.addHeader(&quot;x-access-token&quot;, KodexaCloud.getAccessToken());</span>
-<span class="nc" id="L50">                HttpResponse response = client.execute(post);</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">                if (response.getStatusLine().getStatusCode() != 200) {</span>
-<span class="nc" id="L52">                    throw new KodexaException(&quot;Unable to create session on Kodexa, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
+<span class="nc" id="L44">        String status = execution.getStatus();</span>
+<span class="nc bnc" id="L45" title="All 4 branches missed.">        while (execution.getStatus().equals(&quot;PENDING&quot;) || execution.getStatus().equals(&quot;RUNNING&quot;)) {</span>
+<span class="nc" id="L46">            try (CloseableHttpClient client = HttpClientBuilder.create()</span>
+<span class="nc" id="L47">                    .setDefaultRequestConfig(getRequestConfig())</span>
+<span class="nc" id="L48">                    .build()) {</span>
+<span class="nc" id="L49">                Thread.sleep(1000);</span>
+<span class="nc" id="L50">                String url = KodexaCloud.getUrl() + &quot;/api/sessions/&quot; + session.getId() + &quot;/executions/&quot; + execution.getId();</span>
+<span class="nc" id="L51">                HttpGet post = new HttpGet(url);</span>
+<span class="nc" id="L52">                post.addHeader(&quot;x-access-token&quot;, KodexaCloud.getAccessToken());</span>
+<span class="nc" id="L53">                HttpResponse response = client.execute(post);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">                if (response.getStatusLine().getStatusCode() != 200) {</span>
+<span class="nc" id="L55">                    throw new KodexaException(&quot;Unable to create session on Kodexa, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
                 }
-<span class="nc" id="L54">                execution = jsonOm.readValue(response.getEntity().getContent(), CloudExecution.class);</span>
+<span class="nc" id="L57">                execution = jsonOm.readValue(response.getEntity().getContent(), CloudExecution.class);</span>
 
-<span class="nc bnc" id="L56" title="All 2 branches missed.">                if (!execution.getStatus().equals(status)) {</span>
-<span class="nc" id="L57">                    log.info(&quot;Execution Status changed from &quot; + status + &quot; =&gt; &quot; + execution.getStatus());</span>
-<span class="nc" id="L58">                    status = execution.getStatus();</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">                if (!execution.getStatus().equals(status)) {</span>
+<span class="nc" id="L60">                    log.info(&quot;Execution Status changed from &quot; + status + &quot; =&gt; &quot; + execution.getStatus());</span>
+<span class="nc" id="L61">                    status = execution.getStatus();</span>
                 }
-<span class="nc" id="L60">            } catch (IOException | InterruptedException e) {</span>
-<span class="nc" id="L61">                throw new KodexaException(&quot;Unable to connect to Kodexa&quot;, e);</span>
-<span class="nc" id="L62">            }</span>
+<span class="nc" id="L63">            } catch (IOException | InterruptedException e) {</span>
+<span class="nc" id="L64">                throw new KodexaException(&quot;Unable to connect to Kodexa&quot;, e);</span>
+<span class="nc" id="L65">            }</span>
         }
 
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (execution.getStatus().equals(&quot;FAILED&quot;)) {</span>
-<span class="nc" id="L66">            throw new KodexaException(&quot;Processing failed&quot;);</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if (execution.getStatus().equals(&quot;FAILED&quot;)) {</span>
+<span class="nc" id="L69">            throw new KodexaException(&quot;Processing failed&quot;);</span>
         }
-<span class="nc" id="L68">    }</span>
+<span class="nc" id="L71">    }</span>
 
     protected RequestConfig getRequestConfig() {
-<span class="nc" id="L71">        int timeout = 120; // seconds</span>
-<span class="nc" id="L72">        return RequestConfig.custom()</span>
-<span class="nc" id="L73">                .setConnectTimeout(timeout * 1000)</span>
-<span class="nc" id="L74">                .setConnectionRequestTimeout(timeout * 1000)</span>
-<span class="nc" id="L75">                .setSocketTimeout(timeout * 1000).build();</span>
+<span class="nc" id="L74">        int timeout = 120; // seconds</span>
+<span class="nc" id="L75">        return RequestConfig.custom()</span>
+<span class="nc" id="L76">                .setConnectTimeout(timeout * 1000)</span>
+<span class="nc" id="L77">                .setConnectionRequestTimeout(timeout * 1000)</span>
+<span class="nc" id="L78">                .setSocketTimeout(timeout * 1000).build();</span>
     }
 
     protected CloudSession createSession(CloudSessionType sessionType) {
-<span class="nc" id="L79">        log.info(&quot;Creating session in Kodexa&quot;);</span>
-<span class="nc" id="L80">        try (CloseableHttpClient client = HttpClientBuilder.create()</span>
-<span class="nc" id="L81">                .setDefaultRequestConfig(getRequestConfig())</span>
-<span class="nc" id="L82">                .build()) {</span>
-<span class="nc" id="L83">            String url = KodexaCloud.getUrl() + &quot;/api/sessions?&quot; + sessionType + &quot;=&quot; + organizationSlug + &quot;/&quot; + serviceSlug;</span>
+<span class="nc" id="L82">        log.info(&quot;Creating session in Kodexa&quot;);</span>
+<span class="nc" id="L83">        try (CloseableHttpClient client = HttpClientBuilder.create()</span>
+<span class="nc" id="L84">                .setDefaultRequestConfig(getRequestConfig())</span>
+<span class="nc" id="L85">                .build()) {</span>
+<span class="nc" id="L86">            String url = KodexaCloud.getUrl() + &quot;/api/sessions?&quot; + sessionType + &quot;=&quot; + organizationSlug + &quot;/&quot; + serviceSlug;</span>
 
-<span class="nc" id="L85">            log.info(&quot;Connecting to [&quot; + url + &quot;]&quot;);</span>
+<span class="nc" id="L88">            log.info(&quot;Connecting to [&quot; + url + &quot;]&quot;);</span>
 
-<span class="nc" id="L87">            HttpPost post = new HttpPost(url);</span>
-<span class="nc" id="L88">            post.addHeader(&quot;x-access-token&quot;, KodexaCloud.getAccessToken());</span>
-<span class="nc" id="L89">            HttpResponse response = client.execute(post);</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
-<span class="nc" id="L91">                throw new KodexaException(&quot;Unable to create session on Kodexa, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
+<span class="nc" id="L90">            HttpPost post = new HttpPost(url);</span>
+<span class="nc" id="L91">            post.addHeader(&quot;x-access-token&quot;, KodexaCloud.getAccessToken());</span>
+<span class="nc" id="L92">            HttpResponse response = client.execute(post);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
+<span class="nc" id="L94">                throw new KodexaException(&quot;Unable to create session on Kodexa, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
             }
-<span class="nc" id="L93">            CloudSession session = jsonOm.readValue(response.getEntity().getContent(), CloudSession.class);</span>
-<span class="nc" id="L94">            log.info(&quot;Session created [&quot; + session + &quot;]&quot;);</span>
-<span class="nc" id="L95">            return session;</span>
-<span class="nc" id="L96">        } catch (IOException e) {</span>
-<span class="nc" id="L97">            throw new KodexaException(&quot;Unable to create session on Kodexa&quot;, e);</span>
+<span class="nc" id="L96">            CloudSession session = jsonOm.readValue(response.getEntity().getContent(), CloudSession.class);</span>
+<span class="nc" id="L97">            log.info(&quot;Session created [&quot; + session + &quot;]&quot;);</span>
+<span class="nc" id="L98">            return session;</span>
+<span class="nc" id="L99">        } catch (IOException e) {</span>
+<span class="nc" id="L100">            throw new KodexaException(&quot;Unable to create session on Kodexa&quot;, e);</span>
         }
     }
 }

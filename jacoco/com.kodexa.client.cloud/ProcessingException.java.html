@@ -7,14 +7,18 @@ import lombok.NoArgsConstructor;
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="nc" id="L10">@NoArgsConstructor</span>
-<span class="nc" id="L11">@AllArgsConstructor</span>
-<span class="nc bnc" id="L12" title="All 30 branches missed.">@Data</span>
+/**
+ * Representation of a processing exception that has occurred in the
+ * Kodexa Cloud
+ */
+<span class="nc" id="L14">@NoArgsConstructor</span>
+<span class="nc" id="L15">@AllArgsConstructor</span>
+<span class="nc bnc" id="L16" title="All 30 branches missed.">@Data</span>
 public class ProcessingException extends RuntimeException {
 
-<span class="nc" id="L15">    private String message;</span>
-<span class="nc" id="L16">    private String description;</span>
-<span class="nc" id="L17">    private Map&lt;String, Object&gt; diagnostics = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L19">    private String message;</span>
+<span class="nc" id="L20">    private String description;</span>
+<span class="nc" id="L21">    private Map&lt;String, Object&gt; diagnostics = new HashMap&lt;&gt;();</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
