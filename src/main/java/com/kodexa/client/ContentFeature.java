@@ -13,10 +13,24 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentFeature {
 
+    /**
+     * The type of feature (ie spatial, html, tag)
+     */
     private String featureType;
+
+    /**
+     * The name of the feature (ie tag name or div or line etc)
+     */
     private String name;
+
+    /**
+     * A list of the values that the feature has
+     */
     private List<Object> value = new ArrayList<>();
-    private String description;
+
+    /**
+     * Is the feature a single value
+     */
     private boolean single;
 
 }

@@ -1,8 +1,8 @@
 package com.kodexa.client;
 
 import com.kodexa.client.cloud.KodexaCloud;
-import com.kodexa.client.cloud.KodexaPipeline;
-import com.kodexa.client.cloud.KodexaService;
+import com.kodexa.client.cloud.KodexaCloudPipeline;
+import com.kodexa.client.cloud.KodexaCloudService;
 import com.kodexa.client.cloud.Options;
 import com.kodexa.client.connectors.FolderConnector;
 import com.kodexa.client.pipeline.Pipeline;
@@ -29,7 +29,7 @@ public class PipelineTest {
         SourceRegistry.getInstance().addConnector(new FolderConnector());
 
         MsgPackDocumentStore msgPackDocumentStore = new MsgPackDocumentStore("/tmp/msgpack", true);
-        KodexaPipeline pipeline = new KodexaPipeline("kodexa", "pdf-example", new FolderConnector("/Users/pdodds/tmp", "form*.pdf"));
+        KodexaCloudPipeline pipeline = new KodexaCloudPipeline("kodexa", "pdf-example", new FolderConnector("/Users/pdodds/tmp", "form*.pdf"));
         pipeline.setSink(msgPackDocumentStore);
         PipelineContext context = pipeline.run();
 
@@ -45,7 +45,7 @@ public class PipelineTest {
 
         MsgPackDocumentStore msgPackDocumentStore = new MsgPackDocumentStore("/tmp/msgpack", true);
         Pipeline pipeline = new Pipeline(new FolderConnector("/Users/pdodds/tmp", "form*.pdf"));
-        pipeline.addStep(new KodexaService("kodexa", "pdf-parse", Options.start().attachSource()));
+        pipeline.addStep(new KodexaCloudService("kodexa", "pdf-parse", Options.start().attachSource()));
         pipeline.setSink(msgPackDocumentStore);
         PipelineContext context = pipeline.run();
 
@@ -62,13 +62,13 @@ public class PipelineTest {
         InMemorySink sink = new InMemorySink();
         MsgPackDocumentStore msgPackDocumentStore = new MsgPackDocumentStore("/tmp/msgpack.backup");
         Pipeline pipeline = new Pipeline(msgPackDocumentStore);
-        pipeline.addStep(new KodexaService("kodexa", "node-tagger",
+        pipeline.addStep(new KodexaCloudService("kodexa", "node-tagger",
                 Options.start()
                         .set("type_re", "line")
                         .set("content_re", "^(F.?itchConnect|feeds)$|^Technical.*3\\.1.$")
                         .set("tag_name", "page_header")));
 
-        pipeline.addStep(new KodexaService("kodexa", "pattern-table-tag",
+        pipeline.addStep(new KodexaCloudService("kodexa", "pattern-table-tag",
                 Options.start()
                         .set("table_tag_name", "Chapter9")
                         .set("page_start_re", "^Chapter 9.*Layout$")
@@ -78,7 +78,7 @@ public class PipelineTest {
                         .set("tags_to_ignore_re", "page_(header|footer)|ignore")
                         .set("col_space_multiplier", 2.0)));
 
-        pipeline.addStep(new KodexaService("kodexa", "tagged-table-extract",
+        pipeline.addStep(new KodexaCloudService("kodexa", "tagged-table-extract",
                 Options.start()
                         .set("store_name", "chapter9")
                         .set("table_tag_name", "Chapter9")

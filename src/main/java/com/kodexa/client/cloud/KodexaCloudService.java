@@ -2,10 +2,9 @@ package com.kodexa.client.cloud;
 
 import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
-import com.kodexa.client.connectors.Connector;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.registry.SourceRegistry;
-import com.kodexa.client.sink.Sink;
+import com.kodexa.client.steps.PipelineStep;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
@@ -22,57 +21,31 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * A Kodexa-hosted Pipeline
+ * A step that is hosted in the Kodexa Cloud
  */
 @Slf4j
-public class KodexaPipeline extends AbstractKodexaSession {
+public class KodexaCloudService extends AbstractKodexaSession implements PipelineStep {
 
     private final Options options;
-    private final Connector connector;
-    private Sink sink;
 
-    /**
-     * Create a pipeline connected to the Kodexa Cloud using the organization / action url.
-     *
-     * @param organizationSlug the slug for the organization
-     * @param serviceSlug      the slug for the action/service
-     * @param connector        the connector for feeding documents into the pipeline
-     */
-    public KodexaPipeline(String organizationSlug, String serviceSlug, Connector connector) {
-        this(organizationSlug, serviceSlug, connector, new Options());
+    public KodexaCloudService(String organizationSlug, String serviceSlug) {
+        this(organizationSlug, serviceSlug, new Options());
     }
 
-    /**
-     * Create a pipeline connected to the Kodexa Cloud using the organization / action url.
-     *
-     * @param organizationSlug the slug for the organization
-     * @param serviceSlug      the slug for the action/service
-     * @param connector        the connector for feeding documents into the pipeline
-     * @param options          the options object for the pipeline
-     */
-    public KodexaPipeline(String organizationSlug, String serviceSlug, Connector connector, Options options) {
+    public KodexaCloudService(String organizationSlug, String serviceSlug, Options options) {
         super(organizationSlug, serviceSlug);
         this.options = options;
-        this.connector = connector;
     }
 
-    /**
-     * Set the sink
-     *
-     * @param sink The sink to use for the documents
-     */
-    public void setSink(Sink sink) {
-        this.sink = sink;
+    @Override
+    public Document process(Document document, PipelineContext context) {
+
+        CloudSession session = this.createSession(CloudSessionType.service);
+        CloudExecution execution = executeService(session, document, context);
+        waitForExecution(session, execution);
+        return document;
     }
 
-    /**
-     * Execute the service in Kodexa
-     *
-     * @param session  The session to use
-     * @param document The document to send
-     * @param context  The context for the pipeline
-     * @return An instance of a cloud execution
-     */
     private CloudExecution executeService(CloudSession session, Document document, PipelineContext context) {
         log.info("Executing service in Kodexa");
         try (CloseableHttpClient client = HttpClientBuilder.create()
@@ -108,31 +81,9 @@ public class KodexaPipeline extends AbstractKodexaSession {
         }
     }
 
-    /**
-     * Run the pipeline.
-     * <p>
-     * This will start the connector and feed each document through the steps in the pipeline referenced
-     *
-     * @return The final {@link PipelineContext} after all documents have been processed
-     */
-    public PipelineContext run() {
-
-        log.info("Starting pipeline");
-        CloudSession session = this.createSession(CloudSessionType.pipeline);
-        PipelineContext pipelineContext = new PipelineContext();
-        connector.forEachRemaining(document -> {
-            CloudExecution execution = executeService(session, document, pipelineContext);
-            waitForExecution(session, execution);
-
-            if (sink != null) {
-                log.info("Writing to sink " + sink.getName());
-                sink.sink(document);
-            }
-
-        });
-
-        log.info("Pipeline completed");
-        return pipelineContext;
+    @Override
+    public String getName() {
+        return "Kodexa Service [" + KodexaCloud.getUrl() + "/" + organizationSlug + "/" + serviceSlug + "]";
     }
 
 }
