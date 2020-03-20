@@ -14,6 +14,9 @@ import org.msgpack.jackson.dataformat.MessagePackFactory;
 
 import java.io.IOException;
 
+/**
+ * Abstract base for both Cloud Service and Cloud Pipelines in Kodexa
+ */
 @Slf4j
 public abstract class AbstractKodexaSession {
 

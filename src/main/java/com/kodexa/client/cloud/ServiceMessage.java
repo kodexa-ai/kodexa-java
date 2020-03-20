@@ -40,10 +40,22 @@ public class ServiceMessage {
 
     private Document document;
 
+    /**
+     * De-serialize the Service Message from JSON
+     *
+     * @param inputStream the service message in JSON form
+     * @return An instance of the service message object
+     * @throws IOException
+     */
     public static ServiceMessage from(InputStream inputStream) throws IOException {
         return OBJECT_MAPPER.readValue(inputStream, ServiceMessage.class);
     }
 
+    /**
+     * Convert the service message to a JSON string
+     *
+     * @return JSON string representation
+     */
     public String toJson() {
         try {
             return OBJECT_MAPPER.writeValueAsString(this);

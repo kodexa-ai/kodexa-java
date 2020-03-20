@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Representation of a processing exception that has occurred in the
+ * Kodexa Cloud
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

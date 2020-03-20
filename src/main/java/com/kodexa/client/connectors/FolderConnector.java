@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Implementation of a {@link Connector} for reading from a local
+ * directory
+ */
 @Slf4j
 public class FolderConnector implements Connector {
 
@@ -46,7 +50,7 @@ public class FolderConnector implements Connector {
     public Document next() {
         File file = files[position];
         position++;
-        log.info("Found file "+file.getAbsolutePath());
+        log.info("Found file " + file.getAbsolutePath());
         Document document = new Document();
         document.getMetadata().put("source_path", file.getAbsolutePath());
         document.getMetadata().put("connector", getName());

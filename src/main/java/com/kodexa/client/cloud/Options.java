@@ -5,6 +5,10 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A simple structure for capturing the options for a Kodexa
+ * Cloud Action in Java
+ */
 public class Options {
 
     private Map<String, Object> opts = new HashMap<>();

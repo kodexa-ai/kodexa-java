@@ -8,6 +8,10 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The registry of source types, used in Kodexa to allow us to
+ * separate access to sources from the steps and pipeline
+ */
 public class SourceRegistry {
 
     private static SourceRegistry INTERNAL_REGISTRY = new SourceRegistry();
