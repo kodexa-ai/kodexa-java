@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020 Kodexa</copyright>
     <item>
-      <title>File: 32,
-             Errors: 392,
+      <title>File: 31,
+             Errors: 391,
              Warnings: 0,
              Infos: 0
       </title>
@@ -284,20 +284,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.steps.AbstractContextFreePipelineStep.java">com/kodexa/client/steps/AbstractContextFreePipelineStep.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.store.DataStore.java">com/kodexa/client/store/DataStore.java</a>
                 </td>
                 <td>
@@ -461,7 +447,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  6
                 </td>
               </tr>
                           <tr>
