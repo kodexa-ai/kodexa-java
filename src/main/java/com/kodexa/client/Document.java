@@ -12,6 +12,7 @@ import org.msgpack.jackson.dataformat.MessagePackFactory;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -74,6 +75,12 @@ public class Document {
         }
     }
 
+    /**
+     * Create a Document from a message packed (kdx) representation
+     *
+     * @param bytes the bytes for the message packed document
+     * @return An instance of a Document
+     */
     public static Document fromMsgPack(byte[] bytes) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);
@@ -82,6 +89,26 @@ public class Document {
         }
     }
 
+    /**
+     * Create a Document from a message packed (kdx) representation
+     *
+     * @param is Input stream containing the document
+     * @return An instance of a Document
+     */
+    public static Document fromMsgPack(InputStream is) {
+        try {
+            return OBJECT_MAPPER_MSGPACK.readValue(is, Document.class);
+        } catch (IOException e) {
+            throw new KodexaException("Unable to convert to Document from message pack", e);
+        }
+    }
+
+    /**
+     * Create a Document from a message packed (kdx) representation
+     *
+     * @param file file containing the document
+     * @return An instance of a Document
+     */
     public static Document fromMsgPack(File file) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);
@@ -90,6 +117,11 @@ public class Document {
         }
     }
 
+    /**
+     * Create a message pack representation of this document
+     *
+     * @return Byte arry of the document packed
+     */
     public byte[] toMsgPack() {
         try {
             return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);
@@ -98,7 +130,12 @@ public class Document {
         }
     }
 
-    public String toJson() throws JsonProcessingException {
+    /**
+     * Create a JSON representation of this document
+     *
+     * @return String containing the JSON representation
+     */
+    public String toJson() {
         return toJson(false);
     }
 

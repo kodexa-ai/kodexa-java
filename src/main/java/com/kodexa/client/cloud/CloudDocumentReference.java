@@ -5,10 +5,14 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CloudStore {
+public class CloudDocumentReference {
 
     private String id;
 
+    private String referenceType;
+
     private String name;
+
+    private CloudDocument cloudDocument;
 
 }

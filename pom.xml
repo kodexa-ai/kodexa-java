@@ -27,10 +27,6 @@
         <developerConnection>scm:git:git@github.com:kodexa-ai/kodexa-java.git</developerConnection>
     </scm>
     <distributionManagement>
-<!--        <repository>-->
-<!--            <id>github</id>-->
-<!--            <url>https://maven.pkg.github.com/kodexa-ai/kodexa-java</url>-->
-<!--        </repository>-->
         <repository>
             <id>s3.release</id>
             <url>s3://maven.kodexa.com/release</url>
@@ -112,7 +108,12 @@
             <artifactId>httpmime</artifactId>
             <version>4.5.11</version>
         </dependency>
-
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>asciitable</artifactId>
+            <version>0.3.2</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
