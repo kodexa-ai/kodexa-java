@@ -25,11 +25,11 @@ public class PipelineTest {
     @Test
     public void kodexaPipeline() throws IOException {
         KodexaCloud.setUrl("http://localhost:8080");
-        KodexaCloud.setAccessToken("1c619ea51ab6446aba8c2f1ff85fe846");
         SourceRegistry.getInstance().addConnector(new FolderConnector());
 
+        FolderConnector connector = new FolderConnector("/Users/pdodds/Dropbox/Kodexa Demo/Excel Examples", "*.xlsx");
         MsgPackDocumentStore msgPackDocumentStore = new MsgPackDocumentStore("/tmp/msgpack", true);
-        KodexaCloudPipeline pipeline = new KodexaCloudPipeline("kodexa", "pdf-example", new FolderConnector("/Users/pdodds/tmp", "form*.pdf"));
+        KodexaCloudPipeline pipeline = new KodexaCloudPipeline("kodexa", "excel", connector, Options.start().attachSource());
         pipeline.setSink(msgPackDocumentStore);
         PipelineContext context = pipeline.run();
 
@@ -40,7 +40,6 @@ public class PipelineTest {
     @Test
     public void kodexaService() throws IOException {
         KodexaCloud.setUrl("http://localhost:8080");
-        KodexaCloud.setAccessToken("1c619ea51ab6446aba8c2f1ff85fe846");
         SourceRegistry.getInstance().addConnector(new FolderConnector());
 
         MsgPackDocumentStore msgPackDocumentStore = new MsgPackDocumentStore("/tmp/msgpack", true);

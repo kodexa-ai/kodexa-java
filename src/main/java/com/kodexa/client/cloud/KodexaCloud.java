@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class KodexaCloud {
 
-    private static String accessToken = null;
+    private static String accessToken = System.getenv("KODEXA_ACCESS_TOKEN");
 
     public static String getAccessToken() {
         return KodexaCloud.accessToken;

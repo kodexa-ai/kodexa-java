@@ -55,7 +55,6 @@ public abstract class AbstractKodexaSession {
                     throw new KodexaException("Unable to create session on Kodexa, check your access token and URL [" + response.getStatusLine().getStatusCode() + "]");
                 }
                 execution = jsonOm.readValue(response.getEntity().getContent(), CloudExecution.class);
-
                 if (!execution.getStatus().equals(status)) {
                     log.info("Execution Status changed from " + status + " => " + execution.getStatus());
                     status = execution.getStatus();
@@ -66,7 +65,12 @@ public abstract class AbstractKodexaSession {
         }
 
         if (execution.getStatus().equals("FAILED")) {
-            throw new KodexaException("Processing failed");
+            CloudExceptionDetail exceptionDetail = execution.getExceptionDetail();
+            log.error("Failed: " + exceptionDetail.getMessage());
+            if (exceptionDetail.getErrorType() != null)
+                log.error("Exception Type: " + exceptionDetail.getErrorType());
+            log.error("More information is available:\n\n" + exceptionDetail.getHelp() + "\n");
+            throw new KodexaException("Failed:" + exceptionDetail.getMessage() + "]");
         }
     }
 
