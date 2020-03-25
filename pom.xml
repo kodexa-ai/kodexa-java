@@ -6,7 +6,7 @@
 
     <groupId>com.kodexa.client</groupId>
     <artifactId>kodexa-java</artifactId>
-    <version>0.0.1</version>
+    <version>1.1.1</version>
 
     <organization>
         <name>Kodexa</name>
@@ -28,8 +28,8 @@
     </scm>
     <distributionManagement>
         <repository>
-            <id>s3.release</id>
-            <url>s3://maven.kodexa.com/release/</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/kodexa-ai/kodexa-java</url>
         </repository>
     </distributionManagement>
 
@@ -360,14 +360,18 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>com.github.platform-team</groupId>
-                <artifactId>aws-maven</artifactId>
-                <version>6.0.0</version>
-            </extension>
-        </extensions>
     </build>
 
     <reporting>
@@ -447,7 +451,7 @@
     <profiles>
         <profile>
             <!-- Central release requirements: http://central.sonatype.org/pages/requirements.html -->
-            <id>sonatype-oss-release</id>
+            <id>ossrh</id>
             <build>
                 <plugins>
                     <plugin>
