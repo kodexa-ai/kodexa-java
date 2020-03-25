@@ -31,10 +31,6 @@
             <id>s3.release</id>
             <url>s3://maven.kodexa.com/release</url>
         </repository>
-        <snapshotRepository>
-            <id>s3.snapshot</id>
-            <url>s3://maven.kodexa.com/snapshot</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <properties>
