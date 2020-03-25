@@ -11,19 +11,19 @@ import java.util.List;
 /**
  * A node in a content tree
  */
-<span class="pc bnc" id="L14" title="All 48 branches missed.">@Data</span>
+<span class="nc bnc" id="L14" title="All 48 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentNode {
 
-<span class="fc" id="L18">    private int index;</span>
-<span class="fc" id="L19">    private String type;</span>
-<span class="fc" id="L20">    private String content;</span>
+<span class="nc" id="L18">    private int index;</span>
+<span class="nc" id="L19">    private String type;</span>
+<span class="nc" id="L20">    private String content;</span>
 
     @JsonProperty(&quot;content_parts&quot;)
-<span class="fc" id="L23">    private List&lt;Object&gt; contentParts;</span>
+<span class="nc" id="L23">    private List&lt;Object&gt; contentParts;</span>
 
-<span class="fc" id="L25">    private List&lt;ContentNode&gt; children = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L26">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L25">    private List&lt;ContentNode&gt; children = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L26">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -8,7 +8,7 @@ import lombok.Data;
 <span class="nc bnc" id="L8" title="All 6 branches missed.">@Data</span>
 public class KodexaCloud {
 
-<span class="nc" id="L11">    private static String accessToken = null;</span>
+<span class="nc" id="L11">    private static String accessToken = System.getenv(&quot;KODEXA_ACCESS_TOKEN&quot;);</span>
 
     public static String getAccessToken() {
 <span class="nc" id="L14">        return KodexaCloud.accessToken;</span>

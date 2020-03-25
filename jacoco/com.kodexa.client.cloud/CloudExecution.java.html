@@ -3,22 +3,41 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * An instance of an execution that is running in the Kodexa Cloud
  */
-<span class="nc bnc" id="L9" title="All 22 branches missed.">@Data</span>
+<span class="nc bnc" id="L11" title="All 30 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CloudExecution {
 
     /**
      * Unique ID for the execution
      */
-<span class="nc" id="L16">    private String id;</span>
+<span class="nc" id="L18">    private String id;</span>
 
     /**
      * The status of the execution
      */
-<span class="nc" id="L21">    private String status;</span>
+<span class="nc" id="L23">    private String status;</span>
 
+    /**
+     * List of the step that are part of the execution
+     */
+<span class="nc" id="L28">    private List&lt;CloudExecutionStep&gt; steps;</span>
+
+    /**
+     * Get the exception details from the steps
+     *
+     * @return exception details, or null if there wasn't an exception
+     */
+    public CloudExceptionDetail getExceptionDetail() {
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        for (CloudExecutionStep step : steps) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (step.getExceptionDetails() != null)</span>
+<span class="nc" id="L38">                return step.getExceptionDetails();</span>
+<span class="nc" id="L39">        }</span>
+<span class="nc" id="L40">        return null;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
