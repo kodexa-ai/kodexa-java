@@ -40,7 +40,6 @@
         <maven.api.minimum>3.3.9</maven.api.minimum>
         <maven.api.version>3.6.3</maven.api.version>
         <lombok.version>1.18.12</lombok.version>
-        <releaseProfiles>sonatype-oss-release</releaseProfiles>
         <version.java>1.8</version.java>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -359,17 +358,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
             </plugin>
         </plugins>
     </build>
