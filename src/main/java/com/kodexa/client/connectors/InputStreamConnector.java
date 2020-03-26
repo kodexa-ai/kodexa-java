@@ -1,12 +1,14 @@
 package com.kodexa.client.connectors;
 
 import com.kodexa.client.Document;
+import lombok.NoArgsConstructor;
 
 import java.io.InputStream;
 
+@NoArgsConstructor
 public class InputStreamConnector implements Connector {
 
-    private final InputStream inputStream;
+    private InputStream inputStream;
     private boolean empty;
 
     public InputStreamConnector(InputStream inputStream) {
