@@ -1,5 +1,7 @@
 # Kodexa Java 
 
+![Java CI](https://github.com/kodexa-ai/kodexa-java/workflows/Java%20CI/badge.svg)
+
 A Java implementation of the Kodexa Content Model.
 
 Documentation & Examples
