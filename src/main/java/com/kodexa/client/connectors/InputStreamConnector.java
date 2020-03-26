@@ -23,6 +23,8 @@ public class InputStreamConnector implements Connector {
 
     @Override
     public InputStream getSource(Document document) {
+        InputStream inputStream = (InputStream) document.getMetadata().get("stream");
+        document.getMetadata().remove("stream");
         return inputStream;
     }
 
@@ -35,6 +37,7 @@ public class InputStreamConnector implements Connector {
     public Document next() {
         Document document = new Document();
         document.getMetadata().put("connector", getName());
+        document.getMetadata().put("stream", inputStream);
         empty = true;
         return document;
     }
