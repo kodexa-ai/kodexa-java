@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.kodexa.client</groupId>
+  <artifactId>kodexa-java</artifactId>
+  <versioning>
+    <latest>1.1.12</latest>
+    <release>1.1.12</release>
+    <versions>
+      <version>0.1.39</version>
+      <version>0.1.40</version>
+      <version>0.1.41</version>
+      <version>0.1.42</version>
+      <version>0.1.44</version>
+      <version>0.1.45</version>
+      <version>1.1.1</version>
+      <version>1.1.2</version>
+      <version>1.1.3</version>
+      <version>1.1.4</version>
+      <version>1.1.12</version>
+    </versions>
+    <lastUpdated>20200326000845</lastUpdated>
+  </versioning>
+</metadata>
