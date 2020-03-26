@@ -4,6 +4,7 @@ import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
 import com.kodexa.client.connectors.Connector;
 import com.kodexa.client.connectors.FolderConnector;
+import com.kodexa.client.connectors.InputStreamConnector;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class SourceRegistry {
 
     static {
         INTERNAL_REGISTRY.addConnector(new FolderConnector());
+        INTERNAL_REGISTRY.addConnector(new InputStreamConnector());
     }
 
     private Map<String, Connector> connectors = new HashMap<>();

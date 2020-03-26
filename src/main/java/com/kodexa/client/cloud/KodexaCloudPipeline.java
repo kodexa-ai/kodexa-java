@@ -1,10 +1,13 @@
 package com.kodexa.client.cloud;
 
-import com.kodexa.client.Document;
+import com.kodexa.client.KodexaException;
 import com.kodexa.client.connectors.Connector;
+import com.kodexa.client.connectors.InputStreamConnector;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.sink.Sink;
 import lombok.extern.slf4j.Slf4j;
+
+import java.io.InputStream;
 
 /**
  * A Kodexa-hosted Pipeline
@@ -15,6 +18,24 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
     private final Options options;
     private final Connector connector;
     private Sink sink;
+
+    public static KodexaCloudPipeline get(String pipelineSlug) {
+        return new KodexaCloudPipeline(pipelineSlug.split("/")[0], pipelineSlug.split("/")[1]);
+    }
+
+    public PipelineContext execute(InputStream inputStream) {
+        CloudSession session = this.createSession(CloudSessionType.pipeline);
+        PipelineContext pipelineContext = new PipelineContext();
+        CloudExecution execution = executeService(session, new InputStreamConnector(inputStream).next(), pipelineContext, options);
+        execution = waitForExecution(session, execution);
+        mergeStores(session, execution, pipelineContext);
+        pipelineContext.setOutputDocument(getOutputDocument(session, execution));
+        return pipelineContext;
+    }
+
+    public KodexaCloudPipeline(String organizationSlug, String serviceSlug) {
+        this(organizationSlug, serviceSlug, null, Options.start().attachSource());
+    }
 
     /**
      * Create a pipeline connected to the Kodexa Cloud using the organization / action url.
@@ -59,6 +80,10 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
      */
     public PipelineContext run() {
 
+        if (connector == null) {
+            throw new KodexaException("You need to provide a single input stream as a source for this pipeline, since it doesn't have a connector");
+        }
+
         log.info("Starting pipeline");
         CloudSession session = this.createSession(CloudSessionType.pipeline);
         PipelineContext pipelineContext = new PipelineContext();
@@ -66,8 +91,8 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
             CloudExecution execution = executeService(session, document, pipelineContext, options);
             execution = waitForExecution(session, execution);
 
-            mergeStores(session,execution,pipelineContext);
-            document = getOutputDocument(session,execution);
+            mergeStores(session, execution, pipelineContext);
+            document = getOutputDocument(session, execution);
 
             if (sink != null) {
                 log.info("Writing to sink " + sink.getName());
