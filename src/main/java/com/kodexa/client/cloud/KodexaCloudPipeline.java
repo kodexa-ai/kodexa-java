@@ -8,6 +8,7 @@ import com.kodexa.client.sink.Sink;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * A Kodexa-hosted Pipeline
@@ -15,18 +16,34 @@ import java.io.InputStream;
 @Slf4j
 public class KodexaCloudPipeline extends AbstractKodexaSession {
 
-    private final Options options;
-    private final Connector connector;
+    private Options options = Options.start();
+    private Connector connector;
     private Sink sink;
+    private Map<String, Object> parameters;
 
-    public static KodexaCloudPipeline get(String pipelineSlug) {
-        return new KodexaCloudPipeline(pipelineSlug.split("/")[0], pipelineSlug.split("/")[1]);
+    public KodexaCloudPipeline(String ref) {
+        super(ref);
     }
+
+    public static KodexaCloudPipeline get(String ref) {
+        return new KodexaCloudPipeline(ref);
+    }
+
+    public KodexaCloudPipeline parameters(Map<String, Object> parameters) {
+        this.parameters = parameters;
+        return this;
+    }
+
+    public KodexaCloudPipeline options(Options options) {
+        this.options = options;
+        return this;
+    }
+
 
     public PipelineContext execute(InputStream inputStream) {
         CloudSession session = this.createSession(CloudSessionType.pipeline);
         PipelineContext pipelineContext = new PipelineContext();
-        CloudExecution execution = executeService(session, new InputStreamConnector(inputStream).next(), pipelineContext, options);
+        CloudExecution execution = executeService(session, new InputStreamConnector(inputStream).next(), pipelineContext, options, parameters);
         execution = waitForExecution(session, execution);
         mergeStores(session, execution, pipelineContext);
         pipelineContext.setOutputDocument(getOutputDocument(session, execution));
@@ -57,7 +74,7 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
      * @param options          the options object for the pipeline
      */
     public KodexaCloudPipeline(String organizationSlug, String serviceSlug, Connector connector, Options options) {
-        super(organizationSlug, serviceSlug);
+        super(organizationSlug + "/" + serviceSlug);
         this.options = options;
         this.connector = connector;
     }
@@ -88,7 +105,7 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
         CloudSession session = this.createSession(CloudSessionType.pipeline);
         PipelineContext pipelineContext = new PipelineContext();
         connector.forEachRemaining(document -> {
-            CloudExecution execution = executeService(session, document, pipelineContext, options);
+            CloudExecution execution = executeService(session, document, pipelineContext, options, parameters);
             execution = waitForExecution(session, execution);
 
             mergeStores(session, execution, pipelineContext);

@@ -7,6 +7,7 @@ import com.kodexa.client.KodexaException;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.registry.SourceRegistry;
 import com.kodexa.client.store.TableStore;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
@@ -25,6 +26,7 @@ import org.msgpack.jackson.dataformat.MessagePackFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 /**
  * Abstract base for both Cloud Service and Cloud Pipelines in Kodexa
@@ -43,12 +45,11 @@ public abstract class AbstractKodexaSession {
         jsonOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
-    protected final String organizationSlug;
-    protected final String serviceSlug;
+    @Getter
+    private final String ref;
 
-    public AbstractKodexaSession(String organizationSlug, String serviceSlug) {
-        this.organizationSlug = organizationSlug;
-        this.serviceSlug = serviceSlug;
+    public AbstractKodexaSession(String ref) {
+        this.ref = ref;
     }
 
     public TableStore getTableStore(CloudSession session, CloudExecution execution, CloudStore cloudStore) {
@@ -63,14 +64,14 @@ public abstract class AbstractKodexaSession {
             if (response.getStatusLine().getStatusCode() != 200) {
                 throw new KodexaException("Unable to get store from Kodexa, check your access token and URL [" + response.getStatusLine().getStatusCode() + "]");
             }
-            return jsonOm.readValue(response.getEntity().getContent(), TableStore.class);
+            return jsonOm.readValue(response.getEntity().getContent(), CloudStore.class).getData();
         } catch (IOException | InterruptedException e) {
             throw new KodexaException("Unable to connect to Kodexa", e);
         }
     }
 
     public Document getOutputDocument(CloudSession session, CloudExecution execution) {
-        CloudDocumentReference outputDocument = execution.getOutputDocument();
+        ContentObject outputDocument = execution.getOutputDocument();
         if (outputDocument == null) {
             return null;
         }
@@ -78,7 +79,7 @@ public abstract class AbstractKodexaSession {
                 .setDefaultRequestConfig(getRequestConfig())
                 .build()) {
             Thread.sleep(1000);
-            String url = KodexaCloud.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId() + "/documents/" + outputDocument.getCloudDocument().getId();
+            String url = KodexaCloud.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId() + "/objects/" + outputDocument.getId();
             HttpGet post = new HttpGet(url);
             post.addHeader("x-access-token", KodexaCloud.getAccessToken());
             HttpResponse response = client.execute(post);
@@ -135,7 +136,7 @@ public abstract class AbstractKodexaSession {
             log.error("More information is available:\n\n" + exceptionDetail.getHelp() + "\n");
             throw new KodexaException("Failed:" + exceptionDetail.getMessage() + "]");
         } else {
-            log.info("Execution completed with " + execution.getStores().size() + " stores and " + execution.getDocumentReferences().size() + " documents");
+            log.info("Execution completed with " + execution.getStores().size() + " stores and " + execution.getContentObjects().size() + " content objects");
         }
 
         return execution;
@@ -154,7 +155,7 @@ public abstract class AbstractKodexaSession {
         try (CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultRequestConfig(getRequestConfig())
                 .build()) {
-            String url = KodexaCloud.getUrl() + "/api/sessions?" + sessionType + "=" + organizationSlug + "/" + serviceSlug;
+            String url = KodexaCloud.getUrl() + "/api/sessions?" + sessionType + "=" + ref;
 
             log.info("Connecting to [" + url + "]");
 
@@ -175,13 +176,14 @@ public abstract class AbstractKodexaSession {
     /**
      * Execute the service in Kodexa
      *
-     * @param session  The session to use
-     * @param document The document to send
-     * @param context  The context for the pipeline
-     * @param options  The options for the execution
+     * @param session    The session to use
+     * @param document   The document to send
+     * @param context    The context for the pipeline
+     * @param options    The options for the execution
+     * @param parameters
      * @return An instance of a cloud execution
      */
-    public CloudExecution executeService(CloudSession session, Document document, PipelineContext context, Options options) {
+    public CloudExecution executeService(CloudSession session, Document document, PipelineContext context, Options options, Map<String, Object> parameters) {
         log.info("Executing service in Kodexa");
         try (CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultRequestConfig(getRequestConfig())
@@ -203,6 +205,12 @@ public abstract class AbstractKodexaSession {
 
             StringBody optionsBody = new StringBody(jsonOm.writeValueAsString(options.get()), ContentType.APPLICATION_JSON);
             builder.addPart("options", optionsBody);
+
+            if (parameters != null) {
+                StringBody parameterBody = new StringBody(jsonOm.writeValueAsString(parameters), ContentType.APPLICATION_JSON);
+                builder.addPart("parameters", parameterBody);
+            }
+
             post.setEntity(builder.build());
             HttpResponse response = client.execute(post);
             if (response.getStatusLine().getStatusCode() != 200) {

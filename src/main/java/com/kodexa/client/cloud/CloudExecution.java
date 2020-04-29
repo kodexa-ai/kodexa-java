@@ -3,10 +3,7 @@ package com.kodexa.client.cloud;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * An instance of an execution that is running in the Kodexa Cloud
@@ -30,11 +27,26 @@ public class CloudExecution {
      */
     private List<CloudExecutionStep> steps;
 
-    private List<CloudStore> stores = new ArrayList();
+    /**
+     * List of the stores available from the execution
+     */
+    private List<CloudStore> stores = new ArrayList<>();
 
-    private Set<CloudDocumentReference> documentReferences = new HashSet<>();
+    /**
+     * List of the content objects available from the execution
+     */
+    private List<ContentObject> contentObjects = new ArrayList<>();
 
-    private Set<CloudFileReference> fileReferences = new HashSet<>();
+
+    /**
+     * The ID of the output document (content object)
+     */
+    private String outputId;
+
+    /**
+     * The ID of the input document (content object)
+     */
+    private String inputId;
 
     /**
      * Get the exception details from the steps
@@ -49,12 +61,7 @@ public class CloudExecution {
         return null;
     }
 
-    public CloudDocumentReference getOutputDocument() {
-        for (CloudDocumentReference documentReference : getDocumentReferences()) {
-            if (documentReference.getReferenceType().equals("OUTPUT")) {
-                return documentReference;
-            }
-        }
-        return null;
+    public ContentObject getOutputDocument() {
+        return contentObjects.stream().filter(c -> c.getId().equals(outputId)).findFirst().orElse(null);
     }
 }
