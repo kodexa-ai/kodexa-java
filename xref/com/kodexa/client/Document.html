@@ -147,7 +147,28 @@
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>         <strong class="jxr_keyword">return</strong> toJson(false);
 <a class="jxr_linenumber" name="L140" href="#L140">140</a>     }
 <a class="jxr_linenumber" name="L141" href="#L141">141</a> 
-<a class="jxr_linenumber" name="L142" href="#L142">142</a> }
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>     <strong class="jxr_keyword">public</strong> <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a> createContentNode(String type, String content) {
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.<a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a>tNode">ContentNode</a> contentNode = <strong class="jxr_keyword">new</strong> <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a>();
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>         contentNode.setType(type);
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>         contentNode.setContent(content);
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>         <strong class="jxr_keyword">return</strong> contentNode;
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>     }
+<a class="jxr_linenumber" name="L148" href="#L148">148</a> 
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a> fromText(String text) {
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>         <a name="Document" href="../../../com/kodexa/client/Document.htm<a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>nt">Document</a> newDocument = <strong class="jxr_keyword">new</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>();
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>         newDocument.setContentNode(newDocument.createContentNode(<span class="jxr_string">"text"</span>, text));
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         <strong class="jxr_keyword">return</strong> newDocument;
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>     }
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> 
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>     @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a> fromUrl(String url) {
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>         <a name="Document" href="../../../com/kodexa/client/Document.htm<a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>nt">Document</a> newDocument = <strong class="jxr_keyword">new</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>();
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>         newDocument.getMetadata().put(<span class="jxr_string">"connector"</span>, <span class="jxr_string">"url"</span>);
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>         newDocument.getMetadata().put(<span class="jxr_string">"connector_options"</span>, <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;());
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>         ((Map) newDocument.getMetadata().get(<span class="jxr_string">"connector_options"</span>)).put(<span class="jxr_string">"url"</span>, url);
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>         <strong class="jxr_keyword">return</strong> newDocument;
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>     }
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2020 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>
