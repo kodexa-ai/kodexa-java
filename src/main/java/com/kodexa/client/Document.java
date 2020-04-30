@@ -139,4 +139,25 @@ public class Document {
         return toJson(false);
     }
 
+    public ContentNode createContentNode(String type, String content) {
+        ContentNode contentNode = new ContentNode();
+        contentNode.setType(type);
+        contentNode.setContent(content);
+        return contentNode;
+    }
+
+    public static Document fromText(String text) {
+        Document newDocument = new Document();
+        newDocument.setContentNode(newDocument.createContentNode("text", text));
+        return newDocument;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Document fromUrl(String url) {
+        Document newDocument = new Document();
+        newDocument.getMetadata().put("connector", "url");
+        newDocument.getMetadata().put("connector_options", new HashMap<String, Object>());
+        ((Map) newDocument.getMetadata().get("connector_options")).put("url", url);
+        return newDocument;
+    }
 }
