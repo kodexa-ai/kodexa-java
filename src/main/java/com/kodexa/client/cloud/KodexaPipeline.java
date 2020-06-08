@@ -14,27 +14,27 @@ import java.util.Map;
  * A Kodexa-hosted Pipeline
  */
 @Slf4j
-public class KodexaCloudPipeline extends AbstractKodexaSession {
+public class KodexaPipeline extends AbstractKodexaSession {
 
     private Options options = Options.start();
     private Connector connector;
     private Sink sink;
     private Map<String, Object> parameters;
 
-    public KodexaCloudPipeline(String ref) {
+    public KodexaPipeline(String ref) {
         super(ref);
     }
 
-    public static KodexaCloudPipeline get(String ref) {
-        return new KodexaCloudPipeline(ref);
+    public static KodexaPipeline get(String ref) {
+        return new KodexaPipeline(ref);
     }
 
-    public KodexaCloudPipeline parameters(Map<String, Object> parameters) {
+    public KodexaPipeline parameters(Map<String, Object> parameters) {
         this.parameters = parameters;
         return this;
     }
 
-    public KodexaCloudPipeline options(Options options) {
+    public KodexaPipeline options(Options options) {
         this.options = options;
         return this;
     }
@@ -50,7 +50,7 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
         return pipelineContext;
     }
 
-    public KodexaCloudPipeline(String organizationSlug, String serviceSlug) {
+    public KodexaPipeline(String organizationSlug, String serviceSlug) {
         this(organizationSlug, serviceSlug, null, Options.start().attachSource());
     }
 
@@ -61,7 +61,7 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
      * @param serviceSlug      the slug for the action/service
      * @param connector        the connector for feeding documents into the pipeline
      */
-    public KodexaCloudPipeline(String organizationSlug, String serviceSlug, Connector connector) {
+    public KodexaPipeline(String organizationSlug, String serviceSlug, Connector connector) {
         this(organizationSlug, serviceSlug, connector, new Options());
     }
 
@@ -73,7 +73,7 @@ public class KodexaCloudPipeline extends AbstractKodexaSession {
      * @param connector        the connector for feeding documents into the pipeline
      * @param options          the options object for the pipeline
      */
-    public KodexaCloudPipeline(String organizationSlug, String serviceSlug, Connector connector, Options options) {
+    public KodexaPipeline(String organizationSlug, String serviceSlug, Connector connector, Options options) {
         super(organizationSlug + "/" + serviceSlug);
         this.options = options;
         this.connector = connector;

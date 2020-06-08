@@ -57,9 +57,9 @@ public abstract class AbstractKodexaSession {
                 .setDefaultRequestConfig(getRequestConfig())
                 .build()) {
             Thread.sleep(1000);
-            String url = KodexaCloud.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId() + "/stores/" + cloudStore.getId();
+            String url = KodexaPlatform.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId() + "/stores/" + cloudStore.getId();
             HttpGet post = new HttpGet(url);
-            post.addHeader("x-access-token", KodexaCloud.getAccessToken());
+            post.addHeader("x-access-token", KodexaPlatform.getAccessToken());
             HttpResponse response = client.execute(post);
             if (response.getStatusLine().getStatusCode() != 200) {
                 throw new KodexaException("Unable to get store from Kodexa, check your access token and URL [" + response.getStatusLine().getStatusCode() + "]");
@@ -79,9 +79,9 @@ public abstract class AbstractKodexaSession {
                 .setDefaultRequestConfig(getRequestConfig())
                 .build()) {
             Thread.sleep(1000);
-            String url = KodexaCloud.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId() + "/objects/" + outputDocument.getId();
+            String url = KodexaPlatform.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId() + "/objects/" + outputDocument.getId();
             HttpGet post = new HttpGet(url);
-            post.addHeader("x-access-token", KodexaCloud.getAccessToken());
+            post.addHeader("x-access-token", KodexaPlatform.getAccessToken());
             HttpResponse response = client.execute(post);
             if (response.getStatusLine().getStatusCode() != 200) {
                 throw new KodexaException("Unable to get store, check your access token and URL [" + response.getStatusLine().getStatusCode() + "]");
@@ -108,9 +108,9 @@ public abstract class AbstractKodexaSession {
                     .setDefaultRequestConfig(getRequestConfig())
                     .build()) {
                 Thread.sleep(1000);
-                String url = KodexaCloud.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId();
+                String url = KodexaPlatform.getUrl() + "/api/sessions/" + session.getId() + "/executions/" + execution.getId();
                 HttpGet post = new HttpGet(url);
-                post.addHeader("x-access-token", KodexaCloud.getAccessToken());
+                post.addHeader("x-access-token", KodexaPlatform.getAccessToken());
                 HttpResponse response = client.execute(post);
                 if (response.getStatusLine().getStatusCode() != 200) {
                     throw new KodexaException("Unable to create a session on Kodexa, check your access token and URL [" + response.getStatusLine().getStatusCode() + "]");
@@ -155,12 +155,12 @@ public abstract class AbstractKodexaSession {
         try (CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultRequestConfig(getRequestConfig())
                 .build()) {
-            String url = KodexaCloud.getUrl() + "/api/sessions?" + sessionType + "=" + ref;
+            String url = KodexaPlatform.getUrl() + "/api/sessions?" + sessionType + "=" + ref;
 
             log.info("Connecting to [" + url + "]");
 
             HttpPost post = new HttpPost(url);
-            post.addHeader("x-access-token", KodexaCloud.getAccessToken());
+            post.addHeader("x-access-token", KodexaPlatform.getAccessToken());
             HttpResponse response = client.execute(post);
             if (response.getStatusLine().getStatusCode() != 200) {
                 throw new KodexaException("Unable to create a session, check your access token and URL [" + response.getStatusLine().getStatusCode() + "]");
@@ -188,10 +188,10 @@ public abstract class AbstractKodexaSession {
         try (CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultRequestConfig(getRequestConfig())
                 .build()) {
-            String url = KodexaCloud.getUrl() + "/api/sessions/" + session.getId() + "/execute";
+            String url = KodexaPlatform.getUrl() + "/api/sessions/" + session.getId() + "/execute";
             log.info("Connecting to [" + url + "]");
             HttpPost post = new HttpPost(url);
-            post.addHeader("x-access-token", KodexaCloud.getAccessToken());
+            post.addHeader("x-access-token", KodexaPlatform.getAccessToken());
 
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 
