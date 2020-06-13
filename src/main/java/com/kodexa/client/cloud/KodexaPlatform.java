@@ -18,7 +18,7 @@ public class KodexaPlatform {
         KodexaPlatform.accessToken = accessToken;
     }
 
-    private static String url = "https://cloud.kodexa.com";
+    private static String url = "https://platform.kodexa.com";
 
     public static String getUrl() {
         return KodexaPlatform.url;
