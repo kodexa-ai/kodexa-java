@@ -1,4 +1,4 @@
-package com.kodexa.client.cloud;
+package com.kodexa.client.remote;
 
 import com.kodexa.client.Document;
 import com.kodexa.client.pipeline.PipelineContext;
@@ -11,30 +11,30 @@ import java.util.Map;
  * A step that is hosted in the Kodexa Cloud
  */
 @Slf4j
-public class KodexaAction extends AbstractKodexaSession implements PipelineStep {
+public class RemoteAction extends AbstractKodexaSession implements PipelineStep {
 
     private Options options;
     private Map<String, Object> parameters;
 
-    public KodexaAction(String organizationSlug, String serviceSlug) {
+    public RemoteAction(String organizationSlug, String serviceSlug) {
         this(organizationSlug, serviceSlug, new Options());
     }
 
-    public KodexaAction(String ref) {
+    public RemoteAction(String ref) {
         super(ref);
     }
 
-    public KodexaAction(String organizationSlug, String serviceSlug, Options options) {
+    public RemoteAction(String organizationSlug, String serviceSlug, Options options) {
         super(organizationSlug + "/" + serviceSlug);
         this.options = options;
     }
 
-    public KodexaAction options(Options options) {
+    public RemoteAction options(Options options) {
         this.options = options;
         return this;
     }
 
-    public KodexaAction parameters(Map<String, Object> parameters) {
+    public RemoteAction parameters(Map<String, Object> parameters) {
         this.parameters = parameters;
         return this;
     }

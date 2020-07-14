@@ -6,4 +6,4 @@
  *
  * @since 1.0
  */
-package com.kodexa.client.cloud;
+package com.kodexa.client.remote;

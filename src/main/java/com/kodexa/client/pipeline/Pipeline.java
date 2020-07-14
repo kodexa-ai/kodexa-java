@@ -1,5 +1,6 @@
 package com.kodexa.client.pipeline;
 
+import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
 import com.kodexa.client.sink.Sink;
 import com.kodexa.client.steps.PipelineStep;
@@ -15,13 +16,18 @@ import java.util.List;
 @Slf4j
 public class Pipeline {
 
-    private final Connector connector;
+    protected final Connector connector;
     private final PipelineContext context;
     private Sink sink;
     private List<PipelineStep> steps = new ArrayList<>();
 
     public Pipeline(Connector connector) {
         this.connector = connector;
+        this.context = new PipelineContext();
+    }
+
+    public Pipeline(Document document) {
+        this.connector = new DocumentConnector(document);
         this.context = new PipelineContext();
     }
 
@@ -56,4 +62,13 @@ public class Pipeline {
         return context;
 
     }
+
+    public static Pipeline fromText(String text) {
+        return new Pipeline(Document.fromText(text));
+    }
+
+    public static Pipeline fromUrl(String url) {
+        return new Pipeline(Document.fromUrl(url));
+    }
+
 }

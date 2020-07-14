@@ -1,4 +1,4 @@
-package com.kodexa.client.cloud;
+package com.kodexa.client.remote;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
