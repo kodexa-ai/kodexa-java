@@ -2,10 +2,13 @@ package com.kodexa.client.pipeline;
 
 import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
+import com.kodexa.client.connectors.FolderConnector;
+import com.kodexa.client.connectors.InputStreamConnector;
 import com.kodexa.client.sink.Sink;
 import com.kodexa.client.steps.PipelineStep;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +72,14 @@ public class Pipeline {
 
     public static Pipeline fromUrl(String url) {
         return new Pipeline(Document.fromUrl(url));
+    }
+
+    public static Pipeline fromInputStream(InputStream inputStream) {
+        return new Pipeline(new InputStreamConnector(inputStream));
+    }
+
+    public static Pipeline fromFolder(String folderPath, String filenameFilter, boolean recursive) {
+        return new Pipeline(new FolderConnector(folderPath, filenameFilter, recursive));
     }
 
 }

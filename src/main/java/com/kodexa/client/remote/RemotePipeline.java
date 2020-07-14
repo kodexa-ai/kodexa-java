@@ -2,11 +2,14 @@ package com.kodexa.client.remote;
 
 import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
+import com.kodexa.client.connectors.FolderConnector;
+import com.kodexa.client.connectors.InputStreamConnector;
 import com.kodexa.client.pipeline.Pipeline;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.sink.Sink;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -90,5 +93,13 @@ public class RemotePipeline extends Pipeline {
 
     public static Pipeline fromUrl(String ref, String url) {
         return new RemotePipeline(ref, Document.fromUrl(url));
+    }
+
+    public static Pipeline fromInputStream(String ref, InputStream inputStream) {
+        return new RemotePipeline(ref, new InputStreamConnector(inputStream));
+    }
+
+    public static Pipeline fromFolder(String ref, String folderPath, String filenameFilter, boolean recursive) {
+        return new RemotePipeline(ref, new FolderConnector(folderPath, filenameFilter, recursive));
     }
 }

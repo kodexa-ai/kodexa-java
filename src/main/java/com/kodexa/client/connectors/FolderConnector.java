@@ -28,7 +28,7 @@ public class FolderConnector implements Connector {
         this.position = 0;
     }
 
-    public FolderConnector(String path, String filter) {
+    public FolderConnector(String path, String filter, boolean recursive) {
         this.path = path;
         this.filter = filter;
 
