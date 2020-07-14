@@ -87,19 +87,23 @@ public class RemotePipeline extends Pipeline {
      * @param text The text to use to create a new document
      * @return A new remote pipeline
      */
-    public static Pipeline fromText(String ref, String text) {
+    public static RemotePipeline fromText(String ref, String text) {
         return new RemotePipeline(ref, Document.fromText(text));
     }
 
-    public static Pipeline fromUrl(String ref, String url) {
+    public static RemotePipeline fromUrl(String ref, String url) {
         return new RemotePipeline(ref, Document.fromUrl(url));
     }
 
-    public static Pipeline fromInputStream(String ref, InputStream inputStream) {
-        return new RemotePipeline(ref, new InputStreamConnector(inputStream));
+    public static RemotePipeline fromInputStream(String ref, InputStream inputStream) {
+        RemotePipeline pipeline = new RemotePipeline(ref, new InputStreamConnector(inputStream));
+        pipeline.options(Options.start().attachSource());
+        return pipeline;
     }
 
-    public static Pipeline fromFolder(String ref, String folderPath, String filenameFilter, boolean recursive) {
-        return new RemotePipeline(ref, new FolderConnector(folderPath, filenameFilter, recursive));
+    public static RemotePipeline fromFolder(String ref, String folderPath, String filenameFilter, boolean recursive) {
+        RemotePipeline pipeline = new RemotePipeline(ref, new FolderConnector(folderPath, filenameFilter, recursive));
+        pipeline.options(Options.start().attachSource());
+        return pipeline;
     }
 }
