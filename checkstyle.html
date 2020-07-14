@@ -31,7 +31,7 @@
       <li class=""><a href="https://developer.kodexa.com" class="externalLink" title="Developer Portal">Developer Portal</a><span class="divider">/</span></li>
     <li class="active ">Checkstyle Results</li>
         <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2020-07-14</li>
-          <li id="projectVersion" class="pull-right">Version: 2.0.6</li>
+          <li id="projectVersion" class="pull-right">Version: 2.0.7</li>
           </ul>
         </div>
       </header>
@@ -87,7 +87,7 @@
 <td>45</td>
 <td>0</td>
 <td>0</td>
-<td>502</td></tr></table></section><section>
+<td>522</td></tr></table></section><section>
 <h2><a name="Files"></a>Files</h2>
 <table border="0" class="table table-striped">
 <tr class="a">
@@ -124,7 +124,7 @@
 <td><a href="#com.kodexa.client.connectors.FolderConnector.java">com/kodexa/client/connectors/FolderConnector.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>24</td></tr>
+<td>25</td></tr>
 <tr class="b">
 <td><a href="#com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</a></td>
 <td>0</td>
@@ -149,7 +149,7 @@
 <td><a href="#com.kodexa.client.pipeline.Pipeline.java">com/kodexa/client/pipeline/Pipeline.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>23</td></tr>
+<td>31</td></tr>
 <tr class="a">
 <td><a href="#com.kodexa.client.pipeline.PipelineContext.java">com/kodexa/client/pipeline/PipelineContext.java</a></td>
 <td>0</td>
@@ -244,7 +244,7 @@
 <td><a href="#com.kodexa.client.remote.RemotePipeline.java">com/kodexa/client/remote/RemotePipeline.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>33</td></tr>
+<td>44</td></tr>
 <tr class="b">
 <td><a href="#com.kodexa.client.remote.RemotePipelineSession.java">com/kodexa/client/remote/RemotePipelineSession.java</a></td>
 <td>0</td>
@@ -375,12 +375,12 @@
 <tr class="a">
 <td></td>
 <td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_javadoc.html#MissingJavadocMethod">MissingJavadocMethod</a></td>
-<td>61</td>
+<td>65</td>
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td></tr>
 <tr class="b">
 <td>misc</td>
 <td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_misc.html#FinalParameters">FinalParameters</a></td>
-<td>96</td>
+<td>107</td>
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td></tr>
 <tr class="a">
 <td></td>
@@ -412,7 +412,7 @@
 <td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_sizes.html#LineLength">LineLength</a>
 <ul>
 <li>fileExtensions: <code>&quot;java&quot;</code></li></ul></td>
-<td>84</td>
+<td>89</td>
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td></tr>
 <tr class="a">
 <td>whitespace</td>
@@ -944,71 +944,77 @@
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L31">31</a></td></tr>
 <tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter recursive should be final.</td>
+<td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L31">31</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'FolderConnector' looks like designed for extension (can be subclassed), but the method 'hasNext' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'FolderConnector' final or making the method 'hasNext' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L44">44</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'FolderConnector' looks like designed for extension (can be subclassed), but the method 'next' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'FolderConnector' final or making the method 'next' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L49">49</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'FolderConnector' looks like designed for extension (can be subclassed), but the method 'getName' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'FolderConnector' final or making the method 'getName' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L64">64</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'FolderConnector' looks like designed for extension (can be subclassed), but the method 'getSource' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'FolderConnector' final or making the method 'getSource' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L69">69</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L70">70</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 98).</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L72">72</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L80">80</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 83).</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L89">89</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 83).</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L102">102</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'WildcardMatcher' looks like designed for extension (can be subclassed), but the method 'accept' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'WildcardMatcher' final or making the method 'accept' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L119">119</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter dir should be final.</td>
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L120">120</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
@@ -1016,79 +1022,79 @@
 <td><a href="./xref/com/kodexa/client/connectors/FolderConnector.html#L120">120</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L11">11</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L12">12</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L14">14</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter inputStream should be final.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L14">14</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'inputStream' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L14">14</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'InputStreamConnector' looks like designed for extension (can be subclassed), but the method 'getName' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'InputStreamConnector' final or making the method 'getName' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L19">19</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'InputStreamConnector' looks like designed for extension (can be subclassed), but the method 'getSource' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'InputStreamConnector' final or making the method 'getSource' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L24">24</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L25">25</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 85).</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L26">26</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'inputStream' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L26">26</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'InputStreamConnector' looks like designed for extension (can be subclassed), but the method 'hasNext' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'InputStreamConnector' final or making the method 'hasNext' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L31">31</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
@@ -1096,19 +1102,19 @@
 <td><a href="./xref/com/kodexa/client/connectors/InputStreamConnector.html#L36">36</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.connectors.package-info.java">com/kodexa/client/connectors/package-info.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>NewlineAtEndOfFile</td>
 <td>File does not end with a newline.</td>
 <td><a href="./xref/com/kodexa/client/connectors/package-info.html#L1">1</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
@@ -1116,19 +1122,19 @@
 <td><a href="./xref/com/kodexa/client/connectors/package-info.html#L1">1</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.package-info.java">com/kodexa/client/package-info.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>NewlineAtEndOfFile</td>
 <td>File does not end with a newline.</td>
 <td><a href="./xref/com/kodexa/client/package-info.html#L1">1</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
@@ -1136,79 +1142,79 @@
 <td><a href="./xref/com/kodexa/client/package-info.html#L1">1</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.pipeline.DocumentConnector.java">com/kodexa/client/pipeline/DocumentConnector.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L11">11</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L12">12</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L14">14</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L14">14</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'document' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L14">14</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'DocumentConnector' looks like designed for extension (can be subclassed), but the method 'getName' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'DocumentConnector' final or making the method 'getName' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L18">18</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'DocumentConnector' looks like designed for extension (can be subclassed), but the method 'getSource' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'DocumentConnector' final or making the method 'getSource' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L23">23</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L24">24</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'document' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L24">24</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 89).</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L25">25</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'DocumentConnector' looks like designed for extension (can be subclassed), but the method 'hasNext' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'DocumentConnector' final or making the method 'hasNext' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L28">28</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
@@ -1216,237 +1222,285 @@
 <td><a href="./xref/com/kodexa/client/pipeline/DocumentConnector.html#L33">33</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.pipeline.Pipeline.java">com/kodexa/client/pipeline/Pipeline.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L19">19</a></td></tr>
 <tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>design</td>
-<td>VisibilityModifier</td>
-<td>Variable 'connector' must be private and have accessor methods.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L19">19</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L20">20</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L21">21</a></td></tr>
-<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L22">22</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L24">24</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter connector should be final.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L24">24</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'connector' hides a field.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L24">24</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L29">29</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter document should be final.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L29">29</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>design</td>
-<td>DesignForExtension</td>
-<td>Class 'Pipeline' looks like designed for extension (can be subclassed), but the method 'addStep' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Pipeline' final or making the method 'addStep' static/final/abstract/empty, or adding allowed annotation for the method.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L34">34</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L34">34</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter step should be final.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L34">34</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>design</td>
-<td>DesignForExtension</td>
-<td>Class 'Pipeline' looks like designed for extension (can be subclassed), but the method 'setSink' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Pipeline' final or making the method 'setSink' static/final/abstract/empty, or adding allowed annotation for the method.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L38">38</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L38">38</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter sink should be final.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L38">38</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'sink' hides a field.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L38">38</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>design</td>
-<td>DesignForExtension</td>
-<td>Class 'Pipeline' looks like designed for extension (can be subclassed), but the method 'run' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Pipeline' final or making the method 'run' static/final/abstract/empty, or adding allowed annotation for the method.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L42">42</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L42">42</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L66">66</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter text should be final.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L66">66</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>MissingJavadocMethod</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L70">70</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter url should be final.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L70">70</a></td></tr></table></section><section>
-<h3 id="com.kodexa.client.pipeline.PipelineContext.java">com/kodexa/client/pipeline/PipelineContext.java</h3>
-<table border="0" class="table table-striped">
-<tr class="a">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocStyle</td>
-<td>First sentence should end with a period.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L10">10</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocStyle</td>
-<td>First sentence should end with a period.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L16">16</a></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>VisibilityModifier</td>
-<td>Variable 'stores' must be private and have accessor methods.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L19">19</a></td></tr>
+<td>Variable 'connector' must be private and have accessor methods.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L22">22</a></td></tr>
 <tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L20">20</a></td></tr>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L23">23</a></td></tr>
 <tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L24">24</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L25">25</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L27">27</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter connector should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L27">27</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>coding</td>
+<td>HiddenField</td>
+<td>'connector' hides a field.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L27">27</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L32">32</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter document should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L32">32</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>design</td>
+<td>DesignForExtension</td>
+<td>Class 'Pipeline' looks like designed for extension (can be subclassed), but the method 'addStep' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Pipeline' final or making the method 'addStep' static/final/abstract/empty, or adding allowed annotation for the method.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L37">37</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L37">37</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter step should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L37">37</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>design</td>
+<td>DesignForExtension</td>
+<td>Class 'Pipeline' looks like designed for extension (can be subclassed), but the method 'setSink' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Pipeline' final or making the method 'setSink' static/final/abstract/empty, or adding allowed annotation for the method.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L41">41</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L41">41</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter sink should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L41">41</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>coding</td>
+<td>HiddenField</td>
+<td>'sink' hides a field.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L41">41</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>design</td>
+<td>DesignForExtension</td>
+<td>Class 'Pipeline' looks like designed for extension (can be subclassed), but the method 'run' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Pipeline' final or making the method 'run' static/final/abstract/empty, or adding allowed annotation for the method.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L45">45</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L45">45</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L69">69</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter text should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L69">69</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L73">73</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter url should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L73">73</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L77">77</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter inputStream should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L77">77</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 80 characters (found 100).</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L81">81</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L81">81</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter folderPath should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L81">81</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter filenameFilter should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L81">81</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter recursive should be final.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L81">81</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 80 characters (found 88).</td>
+<td><a href="./xref/com/kodexa/client/pipeline/Pipeline.html#L82">82</a></td></tr></table></section><section>
+<h3 id="com.kodexa.client.pipeline.PipelineContext.java">com/kodexa/client/pipeline/PipelineContext.java</h3>
+<table border="0" class="table table-striped">
+<tr class="b">
+<th>Severity</th>
+<th>Category</th>
+<th>Rule</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocStyle</td>
+<td>First sentence should end with a period.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L10">10</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocStyle</td>
+<td>First sentence should end with a period.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L16">16</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>design</td>
+<td>VisibilityModifier</td>
+<td>Variable 'stores' must be private and have accessor methods.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L19">19</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L20">20</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L22">22</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter name should be final.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L28">28</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L32">32</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L41">41</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter name should be final.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L47">47</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter store should be final.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L47">47</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L51">51</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L56">56</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'document' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L56">56</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
@@ -1454,25 +1508,25 @@
 <td><a href="./xref/com/kodexa/client/pipeline/PipelineContext.html#L60">60</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.pipeline.package-info.java">com/kodexa/client/pipeline/package-info.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>NewlineAtEndOfFile</td>
 <td>File does not end with a newline.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/package-info.html#L1">1</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/pipeline/package-info.html#L1">1</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
@@ -1480,97 +1534,97 @@
 <td><a href="./xref/com/kodexa/client/pipeline/package-info.html#L3">3</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.registry.SourceRegistry.java">com/kodexa/client/registry/SourceRegistry.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L13">13</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L19">19</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>naming</td>
 <td>StaticVariableName</td>
 <td>Name 'INTERNAL_REGISTRY' must match pattern '^[a-z][a-zA-Z0-9]*$'.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L19">19</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L26">26</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L28">28</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'SourceRegistry' looks like designed for extension (can be subclassed), but the method 'addConnector' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'SourceRegistry' final or making the method 'addConnector' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L32">32</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L32">32</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter connector should be final.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L32">32</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'SourceRegistry' looks like designed for extension (can be subclassed), but the method 'getSource' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'SourceRegistry' final or making the method 'getSource' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L36">36</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L36">36</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L36">36</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>naming</td>
 <td>LocalVariableName</td>
 <td>Name 'CONNECTOR_KEY' must match pattern '^[a-z][a-zA-Z0-9]*$'.</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L37">37</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 89).</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L39">39</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 90).</td>
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L43">43</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
@@ -1578,67 +1632,67 @@
 <td><a href="./xref/com/kodexa/client/registry/SourceRegistry.html#L46">46</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.registry.StoreRegistry.java">com/kodexa/client/registry/StoreRegistry.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L14">14</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>naming</td>
 <td>StaticVariableName</td>
 <td>Name 'INTERNAL_REGISTRY' must match pattern '^[a-z][a-zA-Z0-9]*$'.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L14">14</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L16">16</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'StoreRegistry' looks like designed for extension (can be subclassed), but the method 'deserialize' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'StoreRegistry' final or making the method 'deserialize' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L20">20</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L20">20</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter type should be final.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L20">20</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter data should be final.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L20">20</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MissingSwitchDefault</td>
 <td>switch without &quot;default&quot; clause.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L22">22</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>blocks</td>
 <td>AvoidNestedBlocks</td>
 <td>Avoid nested blocks.</td>
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L23">23</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>blocks</td>
 <td>AvoidNestedBlocks</td>
@@ -1646,19 +1700,19 @@
 <td><a href="./xref/com/kodexa/client/registry/StoreRegistry.html#L26">26</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.registry.package-info.java">com/kodexa/client/registry/package-info.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>NewlineAtEndOfFile</td>
 <td>File does not end with a newline.</td>
 <td><a href="./xref/com/kodexa/client/registry/package-info.html#L1">1</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
@@ -1666,511 +1720,511 @@
 <td><a href="./xref/com/kodexa/client/registry/package-info.html#L1">1</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.AbstractKodexaSession.java">com/kodexa/client/remote/AbstractKodexaSession.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L31">31</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L37">37</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>modifier</td>
 <td>ModifierOrder</td>
 <td>'static' modifier out of order with the JLS suggestions.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L37">37</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>naming</td>
 <td>ConstantName</td>
 <td>Name 'messagePackOm' must match pattern '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L37">37</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L38">38</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>modifier</td>
 <td>ModifierOrder</td>
 <td>'static' modifier out of order with the JLS suggestions.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L38">38</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>naming</td>
 <td>ConstantName</td>
 <td>Name 'jsonOm' must match pattern '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L38">38</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L48">48</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L51">51</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter ref should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L51">51</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'ref' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L51">51</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 108).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L55">55</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'AbstractKodexaSession' looks like designed for extension (can be subclassed), but the method 'getTableStore' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'AbstractKodexaSession' final or making the method 'getTableStore' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L55">55</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L55">55</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter session should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L55">55</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter execution should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L55">55</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter cloudStore should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L55">55</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'1000' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L59">59</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 157).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L60">60</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'200' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L64">64</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 161).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L65">65</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 99).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L67">67</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 87).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L73">73</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'AbstractKodexaSession' looks like designed for extension (can be subclassed), but the method 'getOutputDocument' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'AbstractKodexaSession' final or making the method 'getOutputDocument' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L73">73</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L73">73</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter session should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L73">73</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter execution should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L73">73</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'1000' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L81">81</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 162).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L82">82</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'200' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L86">86</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 149).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L87">87</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 110).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L95">95</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'AbstractKodexaSession' looks like designed for extension (can be subclassed), but the method 'mergeStores' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'AbstractKodexaSession' final or making the method 'mergeStores' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L95">95</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L95">95</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter session should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L95">95</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter execution should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L95">95</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter pipelineContext should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L95">95</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 100).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L99">99</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 95).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L104">104</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'AbstractKodexaSession' looks like designed for extension (can be subclassed), but the method 'waitForExecution' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'AbstractKodexaSession' final or making the method 'waitForExecution' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L104">104</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter session should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L104">104</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter execution should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L104">104</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 100).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L106">106</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'1000' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L110">110</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 127).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L111">111</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 82).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L113">113</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'200' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L115">115</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 170).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L116">116</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 114).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L119">119</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 81).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L120">120</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 105).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L122">122</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 82).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L132">132</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>blocks</td>
 <td>NeedBraces</td>
 <td>'if' construct must use '{}'s.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L134">134</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 95).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L136">136</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 86).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L137">137</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 158).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L139">139</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'AbstractKodexaSession' looks like designed for extension (can be subclassed), but the method 'getRequestConfig' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'AbstractKodexaSession' final or making the method 'getRequestConfig' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L145">145</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'120' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L146">146</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'1000' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L148">148</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'1000' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L149">149</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'1000' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L150">150</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'AbstractKodexaSession' looks like designed for extension (can be subclassed), but the method 'createSession' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'AbstractKodexaSession' final or making the method 'createSession' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L153">153</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter sessionType should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L153">153</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 94).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L158">158</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'200' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L165">165</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 156).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L166">166</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 107).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L168">168</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L176">176</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 157).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L186">186</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter session should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L186">186</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L186">186</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter context should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L186">186</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter options should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L186">186</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter parameters should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L186">186</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 99).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L191">191</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 91).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L200">200</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 105).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L201">201</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 124).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L206">206</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 127).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L210">210</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
 <td>'200' is a magic number.</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L216">216</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 156).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L217">217</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 110).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L219">219</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 97).</td>
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L220">220</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
@@ -2178,43 +2232,43 @@
 <td><a href="./xref/com/kodexa/client/remote/AbstractKodexaSession.html#L224">224</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.CloudExceptionDetail.java">com/kodexa/client/remote/CloudExceptionDetail.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L10">10</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L11">11</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L12">12</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L13">13</a></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L14">14</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L13">13</a></td></tr>
 <tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L14">14</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2222,91 +2276,91 @@
 <td><a href="./xref/com/kodexa/client/remote/CloudExceptionDetail.html#L15">15</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.CloudExecution.java">com/kodexa/client/remote/CloudExecution.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>imports</td>
 <td>AvoidStarImport</td>
 <td>Using the '.*' form of import should be avoided - java.util.*.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L6">6</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L8">8</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L15">15</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L20">20</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L25">25</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L30">30</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L35">35</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L41">41</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L46">46</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L51">51</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>blocks</td>
 <td>NeedBraces</td>
 <td>'if' construct must use '{}'s.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L58">58</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'CloudExecution' looks like designed for extension (can be subclassed), but the method 'getOutputDocument' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'CloudExecution' final or making the method 'getOutputDocument' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L64">64</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L64">64</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
@@ -2314,25 +2368,25 @@
 <td><a href="./xref/com/kodexa/client/remote/CloudExecution.html#L65">65</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.CloudExecutionStep.java">com/kodexa/client/remote/CloudExecutionStep.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/CloudExecutionStep.html#L10">10</a></td></tr>
 <tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/CloudExecutionStep.html#L11">11</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/CloudExecutionStep.html#L10">10</a></td></tr>
 <tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/CloudExecutionStep.html#L11">11</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2340,25 +2394,25 @@
 <td><a href="./xref/com/kodexa/client/remote/CloudExecutionStep.html#L12">12</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.CloudSession.java">com/kodexa/client/remote/CloudSession.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudSession.html#L6">6</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 106).</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudSession.html#L9">9</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
@@ -2366,25 +2420,25 @@
 <td><a href="./xref/com/kodexa/client/remote/CloudSession.html#L15">15</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.CloudSessionType.java">com/kodexa/client/remote/CloudSessionType.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudSessionType.html#L3">3</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/CloudSessionType.html#L7">7</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2392,25 +2446,25 @@
 <td><a href="./xref/com/kodexa/client/remote/CloudSessionType.html#L8">8</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.CloudStore.java">com/kodexa/client/remote/CloudStore.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/CloudStore.html#L11">11</a></td></tr>
 <tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/CloudStore.html#L12">12</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/CloudStore.html#L11">11</a></td></tr>
 <tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/CloudStore.html#L12">12</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2418,31 +2472,31 @@
 <td><a href="./xref/com/kodexa/client/remote/CloudStore.html#L14">14</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.ContentObject.java">com/kodexa/client/remote/ContentObject.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/ContentObject.html#L13">13</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/ContentObject.html#L14">14</a></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/ContentObject.html#L15">15</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/ContentObject.html#L14">14</a></td></tr>
 <tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/ContentObject.html#L15">15</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2450,79 +2504,79 @@
 <td><a href="./xref/com/kodexa/client/remote/ContentObject.html#L16">16</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.KodexaPlatform.java">com/kodexa/client/remote/KodexaPlatform.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L5">5</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>HideUtilityClassConstructor</td>
 <td>Utility classes should not have a public or default constructor.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L8">8</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L11">11</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L13">13</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L17">17</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter accessToken should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L17">17</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'accessToken' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L17">17</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L21">21</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L23">23</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L27">27</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter url should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L27">27</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
@@ -2530,79 +2584,79 @@
 <td><a href="./xref/com/kodexa/client/remote/KodexaPlatform.html#L27">27</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.Options.java">com/kodexa/client/remote/Options.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L8">8</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L14">14</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L16">16</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'Options' looks like designed for extension (can be subclassed), but the method 'set' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Options' final or making the method 'set' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L19">19</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L19">19</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter name should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L19">19</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter value should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L19">19</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L24">24</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'Options' looks like designed for extension (can be subclassed), but the method 'attachSource' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Options' final or making the method 'attachSource' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L28">28</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L28">28</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'Options' looks like designed for extension (can be subclassed), but the method 'get' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Options' final or making the method 'get' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L33">33</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
@@ -2610,31 +2664,31 @@
 <td><a href="./xref/com/kodexa/client/remote/Options.html#L33">33</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.ProcessingException.java">com/kodexa/client/remote/ProcessingException.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/ProcessingException.html#L10">10</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/ProcessingException.html#L19">19</a></td></tr>
 <tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/ProcessingException.html#L20">20</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/ProcessingException.html#L19">19</a></td></tr>
 <tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/ProcessingException.html#L20">20</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2642,31 +2696,31 @@
 <td><a href="./xref/com/kodexa/client/remote/ProcessingException.html#L21">21</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.ProcessingStatus.java">com/kodexa/client/remote/ProcessingStatus.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/ProcessingStatus.html#L3">3</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/ProcessingStatus.html#L7">7</a></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/ProcessingStatus.html#L8">8</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/ProcessingStatus.html#L7">7</a></td></tr>
 <tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/ProcessingStatus.html#L8">8</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
@@ -2674,187 +2728,187 @@
 <td><a href="./xref/com/kodexa/client/remote/ProcessingStatus.html#L9">9</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.RemoteAction.java">com/kodexa/client/remote/RemoteAction.java</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L10">10</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 81).</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L14">14</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L16">16</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L17">17</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L19">19</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter organizationSlug should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L19">19</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter serviceSlug should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L19">19</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L23">23</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter ref should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L23">23</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 87).</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L27">27</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L27">27</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter organizationSlug should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L27">27</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter serviceSlug should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L27">27</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter options should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L27">27</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'options' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L27">27</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemoteAction' looks like designed for extension (can be subclassed), but the method 'options' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemoteAction' final or making the method 'options' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L32">32</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L32">32</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter options should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L32">32</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'options' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L32">32</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemoteAction' looks like designed for extension (can be subclassed), but the method 'parameters' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemoteAction' final or making the method 'parameters' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L37">37</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L37">37</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter parameters should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L37">37</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'parameters' hides a field.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L37">37</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemoteAction' looks like designed for extension (can be subclassed), but the method 'process' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemoteAction' final or making the method 'process' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L42">42</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 81).</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L43">43</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L43">43</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter pipelineContext should be final.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L43">43</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 107).</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L46">46</a></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemoteAction' looks like designed for extension (can be subclassed), but the method 'getName' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemoteAction' final or making the method 'getName' static/final/abstract/empty, or adding allowed annotation for the method.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L53">53</a></td></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
@@ -2862,36 +2916,18 @@
 <td><a href="./xref/com/kodexa/client/remote/RemoteAction.html#L55">55</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.RemotePipeline.java">com/kodexa/client/remote/RemotePipeline.java</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Severity</th>
 <th>Category</th>
 <th>Rule</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L12">12</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L18">18</a></td></tr>
-<tr class="b">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L19">19</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocVariable</td>
-<td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L20">20</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L15">15</a></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
@@ -2901,171 +2937,255 @@
 <tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
-<td>MissingJavadocMethod</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L22">22</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
 <td>Missing a Javadoc comment.</td>
 <td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L23">23</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>JavadocVariable</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L24">24</a></td></tr>
 <tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L26">26</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter ref should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L23">23</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L26">26</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter connector should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L23">23</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L26">26</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L28">28</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L31">31</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter ref should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L28">28</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L31">31</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter document should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L28">28</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L31">31</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemotePipeline' looks like designed for extension (can be subclassed), but the method 'parameters' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemotePipeline' final or making the method 'parameters' static/final/abstract/empty, or adding allowed annotation for the method.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L33">33</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L36">36</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L33">33</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L36">36</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter parameters should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L33">33</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L36">36</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'parameters' hides a field.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L33">33</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L36">36</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemotePipeline' looks like designed for extension (can be subclassed), but the method 'options' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemotePipeline' final or making the method 'options' static/final/abstract/empty, or adding allowed annotation for the method.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L38">38</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L41">41</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L38">38</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L41">41</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter options should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L38">38</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L41">41</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'options' hides a field.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L38">38</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L41">41</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>design</td>
 <td>DesignForExtension</td>
 <td>Class 'RemotePipeline' looks like designed for extension (can be subclassed), but the method 'run' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'RemotePipeline' final or making the method 'run' static/final/abstract/empty, or adding allowed annotation for the method.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L43">43</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L46">46</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 89).</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L52">52</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L55">55</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'session' hides a field.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L52">52</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L55">55</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 124).</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L53">53</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L56">56</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>sizes</td>
 <td>LineLength</td>
 <td>Line is longer than 80 characters (found 98).</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L56">56</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L59">59</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L71">71</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L74">74</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter sink should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L76">76</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L79">79</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
 <td>'sink' hides a field.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L76">76</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L79">79</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>JavadocStyle</td>
 <td>First sentence should end with a period.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L80">80</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L83">83</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter ref should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L87">87</a></td></tr>
-<tr class="a">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L90">90</a></td></tr>
+<tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
 <td>Parameter text should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L87">87</a></td></tr>
-<tr class="b">
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L90">90</a></td></tr>
+<tr class="a">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>javadoc</td>
 <td>MissingJavadocMethod</td>
 <td>Missing a Javadoc comment.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L91">91</a></td></tr>
-<tr class="a">
-<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
-<td>misc</td>
-<td>FinalParameters</td>
-<td>Parameter ref should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L91">91</a></td></tr>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L94">94</a></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
 <td>misc</td>
 <td>FinalParameters</td>
+<td>Parameter ref should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L94">94</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
 <td>Parameter url should be final.</td>
-<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L91">91</a></td></tr></table></section><section>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L94">94</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 80 characters (found 81).</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L98">98</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L98">98</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter ref should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L98">98</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter inputStream should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L98">98</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 80 characters (found 112).</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L102">102</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>javadoc</td>
+<td>MissingJavadocMethod</td>
+<td>Missing a Javadoc comment.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L102">102</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter ref should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L102">102</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter folderPath should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L102">102</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter filenameFilter should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L102">102</a></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>misc</td>
+<td>FinalParameters</td>
+<td>Parameter recursive should be final.</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L102">102</a></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure>&#160;Error</td>
+<td>sizes</td>
+<td>LineLength</td>
+<td>Line is longer than 80 characters (found 99).</td>
+<td><a href="./xref/com/kodexa/client/remote/RemotePipeline.html#L103">103</a></td></tr></table></section><section>
 <h3 id="com.kodexa.client.remote.RemotePipelineSession.java">com/kodexa/client/remote/RemotePipelineSession.java</h3>
 <table border="0" class="table table-striped">
 <tr class="a">
