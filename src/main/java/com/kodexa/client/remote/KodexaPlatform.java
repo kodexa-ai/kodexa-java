@@ -9,6 +9,7 @@ import lombok.Data;
 public class KodexaPlatform {
 
     private static String accessToken = System.getenv("KODEXA_ACCESS_TOKEN");
+    private static String url = System.getenv("KODEXA_URL") != null ? System.getenv("KODEXA_URL") : "https://platform.kodexa.com";
 
     public static String getAccessToken() {
         return KodexaPlatform.accessToken;
@@ -17,8 +18,6 @@ public class KodexaPlatform {
     public static void setAccessToken(String accessToken) {
         KodexaPlatform.accessToken = accessToken;
     }
-
-    private static String url = "https://platform.kodexa.com";
 
     public static String getUrl() {
         return KodexaPlatform.url;
