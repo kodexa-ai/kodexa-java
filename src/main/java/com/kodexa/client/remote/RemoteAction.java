@@ -1,6 +1,7 @@
 package com.kodexa.client.remote;
 
 import com.kodexa.client.Document;
+import com.kodexa.client.pipeline.Options;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.steps.PipelineStep;
 import lombok.extern.slf4j.Slf4j;

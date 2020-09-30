@@ -4,6 +4,7 @@ import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
 import com.kodexa.client.connectors.FolderConnector;
 import com.kodexa.client.connectors.InputStreamConnector;
+import com.kodexa.client.pipeline.Options;
 import com.kodexa.client.pipeline.Pipeline;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.sink.Sink;
@@ -76,8 +77,9 @@ public class RemotePipeline extends Pipeline {
      *
      * @param sink The sink to use for the documents
      */
-    public void setSink(Sink sink) {
+    public Pipeline setSink(Sink sink) {
         this.sink = sink;
+        return this;
     }
 
     /**

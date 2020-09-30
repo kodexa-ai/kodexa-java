@@ -4,6 +4,7 @@ import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
 import com.kodexa.client.connectors.FolderConnector;
 import com.kodexa.client.connectors.InputStreamConnector;
+import com.kodexa.client.remote.RemoteAction;
 import com.kodexa.client.sink.Sink;
 import com.kodexa.client.steps.PipelineStep;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,8 @@ public class Pipeline {
     protected final Connector connector;
     private final PipelineContext context;
     private Sink sink;
-    private List<PipelineStep> steps = new ArrayList<>();
+    private List<PipelineStepWrapper> steps = new ArrayList<>();
+    protected List<PipelineParameter> parameters = new ArrayList<>();
 
     public Pipeline(Connector connector) {
         this.connector = connector;
@@ -34,12 +36,29 @@ public class Pipeline {
         this.context = new PipelineContext();
     }
 
-    public void addStep(PipelineStep step) {
-        steps.add(step);
+    public Pipeline addStep(Class stepClass, Options options) {
+        steps.add(new PipelineStepWrapper(new ClassBasedStep(stepClass), options));
+        return this;
     }
 
-    public void setSink(Sink sink) {
+    public Pipeline addStep(String actionSlug, Options options) {
+        steps.add(new PipelineStepWrapper(new RemoteAction(actionSlug), options));
+        return this;
+    }
+
+    public Pipeline addStep(PipelineStep step) {
+        steps.add(new PipelineStepWrapper(step, new Options()));
+        return this;
+    }
+
+    public Pipeline setSink(Sink sink) {
         this.sink = sink;
+        return this;
+    }
+
+    public Pipeline setParameters(List<PipelineParameter> parameters) {
+        this.parameters = parameters;
+        return this;
     }
 
     public PipelineContext run() {
@@ -47,8 +66,7 @@ public class Pipeline {
         log.info("Starting pipeline");
 
         connector.forEachRemaining(document -> {
-            for (PipelineStep step : steps) {
-                log.info("Starting step " + step.getName());
+            for (PipelineStepWrapper step : steps) {
                 long startTime = System.currentTimeMillis();
                 document = step.process(document, context);
                 long endTime = System.currentTimeMillis();

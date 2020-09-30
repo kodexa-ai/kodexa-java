@@ -1,4 +1,4 @@
-package com.kodexa.client.remote;
+package com.kodexa.client.pipeline;
 
 import lombok.Getter;
 
@@ -11,10 +11,19 @@ import java.util.Map;
  */
 public class Options {
 
-    private Map<String, Object> opts = new HashMap<>();
+    private final Map<String, Object> opts = new HashMap<>();
 
     @Getter
     private boolean attachSource = false;
+
+    @Getter
+    private boolean enabled = true;
+
+    @Getter
+    private boolean parameterized;
+
+    @Getter
+    private String condition;
 
     public Options set(String name, Object value) {
         opts.put(name, value);
@@ -23,6 +32,21 @@ public class Options {
 
     public static Options start() {
         return new Options();
+    }
+
+    public Options enabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    public Options parameterized(boolean parameterized) {
+        this.parameterized = parameterized;
+        return this;
+    }
+
+    public Options condition(String condition) {
+        this.condition = condition;
+        return this;
     }
 
     public Options attachSource() {
