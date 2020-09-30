@@ -5,6 +5,9 @@ import com.kodexa.client.Document;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An in-memory sink for capturing documents from a pipeline
+ */
 public class InMemorySink implements Sink {
 
     private List<Document> documents = new ArrayList<>();
@@ -26,4 +29,5 @@ public class InMemorySink implements Sink {
     public String getName() {
         return "In-memory";
     }
+
 }
