@@ -77,6 +77,8 @@ public class Pipeline {
                 log.info("Writing to sink " + sink.getName());
                 sink.sink(document);
             }
+
+            context.setOutputDocument(document);
         });
 
         log.info("Pipeline completed");

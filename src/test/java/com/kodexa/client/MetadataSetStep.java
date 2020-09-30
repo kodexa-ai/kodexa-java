@@ -7,8 +7,15 @@ import com.kodexa.client.steps.PipelineStep;
 
 public class MetadataSetStep implements PipelineStep, OptionDrivenStep {
 
+    private Options options;
+
     @Override
     public Document process(Document document, PipelineContext context) {
+
+        if (options.get().containsKey("key")) {
+            document.getMetadata().put(String.valueOf(options.get().get("key")), options.get().get("value"));
+        }
+
         return document;
     }
 
@@ -19,6 +26,6 @@ public class MetadataSetStep implements PipelineStep, OptionDrivenStep {
 
     @Override
     public void setOptions(Options options) {
-
+        this.options = options;
     }
 }
