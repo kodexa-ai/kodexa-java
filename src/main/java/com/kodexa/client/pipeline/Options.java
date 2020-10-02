@@ -1,6 +1,7 @@
 package com.kodexa.client.pipeline;
 
 import lombok.Getter;
+import org.apache.commons.lang3.SerializationUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,8 @@ import java.util.Map;
  */
 public class Options {
 
-    private final Map<String, Object> opts = new HashMap<>();
+    @Getter
+    private final Map<String, Object> map = new HashMap<>();
 
     @Getter
     private boolean attachSource = false;
@@ -26,7 +28,7 @@ public class Options {
     private String condition;
 
     public Options set(String name, Object value) {
-        opts.put(name, value);
+        map.put(name, value);
         return this;
     }
 
@@ -55,6 +57,21 @@ public class Options {
     }
 
     public Map<String, Object> get() {
-        return opts;
+        return map;
+    }
+
+    public Options createClone() {
+        Options newOptions = Options.start();
+        newOptions.condition(this.condition);
+        newOptions.enabled(this.enabled);
+        if (this.isAttachSource()) {
+            newOptions.attachSource();
+        }
+
+        this.getMap().forEach((k, v) -> {
+            newOptions.set(k, v);
+        });
+
+        return newOptions;
     }
 }

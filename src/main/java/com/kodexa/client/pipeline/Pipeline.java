@@ -56,7 +56,7 @@ public class Pipeline {
         return this;
     }
 
-    public Pipeline setParameters(List<PipelineParameter> parameters) {
+    public Pipeline parameters(List<PipelineParameter> parameters) {
         this.parameters = parameters;
         return this;
     }
@@ -64,6 +64,8 @@ public class Pipeline {
     public PipelineContext run() {
 
         log.info("Starting pipeline");
+
+        this.context.setParameters(this.parameters);
 
         connector.forEachRemaining(document -> {
             for (PipelineStepWrapper step : steps) {
@@ -86,6 +88,12 @@ public class Pipeline {
 
     }
 
+    /**
+     * Create a pipeline with a single document as input containing the content from this text
+     *
+     * @param text The text to use as the content of the document
+     * @return an instance of the pipeline
+     */
     public static Pipeline fromText(String text) {
         return new Pipeline(Document.fromText(text));
     }
@@ -102,4 +110,8 @@ public class Pipeline {
         return new Pipeline(new FolderConnector(folderPath, filenameFilter, recursive));
     }
 
+    public Pipeline addParameter(String name, String value) {
+        parameters.add(new PipelineParameter(name, value));
+        return this;
+    }
 }
