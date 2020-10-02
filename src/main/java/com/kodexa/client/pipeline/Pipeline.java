@@ -4,6 +4,7 @@ import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
 import com.kodexa.client.connectors.FolderConnector;
 import com.kodexa.client.connectors.InputStreamConnector;
+import com.kodexa.client.remote.RemoteAction;
 import com.kodexa.client.sink.Sink;
 import com.kodexa.client.steps.PipelineStep;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,8 @@ public class Pipeline {
     protected final Connector connector;
     private final PipelineContext context;
     private Sink sink;
-    private List<PipelineStep> steps = new ArrayList<>();
+    private List<PipelineStepWrapper> steps = new ArrayList<>();
+    protected List<PipelineParameter> parameters = new ArrayList<>();
 
     public Pipeline(Connector connector) {
         this.connector = connector;
@@ -34,21 +36,39 @@ public class Pipeline {
         this.context = new PipelineContext();
     }
 
-    public void addStep(PipelineStep step) {
-        steps.add(step);
+    public Pipeline addStep(Class stepClass, Options options) {
+        steps.add(new PipelineStepWrapper(new ClassBasedStep(stepClass), options));
+        return this;
     }
 
-    public void setSink(Sink sink) {
+    public Pipeline addStep(String actionSlug, Options options) {
+        steps.add(new PipelineStepWrapper(new RemoteAction(actionSlug), options));
+        return this;
+    }
+
+    public Pipeline addStep(PipelineStep step) {
+        steps.add(new PipelineStepWrapper(step, new Options()));
+        return this;
+    }
+
+    public Pipeline setSink(Sink sink) {
         this.sink = sink;
+        return this;
+    }
+
+    public Pipeline parameters(List<PipelineParameter> parameters) {
+        this.parameters = parameters;
+        return this;
     }
 
     public PipelineContext run() {
 
         log.info("Starting pipeline");
 
+        this.context.setParameters(this.parameters);
+
         connector.forEachRemaining(document -> {
-            for (PipelineStep step : steps) {
-                log.info("Starting step " + step.getName());
+            for (PipelineStepWrapper step : steps) {
                 long startTime = System.currentTimeMillis();
                 document = step.process(document, context);
                 long endTime = System.currentTimeMillis();
@@ -59,6 +79,8 @@ public class Pipeline {
                 log.info("Writing to sink " + sink.getName());
                 sink.sink(document);
             }
+
+            context.setOutputDocument(document);
         });
 
         log.info("Pipeline completed");
@@ -66,6 +88,12 @@ public class Pipeline {
 
     }
 
+    /**
+     * Create a pipeline with a single document as input containing the content from this text
+     *
+     * @param text The text to use as the content of the document
+     * @return an instance of the pipeline
+     */
     public static Pipeline fromText(String text) {
         return new Pipeline(Document.fromText(text));
     }
@@ -82,4 +110,8 @@ public class Pipeline {
         return new Pipeline(new FolderConnector(folderPath, filenameFilter, recursive));
     }
 
+    public Pipeline addParameter(String name, String value) {
+        parameters.add(new PipelineParameter(name, value));
+        return this;
+    }
 }

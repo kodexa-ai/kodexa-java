@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
+import com.kodexa.client.pipeline.Options;
 import com.kodexa.client.pipeline.PipelineContext;
 import com.kodexa.client.registry.SourceRegistry;
 import com.kodexa.client.store.TableStore;

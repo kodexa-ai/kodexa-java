@@ -2,10 +2,11 @@ package com.kodexa.client.pipeline;
 
 import com.kodexa.client.Document;
 import com.kodexa.client.store.DataStore;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The pipeline context is used to manage state through a running
@@ -17,7 +18,18 @@ public class PipelineContext {
      * The available stores
      */
     public Map<String, DataStore> stores = new HashMap<String, DataStore>();
+
+    /**
+     * The last document to be processed
+     */
     private Document document;
+
+    /**
+     * The parameters that were passed to the pipeline
+     */
+    @Getter
+    @Setter
+    private List<PipelineParameter> parameters = new ArrayList<>();
 
     /**
      * Get a specific store
@@ -66,4 +78,8 @@ public class PipelineContext {
         return this.document;
     }
 
+    public Map<String, Object> getParameterMap() {
+        return this.parameters.stream()
+                .collect(Collectors.toMap(PipelineParameter::getName, PipelineParameter::getValue));
+    }
 }
