@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FolderConnector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.connectors</a> &gt; <span class="el_source">FolderConnector.java</span></div><h1>FolderConnector.java</h1><pre class="source lang-java linenums">package com.kodexa.client.connectors;
+
+import com.kodexa.client.Document;
+import com.kodexa.client.KodexaException;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+/**
+ * Implementation of a {@link Connector} for reading from a local
+ * directory
+ */
+<span class="nc" id="L16">@Slf4j</span>
+public class FolderConnector implements Connector {
+
+    private final String path;
+    private final String filter;
+    private final File[] files;
+    private int position;
+
+<span class="nc" id="L24">    public FolderConnector() {</span>
+<span class="nc" id="L25">        this.path = null;</span>
+<span class="nc" id="L26">        this.filter = null;</span>
+<span class="nc" id="L27">        this.files = new File[]{};</span>
+<span class="nc" id="L28">        this.position = 0;</span>
+<span class="nc" id="L29">    }</span>
+
+<span class="nc" id="L31">    public FolderConnector(String path, String filter, boolean recursive) {</span>
+<span class="nc" id="L32">        this.path = path;</span>
+<span class="nc" id="L33">        this.filter = filter;</span>
+
+        try {
+<span class="nc" id="L36">            File f = new File(path);</span>
+<span class="nc" id="L37">            files = f.listFiles(new WildcardMatcher(filter));</span>
+<span class="nc" id="L38">            position = 0;</span>
+<span class="nc" id="L39">        } catch (Exception e) {</span>
+<span class="nc" id="L40">            throw new RuntimeException(&quot;Unable to build folder connector&quot;, e);</span>
+<span class="nc" id="L41">        }</span>
+<span class="nc" id="L42">    }</span>
+
+    @Override
+    public boolean hasNext() {
+<span class="nc bnc" id="L46" title="All 4 branches missed.">        return files != null &amp;&amp; position + 1 &lt;= files.length;</span>
+    }
+
+    @Override
+    public Document next() {
+<span class="nc" id="L51">        File file = files[position];</span>
+<span class="nc" id="L52">        position++;</span>
+<span class="nc" id="L53">        log.info(&quot;Found file &quot; + file.getAbsolutePath());</span>
+<span class="nc" id="L54">        Document document = new Document();</span>
+<span class="nc" id="L55">        document.getMetadata().put(&quot;source_path&quot;, file.getAbsolutePath());</span>
+<span class="nc" id="L56">        document.getMetadata().put(&quot;connector&quot;, getName());</span>
+<span class="nc" id="L57">        Map&lt;String, String&gt; options = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L58">        options.put(&quot;path&quot;, path);</span>
+<span class="nc" id="L59">        options.put(&quot;file_filter&quot;, filter);</span>
+<span class="nc" id="L60">        document.getMetadata().put(&quot;connector_options&quot;, options);</span>
+<span class="nc" id="L61">        return document;</span>
+    }
+
+    @Override
+    public String getName() {
+<span class="nc" id="L66">        return &quot;folder&quot;;</span>
+    }
+
+    @Override
+    public InputStream getSource(Document document) {
+        try {
+<span class="nc" id="L72">            return new FileInputStream(String.valueOf(document.getMetadata().get(&quot;source_path&quot;)));</span>
+<span class="nc" id="L73">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L74">            throw new KodexaException(&quot;Unable to find source file&quot;, e);</span>
+        }
+    }
+
+    public static class WildcardMatcher implements FilenameFilter {
+
+        private final Pattern pattern;
+
+        /**
+         * Creates a new matcher with the given expression.
+         *
+         * @param expression wildcard expressions
+         */
+<span class="nc" id="L87">        public WildcardMatcher(final String expression) {</span>
+<span class="nc" id="L88">            final String[] parts = expression.split(&quot;\\:&quot;);</span>
+<span class="nc" id="L89">            final StringBuilder regex = new StringBuilder(expression.length() * 2);</span>
+<span class="nc" id="L90">            boolean next = false;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            for (final String part : parts) {</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">                if (next) {</span>
+<span class="nc" id="L93">                    regex.append('|');</span>
+                }
+<span class="nc" id="L95">                regex.append('(').append(toRegex(part)).append(')');</span>
+<span class="nc" id="L96">                next = true;</span>
+            }
+<span class="nc" id="L98">            pattern = Pattern.compile(regex.toString());</span>
+<span class="nc" id="L99">        }</span>
+
+        private static CharSequence toRegex(final String expression) {
+<span class="nc" id="L102">            final StringBuilder regex = new StringBuilder(expression.length() * 2);</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            for (final char c : expression.toCharArray()) {</span>
+<span class="nc bnc" id="L104" title="All 3 branches missed.">                switch (c) {</span>
+                    case '?':
+<span class="nc" id="L106">                        regex.append(&quot;.&quot;);</span>
+<span class="nc" id="L107">                        break;</span>
+                    case '*':
+<span class="nc" id="L109">                        regex.append(&quot;.*&quot;);</span>
+<span class="nc" id="L110">                        break;</span>
+                    default:
+<span class="nc" id="L112">                        regex.append(Pattern.quote(String.valueOf(c)));</span>
+                        break;
+                }
+            }
+<span class="nc" id="L116">            return regex;</span>
+        }
+
+        @Override
+        public boolean accept(File dir, String name) {
+<span class="nc" id="L121">            return pattern.matcher(name).matches();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Options.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.pipeline</a> &gt; <span class="el_source">Options.java</span></div><h1>Options.java</h1><pre class="source lang-java linenums">package com.kodexa.client.pipeline;
+
+import lombok.Getter;
+import org.apache.commons.lang3.SerializationUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * A simple structure for capturing the options for a Kodexa
+ * Cloud Action in Java
+ */
+<span class="fc" id="L13">public class Options {</span>
+
+<span class="fc" id="L15">    @Getter</span>
+    private final Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+
+<span class="fc" id="L18">    @Getter</span>
+    private boolean attachSource = false;
+
+<span class="fc" id="L21">    @Getter</span>
+    private boolean enabled = true;
+
+<span class="fc" id="L24">    @Getter</span>
+    private boolean parameterized;
+
+<span class="nc" id="L27">    @Getter</span>
+    private String condition;
+
+    public Options set(String name, Object value) {
+<span class="fc" id="L31">        map.put(name, value);</span>
+<span class="fc" id="L32">        return this;</span>
+    }
+
+    public static Options start() {
+<span class="fc" id="L36">        return new Options();</span>
+    }
+
+    public Options enabled(boolean enabled) {
+<span class="fc" id="L40">        this.enabled = enabled;</span>
+<span class="fc" id="L41">        return this;</span>
+    }
+
+    public Options parameterized(boolean parameterized) {
+<span class="fc" id="L45">        this.parameterized = parameterized;</span>
+<span class="fc" id="L46">        return this;</span>
+    }
+
+    public Options condition(String condition) {
+<span class="fc" id="L50">        this.condition = condition;</span>
+<span class="fc" id="L51">        return this;</span>
+    }
+
+    public Options attachSource() {
+<span class="nc" id="L55">        this.attachSource = true;</span>
+<span class="nc" id="L56">        return this;</span>
+    }
+
+    public Map&lt;String, Object&gt; get() {
+<span class="fc" id="L60">        return map;</span>
+    }
+
+    public Options createClone() {
+<span class="fc" id="L64">        Options newOptions = Options.start();</span>
+<span class="fc" id="L65">        newOptions.condition(this.condition);</span>
+<span class="fc" id="L66">        newOptions.enabled(this.enabled);</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (this.isAttachSource()) {</span>
+<span class="nc" id="L68">            newOptions.attachSource();</span>
+        }
+
+<span class="fc" id="L71">        this.getMap().forEach((k, v) -&gt; {</span>
+<span class="fc" id="L72">            newOptions.set(k, v);</span>
+<span class="fc" id="L73">        });</span>
+
+<span class="fc" id="L75">        return newOptions;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
