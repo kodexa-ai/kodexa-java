@@ -36,6 +36,9 @@ public class Document {
 
     private Map<String, Object> metadata = new HashMap<>();
 
+    @JsonProperty("source")
+    private SourceMetadata source = new SourceMetadata();
+
     @JsonProperty("content_node")
     private ContentNode contentNode;
     private boolean virtual = false;
@@ -158,6 +161,12 @@ public class Document {
         newDocument.getMetadata().put("connector", "url");
         newDocument.getMetadata().put("connector_options", new HashMap<String, Object>());
         ((Map) newDocument.getMetadata().get("connector_options")).put("url", url);
+
+        SourceMetadata sourceMetadata = new SourceMetadata();
+        sourceMetadata.setConnector("url");
+        sourceMetadata.setOriginalPath(url);
+
+        newDocument.setSource(sourceMetadata);
         return newDocument;
     }
 }
