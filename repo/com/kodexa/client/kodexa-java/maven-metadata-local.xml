@@ -3,10 +3,10 @@
   <groupId>com.kodexa.client</groupId>
   <artifactId>kodexa-java</artifactId>
   <versioning>
-    <release>2.0.10</release>
+    <release>2.0.14</release>
     <versions>
-      <version>2.0.10</version>
+      <version>2.0.14</version>
     </versions>
-    <lastUpdated>20200804092108</lastUpdated>
+    <lastUpdated>20201018203849</lastUpdated>
   </versioning>
 </metadata>

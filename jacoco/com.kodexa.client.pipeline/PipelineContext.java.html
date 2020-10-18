@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PipelineContext.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.pipeline</a> &gt; <span class="el_source">PipelineContext.java</span></div><h1>PipelineContext.java</h1><pre class="source lang-java linenums">package com.kodexa.client.pipeline;
 
+import com.kodexa.client.Document;
 import com.kodexa.client.store.DataStore;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The pipeline context is used to manage state through a running
  * pipeline
  */
-<span class="nc" id="L13">public class PipelineContext {</span>
+<span class="fc" id="L15">public class PipelineContext {</span>
 
     /**
      * The available stores
      */
-<span class="nc" id="L18">    public Map&lt;String, DataStore&gt; stores = new HashMap&lt;String, DataStore&gt;();</span>
+<span class="fc" id="L20">    public Map&lt;String, DataStore&gt; stores = new HashMap&lt;String, DataStore&gt;();</span>
+
+    /**
+     * The last document to be processed
+     */
+    private Document document;
+
+    /**
+     * The parameters that were passed to the pipeline
+     */
+<span class="pc" id="L30">    @Getter</span>
+<span class="fc" id="L31">    @Setter</span>
+    private List&lt;PipelineParameter&gt; parameters = new ArrayList&lt;&gt;();
 
     /**
      * Get a specific store
@@ -24,7 +38,7 @@ import java.util.Set;
      * @return The instance of the store (or null if not found)
      */
     public DataStore getStore(String name) {
-<span class="nc" id="L27">        return stores.get(name);</span>
+<span class="nc" id="L41">        return stores.get(name);</span>
     }
 
     /**
@@ -33,18 +47,40 @@ import java.util.Set;
      * @return set of names
      */
     public Set&lt;String&gt; getStoreNames() {
-<span class="nc" id="L36">        return stores.keySet();</span>
+<span class="nc" id="L50">        return stores.keySet();</span>
     }
 
     /**
      * Add the given store to the pipeline context
      *
-     * @param name the name of the store
+     * @param name  the name of the store
      * @param store The implementation of the store
      */
     public void addStore(String name, DataStore store) {
-<span class="nc" id="L46">        stores.put(name, store);</span>
-<span class="nc" id="L47">    }</span>
+<span class="nc" id="L60">        stores.put(name, store);</span>
+<span class="nc" id="L61">    }</span>
 
+    /**
+     * Sets the final output document for the pipeline
+     *
+     * @param document the final output document
+     */
+    public void setOutputDocument(Document document) {
+<span class="fc" id="L69">        this.document = document;</span>
+<span class="fc" id="L70">    }</span>
+
+    /**
+     * Returns the final output document, or null if there isn't one
+     *
+     * @return final output document
+     */
+    public Document getOutputDocument() {
+<span class="fc" id="L78">        return this.document;</span>
+    }
+
+    public Map&lt;String, Object&gt; getParameterMap() {
+<span class="fc" id="L82">        return this.parameters.stream()</span>
+<span class="fc" id="L83">                .collect(Collectors.toMap(PipelineParameter::getName, PipelineParameter::getValue));</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

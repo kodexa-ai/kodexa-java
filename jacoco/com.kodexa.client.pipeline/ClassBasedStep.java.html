@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClassBasedStep.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.pipeline</a> &gt; <span class="el_source">ClassBasedStep.java</span></div><h1>ClassBasedStep.java</h1><pre class="source lang-java linenums">package com.kodexa.client.pipeline;
+
+import com.kodexa.client.Document;
+import com.kodexa.client.KodexaException;
+import com.kodexa.client.steps.PipelineStep;
+
+public class ClassBasedStep implements PipelineStep, OptionDrivenStep {
+
+    private final Class stepClass;
+    private Options options;
+
+<span class="fc" id="L12">    public ClassBasedStep(Class stepClass) {</span>
+<span class="fc" id="L13">        this.stepClass = stepClass;</span>
+<span class="fc" id="L14">    }</span>
+
+    @Override
+    public Document process(Document document, PipelineContext context) {
+
+<span class="fc" id="L19">        Object classInstance = null;</span>
+        try {
+<span class="fc" id="L21">            classInstance = this.stepClass.newInstance();</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if (classInstance instanceof OptionDrivenStep) {</span>
+<span class="fc" id="L23">                ((OptionDrivenStep) classInstance).setOptions(this.options);</span>
+            }
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            if (classInstance instanceof PipelineStep) {</span>
+<span class="fc" id="L26">                return ((PipelineStep) classInstance).process(document, context);</span>
+            } else {
+<span class="nc" id="L28">                throw new KodexaException(&quot;Class is not an instance of PipelineStep?&quot;);</span>
+            }
+<span class="nc" id="L30">        } catch (Exception e) {</span>
+<span class="nc" id="L31">            throw new KodexaException(&quot;Unable to create instance of class for step&quot;, e);</span>
+        }
+
+
+    }
+
+    @Override
+    public String getName() {
+<span class="fc" id="L39">        return &quot;Step for class &quot; + stepClass.getName();</span>
+    }
+
+    @Override
+    public void setOptions(Options options) {
+<span class="fc" id="L44">        this.options = options;</span>
+<span class="fc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

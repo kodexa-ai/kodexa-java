@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pipeline.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.pipeline</a> &gt; <span class="el_source">Pipeline.java</span></div><h1>Pipeline.java</h1><pre class="source lang-java linenums">package com.kodexa.client.pipeline;
 
+import com.kodexa.client.Document;
 import com.kodexa.client.connectors.Connector;
+import com.kodexa.client.connectors.FolderConnector;
+import com.kodexa.client.connectors.InputStreamConnector;
+import com.kodexa.client.remote.RemoteAction;
 import com.kodexa.client.sink.Sink;
 import com.kodexa.client.steps.PipelineStep;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,49 +17,102 @@ import java.util.List;
  * A Pipeline allows you to put together steps from a connector to a sink
  * to enable re-use and encapsulation of steps.
  */
-<span class="nc" id="L15">@Slf4j</span>
+<span class="fc" id="L20">@Slf4j</span>
 public class Pipeline {
 
-    private final Connector connector;
+    protected final Connector connector;
     private final PipelineContext context;
     private Sink sink;
-<span class="nc" id="L21">    private List&lt;PipelineStep&gt; steps = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L26">    private List&lt;PipelineStepWrapper&gt; steps = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L27">    protected List&lt;PipelineParameter&gt; parameters = new ArrayList&lt;&gt;();</span>
 
-<span class="nc" id="L23">    public Pipeline(Connector connector) {</span>
-<span class="nc" id="L24">        this.connector = connector;</span>
-<span class="nc" id="L25">        this.context = new PipelineContext();</span>
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L29">    public Pipeline(Connector connector) {</span>
+<span class="nc" id="L30">        this.connector = connector;</span>
+<span class="nc" id="L31">        this.context = new PipelineContext();</span>
+<span class="nc" id="L32">    }</span>
 
-    public void addStep(PipelineStep step) {
-<span class="nc" id="L29">        steps.add(step);</span>
-<span class="nc" id="L30">    }</span>
+<span class="fc" id="L34">    public Pipeline(Document document) {</span>
+<span class="fc" id="L35">        this.connector = new DocumentConnector(document);</span>
+<span class="fc" id="L36">        this.context = new PipelineContext();</span>
+<span class="fc" id="L37">    }</span>
 
-    public void setSink(Sink sink) {
-<span class="nc" id="L33">        this.sink = sink;</span>
-<span class="nc" id="L34">    }</span>
+    public Pipeline addStep(Class stepClass, Options options) {
+<span class="fc" id="L40">        steps.add(new PipelineStepWrapper(new ClassBasedStep(stepClass), options));</span>
+<span class="fc" id="L41">        return this;</span>
+    }
+
+    public Pipeline addStep(String actionSlug, Options options) {
+<span class="nc" id="L45">        steps.add(new PipelineStepWrapper(new RemoteAction(actionSlug), options));</span>
+<span class="nc" id="L46">        return this;</span>
+    }
+
+    public Pipeline addStep(PipelineStep step) {
+<span class="nc" id="L50">        steps.add(new PipelineStepWrapper(step, new Options()));</span>
+<span class="nc" id="L51">        return this;</span>
+    }
+
+    public Pipeline setSink(Sink sink) {
+<span class="nc" id="L55">        this.sink = sink;</span>
+<span class="nc" id="L56">        return this;</span>
+    }
+
+    public Pipeline parameters(List&lt;PipelineParameter&gt; parameters) {
+<span class="nc" id="L60">        this.parameters = parameters;</span>
+<span class="nc" id="L61">        return this;</span>
+    }
 
     public PipelineContext run() {
 
-<span class="nc" id="L38">        log.info(&quot;Starting pipeline&quot;);</span>
+<span class="fc" id="L66">        log.info(&quot;Starting pipeline&quot;);</span>
 
-<span class="nc" id="L40">        connector.forEachRemaining(document -&gt; {</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">            for (PipelineStep step : steps) {</span>
-<span class="nc" id="L42">                log.info(&quot;Starting step &quot; + step.getName());</span>
-<span class="nc" id="L43">                long startTime = System.currentTimeMillis();</span>
-<span class="nc" id="L44">                document = step.process(document, context);</span>
-<span class="nc" id="L45">                long endTime = System.currentTimeMillis();</span>
-<span class="nc" id="L46">                log.info(&quot;Step processed in &quot; + (endTime - startTime) + &quot; ms&quot;);</span>
-<span class="nc" id="L47">            }</span>
+<span class="fc" id="L68">        this.context.setParameters(this.parameters);</span>
 
-<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (sink != null) {</span>
-<span class="nc" id="L50">                log.info(&quot;Writing to sink &quot; + sink.getName());</span>
-<span class="nc" id="L51">                sink.sink(document);</span>
+<span class="fc" id="L70">        connector.forEachRemaining(document -&gt; {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (PipelineStepWrapper step : steps) {</span>
+<span class="fc" id="L72">                long startTime = System.currentTimeMillis();</span>
+<span class="fc" id="L73">                document = step.process(document, context);</span>
+<span class="fc" id="L74">                long endTime = System.currentTimeMillis();</span>
+<span class="fc" id="L75">                log.info(&quot;Step processed in &quot; + (endTime - startTime) + &quot; ms&quot;);</span>
+<span class="fc" id="L76">            }</span>
+
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">            if (sink != null) {</span>
+<span class="nc" id="L79">                log.info(&quot;Writing to sink &quot; + sink.getName());</span>
+<span class="nc" id="L80">                sink.sink(document);</span>
             }
-<span class="nc" id="L53">        });</span>
 
-<span class="nc" id="L55">        log.info(&quot;Pipeline completed&quot;);</span>
-<span class="nc" id="L56">        return context;</span>
+<span class="fc" id="L83">            context.setOutputDocument(document);</span>
+<span class="fc" id="L84">        });</span>
 
+<span class="fc" id="L86">        log.info(&quot;Pipeline completed&quot;);</span>
+<span class="fc" id="L87">        return context;</span>
+
+    }
+
+    /**
+     * Create a pipeline with a single document as input containing the content from this text
+     *
+     * @param text The text to use as the content of the document
+     * @return an instance of the pipeline
+     */
+    public static Pipeline fromText(String text) {
+<span class="fc" id="L98">        return new Pipeline(Document.fromText(text));</span>
+    }
+
+    public static Pipeline fromUrl(String url) {
+<span class="nc" id="L102">        return new Pipeline(Document.fromUrl(url));</span>
+    }
+
+    public static Pipeline fromInputStream(InputStream inputStream) {
+<span class="nc" id="L106">        return new Pipeline(new InputStreamConnector(inputStream));</span>
+    }
+
+    public static Pipeline fromFolder(String folderPath, String filenameFilter, boolean recursive) {
+<span class="nc" id="L110">        return new Pipeline(new FolderConnector(folderPath, filenameFilter, recursive));</span>
+    }
+
+    public Pipeline addParameter(String name, String value) {
+<span class="fc" id="L114">        parameters.add(new PipelineParameter(name, value));</span>
+<span class="fc" id="L115">        return this;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -3,6 +3,8 @@
 import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
 import com.kodexa.client.connectors.Connector;
+import com.kodexa.client.connectors.FolderConnector;
+import com.kodexa.client.connectors.InputStreamConnector;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -12,31 +14,36 @@ import java.util.Map;
  * The registry of source types, used in Kodexa to allow us to
  * separate access to sources from the steps and pipeline
  */
-<span class="nc" id="L15">public class SourceRegistry {</span>
+<span class="nc" id="L17">public class SourceRegistry {</span>
 
-<span class="nc" id="L17">    private static SourceRegistry INTERNAL_REGISTRY = new SourceRegistry();</span>
+<span class="nc" id="L19">    private static SourceRegistry INTERNAL_REGISTRY = new SourceRegistry();</span>
 
-<span class="nc" id="L19">    private Map&lt;String, Connector&gt; connectors = new HashMap&lt;&gt;();</span>
+    static {
+<span class="nc" id="L22">        INTERNAL_REGISTRY.addConnector(new FolderConnector());</span>
+<span class="nc" id="L23">        INTERNAL_REGISTRY.addConnector(new InputStreamConnector());</span>
+<span class="nc" id="L24">    }</span>
+
+<span class="nc" id="L26">    private Map&lt;String, Connector&gt; connectors = new HashMap&lt;&gt;();</span>
 
     public static SourceRegistry getInstance() {
-<span class="nc" id="L22">        return INTERNAL_REGISTRY;</span>
+<span class="nc" id="L29">        return INTERNAL_REGISTRY;</span>
     }
 
     public void addConnector(Connector connector) {
-<span class="nc" id="L26">        connectors.put(connector.getName(), connector);</span>
-<span class="nc" id="L27">    }</span>
+<span class="nc" id="L33">        connectors.put(connector.getName(), connector);</span>
+<span class="nc" id="L34">    }</span>
 
     public InputStream getSource(Document document) {
-<span class="nc" id="L30">        String CONNECTOR_KEY = &quot;connector&quot;;</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (document.getMetadata().containsKey(CONNECTOR_KEY)) {</span>
-<span class="nc" id="L32">            String connector = String.valueOf(document.getMetadata().get(CONNECTOR_KEY));</span>
-<span class="nc bnc" id="L33" title="All 2 branches missed.">            if (connectors.containsKey(connector)) {</span>
-<span class="nc" id="L34">                return connectors.get(connector).getSource(document);</span>
+<span class="nc" id="L37">        String CONNECTOR_KEY = &quot;connector&quot;;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (document.getMetadata().containsKey(CONNECTOR_KEY)) {</span>
+<span class="nc" id="L39">            String connector = String.valueOf(document.getMetadata().get(CONNECTOR_KEY));</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            if (connectors.containsKey(connector)) {</span>
+<span class="nc" id="L41">                return connectors.get(connector).getSource(document);</span>
             } else {
-<span class="nc" id="L36">                throw new KodexaException(&quot;Unable to find connector [&quot; + connector + &quot;]&quot;);</span>
+<span class="nc" id="L43">                throw new KodexaException(&quot;Unable to find connector [&quot; + connector + &quot;]&quot;);</span>
             }
         } else {
-<span class="nc" id="L39">            throw new KodexaException(&quot;Document does not have connector metadata&quot;);</span>
+<span class="nc" id="L46">            throw new KodexaException(&quot;Document does not have connector metadata&quot;);</span>
         }
     }
 }

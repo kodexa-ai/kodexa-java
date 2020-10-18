@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020 Kodexa</copyright>
     <item>
-      <title>File: 49,
-             Errors: 605,
+      <title>File: 50,
+             Errors: 614,
              Warnings: 0,
              Infos: 0
       </title>
@@ -657,7 +657,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  45
+                  46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.SourceMetadata.java">com/kodexa/client/SourceMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
                 </td>
               </tr>
                           <tr>

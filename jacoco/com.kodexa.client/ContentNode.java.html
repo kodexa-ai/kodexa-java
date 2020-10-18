@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * A node in a content tree
  */
-<span class="nc bnc" id="L14" title="All 48 branches missed.">@Data</span>
+<span class="pc bnc" id="L14" title="All 48 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentNode {
 
@@ -22,8 +22,8 @@ public class ContentNode {
     @JsonProperty(&quot;content_parts&quot;)
 <span class="nc" id="L23">    private List&lt;Object&gt; contentParts;</span>
 
-<span class="nc" id="L25">    private List&lt;ContentNode&gt; children = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L26">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L25">    private List&lt;ContentNode&gt; children = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L26">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

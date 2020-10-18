@@ -5,26 +5,30 @@ import com.kodexa.client.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-<span class="nc" id="L8">public class InMemorySink implements Sink {</span>
+/**
+ * An in-memory sink for capturing documents from a pipeline
+ */
+<span class="nc" id="L11">public class InMemorySink implements Sink {</span>
 
-<span class="nc" id="L10">    private List&lt;Document&gt; documents = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L13">    private List&lt;Document&gt; documents = new ArrayList&lt;&gt;();</span>
 
     public Document getDocument(int i) {
-<span class="nc" id="L13">        return documents.get(i);</span>
+<span class="nc" id="L16">        return documents.get(i);</span>
     }
 
     public int getCount() {
-<span class="nc" id="L17">        return documents.size();</span>
+<span class="nc" id="L20">        return documents.size();</span>
     }
 
     @Override
     public void sink(Document document) {
-<span class="nc" id="L22">        documents.add(document);</span>
-<span class="nc" id="L23">    }</span>
+<span class="nc" id="L25">        documents.add(document);</span>
+<span class="nc" id="L26">    }</span>
 
     @Override
     public String getName() {
-<span class="nc" id="L27">        return &quot;In-memory&quot;;</span>
+<span class="nc" id="L30">        return &quot;In-memory&quot;;</span>
     }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

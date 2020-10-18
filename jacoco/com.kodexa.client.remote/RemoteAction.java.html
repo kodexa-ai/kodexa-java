@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RemoteAction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.remote</a> &gt; <span class="el_source">RemoteAction.java</span></div><h1>RemoteAction.java</h1><pre class="source lang-java linenums">package com.kodexa.client.remote;
+
+import com.kodexa.client.Document;
+import com.kodexa.client.pipeline.Options;
+import com.kodexa.client.pipeline.PipelineContext;
+import com.kodexa.client.steps.PipelineStep;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Map;
+
+/**
+ * A step that is hosted in the Kodexa Cloud
+ */
+<span class="nc" id="L14">@Slf4j</span>
+public class RemoteAction extends AbstractKodexaSession implements PipelineStep {
+
+    private Options options;
+    private Map&lt;String, Object&gt; parameters;
+
+    public RemoteAction(String organizationSlug, String serviceSlug) {
+<span class="nc" id="L21">        this(organizationSlug, serviceSlug, new Options());</span>
+<span class="nc" id="L22">    }</span>
+
+    public RemoteAction(String ref) {
+<span class="nc" id="L25">        super(ref);</span>
+<span class="nc" id="L26">    }</span>
+
+    public RemoteAction(String organizationSlug, String serviceSlug, Options options) {
+<span class="nc" id="L29">        super(organizationSlug + &quot;/&quot; + serviceSlug);</span>
+<span class="nc" id="L30">        this.options = options;</span>
+<span class="nc" id="L31">    }</span>
+
+    public RemoteAction options(Options options) {
+<span class="nc" id="L34">        this.options = options;</span>
+<span class="nc" id="L35">        return this;</span>
+    }
+
+    public RemoteAction parameters(Map&lt;String, Object&gt; parameters) {
+<span class="nc" id="L39">        this.parameters = parameters;</span>
+<span class="nc" id="L40">        return this;</span>
+    }
+
+    @Override
+    public Document process(Document document, PipelineContext pipelineContext) {
+
+<span class="nc" id="L46">        CloudSession session = this.createSession(CloudSessionType.service);</span>
+<span class="nc" id="L47">        CloudExecution execution = executeService(session, document, pipelineContext, options, parameters);</span>
+<span class="nc" id="L48">        execution = waitForExecution(session, execution);</span>
+<span class="nc" id="L49">        mergeStores(session, execution, pipelineContext);</span>
+<span class="nc" id="L50">        document = getOutputDocument(session, execution);</span>
+<span class="nc" id="L51">        return document;</span>
+    }
+
+    @Override
+    public String getName() {
+<span class="nc" id="L56">        return &quot;Kodexa Service [&quot; + KodexaPlatform.getUrl() + &quot;/&quot; + this.getRef() + &quot;]&quot;;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
