@@ -37,14 +37,14 @@ public class Document {
 <span class="fc" id="L37">    private Map&lt;String, Object&gt; metadata = new HashMap&lt;&gt;();</span>
 
 <span class="fc" id="L39">    @JsonProperty(&quot;source&quot;)</span>
-<span class="nc" id="L40">    private SourceMetadata source = new SourceMetadata();</span>
+<span class="fc" id="L40">    private SourceMetadata source = new SourceMetadata();</span>
 
     @JsonProperty(&quot;content_node&quot;)
-<span class="nc" id="L43">    private ContentNode contentNode;</span>
-<span class="pc" id="L44">    private boolean virtual = false;</span>
-<span class="pc" id="L45">    private List&lt;String&gt; mixins = new ArrayList&lt;&gt;();</span>
-<span class="pc" id="L46">    private String uuid = UUID.randomUUID().toString();</span>
-<span class="nc" id="L47">    private String version;</span>
+<span class="fc" id="L43">    private ContentNode contentNode;</span>
+<span class="fc" id="L44">    private boolean virtual = false;</span>
+<span class="fc" id="L45">    private List&lt;String&gt; mixins = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L46">    private String uuid = UUID.randomUUID().toString();</span>
+<span class="fc" id="L47">    private String version;</span>
 
     /**
      * Convert the document to JSON
@@ -86,7 +86,7 @@ public class Document {
      */
     public static Document fromMsgPack(byte[] bytes) {
         try {
-<span class="nc" id="L89">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);</span>
+<span class="fc" id="L89">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);</span>
 <span class="nc" id="L90">        } catch (IOException e) {</span>
 <span class="nc" id="L91">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
         }
@@ -127,7 +127,7 @@ public class Document {
      */
     public byte[] toMsgPack() {
         try {
-<span class="nc" id="L130">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
+<span class="fc" id="L130">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
 <span class="nc" id="L131">        } catch (JsonProcessingException e) {</span>
 <span class="nc" id="L132">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
         }

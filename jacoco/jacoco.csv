@@ -20,8 +20,8 @@ kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore,212,0,8,0,40
 kodexa-java,com.kodexa.client.store,TableStore,161,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client,ContentFeature,204,0,34,0,5,0,30,0,13,0
-kodexa-java,com.kodexa.client,Document,452,76,60,0,33,18,54,6,24,6
-kodexa-java,com.kodexa.client,SourceMetadata,381,3,70,0,8,1,55,1,20,1
+kodexa-java,com.kodexa.client,Document,401,127,60,0,28,23,41,19,11,19
+kodexa-java,com.kodexa.client,SourceMetadata,349,35,70,0,0,9,45,11,10,11
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
 kodexa-java,com.kodexa.client,ContentNode,270,21,48,0,4,3,38,3,14,3
 kodexa-java,com.kodexa.client.sink,InMemorySink,26,0,0,0,7,0,5,0,5,0
