@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SerializationTest {
 
     @Test
-    public void basicSeralization() {
+    public void basicSerialization() {
         Document document = new Document();
         document.getSource().setOriginalPath("test");
         document.getSource().setConnector("test");
