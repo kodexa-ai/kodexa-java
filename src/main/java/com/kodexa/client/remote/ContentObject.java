@@ -13,7 +13,7 @@ public class ContentObject {
 
     private String id;
     private String name;
-    private List<String> tags = new ArrayList<>();
+    private List<String> labels = new ArrayList<>();
 
     @JsonProperty("content_type")
     private String contentType;

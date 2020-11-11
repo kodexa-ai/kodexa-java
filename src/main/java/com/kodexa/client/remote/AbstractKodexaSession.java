@@ -196,12 +196,17 @@ public abstract class AbstractKodexaSession {
 
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 
+            ByteArrayBody documentBody = new ByteArrayBody(document.toMsgPack(), "document.kdxa");
+
             if (options.isAttachSource()) {
                 log.info("Attaching source file");
                 InputStream inputStream = SourceRegistry.getInstance().getSource(document);
                 ByteArrayBody fileBody = new ByteArrayBody(IOUtils.toByteArray(inputStream), "test.doc");
                 builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
                 builder.addPart("file", fileBody);
+                builder.addPart("file_document", documentBody);
+            } else {
+                builder.addPart("document", documentBody);
             }
 
             StringBody optionsBody = new StringBody(jsonOm.writeValueAsString(options.get()), ContentType.APPLICATION_JSON);
