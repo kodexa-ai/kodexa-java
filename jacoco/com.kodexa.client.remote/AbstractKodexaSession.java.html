@@ -196,33 +196,38 @@ public abstract class AbstractKodexaSession {
 
 <span class="nc" id="L197">            MultipartEntityBuilder builder = MultipartEntityBuilder.create();</span>
 
-<span class="nc bnc" id="L199" title="All 2 branches missed.">            if (options.isAttachSource()) {</span>
-<span class="nc" id="L200">                log.info(&quot;Attaching source file&quot;);</span>
-<span class="nc" id="L201">                InputStream inputStream = SourceRegistry.getInstance().getSource(document);</span>
-<span class="nc" id="L202">                ByteArrayBody fileBody = new ByteArrayBody(IOUtils.toByteArray(inputStream), &quot;test.doc&quot;);</span>
-<span class="nc" id="L203">                builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);</span>
-<span class="nc" id="L204">                builder.addPart(&quot;file&quot;, fileBody);</span>
+<span class="nc" id="L199">            ByteArrayBody documentBody = new ByteArrayBody(document.toMsgPack(), &quot;document.kdxa&quot;);</span>
+
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            if (options.isAttachSource()) {</span>
+<span class="nc" id="L202">                log.info(&quot;Attaching source file&quot;);</span>
+<span class="nc" id="L203">                InputStream inputStream = SourceRegistry.getInstance().getSource(document);</span>
+<span class="nc" id="L204">                ByteArrayBody fileBody = new ByteArrayBody(IOUtils.toByteArray(inputStream), &quot;test.doc&quot;);</span>
+<span class="nc" id="L205">                builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);</span>
+<span class="nc" id="L206">                builder.addPart(&quot;file&quot;, fileBody);</span>
+<span class="nc" id="L207">                builder.addPart(&quot;file_document&quot;, documentBody);</span>
+<span class="nc" id="L208">            } else {</span>
+<span class="nc" id="L209">                builder.addPart(&quot;document&quot;, documentBody);</span>
             }
 
-<span class="nc" id="L207">            StringBody optionsBody = new StringBody(jsonOm.writeValueAsString(options.get()), ContentType.APPLICATION_JSON);</span>
-<span class="nc" id="L208">            builder.addPart(&quot;options&quot;, optionsBody);</span>
+<span class="nc" id="L212">            StringBody optionsBody = new StringBody(jsonOm.writeValueAsString(options.get()), ContentType.APPLICATION_JSON);</span>
+<span class="nc" id="L213">            builder.addPart(&quot;options&quot;, optionsBody);</span>
 
-<span class="nc bnc" id="L210" title="All 2 branches missed.">            if (parameters != null) {</span>
-<span class="nc" id="L211">                StringBody parameterBody = new StringBody(jsonOm.writeValueAsString(parameters), ContentType.APPLICATION_JSON);</span>
-<span class="nc" id="L212">                builder.addPart(&quot;parameters&quot;, parameterBody);</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">            if (parameters != null) {</span>
+<span class="nc" id="L216">                StringBody parameterBody = new StringBody(jsonOm.writeValueAsString(parameters), ContentType.APPLICATION_JSON);</span>
+<span class="nc" id="L217">                builder.addPart(&quot;parameters&quot;, parameterBody);</span>
             }
 
-<span class="nc" id="L215">            post.setEntity(builder.build());</span>
-<span class="nc" id="L216">            HttpResponse response = client.execute(post);</span>
-<span class="nc bnc" id="L217" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
-<span class="nc" id="L218">                throw new KodexaException(&quot;Unable to create a session, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
+<span class="nc" id="L220">            post.setEntity(builder.build());</span>
+<span class="nc" id="L221">            HttpResponse response = client.execute(post);</span>
+<span class="nc bnc" id="L222" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
+<span class="nc" id="L223">                throw new KodexaException(&quot;Unable to create a session, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
             }
-<span class="nc" id="L220">            String responseJson = IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8);</span>
-<span class="nc" id="L221">            CloudExecution cloudExecution = jsonOm.readValue(responseJson, CloudExecution.class);</span>
-<span class="nc" id="L222">            log.info(&quot;Execution started [&quot; + cloudExecution.getId() + &quot;]&quot;);</span>
-<span class="nc" id="L223">            return cloudExecution;</span>
-<span class="nc" id="L224">        } catch (IOException e) {</span>
-<span class="nc" id="L225">            throw new KodexaException(&quot;Unable to create a session on Kodexa&quot;, e);</span>
+<span class="nc" id="L225">            String responseJson = IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8);</span>
+<span class="nc" id="L226">            CloudExecution cloudExecution = jsonOm.readValue(responseJson, CloudExecution.class);</span>
+<span class="nc" id="L227">            log.info(&quot;Execution started [&quot; + cloudExecution.getId() + &quot;]&quot;);</span>
+<span class="nc" id="L228">            return cloudExecution;</span>
+<span class="nc" id="L229">        } catch (IOException e) {</span>
+<span class="nc" id="L230">            throw new KodexaException(&quot;Unable to create a session on Kodexa&quot;, e);</span>
         }
     }
 }

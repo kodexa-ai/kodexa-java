@@ -1,7 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 kodexa-java,com.kodexa.client.remote,KodexaPlatform,55,0,8,0,9,0,14,0,10,0
 kodexa-java,com.kodexa.client.remote,RemoteAction,89,0,0,0,19,0,8,0,8,0
-kodexa-java,com.kodexa.client.remote,AbstractKodexaSession,735,0,28,0,125,0,24,0,10,0
+kodexa-java,com.kodexa.client.remote,AbstractKodexaSession,753,0,28,0,129,0,24,0,10,0
 kodexa-java,com.kodexa.client.remote,CloudSessionType,24,0,0,0,3,0,1,0,1,0
 kodexa-java,com.kodexa.client.remote,CloudExceptionDetail,281,0,48,0,7,0,41,0,17,0
 kodexa-java,com.kodexa.client.remote,CloudExecutionStep,169,0,30,0,4,0,26,0,11,0
