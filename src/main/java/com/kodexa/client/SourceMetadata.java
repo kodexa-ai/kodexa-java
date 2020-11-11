@@ -22,6 +22,10 @@ public class SourceMetadata {
 
     @JsonProperty("mime_type")
     private String mimeType;
+
+    @JsonProperty("lineage_document_uuid")
+    private String lineageDocumentUuid;
+
     private Map<String, Object> headers;
 
 }
