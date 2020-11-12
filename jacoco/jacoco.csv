@@ -21,7 +21,7 @@ kodexa-java,com.kodexa.client.store,TableStore,161,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client,ContentFeature,204,0,34,0,5,0,30,0,13,0
 kodexa-java,com.kodexa.client,Document,451,139,68,0,32,24,47,21,13,21
-kodexa-java,com.kodexa.client,SourceMetadata,389,38,78,0,0,10,50,12,11,12
+kodexa-java,com.kodexa.client,SourceMetadata,429,41,86,0,0,11,55,13,12,13
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
 kodexa-java,com.kodexa.client,ContentNode,270,21,48,0,4,3,38,3,14,3
 kodexa-java,com.kodexa.client.sink,InMemorySink,26,0,0,0,7,0,5,0,5,0

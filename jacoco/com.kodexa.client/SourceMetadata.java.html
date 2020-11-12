@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.util.Map;
 
-<span class="pc bnc" id="L8" title="All 78 branches missed.">@Data</span>
+<span class="pc bnc" id="L8" title="All 86 branches missed.">@Data</span>
 public class SourceMetadata {
 
     @JsonProperty(&quot;original_filename&quot;)
@@ -23,10 +23,12 @@ public class SourceMetadata {
     @JsonProperty(&quot;mime_type&quot;)
 <span class="fc" id="L24">    private String mimeType;</span>
 
-    @JsonProperty(&quot;lineage_document_uuid&quot;)
-<span class="fc" id="L27">    private String lineageDocumentUuid;</span>
+<span class="fc" id="L26">    private String cid;</span>
 
-<span class="fc" id="L29">    private Map&lt;String, Object&gt; headers;</span>
+    @JsonProperty(&quot;lineage_document_uuid&quot;)
+<span class="fc" id="L29">    private String lineageDocumentUuid;</span>
+
+<span class="fc" id="L31">    private Map&lt;String, Object&gt; headers;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
