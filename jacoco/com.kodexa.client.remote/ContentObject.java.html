@@ -7,16 +7,27 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-<span class="nc bnc" id="L10" title="All 38 branches missed.">@Data</span>
+<span class="nc bnc" id="L10" title="All 46 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentObject {
 
 <span class="nc" id="L14">    private String id;</span>
 <span class="nc" id="L15">    private String name;</span>
-<span class="nc" id="L16">    private List&lt;String&gt; labels = new ArrayList&lt;&gt;();</span>
 
+<span class="nc" id="L17">    private List&lt;String&gt; labels = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * The content type (DOCUMENT/NATIVE)
+     */
     @JsonProperty(&quot;content_type&quot;)
-<span class="nc" id="L19">    private String contentType;</span>
+<span class="nc" id="L23">    private String contentType;</span>
 
+    /**
+     * The reference to the store holding this content object
+     * if it is null then the content object is in cache and part of a
+     * session
+     */
+    @JsonProperty(&quot;store_ref&quot;)
+<span class="nc" id="L31">    private String storeRef;</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
