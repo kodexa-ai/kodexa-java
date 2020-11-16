@@ -16,6 +16,8 @@ import java.util.List;
 public class ContentNode {
 
     private int index;
+
+    @JsonProperty("node_type")
     private String type;
     private String content;
 
