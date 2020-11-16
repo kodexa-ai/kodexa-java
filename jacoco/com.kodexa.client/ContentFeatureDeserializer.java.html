@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContentFeatureDeserializer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client</a> &gt; <span class="el_source">ContentFeatureDeserializer.java</span></div><h1>ContentFeatureDeserializer.java</h1><pre class="source lang-java linenums">package com.kodexa.client;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+
+import java.io.IOException;
+import java.util.List;
+
+public class ContentFeatureDeserializer extends StdDeserializer&lt;ContentFeature&gt; {
+
+<span class="fc" id="L17">    private static final ObjectMapper mapper = new ObjectMapper();</span>
+<span class="fc" id="L18">    private static final CollectionType collectionType =</span>
+            TypeFactory
+<span class="fc" id="L20">                    .defaultInstance()</span>
+<span class="fc" id="L21">                    .constructCollectionType(List.class, Object.class);</span>
+
+    public ContentFeatureDeserializer() {
+<span class="fc" id="L24">        this(null);</span>
+<span class="fc" id="L25">    }</span>
+
+    public ContentFeatureDeserializer(Class&lt;ContentFeature&gt; vc) {
+<span class="fc" id="L28">        super(vc);</span>
+<span class="fc" id="L29">    }</span>
+
+    @Override
+    public ContentFeature deserialize(JsonParser jp, DeserializationContext ctxt)
+            throws IOException, JsonProcessingException {
+<span class="nc" id="L34">        JsonNode node = jp.getCodec().readTree(jp);</span>
+<span class="nc" id="L35">        String fullName = node.get(&quot;name&quot;).asText();</span>
+<span class="nc" id="L36">        Boolean single = node.get(&quot;single&quot;).asBoolean();</span>
+
+<span class="nc" id="L38">        JsonNode nodeValues = node.get(&quot;value&quot;);</span>
+
+<span class="nc" id="L40">        ContentFeature contentFeature = new ContentFeature();</span>
+<span class="nc" id="L41">        contentFeature.setFeatureType(fullName.split(&quot;:&quot;)[0]);</span>
+<span class="nc" id="L42">        contentFeature.setName(fullName.split(&quot;:&quot;)[1]);</span>
+<span class="nc" id="L43">        contentFeature.setSingle(single);</span>
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (null != nodeValues</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">                &amp;&amp; nodeValues.isArray())</span>
+<span class="nc" id="L47">            contentFeature.setValue(mapper.reader(collectionType).readValue(nodeValues));</span>
+
+<span class="nc" id="L49">        return contentFeature;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
