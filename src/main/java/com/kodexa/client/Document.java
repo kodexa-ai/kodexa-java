@@ -45,7 +45,8 @@ public class Document {
     private List<String> mixins = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
     private String uuid = UUID.randomUUID().toString();
-    private String version;
+    private String version = "2.0.0";
+
 
     /**
      * Add the given label to the document
@@ -53,7 +54,7 @@ public class Document {
      * @param label the label to add
      * @return the instance of the document
      */
-    public com.kodexa.client.Document addLabel(String label) {
+    public Document addLabel(String label) {
         labels.add(label);
         return this;
     }
@@ -64,7 +65,7 @@ public class Document {
      * @param label the label to remove
      * @return the instance of the document
      */
-    public com.kodexa.client.Document removeLabel(String label) {
+    public Document removeLabel(String label) {
         labels.remove(label);
         return this;
     }
