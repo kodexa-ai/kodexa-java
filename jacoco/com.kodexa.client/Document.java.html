@@ -176,22 +176,23 @@ public class Document {
     public static Document fromText(String text) {
 <span class="fc" id="L177">        Document newDocument = new Document();</span>
 <span class="fc" id="L178">        newDocument.setContentNode(newDocument.createContentNode(&quot;text&quot;, text));</span>
-<span class="fc" id="L179">        return newDocument;</span>
+<span class="fc" id="L179">        newDocument.getMixins().add(&quot;text&quot;);</span>
+<span class="fc" id="L180">        return newDocument;</span>
     }
 
     @SuppressWarnings(&quot;unchecked&quot;)
     public static Document fromUrl(String url) {
-<span class="nc" id="L184">        Document newDocument = new Document();</span>
-<span class="nc" id="L185">        newDocument.getMetadata().put(&quot;connector&quot;, &quot;url&quot;);</span>
-<span class="nc" id="L186">        newDocument.getMetadata().put(&quot;connector_options&quot;, new HashMap&lt;String, Object&gt;());</span>
-<span class="nc" id="L187">        ((Map) newDocument.getMetadata().get(&quot;connector_options&quot;)).put(&quot;url&quot;, url);</span>
+<span class="nc" id="L185">        Document newDocument = new Document();</span>
+<span class="nc" id="L186">        newDocument.getMetadata().put(&quot;connector&quot;, &quot;url&quot;);</span>
+<span class="nc" id="L187">        newDocument.getMetadata().put(&quot;connector_options&quot;, new HashMap&lt;String, Object&gt;());</span>
+<span class="nc" id="L188">        ((Map) newDocument.getMetadata().get(&quot;connector_options&quot;)).put(&quot;url&quot;, url);</span>
 
-<span class="nc" id="L189">        SourceMetadata sourceMetadata = new SourceMetadata();</span>
-<span class="nc" id="L190">        sourceMetadata.setConnector(&quot;url&quot;);</span>
-<span class="nc" id="L191">        sourceMetadata.setOriginalPath(url);</span>
+<span class="nc" id="L190">        SourceMetadata sourceMetadata = new SourceMetadata();</span>
+<span class="nc" id="L191">        sourceMetadata.setConnector(&quot;url&quot;);</span>
+<span class="nc" id="L192">        sourceMetadata.setOriginalPath(url);</span>
 
-<span class="nc" id="L193">        newDocument.setSource(sourceMetadata);</span>
-<span class="nc" id="L194">        return newDocument;</span>
+<span class="nc" id="L194">        newDocument.setSource(sourceMetadata);</span>
+<span class="nc" id="L195">        return newDocument;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

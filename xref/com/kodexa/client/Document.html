@@ -184,24 +184,25 @@
 <a class="jxr_linenumber" name="L176" href="#L176">176</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a> fromText(String text) {
 <a class="jxr_linenumber" name="L177" href="#L177">177</a>         <a name="Document" href="../../../com/kodexa/client/Document.htm<a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>nt">Document</a> newDocument = <strong class="jxr_keyword">new</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>();
 <a class="jxr_linenumber" name="L178" href="#L178">178</a>         newDocument.setContentNode(newDocument.createContentNode(<span class="jxr_string">"text"</span>, text));
-<a class="jxr_linenumber" name="L179" href="#L179">179</a>         <strong class="jxr_keyword">return</strong> newDocument;
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>     }
-<a class="jxr_linenumber" name="L181" href="#L181">181</a> 
-<a class="jxr_linenumber" name="L182" href="#L182">182</a>     @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
-<a class="jxr_linenumber" name="L183" href="#L183">183</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a> fromUrl(String url) {
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>         <a name="Document" href="../../../com/kodexa/client/Document.htm<a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>nt">Document</a> newDocument = <strong class="jxr_keyword">new</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>();
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>         newDocument.getMetadata().put(<span class="jxr_string">"connector"</span>, <span class="jxr_string">"url"</span>);
-<a class="jxr_linenumber" name="L186" href="#L186">186</a>         newDocument.getMetadata().put(<span class="jxr_string">"connector_options"</span>, <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;());
-<a class="jxr_linenumber" name="L187" href="#L187">187</a>         ((Map) newDocument.getMetadata().get(<span class="jxr_string">"connector_options"</span>)).put(<span class="jxr_string">"url"</span>, url);
-<a class="jxr_linenumber" name="L188" href="#L188">188</a> 
-<a class="jxr_linenumber" name="L189" href="#L189">189</a>         <a name="SourceMetadata" href="../../../com/kodexa/client/SourceMetadata.<a name="SourceMetadata" href="../../../com/kodexa/client/SourceMetadata.html#SourceMetadata">SourceMetadata</a>adata">SourceMetadata</a> sourceMetadata = <strong class="jxr_keyword">new</strong> <a name="SourceMetadata" href="../../../com/kodexa/client/SourceMetadata.html#SourceMetadata">SourceMetadata</a>();
-<a class="jxr_linenumber" name="L190" href="#L190">190</a>         sourceMetadata.setConnector(<span class="jxr_string">"url"</span>);
-<a class="jxr_linenumber" name="L191" href="#L191">191</a>         sourceMetadata.setOriginalPath(url);
-<a class="jxr_linenumber" name="L192" href="#L192">192</a> 
-<a class="jxr_linenumber" name="L193" href="#L193">193</a>         newDocument.setSource(sourceMetadata);
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>         <strong class="jxr_keyword">return</strong> newDocument;
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>     }
-<a class="jxr_linenumber" name="L196" href="#L196">196</a> }
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>         newDocument.getMixins().add(<span class="jxr_string">"text"</span>);
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         <strong class="jxr_keyword">return</strong> newDocument;
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>     }
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> 
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>     @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a> fromUrl(String url) {
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>         <a name="Document" href="../../../com/kodexa/client/Document.htm<a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>nt">Document</a> newDocument = <strong class="jxr_keyword">new</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>();
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         newDocument.getMetadata().put(<span class="jxr_string">"connector"</span>, <span class="jxr_string">"url"</span>);
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>         newDocument.getMetadata().put(<span class="jxr_string">"connector_options"</span>, <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;());
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>         ((Map) newDocument.getMetadata().get(<span class="jxr_string">"connector_options"</span>)).put(<span class="jxr_string">"url"</span>, url);
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> 
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>         <a name="SourceMetadata" href="../../../com/kodexa/client/SourceMetadata.<a name="SourceMetadata" href="../../../com/kodexa/client/SourceMetadata.html#SourceMetadata">SourceMetadata</a>adata">SourceMetadata</a> sourceMetadata = <strong class="jxr_keyword">new</strong> <a name="SourceMetadata" href="../../../com/kodexa/client/SourceMetadata.html#SourceMetadata">SourceMetadata</a>();
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         sourceMetadata.setConnector(<span class="jxr_string">"url"</span>);
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         sourceMetadata.setOriginalPath(url);
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> 
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>         newDocument.setSource(sourceMetadata);
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>         <strong class="jxr_keyword">return</strong> newDocument;
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>     }
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2020 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>
