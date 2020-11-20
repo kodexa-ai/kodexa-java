@@ -176,6 +176,7 @@ public class Document {
     public static Document fromText(String text) {
         Document newDocument = new Document();
         newDocument.setContentNode(newDocument.createContentNode("text", text));
+        newDocument.getMixins().add("text");
         return newDocument;
     }
 
