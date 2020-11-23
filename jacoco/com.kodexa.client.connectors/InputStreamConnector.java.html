@@ -12,7 +12,7 @@ public class InputStreamConnector implements Connector {
 
     private InputStream inputStream;
     private boolean empty;
-<span class="nc" id="L15">    private Map&lt;String, InputStream&gt; cache = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L15">    private static Map&lt;String, InputStream&gt; cache = new HashMap&lt;&gt;();</span>
 
 <span class="nc" id="L17">    public InputStreamConnector(InputStream inputStream) {</span>
 <span class="nc" id="L18">        this.inputStream = inputStream;</span>
