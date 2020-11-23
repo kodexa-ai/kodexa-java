@@ -4,42 +4,43 @@ import com.kodexa.client.Document;
 import lombok.NoArgsConstructor;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
-<span class="nc" id="L8">@NoArgsConstructor</span>
+<span class="nc" id="L10">@NoArgsConstructor</span>
 public class InputStreamConnector implements Connector {
 
     private InputStream inputStream;
     private boolean empty;
+<span class="nc" id="L15">    private Map&lt;String, InputStream&gt; cache = new HashMap&lt;&gt;();</span>
 
-<span class="nc" id="L14">    public InputStreamConnector(InputStream inputStream) {</span>
-<span class="nc" id="L15">        this.inputStream = inputStream;</span>
-<span class="nc" id="L16">        this.empty = false;</span>
-<span class="nc" id="L17">    }</span>
+<span class="nc" id="L17">    public InputStreamConnector(InputStream inputStream) {</span>
+<span class="nc" id="L18">        this.inputStream = inputStream;</span>
+<span class="nc" id="L19">        this.empty = false;</span>
+<span class="nc" id="L20">    }</span>
 
     @Override
     public String getName() {
-<span class="nc" id="L21">        return &quot;inputStream&quot;;</span>
+<span class="nc" id="L24">        return &quot;inputStream&quot;;</span>
     }
 
     @Override
     public InputStream getSource(Document document) {
-<span class="nc" id="L26">        InputStream inputStream = (InputStream) document.getMetadata().get(&quot;stream&quot;);</span>
-<span class="nc" id="L27">        document.getMetadata().remove(&quot;stream&quot;);</span>
-<span class="nc" id="L28">        return inputStream;</span>
+<span class="nc" id="L29">        return cache.get(document.getUuid());</span>
     }
 
     @Override
     public boolean hasNext() {
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        return !empty;</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        return !empty;</span>
     }
 
     @Override
     public Document next() {
-<span class="nc" id="L38">        Document document = new Document();</span>
-<span class="nc" id="L39">        document.getMetadata().put(&quot;connector&quot;, getName());</span>
-<span class="nc" id="L40">        document.getMetadata().put(&quot;stream&quot;, inputStream);</span>
-<span class="nc" id="L41">        empty = true;</span>
-<span class="nc" id="L42">        return document;</span>
+<span class="nc" id="L39">        Document document = new Document();</span>
+<span class="nc" id="L40">        document.getMetadata().put(&quot;connector&quot;, getName());</span>
+<span class="nc" id="L41">        cache.put(document.getUuid(), inputStream);</span>
+<span class="nc" id="L42">        empty = true;</span>
+<span class="nc" id="L43">        return document;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

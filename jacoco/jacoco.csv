@@ -31,7 +31,7 @@ kodexa-java,com.kodexa.client.registry,SourceRegistry,78,0,4,0,16,0,7,0,5,0
 kodexa-java,com.kodexa.client.registry,StoreRegistry,33,0,3,0,7,0,6,0,4,0
 kodexa-java,com.kodexa.client.connectors,FolderConnector.WildcardMatcher,106,0,9,0,21,0,8,0,3,0
 kodexa-java,com.kodexa.client.connectors,FolderConnector,151,0,4,0,33,0,9,0,7,0
-kodexa-java,com.kodexa.client.connectors,InputStreamConnector,57,0,2,0,15,0,7,0,6,0
+kodexa-java,com.kodexa.client.connectors,InputStreamConnector,62,0,2,0,14,0,7,0,6,0
 kodexa-java,com.kodexa.client.pipeline,PipelineParameter,120,15,22,0,2,3,18,3,7,3
 kodexa-java,com.kodexa.client.pipeline,ClassBasedStep,12,44,2,2,3,12,2,4,0,4
 kodexa-java,com.kodexa.client.pipeline,DocumentConnector,7,18,0,0,2,7,2,3,2,3
