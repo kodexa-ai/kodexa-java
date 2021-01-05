@@ -44,6 +44,9 @@ public class Document {
     private boolean virtual = false;
     private List<String> mixins = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
+    private List<String> taxonomies = new ArrayList<>();
+    private List<String> classifications = new ArrayList<>();
+
     private String uuid = UUID.randomUUID().toString();
     private String version = "2.0.0";
 
