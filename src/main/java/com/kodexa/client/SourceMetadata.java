@@ -30,11 +30,11 @@ public class SourceMetadata {
     @JsonProperty("lineage_document_uuid")
     private String lineageDocumentUuid;
 
+    @JsonProperty("document_family_id")
+    private String documentFamilyId;
+
     @JsonProperty("source_document_uuid")
     private String sourceDocumentUuid;
-
-    @JsonProperty("pdf_document_uuid")
-    private String pdfDocumentUuid;
 
     private Map<String, Object> headers;
 
