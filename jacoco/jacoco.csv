@@ -11,16 +11,16 @@ kodexa-java,com.kodexa.client.remote,ProcessingException,191,0,30,0,6,0,27,0,12,
 kodexa-java,com.kodexa.client.remote,CloudStore,169,0,30,0,4,0,26,0,11,0
 kodexa-java,com.kodexa.client.remote,RemotePipelineSession,4,0,0,0,2,0,1,0,1,0
 kodexa-java,com.kodexa.client.remote,CloudSession,83,0,14,0,2,0,14,0,7,0
-kodexa-java,com.kodexa.client.remote,RemotePipeline,184,0,2,0,39,0,13,0,12,0
 kodexa-java,com.kodexa.client.remote,ContentObject,260,0,46,0,6,0,38,0,15,0
+kodexa-java,com.kodexa.client.remote,RemotePipeline,184,0,2,0,39,0,13,0,12,0
 kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore.new TypeReference() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.store,JsonDocumentStore,68,0,0,0,17,0,6,0,6,0
 kodexa-java,com.kodexa.client.store,MsgPackDocumentStore,68,0,0,0,18,0,6,0,6,0
 kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore,212,0,8,0,40,0,15,0,11,0
 kodexa-java,com.kodexa.client.store,TableStore,161,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
-kodexa-java,com.kodexa.client,ContentFeature,204,0,34,0,5,0,30,0,13,0
 kodexa-java,com.kodexa.client,ContentFeatureSerializer,52,0,2,0,14,0,4,0,3,0
+kodexa-java,com.kodexa.client,ContentFeature,204,0,34,0,5,0,30,0,13,0
 kodexa-java,com.kodexa.client,Document,519,175,84,0,32,27,54,26,12,26
 kodexa-java,com.kodexa.client,ContentFeatureDeserializer,59,18,4,0,12,8,3,3,1,3
 kodexa-java,com.kodexa.client,SourceMetadata,509,47,102,0,0,13,65,15,14,15
