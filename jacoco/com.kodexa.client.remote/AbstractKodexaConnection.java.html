@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractKodexaConnection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.remote</a> &gt; <span class="el_source">AbstractKodexaConnection.java</span></div><h1>AbstractKodexaConnection.java</h1><pre class="source lang-java linenums">package com.kodexa.client.remote;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.client.config.RequestConfig;
+import org.msgpack.jackson.dataformat.MessagePackFactory;
+
+<span class="nc" id="L8">public abstract class AbstractKodexaConnection {</span>
+
+    protected final static ObjectMapper messagePackOm;
+    protected final static ObjectMapper jsonOm;
+
+    static {
+<span class="nc" id="L14">        messagePackOm = new ObjectMapper(new MessagePackFactory());</span>
+<span class="nc" id="L15">        messagePackOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+
+<span class="nc" id="L17">        jsonOm = new ObjectMapper();</span>
+<span class="nc" id="L18">        jsonOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+<span class="nc" id="L19">    }</span>
+
+
+    protected RequestConfig getRequestConfig() {
+<span class="nc" id="L23">        int timeout = 120; // seconds</span>
+<span class="nc" id="L24">        return RequestConfig.custom()</span>
+<span class="nc" id="L25">                .setConnectTimeout(timeout * 1000)</span>
+<span class="nc" id="L26">                .setConnectionRequestTimeout(timeout * 1000)</span>
+<span class="nc" id="L27">                .setSocketTimeout(timeout * 1000).build();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

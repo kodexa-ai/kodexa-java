@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RemoteTableDataStore.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.store</a> &gt; <span class="el_source">RemoteTableDataStore.java</span></div><h1>RemoteTableDataStore.java</h1><pre class="source lang-java linenums">package com.kodexa.client.store;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.kodexa.client.KodexaException;
+import com.kodexa.client.remote.AbstractKodexaConnection;
+import com.kodexa.client.remote.KodexaPlatform;
+import com.kodexa.client.remote.Page;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+/**
+ * A remote data table store
+ */
+<span class="nc" id="L26">@Slf4j</span>
+public class RemoteTableDataStore extends AbstractKodexaConnection {
+
+    private final String ref;
+
+<span class="nc" id="L31">    public RemoteTableDataStore(String ref) {</span>
+<span class="nc" id="L32">        this.ref = ref;</span>
+<span class="nc" id="L33">    }</span>
+
+    /**
+     * Returns a list of maps that represent all the data in the store
+     *
+     * @param tableName table name
+     * @param page      the page number
+     * @param pageSize  page size
+     * @return A list of maps each representing a 'row'
+     */
+<span class="nc" id="L43">    @SneakyThrows</span>
+    public List&lt;Map&lt;String, String&gt;&gt; getTable(String tableName, int page, int pageSize) {
+<span class="nc" id="L45">        try (CloseableHttpClient client = HttpClientBuilder.create()</span>
+<span class="nc" id="L46">                .setDefaultRequestConfig(getRequestConfig())</span>
+<span class="nc" id="L47">                .build()) {</span>
+<span class="nc" id="L48">            String url = KodexaPlatform.getUrl() + &quot;/api/stores/&quot; + ref.replace(&quot;:&quot;, &quot;/&quot;) + &quot;/rows&quot;;</span>
+<span class="nc" id="L49">            log.info(&quot;Connecting to [&quot; + url + &quot;]&quot;);</span>
+
+<span class="nc" id="L51">            URIBuilder builder = new URIBuilder(url);</span>
+<span class="nc" id="L52">            builder.setParameter(&quot;page&quot;, String.valueOf(page)).setParameter(&quot;pageSize&quot;, String.valueOf(pageSize)).setParameter(&quot;table&quot;, tableName);</span>
+
+<span class="nc" id="L54">            HttpGet httpGet = new HttpGet(builder.build());</span>
+<span class="nc" id="L55">            httpGet.addHeader(&quot;x-access-token&quot;, KodexaPlatform.getAccessToken());</span>
+
+<span class="nc" id="L57">            HttpResponse response = client.execute(httpGet);</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
+<span class="nc" id="L60">                throw new KodexaException(&quot;Unable to create a session, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
+            }
+
+<span class="nc" id="L63">            String responseJson = IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8);</span>
+<span class="nc" id="L64">            Page&lt;StoredRow&gt; rowPage = jsonOm.readValue(responseJson, new TypeReference&lt;Page&lt;StoredRow&gt;&gt;() {</span>
+            });
+
+<span class="nc" id="L67">            return rowPage.getContent().stream().map(StoredRow::getData).collect(Collectors.toList());</span>
+
+
+<span class="nc" id="L70">        } catch (IOException e) {</span>
+<span class="nc" id="L71">            throw new KodexaException(&quot;Unable to create a session on Kodexa&quot;, e);</span>
+        }
+    }
+
+    public List&lt;Map&lt;String, String&gt;&gt; getTable(String tableName) {
+
+        // TODO handle more than 9999 rows
+<span class="nc" id="L78">        return getTable(tableName, 1, 9999);</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
