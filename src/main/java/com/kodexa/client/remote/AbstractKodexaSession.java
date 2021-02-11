@@ -1,7 +1,5 @@
 package com.kodexa.client.remote;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
 import com.kodexa.client.pipeline.Options;
@@ -12,7 +10,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -22,7 +19,6 @@ import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.msgpack.jackson.dataformat.MessagePackFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,18 +29,7 @@ import java.util.Map;
  * Abstract base for both Cloud Service and Cloud Pipelines in Kodexa
  */
 @Slf4j
-public abstract class AbstractKodexaSession {
-
-    protected final static ObjectMapper messagePackOm;
-    protected final static ObjectMapper jsonOm;
-
-    static {
-        messagePackOm = new ObjectMapper(new MessagePackFactory());
-        messagePackOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-
-        jsonOm = new ObjectMapper();
-        jsonOm.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    }
+public abstract class AbstractKodexaSession extends AbstractKodexaConnection {
 
     @Getter
     private final String ref;
@@ -143,14 +128,6 @@ public abstract class AbstractKodexaSession {
         return execution;
     }
 
-    protected RequestConfig getRequestConfig() {
-        int timeout = 120; // seconds
-        return RequestConfig.custom()
-                .setConnectTimeout(timeout * 1000)
-                .setConnectionRequestTimeout(timeout * 1000)
-                .setSocketTimeout(timeout * 1000).build();
-    }
-
     protected CloudSession createSession(CloudSessionType sessionType) {
         log.info("Creating session in Kodexa");
         try (CloseableHttpClient client = HttpClientBuilder.create()
@@ -181,7 +158,7 @@ public abstract class AbstractKodexaSession {
      * @param document   The document to send
      * @param context    The context for the pipeline
      * @param options    The options for the execution
-     * @param parameters
+     * @param parameters the parameters to pass to this pipeline
      * @return An instance of a cloud execution
      */
     public CloudExecution executeService(CloudSession session, Document document, PipelineContext context, Options options, Map<String, Object> parameters) {
