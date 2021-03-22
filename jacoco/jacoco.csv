@@ -30,6 +30,7 @@ kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
 kodexa-java,com.kodexa.client,ContentFeatureSerializer,52,0,2,0,14,0,4,0,3,0
 kodexa-java,com.kodexa.client,Document,519,175,84,0,32,27,54,26,12,26
 kodexa-java,com.kodexa.client,SourceMetadata,509,47,102,0,0,13,65,15,14,15
+kodexa-java,com.kodexa.client,ContentClassification,212,0,38,0,5,0,32,0,13,0
 kodexa-java,com.kodexa.client,ContentNode,270,21,48,0,4,3,38,3,14,3
 kodexa-java,com.kodexa.client.sink,InMemorySink,26,0,0,0,7,0,5,0,5,0
 kodexa-java,com.kodexa.client.registry,SourceRegistry,78,0,4,0,16,0,7,0,5,0
