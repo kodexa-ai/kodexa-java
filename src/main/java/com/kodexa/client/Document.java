@@ -45,51 +45,10 @@ public class Document {
     private List<String> mixins = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
     private List<String> taxonomies = new ArrayList<>();
-    private List<String> classifications = new ArrayList<>();
+    private List<ContentClassification> classes = new ArrayList<>();
 
     private String uuid = UUID.randomUUID().toString();
     private String version = "2.0.0";
-
-
-    /**
-     * Add the given label to the document
-     *
-     * @param label the label to add
-     * @return the instance of the document
-     */
-    public Document addLabel(String label) {
-        labels.add(label);
-        return this;
-    }
-
-    /**
-     * Remove the given label to the document
-     *
-     * @param label the label to remove
-     * @return the instance of the document
-     */
-    public Document removeLabel(String label) {
-        labels.remove(label);
-        return this;
-    }
-
-    /**
-     * Convert the document to JSON
-     *
-     * @param pretty include spacing and new lines if true
-     * @return JSON representation of document
-     */
-    public String toJson(boolean pretty) {
-        try {
-            if (pretty) {
-                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);
-            } else {
-                return OBJECT_MAPPER.writeValueAsString(this);
-            }
-        } catch (JsonProcessingException e) {
-            throw new KodexaException("Unable to convert Document to JSON", e);
-        }
-    }
 
     /**
      * Create a new instance of a Document from JSON string
@@ -147,6 +106,68 @@ public class Document {
         }
     }
 
+    public static Document fromText(String text) {
+        Document newDocument = new Document();
+        newDocument.setContentNode(newDocument.createContentNode("text", text));
+        newDocument.getMixins().add("text");
+        return newDocument;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Document fromUrl(String url) {
+        Document newDocument = new Document();
+        newDocument.getMetadata().put("connector", "url");
+        newDocument.getMetadata().put("connector_options", new HashMap<String, Object>());
+        ((Map) newDocument.getMetadata().get("connector_options")).put("url", url);
+
+        SourceMetadata sourceMetadata = new SourceMetadata();
+        sourceMetadata.setConnector("url");
+        sourceMetadata.setOriginalPath(url);
+
+        newDocument.setSource(sourceMetadata);
+        return newDocument;
+    }
+
+    /**
+     * Add the given label to the document
+     *
+     * @param label the label to add
+     * @return the instance of the document
+     */
+    public Document addLabel(String label) {
+        labels.add(label);
+        return this;
+    }
+
+    /**
+     * Remove the given label to the document
+     *
+     * @param label the label to remove
+     * @return the instance of the document
+     */
+    public Document removeLabel(String label) {
+        labels.remove(label);
+        return this;
+    }
+
+    /**
+     * Convert the document to JSON
+     *
+     * @param pretty include spacing and new lines if true
+     * @return JSON representation of document
+     */
+    public String toJson(boolean pretty) {
+        try {
+            if (pretty) {
+                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+            } else {
+                return OBJECT_MAPPER.writeValueAsString(this);
+            }
+        } catch (JsonProcessingException e) {
+            throw new KodexaException("Unable to convert Document to JSON", e);
+        }
+    }
+
     /**
      * Create a message pack representation of this document
      *
@@ -174,27 +195,5 @@ public class Document {
         contentNode.setType(type);
         contentNode.setContent(content);
         return contentNode;
-    }
-
-    public static Document fromText(String text) {
-        Document newDocument = new Document();
-        newDocument.setContentNode(newDocument.createContentNode("text", text));
-        newDocument.getMixins().add("text");
-        return newDocument;
-    }
-
-    @SuppressWarnings("unchecked")
-    public static Document fromUrl(String url) {
-        Document newDocument = new Document();
-        newDocument.getMetadata().put("connector", "url");
-        newDocument.getMetadata().put("connector_options", new HashMap<String, Object>());
-        ((Map) newDocument.getMetadata().get("connector_options")).put("url", url);
-
-        SourceMetadata sourceMetadata = new SourceMetadata();
-        sourceMetadata.setConnector("url");
-        sourceMetadata.setOriginalPath(url);
-
-        newDocument.setSource(sourceMetadata);
-        return newDocument;
     }
 }
