@@ -5,8 +5,8 @@ kodexa-java,com.kodexa.client.remote,CloudExecutionStep,169,0,30,0,4,0,26,0,11,0
 kodexa-java,com.kodexa.client.remote,Page,219,0,22,0,6,0,26,0,15,0
 kodexa-java,com.kodexa.client.remote,ProcessingStatus,34,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client.remote,RemotePipelineSession,4,0,0,0,2,0,1,0,1,0
-kodexa-java,com.kodexa.client.remote,ContentObject,260,0,46,0,6,0,38,0,15,0
 kodexa-java,com.kodexa.client.remote,RemotePipeline,184,0,2,0,39,0,13,0,12,0
+kodexa-java,com.kodexa.client.remote,ContentObject,260,0,46,0,6,0,38,0,15,0
 kodexa-java,com.kodexa.client.remote,KodexaPlatform,55,0,8,0,9,0,14,0,10,0
 kodexa-java,com.kodexa.client.remote,AbstractKodexaSession,717,0,28,0,119,0,23,0,9,0
 kodexa-java,com.kodexa.client.remote,CloudExceptionDetail,281,0,48,0,7,0,41,0,17,0
