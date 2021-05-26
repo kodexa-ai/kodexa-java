@@ -35,11 +35,11 @@ public class ContentNode {
      * @param separator
      * @return
      */
-    public String getAllContents(String separator) {
+    public String getAllContent(String separator) {
         List<String> allContents = new ArrayList<>();
         allContents.add(this.content);
         for (ContentNode child : this.children) {
-            allContents.add(child.getAllContents(separator));
+            allContents.add(child.getAllContent(separator));
         }
         return String.join(separator, allContents);
     }
