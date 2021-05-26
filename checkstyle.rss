@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2021 Kodexa</copyright>
     <item>
       <title>File: 57,
-             Errors: 691,
+             Errors: 695,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.AbstractFileSystemDocumentStore.java">com/kodexa/client/store/AbstractFileSystemDocumentStore.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  43
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.KodexaPlatform.java">com/kodexa/client/remote/KodexaPlatform.java</a>
                 </td>
                 <td>
@@ -74,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentFeatureDeserializer.java">com/kodexa/client/ContentFeatureDeserializer.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.AbstractFileSystemDocumentStore.java">com/kodexa/client/store/AbstractFileSystemDocumentStore.java</a>
                 </td>
                 <td>
                   0
@@ -83,21 +69,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  14
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.RemotePipelineSession.java">com/kodexa/client/remote/RemotePipelineSession.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
+                  43
                 </td>
               </tr>
                           <tr>
@@ -116,6 +88,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.RemotePipelineSession.java">com/kodexa/client/remote/RemotePipelineSession.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentFeatureDeserializer.java">com/kodexa/client/ContentFeatureDeserializer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentNode.java">com/kodexa/client/ContentNode.java</a>
                 </td>
                 <td>
@@ -125,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  11
                 </td>
               </tr>
                           <tr>
@@ -270,20 +270,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.DataStore.java">com/kodexa/client/store/DataStore.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudSessionType.java">com/kodexa/client/remote/CloudSessionType.java</a>
                 </td>
                 <td>
@@ -294,6 +280,20 @@ under the License.
                 </td>
                 <td>
                   3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.DataStore.java">com/kodexa/client/store/DataStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -452,20 +452,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  16
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</a>
                 </td>
                 <td>
@@ -476,6 +462,20 @@ under the License.
                 </td>
                 <td>
                   11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
                 </td>
               </tr>
                           <tr>
