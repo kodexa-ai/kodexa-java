@@ -34,6 +34,22 @@ public class Document {
         OBJECT_MAPPER_MSGPACK.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
+    public Document() {
+        persistenceLayer = new SqlitePersistenceLayer();
+    }
+
+    public Document(InputStream kddbInputStream) {
+        persistenceLayer = new SqlitePersistenceLayer(kddbInputStream);
+        persistenceLayer.loadDocument(this);
+    }
+
+    public Document(File kddbFile) {
+        persistenceLayer = new SqlitePersistenceLayer(kddbFile);
+        persistenceLayer.loadDocument(this);
+    }
+
+    private SqlitePersistenceLayer persistenceLayer;
+
     private Map<String, Object> metadata = new HashMap<>();
 
     @JsonProperty("source")
@@ -128,6 +144,11 @@ public class Document {
         return newDocument;
     }
 
+    public static Document fromKddb(InputStream kddbInput) {
+        Document document = new Document(kddbInput);
+        return document;
+    }
+
     /**
      * Add the given label to the document
      *
@@ -171,7 +192,7 @@ public class Document {
     /**
      * Create a message pack representation of this document
      *
-     * @return Byte arry of the document packed
+     * @return Byte array of the document packed
      */
     public byte[] toMsgPack() {
         try {
