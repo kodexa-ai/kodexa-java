@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.kodexa.client"},{"l":"com.kodexa.client.connectors"},{"l":"com.kodexa.client.pipeline"},{"l":"com.kodexa.client.registry"},{"l":"com.kodexa.client.remote"},{"l":"com.kodexa.client.sink"},{"l":"com.kodexa.client.steps"},{"l":"com.kodexa.client.store"}]
