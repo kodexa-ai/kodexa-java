@@ -1,5 +1,6 @@
 package com.kodexa.client;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +49,7 @@ public class Document {
         persistenceLayer.loadDocument(this);
     }
 
+    @JsonIgnore
     private SqlitePersistenceLayer persistenceLayer;
 
     private Map<String, Object> metadata = new HashMap<>();
