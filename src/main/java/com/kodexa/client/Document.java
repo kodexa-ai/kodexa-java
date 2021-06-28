@@ -152,16 +152,16 @@ public class Document {
 
     public static Document fromInputStream(InputStream inputStream, String version) {
         if ("4.0.0".equals(version)) {
-            return Document.fromKddb(inputStream);
+            return new Document(inputStream);
         } else {
             return Document.fromMsgPack(inputStream);
         }
     }
 
-    public static Document fromKddb(InputStream kddbInput) {
-        Document document = new Document(kddbInput);
-        return document;
+    public byte[] toBytes() {
+        return persistenceLayer.toBytes();
     }
+
 
     /**
      * Add the given label to the document
