@@ -10,7 +10,6 @@ public class PersistenceLayerTest {
     public void loadKddb() {
         InputStream kddbInput = getClass().getClassLoader().getResourceAsStream("fax2.kddb");
         Document document = Document.fromKddb(kddbInput);
-
         assert document.getContentNode().getChildren().size() == 1;
     }
 }
