@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SqlitePersistenceLayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client</a> &gt; <span class="el_source">SqlitePersistenceLayer.java</span></div><h1>SqlitePersistenceLayer.java</h1><pre class="source lang-java linenums">package com.kodexa.client;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
+import org.msgpack.jackson.dataformat.MessagePackFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -10,87 +14,154 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * A Persistence Layer that works with the document to allow it to be interacted with
  */
 public class SqlitePersistenceLayer {
 
+    private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
+
+    Map&lt;Integer, String&gt; nodeTypes;
+
+    Map&lt;Integer, String&gt; featureTypeNames;
+
+    static {
+<span class="fc" id="L35">        OBJECT_MAPPER_MSGPACK = new ObjectMapper(new MessagePackFactory());</span>
+<span class="fc" id="L36">        OBJECT_MAPPER_MSGPACK.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span>
+<span class="fc" id="L37">    }</span>
+
     private String dbPath;
     private Jdbi jdbi;
 
-<span class="fc" id="L24">    public SqlitePersistenceLayer() {</span>
-<span class="fc" id="L25">        this.dbPath = &quot;:memory:&quot;;</span>
-<span class="fc" id="L26">        this.initializeLayer();</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L42">    public SqlitePersistenceLayer() {</span>
+<span class="fc" id="L43">        this.dbPath = &quot;:memory:&quot;;</span>
+<span class="fc" id="L44">        this.initializeLayer();</span>
+<span class="fc" id="L45">    }</span>
 
-<span class="fc" id="L29">    public SqlitePersistenceLayer(InputStream kddbInputStream) {</span>
+<span class="fc" id="L47">    public SqlitePersistenceLayer(InputStream kddbInputStream) {</span>
         final File tempFile;
         try {
-<span class="fc" id="L32">            tempFile = File.createTempFile(&quot;kodexa&quot;, &quot;kddb&quot;);</span>
-<span class="fc" id="L33">            tempFile.deleteOnExit();</span>
-<span class="fc" id="L34">            try (FileOutputStream out = new FileOutputStream(tempFile)) {</span>
-<span class="fc" id="L35">                IOUtils.copy(kddbInputStream, out);</span>
+<span class="fc" id="L50">            tempFile = File.createTempFile(&quot;kodexa&quot;, &quot;kddb&quot;);</span>
+<span class="fc" id="L51">            tempFile.deleteOnExit();</span>
+<span class="fc" id="L52">            try (FileOutputStream out = new FileOutputStream(tempFile)) {</span>
+<span class="fc" id="L53">                IOUtils.copy(kddbInputStream, out);</span>
             }
-<span class="fc" id="L37">            this.dbPath = tempFile.getAbsolutePath();</span>
+<span class="fc" id="L55">            this.dbPath = tempFile.getAbsolutePath();</span>
 
-<span class="fc" id="L39">            this.initializeLayer();</span>
-<span class="nc" id="L40">        } catch (IOException e) {</span>
-<span class="nc" id="L41">            throw new KodexaException(&quot;Unable to create persistence layer for KDDB object&quot;, e);</span>
-<span class="fc" id="L42">        }</span>
-<span class="fc" id="L43">    }</span>
+<span class="fc" id="L57">            this.initializeLayer();</span>
+<span class="nc" id="L58">        } catch (IOException e) {</span>
+<span class="nc" id="L59">            throw new KodexaException(&quot;Unable to create persistence layer for KDDB object&quot;, e);</span>
+<span class="fc" id="L60">        }</span>
+<span class="fc" id="L61">    }</span>
 
-<span class="nc" id="L45">    public SqlitePersistenceLayer(File kddbFile) {</span>
-<span class="nc" id="L46">        this.dbPath = kddbFile.getAbsolutePath();</span>
-<span class="nc" id="L47">        this.initializeLayer();</span>
-<span class="nc" id="L48">    }</span>
+<span class="nc" id="L63">    public SqlitePersistenceLayer(File kddbFile) {</span>
+<span class="nc" id="L64">        this.dbPath = kddbFile.getAbsolutePath();</span>
+<span class="nc" id="L65">        this.initializeLayer();</span>
+<span class="nc" id="L66">    }</span>
 
     private void initializeLayer() {
         try {
-<span class="fc" id="L52">            Class.forName(&quot;org.sqlite.JDBC&quot;);</span>
-<span class="fc" id="L53">            jdbi = Jdbi.create(&quot;jdbc:sqlite:&quot; + dbPath);</span>
-<span class="nc" id="L54">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L55">            throw new KodexaException(&quot;Unable to create persistence layer for KDDB object&quot;, e);</span>
-<span class="fc" id="L56">        }</span>
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L70">            Class.forName(&quot;org.sqlite.JDBC&quot;);</span>
+<span class="fc" id="L71">            jdbi = Jdbi.create(&quot;jdbc:sqlite:&quot; + dbPath);</span>
+<span class="nc" id="L72">        } catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L73">            throw new KodexaException(&quot;Unable to create persistence layer for KDDB object&quot;, e);</span>
+<span class="fc" id="L74">        }</span>
+<span class="fc" id="L75">    }</span>
 
     protected void loadDocument(Document document) {
         // This method will update the document to match the contents
         // of the KDDB database
-<span class="fc" id="L62">        jdbi.withHandle(handle -&gt; {</span>
-<span class="fc" id="L63">            List&lt;Map&lt;String, Object&gt;&gt; contentNodes =</span>
-<span class="fc" id="L64">                    handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is null&quot;)</span>
-<span class="fc" id="L65">                            .mapToMap()</span>
-<span class="fc" id="L66">                            .list();</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">            for (Map&lt;String, Object&gt; contentNode : contentNodes) {</span>
-<span class="fc" id="L68">                document.setContentNode(buildNode(contentNode, handle));</span>
-<span class="fc" id="L69">            }</span>
+<span class="fc" id="L80">        jdbi.withHandle(handle -&gt; {</span>
 
-<span class="fc" id="L71">            return contentNodes;</span>
+            // We get all the metadata back
+            try {
+<span class="fc" id="L84">                byte[] metadataPack = (byte[]) handle.createQuery(&quot;SELECT * FROM metadata&quot;)</span>
+<span class="fc" id="L85">                        .mapToMap()</span>
+<span class="fc" id="L86">                        .first().get(&quot;metadata&quot;);</span>
+
+<span class="fc" id="L88">                Document baseDocument = OBJECT_MAPPER_MSGPACK.readValue(metadataPack, Document.class);</span>
+<span class="fc" id="L89">                document.setSource(baseDocument.getSource());</span>
+<span class="fc" id="L90">                document.setClasses(baseDocument.getClasses());</span>
+<span class="fc" id="L91">                document.setLabels(baseDocument.getLabels());</span>
+<span class="fc" id="L92">                document.setMetadata(baseDocument.getMetadata());</span>
+<span class="fc" id="L93">                document.setUuid(baseDocument.getUuid());</span>
+
+
+                // Lets get all the node types and feature type/name combinations
+<span class="fc" id="L97">                nodeTypes =</span>
+<span class="fc" id="L98">                        handle.createQuery(&quot;SELECT id, name FROM n_type&quot;)</span>
+<span class="fc" id="L99">                                .mapToMap()</span>
+<span class="fc" id="L100">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get(&quot;id&quot;))), x -&gt; String.valueOf(x.get(&quot;name&quot;))));</span>
+
+<span class="fc" id="L102">                featureTypeNames =</span>
+<span class="fc" id="L103">                        handle.createQuery(&quot;SELECT id, name FROM f_type&quot;)</span>
+<span class="fc" id="L104">                                .mapToMap()</span>
+<span class="fc" id="L105">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get(&quot;id&quot;))), x -&gt; String.valueOf(x.get(&quot;name&quot;))));</span>
+<span class="nc" id="L106">            } catch (IOException e) {</span>
+<span class="nc" id="L107">                throw new KodexaException(&quot;Unable to unpack metadata&quot;, e);</span>
+<span class="fc" id="L108">            }</span>
+
+<span class="fc" id="L110">            List&lt;Map&lt;String, Object&gt;&gt; contentNodes =</span>
+<span class="fc" id="L111">                    handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is null&quot;)</span>
+<span class="fc" id="L112">                            .mapToMap()</span>
+<span class="fc" id="L113">                            .list();</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">            for (Map&lt;String, Object&gt; contentNode : contentNodes) {</span>
+<span class="fc" id="L115">                document.setContentNode(buildNode(contentNode, handle));</span>
+<span class="fc" id="L116">            }</span>
+
+<span class="fc" id="L118">            return contentNodes;</span>
         });
 
-<span class="fc" id="L74">    }</span>
+<span class="fc" id="L121">    }</span>
 
     private ContentNode buildNode(Map&lt;String, Object&gt; contentNodeValues, Handle handle) {
-<span class="fc" id="L77">        ContentNode contentNode = new ContentNode();</span>
-<span class="fc" id="L78">        contentNode.setUuid(String.valueOf(contentNodeValues.get(&quot;id&quot;)));</span>
+<span class="fc" id="L124">        ContentNode contentNode = new ContentNode();</span>
+<span class="fc" id="L125">        contentNode.setUuid(String.valueOf(contentNodeValues.get(&quot;id&quot;)));</span>
 
-<span class="fc" id="L80">        List&lt;Map&lt;String, Object&gt;&gt; childNodes =</span>
-<span class="fc" id="L81">                handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
-<span class="fc" id="L82">                        .mapToMap()</span>
-<span class="fc" id="L83">                        .list();</span>
+<span class="fc" id="L127">        List&lt;Map&lt;String, Object&gt;&gt; features =</span>
+<span class="fc" id="L128">                handle.createQuery(&quot;SELECT id, f_type, fvalue_id FROM f where cn_id is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
+<span class="fc" id="L129">                        .mapToMap()</span>
+<span class="fc" id="L130">                        .list();</span>
 
-<span class="fc bfc" id="L85" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; childNode : childNodes) {</span>
-<span class="fc" id="L86">            contentNode.getChildren().add(buildNode(childNode, handle));</span>
-<span class="fc" id="L87">        }</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; feature : features) {</span>
+<span class="fc" id="L133">            Map&lt;String, Object&gt; featureValue =</span>
+<span class="fc" id="L134">                    handle.createQuery(&quot;SELECT binary_value, single FROM f_value where id is :fvalue_id&quot;).bind(&quot;fvalue_id&quot;, feature.get(&quot;fvalue_id&quot;))</span>
+<span class="fc" id="L135">                            .mapToMap()</span>
+<span class="fc" id="L136">                            .first();</span>
+<span class="fc" id="L137">            ContentFeature contentFeature = new ContentFeature();</span>
+<span class="fc" id="L138">            contentFeature.setFeatureType(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[0]);</span>
+<span class="fc" id="L139">            contentFeature.setName(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[1]);</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">            contentFeature.setSingle(Integer.valueOf(1) == featureValue.get(&quot;single&quot;));</span>
+<span class="fc" id="L141">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</span>
+<span class="fc" id="L142">                    = new TypeReference&lt;&gt;() {</span>
+            };
+            try {
+<span class="fc" id="L145">                contentFeature.setValue(OBJECT_MAPPER_MSGPACK.readValue((byte[]) featureValue.get(&quot;binary_value&quot;), typeRef));</span>
+<span class="nc" id="L146">            } catch (IOException e) {</span>
+<span class="nc" id="L147">                throw new KodexaException(&quot;Unable to unpack value for feature&quot;, e);</span>
+<span class="fc" id="L148">            }</span>
+<span class="fc" id="L149">        }</span>
 
-<span class="fc" id="L89">        return contentNode;</span>
+<span class="fc" id="L151">        List&lt;Map&lt;String, Object&gt;&gt; childNodes =</span>
+<span class="fc" id="L152">                handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
+<span class="fc" id="L153">                        .mapToMap()</span>
+<span class="fc" id="L154">                        .list();</span>
+
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; childNode : childNodes) {</span>
+<span class="fc" id="L157">            contentNode.getChildren().add(buildNode(childNode, handle));</span>
+<span class="fc" id="L158">        }</span>
+
+<span class="fc" id="L160">        return contentNode;</span>
     }
 
     public byte[] toBytes() throws IOException {
-<span class="nc" id="L93">        return Files.readAllBytes(Path.of(dbPath));</span>
+<span class="nc" id="L164">        return Files.readAllBytes(Path.of(dbPath));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
