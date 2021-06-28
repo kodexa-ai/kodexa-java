@@ -26,6 +26,7 @@ public class Document {
 
     private final static ObjectMapper OBJECT_MAPPER;
     private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
+    private static final String CURRENT_VERSION = "4.0.0";
 
     static {
         OBJECT_MAPPER = new ObjectMapper();
@@ -42,6 +43,7 @@ public class Document {
     public Document(InputStream kddbInputStream) {
         persistenceLayer = new SqlitePersistenceLayer(kddbInputStream);
         persistenceLayer.loadDocument(this);
+        this.setVersion(CURRENT_VERSION);
     }
 
     public Document(File kddbFile) {
@@ -158,7 +160,7 @@ public class Document {
         }
     }
 
-    public byte[] toBytes() {
+    public byte[] toBytes() throws IOException {
         return persistenceLayer.toBytes();
     }
 

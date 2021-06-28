@@ -90,8 +90,6 @@ public class SqlitePersistenceLayer {
     }
 
     public byte[] toBytes() throws IOException {
-
         return Files.readAllBytes(Path.of(dbPath));
-
     }
 }
