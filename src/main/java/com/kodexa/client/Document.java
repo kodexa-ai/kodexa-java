@@ -74,6 +74,7 @@ public class Document {
      * @param json String representation of the document JSON
      * @return De-serialized Document
      */
+    @Deprecated
     public static Document fromJson(String json) {
         try {
             return OBJECT_MAPPER.readValue(json, Document.class);
@@ -88,6 +89,7 @@ public class Document {
      * @param bytes the bytes for the message packed document
      * @return An instance of a Document
      */
+    @Deprecated
     public static Document fromMsgPack(byte[] bytes) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);
@@ -102,6 +104,7 @@ public class Document {
      * @param is Input stream containing the document
      * @return An instance of a Document
      */
+    @Deprecated
     public static Document fromMsgPack(InputStream is) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(is, Document.class);
@@ -116,6 +119,7 @@ public class Document {
      * @param file file containing the document
      * @return An instance of a Document
      */
+    @Deprecated
     public static Document fromMsgPack(File file) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);
@@ -144,6 +148,14 @@ public class Document {
 
         newDocument.setSource(sourceMetadata);
         return newDocument;
+    }
+
+    public static Document fromInputStream(InputStream inputStream, String version) {
+        if ("4.0.0".equals(version)) {
+            return Document.fromKddb(inputStream);
+        } else {
+            return Document.fromMsgPack(inputStream);
+        }
     }
 
     public static Document fromKddb(InputStream kddbInput) {
@@ -179,6 +191,7 @@ public class Document {
      * @param pretty include spacing and new lines if true
      * @return JSON representation of document
      */
+    @Deprecated
     public String toJson(boolean pretty) {
         try {
             if (pretty) {
@@ -196,6 +209,7 @@ public class Document {
      *
      * @return Byte array of the document packed
      */
+    @Deprecated
     public byte[] toMsgPack() {
         try {
             return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);
@@ -209,6 +223,7 @@ public class Document {
      *
      * @return String containing the JSON representation
      */
+    @Deprecated
     public String toJson() {
         return toJson(false);
     }
