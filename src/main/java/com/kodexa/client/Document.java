@@ -152,12 +152,8 @@ public class Document {
         return newDocument;
     }
 
-    public static Document fromInputStream(InputStream inputStream, String version) {
-        if ("4.0.0".equals(version)) {
-            return new Document(inputStream);
-        } else {
-            return Document.fromMsgPack(inputStream);
-        }
+    public static Document fromInputStream(InputStream inputStream) {
+        return new Document(inputStream);
     }
 
     public byte[] toBytes() {
