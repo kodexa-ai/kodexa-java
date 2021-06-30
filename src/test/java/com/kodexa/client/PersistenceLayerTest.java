@@ -2,6 +2,7 @@ package com.kodexa.client;
 
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 public class PersistenceLayerTest {
@@ -16,7 +17,9 @@ public class PersistenceLayerTest {
     @Test
     public void newDocument() {
         Document document = new Document();
-        document.toBytes();
+        byte[] bytes = document.toBytes();
         document.close();
+
+        Document doc2 = new Document(new ByteArrayInputStream(bytes));
     }
 }

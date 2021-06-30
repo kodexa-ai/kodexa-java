@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
+import org.sqlite.SQLiteConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -78,7 +79,8 @@ public class SqlitePersistenceLayer {
             handle.execute("CREATE INDEX cn_perf ON cn(nt);");
             handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id);");
             handle.execute("CREATE INDEX f_value_hash ON f_value(hash);");
-            return null;
+
+            return handle;
         });
     }
 
@@ -118,7 +120,9 @@ public class SqlitePersistenceLayer {
     private void initializeLayer() {
         try {
             Class.forName("org.sqlite.JDBC");
-            jdbi = Jdbi.create("jdbc:sqlite:" + dbPath);
+            SQLiteConfig config = new SQLiteConfig();
+            config.setJournalMode(SQLiteConfig.JournalMode.OFF);
+            jdbi = Jdbi.create("jdbc:sqlite:" + dbPath, config.toProperties());
         } catch (ClassNotFoundException e) {
             throw new KodexaException("Unable to create persistence layer for KDDB object", e);
         }
@@ -223,7 +227,9 @@ public class SqlitePersistenceLayer {
     private void flushMetadata() {
         jdbi.withHandle(handle -> {
             try {
-                handle.execute("update metadata set metadata=? where id=1", OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document));
+                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);
+                handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +
+                        "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);
             } catch (JsonProcessingException e) {
                 throw new KodexaException("Unable to flush metadata to KDDB", e);
             }
