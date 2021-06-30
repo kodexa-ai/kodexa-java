@@ -38,10 +38,29 @@ public class SqlitePersistenceLayer {
 
     private String dbPath;
     private Jdbi jdbi;
+    private boolean tempFile = false;
 
     public SqlitePersistenceLayer() {
-        this.dbPath = ":memory:";
-        this.initializeLayer();
+        File file = null;
+        try {
+            file = File.createTempFile("kdx", "kddb");
+            this.dbPath = file.getAbsolutePath();
+            this.tempFile = true;
+            file.deleteOnExit();
+            this.initializeLayer();
+        } catch (IOException e) {
+            throw new KodexaException("Unable to initialize the temp file for KDDB", e);
+        }
+    }
+
+    public void close() {
+        if (tempFile) {
+            try {
+                Files.delete(Path.of(this.dbPath));
+            } catch (IOException e) {
+                throw new KodexaException("Unable to delete temp file", e);
+            }
+        }
     }
 
     public SqlitePersistenceLayer(InputStream kddbInputStream) {
@@ -130,10 +149,12 @@ public class SqlitePersistenceLayer {
                         .list();
 
         for (Map<String, Object> feature : features) {
+
             Map<String, Object> featureValue =
                     handle.createQuery("SELECT binary_value, single FROM f_value where id is :fvalue_id").bind("fvalue_id", feature.get("fvalue_id"))
                             .mapToMap()
                             .first();
+
             ContentFeature contentFeature = new ContentFeature();
             contentFeature.setFeatureType(featureTypeNames.get(feature.get("f_type")).split(":")[0]);
             contentFeature.setName(featureTypeNames.get(feature.get("f_type")).split(":")[1]);
@@ -141,6 +162,7 @@ public class SqlitePersistenceLayer {
             TypeReference<ArrayList<Object>> typeRef
                     = new TypeReference<>() {
             };
+
             try {
                 contentFeature.setValue(OBJECT_MAPPER_MSGPACK.readValue((byte[]) featureValue.get("binary_value"), typeRef));
             } catch (IOException e) {
@@ -160,7 +182,11 @@ public class SqlitePersistenceLayer {
         return contentNode;
     }
 
-    public byte[] toBytes() throws IOException {
-        return Files.readAllBytes(Path.of(dbPath));
+    public byte[] toBytes() {
+        try {
+            return Files.readAllBytes(Path.of(dbPath));
+        } catch (IOException e) {
+            throw new KodexaException("Unable to read KDDB file from " + dbPath);
+        }
     }
 }

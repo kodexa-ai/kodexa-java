@@ -160,10 +160,13 @@ public class Document {
         }
     }
 
-    public byte[] toBytes() throws IOException {
+    public byte[] toBytes() {
         return persistenceLayer.toBytes();
     }
 
+    public void close() {
+        persistenceLayer.close();
+    }
 
     /**
      * Add the given label to the document

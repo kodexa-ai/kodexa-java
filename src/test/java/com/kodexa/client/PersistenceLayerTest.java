@@ -12,4 +12,11 @@ public class PersistenceLayerTest {
         Document document = Document.fromInputStream(kddbInput, "4.0.0");
         assert document.getContentNode().getChildren().size() == 1;
     }
+
+    @Test
+    public void newDocument() {
+        Document document = new Document();
+        document.toBytes();
+        document.close();
+    }
 }
