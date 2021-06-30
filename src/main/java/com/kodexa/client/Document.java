@@ -37,18 +37,18 @@ public class Document {
     }
 
     public Document() {
-        persistenceLayer = new SqlitePersistenceLayer();
+        persistenceLayer = new SqlitePersistenceLayer(this);
     }
 
     public Document(InputStream kddbInputStream) {
-        persistenceLayer = new SqlitePersistenceLayer(kddbInputStream);
-        persistenceLayer.loadDocument(this);
+        persistenceLayer = new SqlitePersistenceLayer(kddbInputStream, this);
+        persistenceLayer.loadDocument();
         this.setVersion(CURRENT_VERSION);
     }
 
     public Document(File kddbFile) {
-        persistenceLayer = new SqlitePersistenceLayer(kddbFile);
-        persistenceLayer.loadDocument(this);
+        persistenceLayer = new SqlitePersistenceLayer(kddbFile, this);
+        persistenceLayer.loadDocument();
     }
 
     @JsonIgnore

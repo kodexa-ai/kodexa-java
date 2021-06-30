@@ -1,6 +1,7 @@
 package com.kodexa.client;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 public class SqlitePersistenceLayer {
 
     private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
+    private final Document document;
 
     Map<Integer, String> nodeTypes;
 
@@ -40,17 +42,44 @@ public class SqlitePersistenceLayer {
     private Jdbi jdbi;
     private boolean tempFile = false;
 
-    public SqlitePersistenceLayer() {
+    public SqlitePersistenceLayer(Document document) {
         File file = null;
         try {
+            this.document = document;
             file = File.createTempFile("kdx", "kddb");
             this.dbPath = file.getAbsolutePath();
             this.tempFile = true;
             file.deleteOnExit();
             this.initializeLayer();
+            this.initializeDb();
         } catch (IOException e) {
             throw new KodexaException("Unable to initialize the temp file for KDDB", e);
         }
+    }
+
+    private void initializeDb() {
+
+        jdbi.withHandle(handle -> {
+            handle.execute("CREATE TABLE version (id integer primary key, version text)");
+            handle.execute("CREATE TABLE metadata (id integer primary key, metadata text)");
+            handle.execute("CREATE TABLE cn (id integer primary key, nt INTEGER, pid INTEGER, idx INTEGER)");
+            handle.execute(
+                    "CREATE TABLE cnp (id integer primary key, cn_id INTEGER, pos integer, content text, content_idx integer)");
+
+            handle.execute("CREATE TABLE n_type (id integer primary key, name text)");
+            handle.execute("CREATE TABLE f_type (id integer primary key, name text)");
+            handle.execute(
+                    "CREATE TABLE f_value (id integer primary key, hash integer, binary_value blob, single integer)");
+            handle.execute(
+                    "CREATE TABLE f (id integer primary key, cn_id integer, f_type INTEGER, fvalue_id integer)");
+
+            handle.execute("CREATE UNIQUE INDEX n_type_uk ON n_type(name);");
+            handle.execute("CREATE UNIQUE INDEX f_type_uk ON f_type(name);");
+            handle.execute("CREATE INDEX cn_perf ON cn(nt);");
+            handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id);");
+            handle.execute("CREATE INDEX f_value_hash ON f_value(hash);");
+            return null;
+        });
     }
 
     public void close() {
@@ -63,9 +92,10 @@ public class SqlitePersistenceLayer {
         }
     }
 
-    public SqlitePersistenceLayer(InputStream kddbInputStream) {
+    public SqlitePersistenceLayer(InputStream kddbInputStream, Document document) {
         final File tempFile;
         try {
+            this.document = document;
             tempFile = File.createTempFile("kodexa", "kddb");
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
@@ -79,8 +109,9 @@ public class SqlitePersistenceLayer {
         }
     }
 
-    public SqlitePersistenceLayer(File kddbFile) {
+    public SqlitePersistenceLayer(File kddbFile, Document document) {
         this.dbPath = kddbFile.getAbsolutePath();
+        this.document = document;
         this.initializeLayer();
     }
 
@@ -93,7 +124,7 @@ public class SqlitePersistenceLayer {
         }
     }
 
-    protected void loadDocument(Document document) {
+    protected void loadDocument() {
         // This method will update the document to match the contents
         // of the KDDB database
         jdbi.withHandle(handle -> {
@@ -110,7 +141,6 @@ public class SqlitePersistenceLayer {
                 document.setLabels(baseDocument.getLabels());
                 document.setMetadata(baseDocument.getMetadata());
                 document.setUuid(baseDocument.getUuid());
-
 
                 // Lets get all the node types and feature type/name combinations
                 nodeTypes =
@@ -136,7 +166,6 @@ public class SqlitePersistenceLayer {
 
             return contentNodes;
         });
-
     }
 
     private ContentNode buildNode(Map<String, Object> contentNodeValues, Handle handle) {
@@ -184,9 +213,22 @@ public class SqlitePersistenceLayer {
 
     public byte[] toBytes() {
         try {
+            flushMetadata();
             return Files.readAllBytes(Path.of(dbPath));
         } catch (IOException e) {
             throw new KodexaException("Unable to read KDDB file from " + dbPath);
         }
+    }
+
+    private void flushMetadata() {
+        jdbi.withHandle(handle -> {
+            try {
+                handle.execute("update metadata set metadata=? where id=1", OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document));
+            } catch (JsonProcessingException e) {
+                throw new KodexaException("Unable to flush metadata to KDDB", e);
+            }
+            return null;
+        });
+
     }
 }
