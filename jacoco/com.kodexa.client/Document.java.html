@@ -37,18 +37,18 @@ public class Document {
 <span class="fc" id="L37">    }</span>
 
 <span class="fc" id="L39">    public Document() {</span>
-<span class="fc" id="L40">        persistenceLayer = new SqlitePersistenceLayer();</span>
+<span class="fc" id="L40">        persistenceLayer = new SqlitePersistenceLayer(this);</span>
 <span class="fc" id="L41">    }</span>
 
 <span class="fc" id="L43">    public Document(InputStream kddbInputStream) {</span>
-<span class="fc" id="L44">        persistenceLayer = new SqlitePersistenceLayer(kddbInputStream);</span>
-<span class="fc" id="L45">        persistenceLayer.loadDocument(this);</span>
+<span class="fc" id="L44">        persistenceLayer = new SqlitePersistenceLayer(kddbInputStream, this);</span>
+<span class="fc" id="L45">        persistenceLayer.loadDocument();</span>
 <span class="fc" id="L46">        this.setVersion(CURRENT_VERSION);</span>
 <span class="fc" id="L47">    }</span>
 
 <span class="nc" id="L49">    public Document(File kddbFile) {</span>
-<span class="nc" id="L50">        persistenceLayer = new SqlitePersistenceLayer(kddbFile);</span>
-<span class="nc" id="L51">        persistenceLayer.loadDocument(this);</span>
+<span class="nc" id="L50">        persistenceLayer = new SqlitePersistenceLayer(kddbFile, this);</span>
+<span class="nc" id="L51">        persistenceLayer.loadDocument();</span>
 <span class="nc" id="L52">    }</span>
 
     @JsonIgnore
