@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2021 Kodexa</copyright>
     <item>
       <title>File: 58,
-             Errors: 748,
+             Errors: 756,
              Warnings: 0,
              Infos: 0
       </title>
@@ -74,20 +74,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentFeatureDeserializer.java">com/kodexa/client/ContentFeatureDeserializer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  14
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudStore.java">com/kodexa/client/remote/CloudStore.java</a>
                 </td>
                 <td>
@@ -112,6 +98,20 @@ under the License.
                 </td>
                 <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentFeatureDeserializer.java">com/kodexa/client/ContentFeatureDeserializer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
                 </td>
               </tr>
                           <tr>
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentClassification.java">com/kodexa/client/ContentClassification.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ProcessingStatus.java">com/kodexa/client/remote/ProcessingStatus.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ProcessingStatus.java">com/kodexa/client/remote/ProcessingStatus.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentClassification.java">com/kodexa/client/ContentClassification.java</a>
                 </td>
                 <td>
                   0
@@ -452,20 +452,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  16
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</a>
                 </td>
                 <td>
@@ -476,6 +462,20 @@ under the License.
                 </td>
                 <td>
                   11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
                 </td>
               </tr>
                           <tr>
@@ -564,20 +564,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.MsgPackDocumentStore.java">com/kodexa/client/store/MsgPackDocumentStore.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  13
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.Sink.java">com/kodexa/client/sink/Sink.java</a>
                 </td>
                 <td>
@@ -588,6 +574,20 @@ under the License.
                 </td>
                 <td>
                   3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.MsgPackDocumentStore.java">com/kodexa/client/store/MsgPackDocumentStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
                 </td>
               </tr>
                           <tr>
@@ -685,7 +685,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  40
+                  46
                 </td>
               </tr>
                           <tr>
@@ -769,7 +769,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  66
+                  68
                 </td>
               </tr>
                           <tr>

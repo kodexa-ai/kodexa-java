@@ -160,10 +160,13 @@ public class Document {
         }
     }
 
-    public byte[] toBytes() throws IOException {
-<span class="nc" id="L164">        return persistenceLayer.toBytes();</span>
+    public byte[] toBytes() {
+<span class="fc" id="L164">        return persistenceLayer.toBytes();</span>
     }
 
+    public void close() {
+<span class="fc" id="L168">        persistenceLayer.close();</span>
+<span class="fc" id="L169">    }</span>
 
     /**
      * Add the given label to the document
@@ -172,8 +175,8 @@ public class Document {
      * @return the instance of the document
      */
     public Document addLabel(String label) {
-<span class="nc" id="L175">        labels.add(label);</span>
-<span class="nc" id="L176">        return this;</span>
+<span class="nc" id="L178">        labels.add(label);</span>
+<span class="nc" id="L179">        return this;</span>
     }
 
     /**
@@ -183,8 +186,8 @@ public class Document {
      * @return the instance of the document
      */
     public Document removeLabel(String label) {
-<span class="nc" id="L186">        labels.remove(label);</span>
-<span class="nc" id="L187">        return this;</span>
+<span class="nc" id="L189">        labels.remove(label);</span>
+<span class="nc" id="L190">        return this;</span>
     }
 
     /**
@@ -196,13 +199,13 @@ public class Document {
     @Deprecated
     public String toJson(boolean pretty) {
         try {
-<span class="nc bnc" id="L199" title="All 2 branches missed.">            if (pretty) {</span>
-<span class="nc" id="L200">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">            if (pretty) {</span>
+<span class="nc" id="L203">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
             } else {
-<span class="nc" id="L202">                return OBJECT_MAPPER.writeValueAsString(this);</span>
+<span class="nc" id="L205">                return OBJECT_MAPPER.writeValueAsString(this);</span>
             }
-<span class="nc" id="L204">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L205">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
+<span class="nc" id="L207">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L208">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
         }
     }
 
@@ -214,9 +217,9 @@ public class Document {
     @Deprecated
     public byte[] toMsgPack() {
         try {
-<span class="fc" id="L217">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
-<span class="nc" id="L218">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L219">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
+<span class="fc" id="L220">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
+<span class="nc" id="L221">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L222">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
         }
     }
 
@@ -227,14 +230,14 @@ public class Document {
      */
     @Deprecated
     public String toJson() {
-<span class="nc" id="L230">        return toJson(false);</span>
+<span class="nc" id="L233">        return toJson(false);</span>
     }
 
     public ContentNode createContentNode(String type, String content) {
-<span class="fc" id="L234">        ContentNode contentNode = new ContentNode();</span>
-<span class="fc" id="L235">        contentNode.setType(type);</span>
-<span class="fc" id="L236">        contentNode.setContent(content);</span>
-<span class="fc" id="L237">        return contentNode;</span>
+<span class="fc" id="L237">        ContentNode contentNode = new ContentNode();</span>
+<span class="fc" id="L238">        contentNode.setType(type);</span>
+<span class="fc" id="L239">        contentNode.setContent(content);</span>
+<span class="fc" id="L240">        return contentNode;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
