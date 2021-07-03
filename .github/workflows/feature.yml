@@ -31,3 +31,9 @@ jobs:
           export CURRENT_VERSION=`cat VERSION`
           mvn versions:set -DnewVersion=$CURRENT_VERSION
           mvn install
+      - name: Deploy GitHub Page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site
+          keep_files: true
