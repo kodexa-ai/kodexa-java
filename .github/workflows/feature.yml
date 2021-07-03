@@ -30,7 +30,9 @@ jobs:
         run: |
           export CURRENT_VERSION=`cat VERSION`
           mvn versions:set -DnewVersion=$CURRENT_VERSION
-          mvn install
+          mvn install deploy
+          mkdir -p ./target/site/repo/com
+          cp -r ~/.m2/repository/com/kodexa ./target/site/repo/com
       - name: Deploy GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
