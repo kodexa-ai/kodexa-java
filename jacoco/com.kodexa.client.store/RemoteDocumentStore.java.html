@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RemoteDocumentStore.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kodexa-java</a> &gt; <a href="index.source.html" class="el_package">com.kodexa.client.store</a> &gt; <span class="el_source">RemoteDocumentStore.java</span></div><h1>RemoteDocumentStore.java</h1><pre class="source lang-java linenums">package com.kodexa.client.store;
+
+import com.kodexa.client.KodexaException;
+import com.kodexa.client.registry.SourceRegistry;
+import com.kodexa.client.remote.AbstractKodexaConnection;
+import com.kodexa.client.remote.CloudExecution;
+import com.kodexa.client.remote.KodexaPlatform;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
+
+<span class="nc" id="L29">@Slf4j</span>
+public class RemoteDocumentStore extends AbstractKodexaConnection {
+
+    private final String ref;
+
+<span class="nc" id="L34">    public RemoteDocumentStore(String ref) {</span>
+<span class="nc" id="L35">        this.ref = ref;</span>
+<span class="nc" id="L36">    }</span>
+
+<span class="nc" id="L38">    @SneakyThrows</span>
+    public void putNative(String path, InputStream content) throws FileAlreadyExistsException {
+<span class="nc" id="L40">        try (CloseableHttpClient client = HttpClientBuilder.create()</span>
+<span class="nc" id="L41">                .setDefaultRequestConfig(getRequestConfig())</span>
+<span class="nc" id="L42">                .build()) {</span>
+
+<span class="nc" id="L44">            URI uri = URI.create(KodexaPlatform.getUrl() + &quot;/api/stores/&quot; + this.ref.replace(&quot;:&quot;, &quot;/&quot;) + &quot;/fs/&quot;);</span>
+<span class="nc" id="L45">            URI fullUri = new URI(uri.getScheme(), uri.getHost(), uri.getPath() + path, null);</span>
+<span class="nc" id="L46">            log.info(&quot;Connecting to [&quot; + fullUri + &quot;]&quot;);</span>
+<span class="nc" id="L47">            HttpPost post = new HttpPost(fullUri);</span>
+<span class="nc" id="L48">            post.addHeader(&quot;x-access-token&quot;, KodexaPlatform.getAccessToken());</span>
+<span class="nc" id="L49">            MultipartEntityBuilder builder = MultipartEntityBuilder.create();</span>
+<span class="nc" id="L50">            ByteArrayBody fileBody = new ByteArrayBody(IOUtils.toByteArray(content), path);</span>
+<span class="nc" id="L51">            builder.addPart(&quot;file&quot;, fileBody);</span>
+<span class="nc" id="L52">            post.setEntity(builder.build());</span>
+<span class="nc" id="L53">            HttpResponse response = client.execute(post);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            if (response.getStatusLine().getStatusCode() != 200) {</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">                if (response.getStatusLine().getStatusCode() == 400) {</span>
+<span class="nc" id="L56">                    throw new FileAlreadyExistsException(&quot;There is already a document family at path [&quot; + path + &quot;]&quot;);</span>
+                } else {
+<span class="nc" id="L58">                    throw new KodexaException(&quot;Unable to create a session, check your access token and URL [&quot; + response.getStatusLine().getStatusCode() + &quot;]&quot;);</span>
+                }
+            }
+<span class="nc" id="L61">            log.info(&quot;Upload complete&quot;);</span>
+        }
+<span class="nc" id="L63">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -17,7 +17,7 @@ public class ContentNode {
 
 <span class="nc" id="L18">    private int index;</span>
 
-<span class="fc" id="L20">    private String uuid;</span>
+<span class="nc" id="L20">    private String uuid;</span>
 
     @JsonProperty(&quot;node_type&quot;)
 <span class="nc" id="L23">    private String type;</span>
@@ -26,7 +26,7 @@ public class ContentNode {
     @JsonProperty(&quot;content_parts&quot;)
 <span class="nc" id="L27">    private List&lt;Object&gt; contentParts;</span>
 
-<span class="fc" id="L29">    private List&lt;ContentNode&gt; children = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L29">    private List&lt;ContentNode&gt; children = new ArrayList&lt;&gt;();</span>
 <span class="pc" id="L30">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
 
     /**
