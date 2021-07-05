@@ -19,7 +19,10 @@ public class SerializationTest {
         Assert.assertEquals("test", newDocument.getSource().getConnector());
         Assert.assertTrue(newDocument.getMixins().contains("spatial"));
         Assert.assertNotNull(newDocument.getContentNode());
-
+        Assert.assertEquals("text", newDocument.getContentNode().getType());
+        Assert.assertEquals("Hello", newDocument.getContentNode().getContent());
+        Assert.assertEquals(1, newDocument.getContentNode().getContentParts().size());
+        Assert.assertEquals(1, newDocument.getContentNode().getFeatures().size());
 
     }
 }

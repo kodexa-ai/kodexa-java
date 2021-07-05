@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
+import org.checkerframework.checker.units.qual.A;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
@@ -197,16 +198,35 @@ public class SqlitePersistenceLayer {
     private ContentNode buildNode(Map<String, Object> contentNodeValues, Handle handle) {
         ContentNode contentNode = new ContentNode();
         contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));
+        contentNode.setType(nodeTypes.get(contentNodeValues.get("nt")));
 
         List<Map<String, Object>> features =
-                handle.createQuery("SELECT id, f_type, fvalue_id FROM f where cn_id is :nodeId").bind("nodeId", contentNode.getUuid())
+                handle.createQuery("SELECT id, f_type, fvalue_id FROM f where cn_id = :nodeId").bind("nodeId", contentNode.getUuid())
                         .mapToMap()
                         .list();
+
+        List<Map<String, Object>> contentParts =
+                handle.createQuery("SELECT content, content_idx FROM cnp where cn_id = :nodeId order by pos asc").bind("nodeId", contentNode.getUuid())
+                        .mapToMap()
+                        .list();
+
+        List<String> parts = new ArrayList<>();
+        contentNode.setContentParts(new ArrayList<>());
+        for (Map<String, Object> contentPart : contentParts) {
+            if (contentPart.get("content") != null) {
+                contentNode.getContentParts().add(contentPart.get("content"));
+                parts.add(String.valueOf(contentPart.get("content")));
+            } else {
+                contentNode.getContentParts().add(contentPart.get("content_idx"));
+            }
+        }
+
+        contentNode.setContent(String.join(" ", parts));
 
         for (Map<String, Object> feature : features) {
 
             Map<String, Object> featureValue =
-                    handle.createQuery("SELECT binary_value, single FROM f_value where id is :fvalue_id").bind("fvalue_id", feature.get("fvalue_id"))
+                    handle.createQuery("SELECT binary_value, single FROM f_value where id = :fvalue_id").bind("fvalue_id", feature.get("fvalue_id"))
                             .mapToMap()
                             .first();
 
@@ -223,6 +243,8 @@ public class SqlitePersistenceLayer {
             } catch (IOException e) {
                 throw new KodexaException("Unable to unpack value for feature", e);
             }
+
+            contentNode.getFeatures().add(contentFeature);
         }
 
         List<Map<String, Object>> childNodes =
@@ -286,11 +308,11 @@ public class SqlitePersistenceLayer {
         }
 
         for (ContentFeature feature : contentNode.getFeatures()) {
-            writeFeature(handle, feature);
+            writeFeature(handle, feature, contentNode);
         }
     }
 
-    private int writeFeature(Handle handle, ContentFeature feature) {
+    private int writeFeature(Handle handle, ContentFeature feature, ContentNode contentNode) {
         int fTypeId = getFeatureTypeName(handle, feature.getFeatureType() + ":" + feature.getName());
 
         // We need to work out the feature value
@@ -302,11 +324,15 @@ public class SqlitePersistenceLayer {
             }
             long hash = new BigInteger(formatter.toString(), 16).mod(BigDecimal.valueOf(pow(10, 8)).toBigInteger()).longValue();
             Optional<Map<String, Object>> result = handle.createQuery(FEATURE_VALUE_LOOKUP).bind(0, hash).mapToMap().findFirst();
+            int featureValueId;
             if (result.isPresent()) {
-                return (int) result.get().get("id");
+                featureValueId = (int) result.get().get("id");
             } else {
-                return (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
+                featureValueId = (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
             }
+
+            return (Integer) handle.createUpdate(FEATURE_INSERT).bind(0, contentNode.getUuid()).bind(1, fTypeId).bind(2, featureValueId).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
+
         } catch (JsonProcessingException e) {
             throw new KodexaException("Unable to pack feature value", e);
         }
