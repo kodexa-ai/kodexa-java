@@ -19,14 +19,18 @@
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>          document.getSource().setOriginalPath(<span class="jxr_string">"test"</span>);
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>          document.getSource().setConnector(<span class="jxr_string">"test"</span>);
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>          document.addMixin(<span class="jxr_string">"spatial"</span>);
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>          Document newDocument = Document.fromBytes(document.toBytes());
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>          Assert.assertEquals(<span class="jxr_string">"test"</span>, newDocument.getSource().getOriginalPath());
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>          Assert.assertEquals(<span class="jxr_string">"test"</span>, newDocument.getSource().getConnector());
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>          Assert.assertTrue(newDocument.getMixins().contains(<span class="jxr_string">"spatial"</span>));
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>      }
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  }
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>          document.setContentNode(document.createContentNode(<span class="jxr_string">"text"</span>, <span class="jxr_string">"Hello"</span>));
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>          document.getContentNode().addFeature(<span class="jxr_string">"tag"</span>, <span class="jxr_string">"lemon"</span>);
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          Document newDocument = Document.fromBytes(document.toBytes());
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          Assert.assertEquals(<span class="jxr_string">"test"</span>, newDocument.getSource().getOriginalPath());
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          Assert.assertEquals(<span class="jxr_string">"test"</span>, newDocument.getSource().getConnector());
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          Assert.assertTrue(newDocument.getMixins().contains(<span class="jxr_string">"spatial"</span>));
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          Assert.assertNotNull(newDocument.getContentNode());
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>      }
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>

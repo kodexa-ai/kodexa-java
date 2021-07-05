@@ -31,22 +31,22 @@ public class ContentFeatureDeserializer extends StdDeserializer&lt;ContentFeatur
     @Override
     public ContentFeature deserialize(JsonParser jp, DeserializationContext ctxt)
             throws IOException, JsonProcessingException {
-<span class="nc" id="L34">        JsonNode node = jp.getCodec().readTree(jp);</span>
-<span class="nc" id="L35">        String fullName = node.get(&quot;name&quot;).asText();</span>
-<span class="nc" id="L36">        Boolean single = node.get(&quot;single&quot;).asBoolean();</span>
+<span class="fc" id="L34">        JsonNode node = jp.getCodec().readTree(jp);</span>
+<span class="fc" id="L35">        String fullName = node.get(&quot;name&quot;).asText();</span>
+<span class="fc" id="L36">        Boolean single = node.get(&quot;single&quot;).asBoolean();</span>
 
-<span class="nc" id="L38">        JsonNode nodeValues = node.get(&quot;value&quot;);</span>
+<span class="fc" id="L38">        JsonNode nodeValues = node.get(&quot;value&quot;);</span>
 
-<span class="nc" id="L40">        ContentFeature contentFeature = new ContentFeature();</span>
-<span class="nc" id="L41">        contentFeature.setFeatureType(fullName.split(&quot;:&quot;)[0]);</span>
-<span class="nc" id="L42">        contentFeature.setName(fullName.split(&quot;:&quot;)[1]);</span>
-<span class="nc" id="L43">        contentFeature.setSingle(single);</span>
+<span class="fc" id="L40">        ContentFeature contentFeature = new ContentFeature();</span>
+<span class="fc" id="L41">        contentFeature.setFeatureType(fullName.split(&quot;:&quot;)[0]);</span>
+<span class="fc" id="L42">        contentFeature.setName(fullName.split(&quot;:&quot;)[1]);</span>
+<span class="fc" id="L43">        contentFeature.setSingle(single);</span>
 
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (null != nodeValues</span>
-<span class="nc bnc" id="L46" title="All 2 branches missed.">                &amp;&amp; nodeValues.isArray())</span>
-<span class="nc" id="L47">            contentFeature.setValue(mapper.reader(collectionType).readValue(nodeValues));</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (null != nodeValues</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">                &amp;&amp; nodeValues.isArray())</span>
+<span class="fc" id="L47">            contentFeature.setValue(mapper.reader(collectionType).readValue(nodeValues));</span>
 
-<span class="nc" id="L49">        return contentFeature;</span>
+<span class="fc" id="L49">        return contentFeature;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
