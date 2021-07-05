@@ -358,7 +358,15 @@ public class SqlitePersistenceLayer {
     private void flushMetadata() {
         jdbi.withHandle(handle -> {
             try {
-                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);
+                Document copyDocument = new Document();
+                copyDocument.setSource(document.getSource());
+                copyDocument.setClasses(document.getClasses());
+                copyDocument.setLabels(document.getLabels());
+                copyDocument.setMetadata(document.getMetadata());
+                copyDocument.setUuid(document.getUuid());
+                copyDocument.setMixins(document.getMixins());
+
+                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);
                 handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +
                         "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);
             } catch (JsonProcessingException e) {
