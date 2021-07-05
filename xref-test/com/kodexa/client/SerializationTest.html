@@ -27,10 +27,13 @@
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>          Assert.assertEquals(<span class="jxr_string">"test"</span>, newDocument.getSource().getConnector());
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>          Assert.assertTrue(newDocument.getMixins().contains(<span class="jxr_string">"spatial"</span>));
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>          Assert.assertNotNull(newDocument.getContentNode());
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>      }
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  }
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          Assert.assertEquals(<span class="jxr_string">"text"</span>, newDocument.getContentNode().getType());
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          Assert.assertEquals(<span class="jxr_string">"Hello"</span>, newDocument.getContentNode().getContent());
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          Assert.assertEquals(1, newDocument.getContentNode().getContentParts().size());
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          Assert.assertEquals(1, newDocument.getContentNode().getFeatures().size());
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>
