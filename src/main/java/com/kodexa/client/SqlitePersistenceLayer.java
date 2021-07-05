@@ -145,6 +145,7 @@ public class SqlitePersistenceLayer {
                 document.setLabels(baseDocument.getLabels());
                 document.setMetadata(baseDocument.getMetadata());
                 document.setUuid(baseDocument.getUuid());
+                document.setMixins(baseDocument.getMixins());
 
                 // Lets get all the node types and feature type/name combinations
                 nodeTypes =

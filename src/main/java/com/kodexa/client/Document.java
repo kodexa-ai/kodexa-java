@@ -156,6 +156,10 @@ public class Document {
         return new Document(inputStream);
     }
 
+    public static Document fromBytes(byte[] bytes) {
+        return new Document(new ByteArrayInputStream(bytes));
+    }
+
     public byte[] toBytes() {
         return persistenceLayer.toBytes();
     }
@@ -234,5 +238,10 @@ public class Document {
         contentNode.setType(type);
         contentNode.setContent(content);
         return contentNode;
+    }
+
+    public void addMixin(String spatial) {
+        if (!this.mixins.contains(spatial))
+            this.mixins.add(spatial);
     }
 }
