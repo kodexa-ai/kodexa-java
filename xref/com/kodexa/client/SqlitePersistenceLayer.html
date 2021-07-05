@@ -366,17 +366,25 @@
 <a class="jxr_linenumber" name="L358" href="#L358">358</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> flushMetadata() {
 <a class="jxr_linenumber" name="L359" href="#L359">359</a>         jdbi.withHandle(handle -&gt; {
 <a class="jxr_linenumber" name="L360" href="#L360">360</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L361" href="#L361">361</a>                 byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);
-<a class="jxr_linenumber" name="L362" href="#L362">362</a>                 handle.execute(<span class="jxr_string">"INSERT INTO metadata(metadata, id) VALUES(?, ?)\n"</span> +
-<a class="jxr_linenumber" name="L363" href="#L363">363</a>                         <span class="jxr_string">"  ON CONFLICT(id) DO UPDATE SET metadata=?"</span>, metadataBytes, 1, metadataBytes);
-<a class="jxr_linenumber" name="L364" href="#L364">364</a>             } <strong class="jxr_keyword">catch</strong> (JsonProcessingException e) {
-<a class="jxr_linenumber" name="L365" href="#L365">365</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="KodexaException" href="../../../com/kodexa/client/KodexaException.html#KodexaException">KodexaException</a>(<span class="jxr_string">"Unable to flush metadata to KDDB"</span>, e);
-<a class="jxr_linenumber" name="L366" href="#L366">366</a>             }
-<a class="jxr_linenumber" name="L367" href="#L367">367</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L368" href="#L368">368</a>         });
-<a class="jxr_linenumber" name="L369" href="#L369">369</a> 
-<a class="jxr_linenumber" name="L370" href="#L370">370</a>     }
-<a class="jxr_linenumber" name="L371" href="#L371">371</a> }
+<a class="jxr_linenumber" name="L361" href="#L361">361</a>                 <a name="Document" href="../../../com/kodexa/client/Document.html<a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>t">Document</a> copyDocument = <strong class="jxr_keyword">new</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a>();
+<a class="jxr_linenumber" name="L362" href="#L362">362</a>                 copyDocument.setSource(document.getSource());
+<a class="jxr_linenumber" name="L363" href="#L363">363</a>                 copyDocument.setClasses(document.getClasses());
+<a class="jxr_linenumber" name="L364" href="#L364">364</a>                 copyDocument.setLabels(document.getLabels());
+<a class="jxr_linenumber" name="L365" href="#L365">365</a>                 copyDocument.setMetadata(document.getMetadata());
+<a class="jxr_linenumber" name="L366" href="#L366">366</a>                 copyDocument.setUuid(document.getUuid());
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>                 copyDocument.setMixins(document.getMixins());
+<a class="jxr_linenumber" name="L368" href="#L368">368</a> 
+<a class="jxr_linenumber" name="L369" href="#L369">369</a>                 byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>                 handle.execute(<span class="jxr_string">"INSERT INTO metadata(metadata, id) VALUES(?, ?)\n"</span> +
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>                         <span class="jxr_string">"  ON CONFLICT(id) DO UPDATE SET metadata=?"</span>, metadataBytes, 1, metadataBytes);
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>             } <strong class="jxr_keyword">catch</strong> (JsonProcessingException e) {
+<a class="jxr_linenumber" name="L373" href="#L373">373</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="KodexaException" href="../../../com/kodexa/client/KodexaException.html#KodexaException">KodexaException</a>(<span class="jxr_string">"Unable to flush metadata to KDDB"</span>, e);
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>             }
+<a class="jxr_linenumber" name="L375" href="#L375">375</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L376" href="#L376">376</a>         });
+<a class="jxr_linenumber" name="L377" href="#L377">377</a> 
+<a class="jxr_linenumber" name="L378" href="#L378">378</a>     }
+<a class="jxr_linenumber" name="L379" href="#L379">379</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>

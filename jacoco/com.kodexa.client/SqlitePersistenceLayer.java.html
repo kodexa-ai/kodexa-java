@@ -358,15 +358,23 @@ public class SqlitePersistenceLayer {
     private void flushMetadata() {
 <span class="fc" id="L359">        jdbi.withHandle(handle -&gt; {</span>
             try {
-<span class="fc" id="L361">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);</span>
-<span class="fc" id="L362">                handle.execute(&quot;INSERT INTO metadata(metadata, id) VALUES(?, ?)\n&quot; +</span>
-<span class="fc" id="L363">                        &quot;  ON CONFLICT(id) DO UPDATE SET metadata=?&quot;, metadataBytes, 1, metadataBytes);</span>
-<span class="nc" id="L364">            } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L365">                throw new KodexaException(&quot;Unable to flush metadata to KDDB&quot;, e);</span>
-<span class="fc" id="L366">            }</span>
-<span class="fc" id="L367">            return null;</span>
+<span class="fc" id="L361">                Document copyDocument = new Document();</span>
+<span class="fc" id="L362">                copyDocument.setSource(document.getSource());</span>
+<span class="fc" id="L363">                copyDocument.setClasses(document.getClasses());</span>
+<span class="fc" id="L364">                copyDocument.setLabels(document.getLabels());</span>
+<span class="fc" id="L365">                copyDocument.setMetadata(document.getMetadata());</span>
+<span class="fc" id="L366">                copyDocument.setUuid(document.getUuid());</span>
+<span class="fc" id="L367">                copyDocument.setMixins(document.getMixins());</span>
+
+<span class="fc" id="L369">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);</span>
+<span class="fc" id="L370">                handle.execute(&quot;INSERT INTO metadata(metadata, id) VALUES(?, ?)\n&quot; +</span>
+<span class="fc" id="L371">                        &quot;  ON CONFLICT(id) DO UPDATE SET metadata=?&quot;, metadataBytes, 1, metadataBytes);</span>
+<span class="nc" id="L372">            } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L373">                throw new KodexaException(&quot;Unable to flush metadata to KDDB&quot;, e);</span>
+<span class="fc" id="L374">            }</span>
+<span class="fc" id="L375">            return null;</span>
         });
 
-<span class="fc" id="L370">    }</span>
+<span class="fc" id="L378">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
