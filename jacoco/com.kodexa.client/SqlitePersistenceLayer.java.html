@@ -145,97 +145,98 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L145">                document.setLabels(baseDocument.getLabels());</span>
 <span class="fc" id="L146">                document.setMetadata(baseDocument.getMetadata());</span>
 <span class="fc" id="L147">                document.setUuid(baseDocument.getUuid());</span>
+<span class="fc" id="L148">                document.setMixins(baseDocument.getMixins());</span>
 
                 // Lets get all the node types and feature type/name combinations
-<span class="fc" id="L150">                nodeTypes =</span>
-<span class="fc" id="L151">                        handle.createQuery(&quot;SELECT id, name FROM n_type&quot;)</span>
-<span class="fc" id="L152">                                .mapToMap()</span>
-<span class="fc" id="L153">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get(&quot;id&quot;))), x -&gt; String.valueOf(x.get(&quot;name&quot;))));</span>
+<span class="fc" id="L151">                nodeTypes =</span>
+<span class="fc" id="L152">                        handle.createQuery(&quot;SELECT id, name FROM n_type&quot;)</span>
+<span class="fc" id="L153">                                .mapToMap()</span>
+<span class="fc" id="L154">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get(&quot;id&quot;))), x -&gt; String.valueOf(x.get(&quot;name&quot;))));</span>
 
-<span class="fc" id="L155">                featureTypeNames =</span>
-<span class="fc" id="L156">                        handle.createQuery(&quot;SELECT id, name FROM f_type&quot;)</span>
-<span class="fc" id="L157">                                .mapToMap()</span>
-<span class="fc" id="L158">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get(&quot;id&quot;))), x -&gt; String.valueOf(x.get(&quot;name&quot;))));</span>
-<span class="nc" id="L159">            } catch (IOException e) {</span>
-<span class="nc" id="L160">                throw new KodexaException(&quot;Unable to unpack metadata&quot;, e);</span>
-<span class="fc" id="L161">            }</span>
+<span class="fc" id="L156">                featureTypeNames =</span>
+<span class="fc" id="L157">                        handle.createQuery(&quot;SELECT id, name FROM f_type&quot;)</span>
+<span class="fc" id="L158">                                .mapToMap()</span>
+<span class="fc" id="L159">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get(&quot;id&quot;))), x -&gt; String.valueOf(x.get(&quot;name&quot;))));</span>
+<span class="nc" id="L160">            } catch (IOException e) {</span>
+<span class="nc" id="L161">                throw new KodexaException(&quot;Unable to unpack metadata&quot;, e);</span>
+<span class="fc" id="L162">            }</span>
 
-<span class="fc" id="L163">            List&lt;Map&lt;String, Object&gt;&gt; contentNodes =</span>
-<span class="fc" id="L164">                    handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is null&quot;)</span>
-<span class="fc" id="L165">                            .mapToMap()</span>
-<span class="fc" id="L166">                            .list();</span>
-<span class="fc bfc" id="L167" title="All 2 branches covered.">            for (Map&lt;String, Object&gt; contentNode : contentNodes) {</span>
-<span class="fc" id="L168">                document.setContentNode(buildNode(contentNode, handle));</span>
-<span class="fc" id="L169">            }</span>
+<span class="fc" id="L164">            List&lt;Map&lt;String, Object&gt;&gt; contentNodes =</span>
+<span class="fc" id="L165">                    handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is null&quot;)</span>
+<span class="fc" id="L166">                            .mapToMap()</span>
+<span class="fc" id="L167">                            .list();</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">            for (Map&lt;String, Object&gt; contentNode : contentNodes) {</span>
+<span class="fc" id="L169">                document.setContentNode(buildNode(contentNode, handle));</span>
+<span class="fc" id="L170">            }</span>
 
-<span class="fc" id="L171">            return contentNodes;</span>
+<span class="fc" id="L172">            return contentNodes;</span>
         });
-<span class="fc" id="L173">    }</span>
+<span class="fc" id="L174">    }</span>
 
     private ContentNode buildNode(Map&lt;String, Object&gt; contentNodeValues, Handle handle) {
-<span class="fc" id="L176">        ContentNode contentNode = new ContentNode();</span>
-<span class="fc" id="L177">        contentNode.setUuid(String.valueOf(contentNodeValues.get(&quot;id&quot;)));</span>
+<span class="fc" id="L177">        ContentNode contentNode = new ContentNode();</span>
+<span class="fc" id="L178">        contentNode.setUuid(String.valueOf(contentNodeValues.get(&quot;id&quot;)));</span>
 
-<span class="fc" id="L179">        List&lt;Map&lt;String, Object&gt;&gt; features =</span>
-<span class="fc" id="L180">                handle.createQuery(&quot;SELECT id, f_type, fvalue_id FROM f where cn_id is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
-<span class="fc" id="L181">                        .mapToMap()</span>
-<span class="fc" id="L182">                        .list();</span>
+<span class="fc" id="L180">        List&lt;Map&lt;String, Object&gt;&gt; features =</span>
+<span class="fc" id="L181">                handle.createQuery(&quot;SELECT id, f_type, fvalue_id FROM f where cn_id is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
+<span class="fc" id="L182">                        .mapToMap()</span>
+<span class="fc" id="L183">                        .list();</span>
 
-<span class="fc bfc" id="L184" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; feature : features) {</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; feature : features) {</span>
 
-<span class="fc" id="L186">            Map&lt;String, Object&gt; featureValue =</span>
-<span class="fc" id="L187">                    handle.createQuery(&quot;SELECT binary_value, single FROM f_value where id is :fvalue_id&quot;).bind(&quot;fvalue_id&quot;, feature.get(&quot;fvalue_id&quot;))</span>
-<span class="fc" id="L188">                            .mapToMap()</span>
-<span class="fc" id="L189">                            .first();</span>
+<span class="fc" id="L187">            Map&lt;String, Object&gt; featureValue =</span>
+<span class="fc" id="L188">                    handle.createQuery(&quot;SELECT binary_value, single FROM f_value where id is :fvalue_id&quot;).bind(&quot;fvalue_id&quot;, feature.get(&quot;fvalue_id&quot;))</span>
+<span class="fc" id="L189">                            .mapToMap()</span>
+<span class="fc" id="L190">                            .first();</span>
 
-<span class="fc" id="L191">            ContentFeature contentFeature = new ContentFeature();</span>
-<span class="fc" id="L192">            contentFeature.setFeatureType(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[0]);</span>
-<span class="fc" id="L193">            contentFeature.setName(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[1]);</span>
-<span class="pc bpc" id="L194" title="1 of 2 branches missed.">            contentFeature.setSingle(Integer.valueOf(1) == featureValue.get(&quot;single&quot;));</span>
-<span class="fc" id="L195">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</span>
-<span class="fc" id="L196">                    = new TypeReference&lt;&gt;() {</span>
+<span class="fc" id="L192">            ContentFeature contentFeature = new ContentFeature();</span>
+<span class="fc" id="L193">            contentFeature.setFeatureType(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[0]);</span>
+<span class="fc" id="L194">            contentFeature.setName(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[1]);</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">            contentFeature.setSingle(Integer.valueOf(1) == featureValue.get(&quot;single&quot;));</span>
+<span class="fc" id="L196">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</span>
+<span class="fc" id="L197">                    = new TypeReference&lt;&gt;() {</span>
             };
 
             try {
-<span class="fc" id="L200">                contentFeature.setValue(OBJECT_MAPPER_MSGPACK.readValue((byte[]) featureValue.get(&quot;binary_value&quot;), typeRef));</span>
-<span class="nc" id="L201">            } catch (IOException e) {</span>
-<span class="nc" id="L202">                throw new KodexaException(&quot;Unable to unpack value for feature&quot;, e);</span>
-<span class="fc" id="L203">            }</span>
-<span class="fc" id="L204">        }</span>
+<span class="fc" id="L201">                contentFeature.setValue(OBJECT_MAPPER_MSGPACK.readValue((byte[]) featureValue.get(&quot;binary_value&quot;), typeRef));</span>
+<span class="nc" id="L202">            } catch (IOException e) {</span>
+<span class="nc" id="L203">                throw new KodexaException(&quot;Unable to unpack value for feature&quot;, e);</span>
+<span class="fc" id="L204">            }</span>
+<span class="fc" id="L205">        }</span>
 
-<span class="fc" id="L206">        List&lt;Map&lt;String, Object&gt;&gt; childNodes =</span>
-<span class="fc" id="L207">                handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
-<span class="fc" id="L208">                        .mapToMap()</span>
-<span class="fc" id="L209">                        .list();</span>
+<span class="fc" id="L207">        List&lt;Map&lt;String, Object&gt;&gt; childNodes =</span>
+<span class="fc" id="L208">                handle.createQuery(&quot;SELECT id, nt, pid FROM cn where pid is :nodeId&quot;).bind(&quot;nodeId&quot;, contentNode.getUuid())</span>
+<span class="fc" id="L209">                        .mapToMap()</span>
+<span class="fc" id="L210">                        .list();</span>
 
-<span class="fc bfc" id="L211" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; childNode : childNodes) {</span>
-<span class="fc" id="L212">            contentNode.getChildren().add(buildNode(childNode, handle));</span>
-<span class="fc" id="L213">        }</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">        for (Map&lt;String, Object&gt; childNode : childNodes) {</span>
+<span class="fc" id="L213">            contentNode.getChildren().add(buildNode(childNode, handle));</span>
+<span class="fc" id="L214">        }</span>
 
-<span class="fc" id="L215">        return contentNode;</span>
+<span class="fc" id="L216">        return contentNode;</span>
     }
 
     public byte[] toBytes() {
         try {
-<span class="fc" id="L220">            flushMetadata();</span>
-<span class="fc" id="L221">            return Files.readAllBytes(Path.of(dbPath));</span>
-<span class="nc" id="L222">        } catch (IOException e) {</span>
-<span class="nc" id="L223">            throw new KodexaException(&quot;Unable to read KDDB file from &quot; + dbPath);</span>
+<span class="fc" id="L221">            flushMetadata();</span>
+<span class="fc" id="L222">            return Files.readAllBytes(Path.of(dbPath));</span>
+<span class="nc" id="L223">        } catch (IOException e) {</span>
+<span class="nc" id="L224">            throw new KodexaException(&quot;Unable to read KDDB file from &quot; + dbPath);</span>
         }
     }
 
     private void flushMetadata() {
-<span class="fc" id="L228">        jdbi.withHandle(handle -&gt; {</span>
+<span class="fc" id="L229">        jdbi.withHandle(handle -&gt; {</span>
             try {
-<span class="fc" id="L230">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);</span>
-<span class="fc" id="L231">                handle.execute(&quot;INSERT INTO metadata(metadata, id) VALUES(?, ?)\n&quot; +</span>
-<span class="fc" id="L232">                        &quot;  ON CONFLICT(id) DO UPDATE SET metadata=?&quot;, metadataBytes, 1, metadataBytes);</span>
-<span class="nc" id="L233">            } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L234">                throw new KodexaException(&quot;Unable to flush metadata to KDDB&quot;, e);</span>
-<span class="fc" id="L235">            }</span>
-<span class="fc" id="L236">            return null;</span>
+<span class="fc" id="L231">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);</span>
+<span class="fc" id="L232">                handle.execute(&quot;INSERT INTO metadata(metadata, id) VALUES(?, ?)\n&quot; +</span>
+<span class="fc" id="L233">                        &quot;  ON CONFLICT(id) DO UPDATE SET metadata=?&quot;, metadataBytes, 1, metadataBytes);</span>
+<span class="nc" id="L234">            } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L235">                throw new KodexaException(&quot;Unable to flush metadata to KDDB&quot;, e);</span>
+<span class="fc" id="L236">            }</span>
+<span class="fc" id="L237">            return null;</span>
         });
 
-<span class="fc" id="L239">    }</span>
+<span class="fc" id="L240">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

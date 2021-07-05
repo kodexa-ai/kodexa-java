@@ -154,99 +154,100 @@
 <span class="sourceLineNo">145</span><a id="line.145">                document.setLabels(baseDocument.getLabels());</a>
 <span class="sourceLineNo">146</span><a id="line.146">                document.setMetadata(baseDocument.getMetadata());</a>
 <span class="sourceLineNo">147</span><a id="line.147">                document.setUuid(baseDocument.getUuid());</a>
-<span class="sourceLineNo">148</span><a id="line.148"></a>
-<span class="sourceLineNo">149</span><a id="line.149">                // Lets get all the node types and feature type/name combinations</a>
-<span class="sourceLineNo">150</span><a id="line.150">                nodeTypes =</a>
-<span class="sourceLineNo">151</span><a id="line.151">                        handle.createQuery("SELECT id, name FROM n_type")</a>
-<span class="sourceLineNo">152</span><a id="line.152">                                .mapToMap()</a>
-<span class="sourceLineNo">153</span><a id="line.153">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get("id"))), x -&gt; String.valueOf(x.get("name"))));</a>
-<span class="sourceLineNo">154</span><a id="line.154"></a>
-<span class="sourceLineNo">155</span><a id="line.155">                featureTypeNames =</a>
-<span class="sourceLineNo">156</span><a id="line.156">                        handle.createQuery("SELECT id, name FROM f_type")</a>
-<span class="sourceLineNo">157</span><a id="line.157">                                .mapToMap()</a>
-<span class="sourceLineNo">158</span><a id="line.158">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get("id"))), x -&gt; String.valueOf(x.get("name"))));</a>
-<span class="sourceLineNo">159</span><a id="line.159">            } catch (IOException e) {</a>
-<span class="sourceLineNo">160</span><a id="line.160">                throw new KodexaException("Unable to unpack metadata", e);</a>
-<span class="sourceLineNo">161</span><a id="line.161">            }</a>
-<span class="sourceLineNo">162</span><a id="line.162"></a>
-<span class="sourceLineNo">163</span><a id="line.163">            List&lt;Map&lt;String, Object&gt;&gt; contentNodes =</a>
-<span class="sourceLineNo">164</span><a id="line.164">                    handle.createQuery("SELECT id, nt, pid FROM cn where pid is null")</a>
-<span class="sourceLineNo">165</span><a id="line.165">                            .mapToMap()</a>
-<span class="sourceLineNo">166</span><a id="line.166">                            .list();</a>
-<span class="sourceLineNo">167</span><a id="line.167">            for (Map&lt;String, Object&gt; contentNode : contentNodes) {</a>
-<span class="sourceLineNo">168</span><a id="line.168">                document.setContentNode(buildNode(contentNode, handle));</a>
-<span class="sourceLineNo">169</span><a id="line.169">            }</a>
-<span class="sourceLineNo">170</span><a id="line.170"></a>
-<span class="sourceLineNo">171</span><a id="line.171">            return contentNodes;</a>
-<span class="sourceLineNo">172</span><a id="line.172">        });</a>
-<span class="sourceLineNo">173</span><a id="line.173">    }</a>
-<span class="sourceLineNo">174</span><a id="line.174"></a>
-<span class="sourceLineNo">175</span><a id="line.175">    private ContentNode buildNode(Map&lt;String, Object&gt; contentNodeValues, Handle handle) {</a>
-<span class="sourceLineNo">176</span><a id="line.176">        ContentNode contentNode = new ContentNode();</a>
-<span class="sourceLineNo">177</span><a id="line.177">        contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));</a>
-<span class="sourceLineNo">178</span><a id="line.178"></a>
-<span class="sourceLineNo">179</span><a id="line.179">        List&lt;Map&lt;String, Object&gt;&gt; features =</a>
-<span class="sourceLineNo">180</span><a id="line.180">                handle.createQuery("SELECT id, f_type, fvalue_id FROM f where cn_id is :nodeId").bind("nodeId", contentNode.getUuid())</a>
-<span class="sourceLineNo">181</span><a id="line.181">                        .mapToMap()</a>
-<span class="sourceLineNo">182</span><a id="line.182">                        .list();</a>
-<span class="sourceLineNo">183</span><a id="line.183"></a>
-<span class="sourceLineNo">184</span><a id="line.184">        for (Map&lt;String, Object&gt; feature : features) {</a>
-<span class="sourceLineNo">185</span><a id="line.185"></a>
-<span class="sourceLineNo">186</span><a id="line.186">            Map&lt;String, Object&gt; featureValue =</a>
-<span class="sourceLineNo">187</span><a id="line.187">                    handle.createQuery("SELECT binary_value, single FROM f_value where id is :fvalue_id").bind("fvalue_id", feature.get("fvalue_id"))</a>
-<span class="sourceLineNo">188</span><a id="line.188">                            .mapToMap()</a>
-<span class="sourceLineNo">189</span><a id="line.189">                            .first();</a>
-<span class="sourceLineNo">190</span><a id="line.190"></a>
-<span class="sourceLineNo">191</span><a id="line.191">            ContentFeature contentFeature = new ContentFeature();</a>
-<span class="sourceLineNo">192</span><a id="line.192">            contentFeature.setFeatureType(featureTypeNames.get(feature.get("f_type")).split(":")[0]);</a>
-<span class="sourceLineNo">193</span><a id="line.193">            contentFeature.setName(featureTypeNames.get(feature.get("f_type")).split(":")[1]);</a>
-<span class="sourceLineNo">194</span><a id="line.194">            contentFeature.setSingle(Integer.valueOf(1) == featureValue.get("single"));</a>
-<span class="sourceLineNo">195</span><a id="line.195">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</a>
-<span class="sourceLineNo">196</span><a id="line.196">                    = new TypeReference&lt;&gt;() {</a>
-<span class="sourceLineNo">197</span><a id="line.197">            };</a>
-<span class="sourceLineNo">198</span><a id="line.198"></a>
-<span class="sourceLineNo">199</span><a id="line.199">            try {</a>
-<span class="sourceLineNo">200</span><a id="line.200">                contentFeature.setValue(OBJECT_MAPPER_MSGPACK.readValue((byte[]) featureValue.get("binary_value"), typeRef));</a>
-<span class="sourceLineNo">201</span><a id="line.201">            } catch (IOException e) {</a>
-<span class="sourceLineNo">202</span><a id="line.202">                throw new KodexaException("Unable to unpack value for feature", e);</a>
-<span class="sourceLineNo">203</span><a id="line.203">            }</a>
-<span class="sourceLineNo">204</span><a id="line.204">        }</a>
-<span class="sourceLineNo">205</span><a id="line.205"></a>
-<span class="sourceLineNo">206</span><a id="line.206">        List&lt;Map&lt;String, Object&gt;&gt; childNodes =</a>
-<span class="sourceLineNo">207</span><a id="line.207">                handle.createQuery("SELECT id, nt, pid FROM cn where pid is :nodeId").bind("nodeId", contentNode.getUuid())</a>
-<span class="sourceLineNo">208</span><a id="line.208">                        .mapToMap()</a>
-<span class="sourceLineNo">209</span><a id="line.209">                        .list();</a>
-<span class="sourceLineNo">210</span><a id="line.210"></a>
-<span class="sourceLineNo">211</span><a id="line.211">        for (Map&lt;String, Object&gt; childNode : childNodes) {</a>
-<span class="sourceLineNo">212</span><a id="line.212">            contentNode.getChildren().add(buildNode(childNode, handle));</a>
-<span class="sourceLineNo">213</span><a id="line.213">        }</a>
-<span class="sourceLineNo">214</span><a id="line.214"></a>
-<span class="sourceLineNo">215</span><a id="line.215">        return contentNode;</a>
-<span class="sourceLineNo">216</span><a id="line.216">    }</a>
-<span class="sourceLineNo">217</span><a id="line.217"></a>
-<span class="sourceLineNo">218</span><a id="line.218">    public byte[] toBytes() {</a>
-<span class="sourceLineNo">219</span><a id="line.219">        try {</a>
-<span class="sourceLineNo">220</span><a id="line.220">            flushMetadata();</a>
-<span class="sourceLineNo">221</span><a id="line.221">            return Files.readAllBytes(Path.of(dbPath));</a>
-<span class="sourceLineNo">222</span><a id="line.222">        } catch (IOException e) {</a>
-<span class="sourceLineNo">223</span><a id="line.223">            throw new KodexaException("Unable to read KDDB file from " + dbPath);</a>
-<span class="sourceLineNo">224</span><a id="line.224">        }</a>
-<span class="sourceLineNo">225</span><a id="line.225">    }</a>
-<span class="sourceLineNo">226</span><a id="line.226"></a>
-<span class="sourceLineNo">227</span><a id="line.227">    private void flushMetadata() {</a>
-<span class="sourceLineNo">228</span><a id="line.228">        jdbi.withHandle(handle -&gt; {</a>
-<span class="sourceLineNo">229</span><a id="line.229">            try {</a>
-<span class="sourceLineNo">230</span><a id="line.230">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);</a>
-<span class="sourceLineNo">231</span><a id="line.231">                handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +</a>
-<span class="sourceLineNo">232</span><a id="line.232">                        "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);</a>
-<span class="sourceLineNo">233</span><a id="line.233">            } catch (JsonProcessingException e) {</a>
-<span class="sourceLineNo">234</span><a id="line.234">                throw new KodexaException("Unable to flush metadata to KDDB", e);</a>
-<span class="sourceLineNo">235</span><a id="line.235">            }</a>
-<span class="sourceLineNo">236</span><a id="line.236">            return null;</a>
-<span class="sourceLineNo">237</span><a id="line.237">        });</a>
-<span class="sourceLineNo">238</span><a id="line.238"></a>
-<span class="sourceLineNo">239</span><a id="line.239">    }</a>
-<span class="sourceLineNo">240</span><a id="line.240">}</a>
+<span class="sourceLineNo">148</span><a id="line.148">                document.setMixins(baseDocument.getMixins());</a>
+<span class="sourceLineNo">149</span><a id="line.149"></a>
+<span class="sourceLineNo">150</span><a id="line.150">                // Lets get all the node types and feature type/name combinations</a>
+<span class="sourceLineNo">151</span><a id="line.151">                nodeTypes =</a>
+<span class="sourceLineNo">152</span><a id="line.152">                        handle.createQuery("SELECT id, name FROM n_type")</a>
+<span class="sourceLineNo">153</span><a id="line.153">                                .mapToMap()</a>
+<span class="sourceLineNo">154</span><a id="line.154">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get("id"))), x -&gt; String.valueOf(x.get("name"))));</a>
+<span class="sourceLineNo">155</span><a id="line.155"></a>
+<span class="sourceLineNo">156</span><a id="line.156">                featureTypeNames =</a>
+<span class="sourceLineNo">157</span><a id="line.157">                        handle.createQuery("SELECT id, name FROM f_type")</a>
+<span class="sourceLineNo">158</span><a id="line.158">                                .mapToMap()</a>
+<span class="sourceLineNo">159</span><a id="line.159">                                .collect(Collectors.toMap(x -&gt; Integer.valueOf(String.valueOf(x.get("id"))), x -&gt; String.valueOf(x.get("name"))));</a>
+<span class="sourceLineNo">160</span><a id="line.160">            } catch (IOException e) {</a>
+<span class="sourceLineNo">161</span><a id="line.161">                throw new KodexaException("Unable to unpack metadata", e);</a>
+<span class="sourceLineNo">162</span><a id="line.162">            }</a>
+<span class="sourceLineNo">163</span><a id="line.163"></a>
+<span class="sourceLineNo">164</span><a id="line.164">            List&lt;Map&lt;String, Object&gt;&gt; contentNodes =</a>
+<span class="sourceLineNo">165</span><a id="line.165">                    handle.createQuery("SELECT id, nt, pid FROM cn where pid is null")</a>
+<span class="sourceLineNo">166</span><a id="line.166">                            .mapToMap()</a>
+<span class="sourceLineNo">167</span><a id="line.167">                            .list();</a>
+<span class="sourceLineNo">168</span><a id="line.168">            for (Map&lt;String, Object&gt; contentNode : contentNodes) {</a>
+<span class="sourceLineNo">169</span><a id="line.169">                document.setContentNode(buildNode(contentNode, handle));</a>
+<span class="sourceLineNo">170</span><a id="line.170">            }</a>
+<span class="sourceLineNo">171</span><a id="line.171"></a>
+<span class="sourceLineNo">172</span><a id="line.172">            return contentNodes;</a>
+<span class="sourceLineNo">173</span><a id="line.173">        });</a>
+<span class="sourceLineNo">174</span><a id="line.174">    }</a>
+<span class="sourceLineNo">175</span><a id="line.175"></a>
+<span class="sourceLineNo">176</span><a id="line.176">    private ContentNode buildNode(Map&lt;String, Object&gt; contentNodeValues, Handle handle) {</a>
+<span class="sourceLineNo">177</span><a id="line.177">        ContentNode contentNode = new ContentNode();</a>
+<span class="sourceLineNo">178</span><a id="line.178">        contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));</a>
+<span class="sourceLineNo">179</span><a id="line.179"></a>
+<span class="sourceLineNo">180</span><a id="line.180">        List&lt;Map&lt;String, Object&gt;&gt; features =</a>
+<span class="sourceLineNo">181</span><a id="line.181">                handle.createQuery("SELECT id, f_type, fvalue_id FROM f where cn_id is :nodeId").bind("nodeId", contentNode.getUuid())</a>
+<span class="sourceLineNo">182</span><a id="line.182">                        .mapToMap()</a>
+<span class="sourceLineNo">183</span><a id="line.183">                        .list();</a>
+<span class="sourceLineNo">184</span><a id="line.184"></a>
+<span class="sourceLineNo">185</span><a id="line.185">        for (Map&lt;String, Object&gt; feature : features) {</a>
+<span class="sourceLineNo">186</span><a id="line.186"></a>
+<span class="sourceLineNo">187</span><a id="line.187">            Map&lt;String, Object&gt; featureValue =</a>
+<span class="sourceLineNo">188</span><a id="line.188">                    handle.createQuery("SELECT binary_value, single FROM f_value where id is :fvalue_id").bind("fvalue_id", feature.get("fvalue_id"))</a>
+<span class="sourceLineNo">189</span><a id="line.189">                            .mapToMap()</a>
+<span class="sourceLineNo">190</span><a id="line.190">                            .first();</a>
+<span class="sourceLineNo">191</span><a id="line.191"></a>
+<span class="sourceLineNo">192</span><a id="line.192">            ContentFeature contentFeature = new ContentFeature();</a>
+<span class="sourceLineNo">193</span><a id="line.193">            contentFeature.setFeatureType(featureTypeNames.get(feature.get("f_type")).split(":")[0]);</a>
+<span class="sourceLineNo">194</span><a id="line.194">            contentFeature.setName(featureTypeNames.get(feature.get("f_type")).split(":")[1]);</a>
+<span class="sourceLineNo">195</span><a id="line.195">            contentFeature.setSingle(Integer.valueOf(1) == featureValue.get("single"));</a>
+<span class="sourceLineNo">196</span><a id="line.196">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</a>
+<span class="sourceLineNo">197</span><a id="line.197">                    = new TypeReference&lt;&gt;() {</a>
+<span class="sourceLineNo">198</span><a id="line.198">            };</a>
+<span class="sourceLineNo">199</span><a id="line.199"></a>
+<span class="sourceLineNo">200</span><a id="line.200">            try {</a>
+<span class="sourceLineNo">201</span><a id="line.201">                contentFeature.setValue(OBJECT_MAPPER_MSGPACK.readValue((byte[]) featureValue.get("binary_value"), typeRef));</a>
+<span class="sourceLineNo">202</span><a id="line.202">            } catch (IOException e) {</a>
+<span class="sourceLineNo">203</span><a id="line.203">                throw new KodexaException("Unable to unpack value for feature", e);</a>
+<span class="sourceLineNo">204</span><a id="line.204">            }</a>
+<span class="sourceLineNo">205</span><a id="line.205">        }</a>
+<span class="sourceLineNo">206</span><a id="line.206"></a>
+<span class="sourceLineNo">207</span><a id="line.207">        List&lt;Map&lt;String, Object&gt;&gt; childNodes =</a>
+<span class="sourceLineNo">208</span><a id="line.208">                handle.createQuery("SELECT id, nt, pid FROM cn where pid is :nodeId").bind("nodeId", contentNode.getUuid())</a>
+<span class="sourceLineNo">209</span><a id="line.209">                        .mapToMap()</a>
+<span class="sourceLineNo">210</span><a id="line.210">                        .list();</a>
+<span class="sourceLineNo">211</span><a id="line.211"></a>
+<span class="sourceLineNo">212</span><a id="line.212">        for (Map&lt;String, Object&gt; childNode : childNodes) {</a>
+<span class="sourceLineNo">213</span><a id="line.213">            contentNode.getChildren().add(buildNode(childNode, handle));</a>
+<span class="sourceLineNo">214</span><a id="line.214">        }</a>
+<span class="sourceLineNo">215</span><a id="line.215"></a>
+<span class="sourceLineNo">216</span><a id="line.216">        return contentNode;</a>
+<span class="sourceLineNo">217</span><a id="line.217">    }</a>
+<span class="sourceLineNo">218</span><a id="line.218"></a>
+<span class="sourceLineNo">219</span><a id="line.219">    public byte[] toBytes() {</a>
+<span class="sourceLineNo">220</span><a id="line.220">        try {</a>
+<span class="sourceLineNo">221</span><a id="line.221">            flushMetadata();</a>
+<span class="sourceLineNo">222</span><a id="line.222">            return Files.readAllBytes(Path.of(dbPath));</a>
+<span class="sourceLineNo">223</span><a id="line.223">        } catch (IOException e) {</a>
+<span class="sourceLineNo">224</span><a id="line.224">            throw new KodexaException("Unable to read KDDB file from " + dbPath);</a>
+<span class="sourceLineNo">225</span><a id="line.225">        }</a>
+<span class="sourceLineNo">226</span><a id="line.226">    }</a>
+<span class="sourceLineNo">227</span><a id="line.227"></a>
+<span class="sourceLineNo">228</span><a id="line.228">    private void flushMetadata() {</a>
+<span class="sourceLineNo">229</span><a id="line.229">        jdbi.withHandle(handle -&gt; {</a>
+<span class="sourceLineNo">230</span><a id="line.230">            try {</a>
+<span class="sourceLineNo">231</span><a id="line.231">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(document);</a>
+<span class="sourceLineNo">232</span><a id="line.232">                handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +</a>
+<span class="sourceLineNo">233</span><a id="line.233">                        "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);</a>
+<span class="sourceLineNo">234</span><a id="line.234">            } catch (JsonProcessingException e) {</a>
+<span class="sourceLineNo">235</span><a id="line.235">                throw new KodexaException("Unable to flush metadata to KDDB", e);</a>
+<span class="sourceLineNo">236</span><a id="line.236">            }</a>
+<span class="sourceLineNo">237</span><a id="line.237">            return null;</a>
+<span class="sourceLineNo">238</span><a id="line.238">        });</a>
+<span class="sourceLineNo">239</span><a id="line.239"></a>
+<span class="sourceLineNo">240</span><a id="line.240">    }</a>
+<span class="sourceLineNo">241</span><a id="line.241">}</a>
 
 
 
