@@ -44,4 +44,11 @@ public class ContentNode {
         return String.join(separator, allContents);
     }
 
+    public ContentFeature addFeature(String featureType, String featureName) {
+        ContentFeature contentFeature = new ContentFeature();
+        contentFeature.setFeatureType(featureType);
+        contentFeature.setName(featureName);
+        getFeatures().add(contentFeature);
+        return contentFeature;
+    }
 }

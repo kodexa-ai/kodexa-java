@@ -14,13 +14,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.lang.Math.pow;
 
 /**
  * A Persistence Layer that works with the document to allow it to be interacted with
@@ -34,6 +37,20 @@ public class SqlitePersistenceLayer {
 
     Map<Integer, String> featureTypeNames;
 
+    private final String FEATURE_INSERT = "INSERT INTO f (cn_id, f_type, fvalue_id) VALUES (?,?,?)";
+    private final String CONTENT_NODE_INSERT = "INSERT INTO cn (pid, nt, idx) VALUES (?,?,?)";
+    private final String CONTENT_NODE_PART_INSERT = "INSERT INTO cnp (cn_id, pos, content, content_idx) VALUES (?,?,?,?)";
+    private final String NOTE_TYPE_INSERT = "insert into n_type(name) values (?)";
+    private final String NODE_TYPE_LOOKUP = "select id from n_type where name = ?";
+    private final String FEATURE_VALUE_LOOKUP = "select id from f_value where hash=?";
+    private final String FEATURE_VALUE_INSERT = "insert into f_value(binary_value, hash, single) values (?,?,?)";
+    private final String FEATURE_TYPE_INSERT = "insert into f_type(name) values (?)";
+    private final String FEATURE_TYPE_LOOKUP = "select id from f_type where name = ?";
+    private final String METADATA_INSERT = "insert into metadata(id,metadata) values (1,?)";
+    private final String METADATA_DELETE = "delete from metadata where id=1";
+    private final String VERSION_INSERT = "insert into version(id,version) values (1,'4.0.0')";
+    private final String VERSION_DELETE = "delete from version where id=1";
+
     static {
         OBJECT_MAPPER_MSGPACK = new ObjectMapper(new MessagePackFactory());
         OBJECT_MAPPER_MSGPACK.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -42,6 +59,7 @@ public class SqlitePersistenceLayer {
     private String dbPath;
     private Jdbi jdbi;
     private boolean tempFile = false;
+    private MessageDigest md;
 
     public SqlitePersistenceLayer(Document document) {
         File file = null;
@@ -53,7 +71,10 @@ public class SqlitePersistenceLayer {
             file.deleteOnExit();
             this.initializeLayer();
             this.initializeDb();
-        } catch (IOException e) {
+
+            md = MessageDigest.getInstance("SHA-1");
+
+        } catch (IOException | NoSuchAlgorithmException e) {
             throw new KodexaException("Unable to initialize the temp file for KDDB", e);
         }
     }
@@ -219,10 +240,93 @@ public class SqlitePersistenceLayer {
     public byte[] toBytes() {
         try {
             flushMetadata();
+            replaceContent();
             return Files.readAllBytes(Path.of(dbPath));
         } catch (IOException e) {
             throw new KodexaException("Unable to read KDDB file from " + dbPath);
         }
+    }
+
+    private void replaceContent() {
+        jdbi.withHandle(handle -> {
+            handle.execute("delete from f_value");
+            handle.execute("delete from f");
+            handle.execute("delete from cnp");
+            handle.execute("delete from cn");
+
+            writeNode(handle, document.getContentNode(), null);
+
+            return null;
+        });
+
+    }
+
+    private void writeNode(Handle handle, ContentNode contentNode, Integer parentId) {
+        if (contentNode == null)
+            return;
+
+        int nodeTypeId = getNodeTypeId(handle, contentNode.getType());
+        int nodeId = (int) handle.createUpdate(CONTENT_NODE_INSERT).bind(0, parentId).bind(1, nodeTypeId).bind(2, contentNode.getIndex()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
+        contentNode.setUuid(String.valueOf(nodeId));
+
+        if (contentNode.getContentParts() == null || contentNode.getContentParts().isEmpty()) {
+            if (contentNode.getContent() != null) {
+                contentNode.setContentParts(List.of(contentNode.getContent()));
+            }
+        }
+
+        int pos = 0;
+        for (Object contentPart : contentNode.getContentParts()) {
+            if (contentPart instanceof String) {
+                handle.execute(CONTENT_NODE_PART_INSERT, nodeId, pos, contentPart, null);
+            } else {
+                handle.execute(CONTENT_NODE_PART_INSERT, nodeId, pos, null, contentPart);
+            }
+            pos++;
+        }
+
+        for (ContentFeature feature : contentNode.getFeatures()) {
+            writeFeature(handle, feature);
+        }
+    }
+
+    private int writeFeature(Handle handle, ContentFeature feature) {
+        int fTypeId = getFeatureTypeName(handle, feature.getFeatureType() + ":" + feature.getName());
+
+        // We need to work out the feature value
+        try {
+            byte[] packedValue = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(feature.getValue());
+            Formatter formatter = new Formatter();
+            for (byte b : md.digest(packedValue)) {
+                formatter.format("%02x", b);
+            }
+            long hash = new BigInteger(formatter.toString(), 16).mod(BigDecimal.valueOf(pow(10, 8)).toBigInteger()).longValue();
+            Optional<Map<String, Object>> result = handle.createQuery(FEATURE_VALUE_LOOKUP).bind(0, hash).mapToMap().findFirst();
+            if (result.isPresent()) {
+                return (int) result.get().get("id");
+            } else {
+                return (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
+            }
+        } catch (JsonProcessingException e) {
+            throw new KodexaException("Unable to pack feature value", e);
+        }
+
+    }
+
+    private int getNodeTypeId(Handle handle, String type) {
+        Optional<Map<String, Object>> nodeType = handle.createQuery("SELECT id, name FROM n_type where name is :nodeType").bind("nodeType", type)
+                .mapToMap()
+                .findFirst();
+
+        return nodeType.map(stringObjectMap -> (int) stringObjectMap.get("id")).orElseGet(() -> (Integer) handle.createUpdate("INSERT INTO n_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));
+    }
+
+    private int getFeatureTypeName(Handle handle, String type) {
+        Optional<Map<String, Object>> nodeType = handle.createQuery("SELECT id, name FROM f_type where name is :featureType").bind("featureType", type)
+                .mapToMap()
+                .findFirst();
+
+        return nodeType.map(stringObjectMap -> (int) stringObjectMap.get("id")).orElseGet(() -> (Integer) handle.createUpdate("INSERT INTO f_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));
     }
 
     private void flushMetadata() {
