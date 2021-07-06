@@ -60,7 +60,7 @@ public class SqlitePersistenceLayer {
     private String dbPath;
     private Jdbi jdbi;
     private boolean tempFile = false;
-    private MessageDigest md;
+    private final MessageDigest md;
 
     public SqlitePersistenceLayer(Document document) {
         File file = null;
@@ -138,9 +138,17 @@ public class SqlitePersistenceLayer {
     }
 
     public SqlitePersistenceLayer(File kddbFile, Document document) {
-        this.dbPath = kddbFile.getAbsolutePath();
-        this.document = document;
-        this.initializeLayer();
+
+        try {
+            md = MessageDigest.getInstance("SHA-1");
+
+            this.dbPath = kddbFile.getAbsolutePath();
+            this.document = document;
+            this.initializeLayer();
+        } catch (NoSuchAlgorithmException e) {
+            throw new KodexaException("Unable to initialize KDDB", e);
+        }
+
     }
 
     private void initializeLayer() {
