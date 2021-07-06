@@ -276,14 +276,14 @@ public class SqlitePersistenceLayer {
             handle.execute("delete from cnp");
             handle.execute("delete from cn");
 
-            writeNode(handle, document.getContentNode(), null);
+            writeNode(handle, document.getContentNode(), null, true);
 
             return null;
         });
 
     }
 
-    private void writeNode(Handle handle, ContentNode contentNode, Integer parentId) {
+    private void writeNode(Handle handle, ContentNode contentNode, Integer parentId, boolean includeChildren) {
         if (contentNode == null)
             return;
 
@@ -309,6 +309,12 @@ public class SqlitePersistenceLayer {
 
         for (ContentFeature feature : contentNode.getFeatures()) {
             writeFeature(handle, feature, contentNode);
+        }
+
+        if (includeChildren) {
+            for (ContentNode child : contentNode.getChildren()) {
+                writeNode(handle, child, nodeId, true);
+            }
         }
     }
 
