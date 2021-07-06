@@ -64,7 +64,10 @@ public class SqlitePersistenceLayer {
 
     public SqlitePersistenceLayer(Document document) {
         File file = null;
+
         try {
+            md = MessageDigest.getInstance("SHA-1");
+
             this.document = document;
             file = File.createTempFile("kdx", "kddb");
             this.dbPath = file.getAbsolutePath();
@@ -73,7 +76,6 @@ public class SqlitePersistenceLayer {
             this.initializeLayer();
             this.initializeDb();
 
-            md = MessageDigest.getInstance("SHA-1");
 
         } catch (IOException | NoSuchAlgorithmException e) {
             throw new KodexaException("Unable to initialize the temp file for KDDB", e);
@@ -119,6 +121,8 @@ public class SqlitePersistenceLayer {
     public SqlitePersistenceLayer(InputStream kddbInputStream, Document document) {
         final File tempFile;
         try {
+            md = MessageDigest.getInstance("SHA-1");
+
             this.document = document;
             tempFile = File.createTempFile("kodexa", "kddb");
             tempFile.deleteOnExit();
@@ -128,7 +132,7 @@ public class SqlitePersistenceLayer {
             this.dbPath = tempFile.getAbsolutePath();
 
             this.initializeLayer();
-        } catch (IOException e) {
+        } catch (IOException | NoSuchAlgorithmException e) {
             throw new KodexaException("Unable to create persistence layer for KDDB object", e);
         }
     }
