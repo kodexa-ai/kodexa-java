@@ -101,7 +101,9 @@ public class SqlitePersistenceLayer {
             handle.execute("CREATE UNIQUE INDEX n_type_uk ON n_type(name);");
             handle.execute("CREATE UNIQUE INDEX f_type_uk ON f_type(name);");
             handle.execute("CREATE INDEX cn_perf ON cn(nt);");
-            handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id);");
+            handle.execute("CREATE INDEX cn_perf2 ON cn(pid);");
+            handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id, pos);");
+            handle.execute("CREATE INDEX f_perf ON cnp(cn_id);");
             handle.execute("CREATE INDEX f_value_hash ON f_value(hash);");
 
             return handle;
