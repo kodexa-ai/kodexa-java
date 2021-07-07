@@ -103,7 +103,7 @@ public class SqlitePersistenceLayer {
             handle.execute("CREATE INDEX cn_perf ON cn(nt);");
             handle.execute("CREATE INDEX cn_perf2 ON cn(pid);");
             handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id, pos);");
-            handle.execute("CREATE INDEX f_perf ON cnp(cn_id);");
+            handle.execute("CREATE INDEX f_perf ON f(cn_id);");
             handle.execute("CREATE INDEX f_value_hash ON f_value(hash);");
 
             return handle;
@@ -345,12 +345,7 @@ public class SqlitePersistenceLayer {
             long hash = new BigInteger(formatter.toString(), 16).mod(BigDecimal.valueOf(pow(10, 8)).toBigInteger()).longValue();
             Optional<Map<String, Object>> result = handle.createQuery(FEATURE_VALUE_LOOKUP).bind(0, hash).mapToMap().findFirst();
             int featureValueId;
-            if (result.isPresent()) {
-                featureValueId = (int) result.get().get("id");
-            } else {
-                featureValueId = (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
-            }
-
+            featureValueId = result.map(stringObjectMap -> (int) stringObjectMap.get("id")).orElseGet(() -> (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));
             return (Integer) handle.createUpdate(FEATURE_INSERT).bind(0, contentNode.getUuid()).bind(1, fTypeId).bind(2, featureValueId).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
 
         } catch (JsonProcessingException e) {
