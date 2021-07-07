@@ -103,7 +103,7 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L103">            handle.execute(&quot;CREATE INDEX cn_perf ON cn(nt);&quot;);</span>
 <span class="fc" id="L104">            handle.execute(&quot;CREATE INDEX cn_perf2 ON cn(pid);&quot;);</span>
 <span class="fc" id="L105">            handle.execute(&quot;CREATE INDEX cnp_perf ON cnp(cn_id, pos);&quot;);</span>
-<span class="fc" id="L106">            handle.execute(&quot;CREATE INDEX f_perf ON cnp(cn_id);&quot;);</span>
+<span class="fc" id="L106">            handle.execute(&quot;CREATE INDEX f_perf ON f(cn_id);&quot;);</span>
 <span class="fc" id="L107">            handle.execute(&quot;CREATE INDEX f_value_hash ON f_value(hash);&quot;);</span>
 
 <span class="fc" id="L109">            return handle;</span>
@@ -345,56 +345,51 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L345">            long hash = new BigInteger(formatter.toString(), 16).mod(BigDecimal.valueOf(pow(10, 8)).toBigInteger()).longValue();</span>
 <span class="fc" id="L346">            Optional&lt;Map&lt;String, Object&gt;&gt; result = handle.createQuery(FEATURE_VALUE_LOOKUP).bind(0, hash).mapToMap().findFirst();</span>
             int featureValueId;
-<span class="pc bpc" id="L348" title="1 of 2 branches missed.">            if (result.isPresent()) {</span>
-<span class="nc" id="L349">                featureValueId = (int) result.get().get(&quot;id&quot;);</span>
-            } else {
-<span class="fc" id="L351">                featureValueId = (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;);</span>
-            }
+<span class="pc" id="L348">            featureValueId = result.map(stringObjectMap -&gt; (int) stringObjectMap.get(&quot;id&quot;)).orElseGet(() -&gt; (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;));</span>
+<span class="fc" id="L349">            return (Integer) handle.createUpdate(FEATURE_INSERT).bind(0, contentNode.getUuid()).bind(1, fTypeId).bind(2, featureValueId).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;);</span>
 
-<span class="fc" id="L354">            return (Integer) handle.createUpdate(FEATURE_INSERT).bind(0, contentNode.getUuid()).bind(1, fTypeId).bind(2, featureValueId).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;);</span>
-
-<span class="nc" id="L356">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L357">            throw new KodexaException(&quot;Unable to pack feature value&quot;, e);</span>
+<span class="nc" id="L351">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L352">            throw new KodexaException(&quot;Unable to pack feature value&quot;, e);</span>
         }
 
     }
 
     private int getNodeTypeId(Handle handle, String type) {
-<span class="fc" id="L363">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery(&quot;SELECT id, name FROM n_type where name is :nodeType&quot;).bind(&quot;nodeType&quot;, type)</span>
-<span class="fc" id="L364">                .mapToMap()</span>
-<span class="fc" id="L365">                .findFirst();</span>
+<span class="fc" id="L358">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery(&quot;SELECT id, name FROM n_type where name is :nodeType&quot;).bind(&quot;nodeType&quot;, type)</span>
+<span class="fc" id="L359">                .mapToMap()</span>
+<span class="fc" id="L360">                .findFirst();</span>
 
-<span class="pc" id="L367">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get(&quot;id&quot;)).orElseGet(() -&gt; (Integer) handle.createUpdate(&quot;INSERT INTO n_type(name) VALUES(?)&quot;).bind(0, type).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;));</span>
+<span class="pc" id="L362">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get(&quot;id&quot;)).orElseGet(() -&gt; (Integer) handle.createUpdate(&quot;INSERT INTO n_type(name) VALUES(?)&quot;).bind(0, type).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;));</span>
     }
 
     private int getFeatureTypeName(Handle handle, String type) {
-<span class="fc" id="L371">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery(&quot;SELECT id, name FROM f_type where name is :featureType&quot;).bind(&quot;featureType&quot;, type)</span>
-<span class="fc" id="L372">                .mapToMap()</span>
-<span class="fc" id="L373">                .findFirst();</span>
+<span class="fc" id="L366">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery(&quot;SELECT id, name FROM f_type where name is :featureType&quot;).bind(&quot;featureType&quot;, type)</span>
+<span class="fc" id="L367">                .mapToMap()</span>
+<span class="fc" id="L368">                .findFirst();</span>
 
-<span class="pc" id="L375">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get(&quot;id&quot;)).orElseGet(() -&gt; (Integer) handle.createUpdate(&quot;INSERT INTO f_type(name) VALUES(?)&quot;).bind(0, type).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;));</span>
+<span class="pc" id="L370">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get(&quot;id&quot;)).orElseGet(() -&gt; (Integer) handle.createUpdate(&quot;INSERT INTO f_type(name) VALUES(?)&quot;).bind(0, type).executeAndReturnGeneratedKeys(&quot;id&quot;).mapToMap().first().get(&quot;last_insert_rowid()&quot;));</span>
     }
 
     private void flushMetadata() {
-<span class="fc" id="L379">        jdbi.withHandle(handle -&gt; {</span>
+<span class="fc" id="L374">        jdbi.withHandle(handle -&gt; {</span>
             try {
-<span class="fc" id="L381">                Document copyDocument = new Document();</span>
-<span class="fc" id="L382">                copyDocument.setSource(document.getSource());</span>
-<span class="fc" id="L383">                copyDocument.setClasses(document.getClasses());</span>
-<span class="fc" id="L384">                copyDocument.setLabels(document.getLabels());</span>
-<span class="fc" id="L385">                copyDocument.setMetadata(document.getMetadata());</span>
-<span class="fc" id="L386">                copyDocument.setUuid(document.getUuid());</span>
-<span class="fc" id="L387">                copyDocument.setMixins(document.getMixins());</span>
+<span class="fc" id="L376">                Document copyDocument = new Document();</span>
+<span class="fc" id="L377">                copyDocument.setSource(document.getSource());</span>
+<span class="fc" id="L378">                copyDocument.setClasses(document.getClasses());</span>
+<span class="fc" id="L379">                copyDocument.setLabels(document.getLabels());</span>
+<span class="fc" id="L380">                copyDocument.setMetadata(document.getMetadata());</span>
+<span class="fc" id="L381">                copyDocument.setUuid(document.getUuid());</span>
+<span class="fc" id="L382">                copyDocument.setMixins(document.getMixins());</span>
 
-<span class="fc" id="L389">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);</span>
-<span class="fc" id="L390">                handle.execute(&quot;INSERT INTO metadata(metadata, id) VALUES(?, ?)\n&quot; +</span>
-<span class="fc" id="L391">                        &quot;  ON CONFLICT(id) DO UPDATE SET metadata=?&quot;, metadataBytes, 1, metadataBytes);</span>
-<span class="nc" id="L392">            } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L393">                throw new KodexaException(&quot;Unable to flush metadata to KDDB&quot;, e);</span>
-<span class="fc" id="L394">            }</span>
-<span class="fc" id="L395">            return null;</span>
+<span class="fc" id="L384">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);</span>
+<span class="fc" id="L385">                handle.execute(&quot;INSERT INTO metadata(metadata, id) VALUES(?, ?)\n&quot; +</span>
+<span class="fc" id="L386">                        &quot;  ON CONFLICT(id) DO UPDATE SET metadata=?&quot;, metadataBytes, 1, metadataBytes);</span>
+<span class="nc" id="L387">            } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L388">                throw new KodexaException(&quot;Unable to flush metadata to KDDB&quot;, e);</span>
+<span class="fc" id="L389">            }</span>
+<span class="fc" id="L390">            return null;</span>
         });
 
-<span class="fc" id="L398">    }</span>
+<span class="fc" id="L393">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

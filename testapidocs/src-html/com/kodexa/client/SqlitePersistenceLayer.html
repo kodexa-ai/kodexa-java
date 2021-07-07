@@ -112,7 +112,7 @@
 <span class="sourceLineNo">103</span><a id="line.103">            handle.execute("CREATE INDEX cn_perf ON cn(nt);");</a>
 <span class="sourceLineNo">104</span><a id="line.104">            handle.execute("CREATE INDEX cn_perf2 ON cn(pid);");</a>
 <span class="sourceLineNo">105</span><a id="line.105">            handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id, pos);");</a>
-<span class="sourceLineNo">106</span><a id="line.106">            handle.execute("CREATE INDEX f_perf ON cnp(cn_id);");</a>
+<span class="sourceLineNo">106</span><a id="line.106">            handle.execute("CREATE INDEX f_perf ON f(cn_id);");</a>
 <span class="sourceLineNo">107</span><a id="line.107">            handle.execute("CREATE INDEX f_value_hash ON f_value(hash);");</a>
 <span class="sourceLineNo">108</span><a id="line.108"></a>
 <span class="sourceLineNo">109</span><a id="line.109">            return handle;</a>
@@ -354,58 +354,53 @@
 <span class="sourceLineNo">345</span><a id="line.345">            long hash = new BigInteger(formatter.toString(), 16).mod(BigDecimal.valueOf(pow(10, 8)).toBigInteger()).longValue();</a>
 <span class="sourceLineNo">346</span><a id="line.346">            Optional&lt;Map&lt;String, Object&gt;&gt; result = handle.createQuery(FEATURE_VALUE_LOOKUP).bind(0, hash).mapToMap().findFirst();</a>
 <span class="sourceLineNo">347</span><a id="line.347">            int featureValueId;</a>
-<span class="sourceLineNo">348</span><a id="line.348">            if (result.isPresent()) {</a>
-<span class="sourceLineNo">349</span><a id="line.349">                featureValueId = (int) result.get().get("id");</a>
-<span class="sourceLineNo">350</span><a id="line.350">            } else {</a>
-<span class="sourceLineNo">351</span><a id="line.351">                featureValueId = (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");</a>
-<span class="sourceLineNo">352</span><a id="line.352">            }</a>
-<span class="sourceLineNo">353</span><a id="line.353"></a>
-<span class="sourceLineNo">354</span><a id="line.354">            return (Integer) handle.createUpdate(FEATURE_INSERT).bind(0, contentNode.getUuid()).bind(1, fTypeId).bind(2, featureValueId).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");</a>
-<span class="sourceLineNo">355</span><a id="line.355"></a>
-<span class="sourceLineNo">356</span><a id="line.356">        } catch (JsonProcessingException e) {</a>
-<span class="sourceLineNo">357</span><a id="line.357">            throw new KodexaException("Unable to pack feature value", e);</a>
-<span class="sourceLineNo">358</span><a id="line.358">        }</a>
-<span class="sourceLineNo">359</span><a id="line.359"></a>
-<span class="sourceLineNo">360</span><a id="line.360">    }</a>
+<span class="sourceLineNo">348</span><a id="line.348">            featureValueId = result.map(stringObjectMap -&gt; (int) stringObjectMap.get("id")).orElseGet(() -&gt; (Integer) handle.createUpdate(FEATURE_VALUE_INSERT).bind(0, packedValue).bind(1, hash).bind(2, feature.isSingle()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));</a>
+<span class="sourceLineNo">349</span><a id="line.349">            return (Integer) handle.createUpdate(FEATURE_INSERT).bind(0, contentNode.getUuid()).bind(1, fTypeId).bind(2, featureValueId).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");</a>
+<span class="sourceLineNo">350</span><a id="line.350"></a>
+<span class="sourceLineNo">351</span><a id="line.351">        } catch (JsonProcessingException e) {</a>
+<span class="sourceLineNo">352</span><a id="line.352">            throw new KodexaException("Unable to pack feature value", e);</a>
+<span class="sourceLineNo">353</span><a id="line.353">        }</a>
+<span class="sourceLineNo">354</span><a id="line.354"></a>
+<span class="sourceLineNo">355</span><a id="line.355">    }</a>
+<span class="sourceLineNo">356</span><a id="line.356"></a>
+<span class="sourceLineNo">357</span><a id="line.357">    private int getNodeTypeId(Handle handle, String type) {</a>
+<span class="sourceLineNo">358</span><a id="line.358">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery("SELECT id, name FROM n_type where name is :nodeType").bind("nodeType", type)</a>
+<span class="sourceLineNo">359</span><a id="line.359">                .mapToMap()</a>
+<span class="sourceLineNo">360</span><a id="line.360">                .findFirst();</a>
 <span class="sourceLineNo">361</span><a id="line.361"></a>
-<span class="sourceLineNo">362</span><a id="line.362">    private int getNodeTypeId(Handle handle, String type) {</a>
-<span class="sourceLineNo">363</span><a id="line.363">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery("SELECT id, name FROM n_type where name is :nodeType").bind("nodeType", type)</a>
-<span class="sourceLineNo">364</span><a id="line.364">                .mapToMap()</a>
-<span class="sourceLineNo">365</span><a id="line.365">                .findFirst();</a>
-<span class="sourceLineNo">366</span><a id="line.366"></a>
-<span class="sourceLineNo">367</span><a id="line.367">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get("id")).orElseGet(() -&gt; (Integer) handle.createUpdate("INSERT INTO n_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));</a>
-<span class="sourceLineNo">368</span><a id="line.368">    }</a>
+<span class="sourceLineNo">362</span><a id="line.362">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get("id")).orElseGet(() -&gt; (Integer) handle.createUpdate("INSERT INTO n_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));</a>
+<span class="sourceLineNo">363</span><a id="line.363">    }</a>
+<span class="sourceLineNo">364</span><a id="line.364"></a>
+<span class="sourceLineNo">365</span><a id="line.365">    private int getFeatureTypeName(Handle handle, String type) {</a>
+<span class="sourceLineNo">366</span><a id="line.366">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery("SELECT id, name FROM f_type where name is :featureType").bind("featureType", type)</a>
+<span class="sourceLineNo">367</span><a id="line.367">                .mapToMap()</a>
+<span class="sourceLineNo">368</span><a id="line.368">                .findFirst();</a>
 <span class="sourceLineNo">369</span><a id="line.369"></a>
-<span class="sourceLineNo">370</span><a id="line.370">    private int getFeatureTypeName(Handle handle, String type) {</a>
-<span class="sourceLineNo">371</span><a id="line.371">        Optional&lt;Map&lt;String, Object&gt;&gt; nodeType = handle.createQuery("SELECT id, name FROM f_type where name is :featureType").bind("featureType", type)</a>
-<span class="sourceLineNo">372</span><a id="line.372">                .mapToMap()</a>
-<span class="sourceLineNo">373</span><a id="line.373">                .findFirst();</a>
-<span class="sourceLineNo">374</span><a id="line.374"></a>
-<span class="sourceLineNo">375</span><a id="line.375">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get("id")).orElseGet(() -&gt; (Integer) handle.createUpdate("INSERT INTO f_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));</a>
-<span class="sourceLineNo">376</span><a id="line.376">    }</a>
-<span class="sourceLineNo">377</span><a id="line.377"></a>
-<span class="sourceLineNo">378</span><a id="line.378">    private void flushMetadata() {</a>
-<span class="sourceLineNo">379</span><a id="line.379">        jdbi.withHandle(handle -&gt; {</a>
-<span class="sourceLineNo">380</span><a id="line.380">            try {</a>
-<span class="sourceLineNo">381</span><a id="line.381">                Document copyDocument = new Document();</a>
-<span class="sourceLineNo">382</span><a id="line.382">                copyDocument.setSource(document.getSource());</a>
-<span class="sourceLineNo">383</span><a id="line.383">                copyDocument.setClasses(document.getClasses());</a>
-<span class="sourceLineNo">384</span><a id="line.384">                copyDocument.setLabels(document.getLabels());</a>
-<span class="sourceLineNo">385</span><a id="line.385">                copyDocument.setMetadata(document.getMetadata());</a>
-<span class="sourceLineNo">386</span><a id="line.386">                copyDocument.setUuid(document.getUuid());</a>
-<span class="sourceLineNo">387</span><a id="line.387">                copyDocument.setMixins(document.getMixins());</a>
-<span class="sourceLineNo">388</span><a id="line.388"></a>
-<span class="sourceLineNo">389</span><a id="line.389">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);</a>
-<span class="sourceLineNo">390</span><a id="line.390">                handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +</a>
-<span class="sourceLineNo">391</span><a id="line.391">                        "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);</a>
-<span class="sourceLineNo">392</span><a id="line.392">            } catch (JsonProcessingException e) {</a>
-<span class="sourceLineNo">393</span><a id="line.393">                throw new KodexaException("Unable to flush metadata to KDDB", e);</a>
-<span class="sourceLineNo">394</span><a id="line.394">            }</a>
-<span class="sourceLineNo">395</span><a id="line.395">            return null;</a>
-<span class="sourceLineNo">396</span><a id="line.396">        });</a>
-<span class="sourceLineNo">397</span><a id="line.397"></a>
-<span class="sourceLineNo">398</span><a id="line.398">    }</a>
-<span class="sourceLineNo">399</span><a id="line.399">}</a>
+<span class="sourceLineNo">370</span><a id="line.370">        return nodeType.map(stringObjectMap -&gt; (int) stringObjectMap.get("id")).orElseGet(() -&gt; (Integer) handle.createUpdate("INSERT INTO f_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));</a>
+<span class="sourceLineNo">371</span><a id="line.371">    }</a>
+<span class="sourceLineNo">372</span><a id="line.372"></a>
+<span class="sourceLineNo">373</span><a id="line.373">    private void flushMetadata() {</a>
+<span class="sourceLineNo">374</span><a id="line.374">        jdbi.withHandle(handle -&gt; {</a>
+<span class="sourceLineNo">375</span><a id="line.375">            try {</a>
+<span class="sourceLineNo">376</span><a id="line.376">                Document copyDocument = new Document();</a>
+<span class="sourceLineNo">377</span><a id="line.377">                copyDocument.setSource(document.getSource());</a>
+<span class="sourceLineNo">378</span><a id="line.378">                copyDocument.setClasses(document.getClasses());</a>
+<span class="sourceLineNo">379</span><a id="line.379">                copyDocument.setLabels(document.getLabels());</a>
+<span class="sourceLineNo">380</span><a id="line.380">                copyDocument.setMetadata(document.getMetadata());</a>
+<span class="sourceLineNo">381</span><a id="line.381">                copyDocument.setUuid(document.getUuid());</a>
+<span class="sourceLineNo">382</span><a id="line.382">                copyDocument.setMixins(document.getMixins());</a>
+<span class="sourceLineNo">383</span><a id="line.383"></a>
+<span class="sourceLineNo">384</span><a id="line.384">                byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);</a>
+<span class="sourceLineNo">385</span><a id="line.385">                handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +</a>
+<span class="sourceLineNo">386</span><a id="line.386">                        "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);</a>
+<span class="sourceLineNo">387</span><a id="line.387">            } catch (JsonProcessingException e) {</a>
+<span class="sourceLineNo">388</span><a id="line.388">                throw new KodexaException("Unable to flush metadata to KDDB", e);</a>
+<span class="sourceLineNo">389</span><a id="line.389">            }</a>
+<span class="sourceLineNo">390</span><a id="line.390">            return null;</a>
+<span class="sourceLineNo">391</span><a id="line.391">        });</a>
+<span class="sourceLineNo">392</span><a id="line.392"></a>
+<span class="sourceLineNo">393</span><a id="line.393">    }</a>
+<span class="sourceLineNo">394</span><a id="line.394">}</a>
 
 
 
