@@ -241,12 +241,14 @@ public class Document {
 <span class="fc" id="L241">        ContentNode contentNode = new ContentNode(this);</span>
 <span class="fc" id="L242">        contentNode.setType(type);</span>
 <span class="fc" id="L243">        contentNode.setContent(content);</span>
-<span class="fc" id="L244">        return contentNode;</span>
+
+<span class="fc" id="L245">        persistenceLayer.updateNode(contentNode);</span>
+<span class="fc" id="L246">        return contentNode;</span>
     }
 
     public void addMixin(String spatial) {
-<span class="pc bpc" id="L248" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial))</span>
-<span class="fc" id="L249">            this.mixins.add(spatial);</span>
-<span class="fc" id="L250">    }</span>
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial))</span>
+<span class="fc" id="L251">            this.mixins.add(spatial);</span>
+<span class="fc" id="L252">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
