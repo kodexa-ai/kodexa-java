@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
-import org.checkerframework.checker.units.qual.A;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
@@ -210,7 +209,7 @@ public class SqlitePersistenceLayer {
     }
 
     private ContentNode buildNode(Map<String, Object> contentNodeValues, Handle handle) {
-        ContentNode contentNode = new ContentNode();
+        ContentNode contentNode = new ContentNode(this.document);
         contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));
         contentNode.setType(nodeTypes.get(contentNodeValues.get("nt")));
 
@@ -259,15 +258,6 @@ public class SqlitePersistenceLayer {
             }
 
             contentNode.getFeatures().add(contentFeature);
-        }
-
-        List<Map<String, Object>> childNodes =
-                handle.createQuery("SELECT id, nt, pid FROM cn where pid is :nodeId").bind("nodeId", contentNode.getUuid())
-                        .mapToMap()
-                        .list();
-
-        for (Map<String, Object> childNode : childNodes) {
-            contentNode.getChildren().add(buildNode(childNode, handle));
         }
 
         return contentNode;
@@ -389,6 +379,20 @@ public class SqlitePersistenceLayer {
             }
             return null;
         });
+    }
 
+    public List<ContentNode> getChildNodes(ContentNode contentNode) {
+        return jdbi.withHandle(handle -> {
+            List<Map<String, Object>> childNodes =
+                    handle.createQuery("SELECT id, nt, pid FROM cn where pid is :nodeId").bind("nodeId", contentNode.getUuid())
+                            .mapToMap()
+                            .list();
+            List<ContentNode> children = new ArrayList<>();
+            for (Map<String, Object> childNode : childNodes) {
+                children.add(buildNode(childNode, handle));
+            }
+
+            return children;
+        });
     }
 }

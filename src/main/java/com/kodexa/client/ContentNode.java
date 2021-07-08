@@ -26,8 +26,13 @@ public class ContentNode {
     @JsonProperty("content_parts")
     private List<Object> contentParts;
 
-    private List<ContentNode> children = new ArrayList<>();
     private List<ContentFeature> features = new ArrayList<>();
+
+    private final Document document;
+
+    public ContentNode(Document document) {
+        this.document = document;
+    }
 
     /**
      * Returns all the contents from this node and all its children
@@ -38,10 +43,14 @@ public class ContentNode {
     public String getAllContent(String separator) {
         List<String> allContents = new ArrayList<>();
         allContents.add(this.content);
-        for (ContentNode child : this.children) {
+        for (ContentNode child : this.getChildren()) {
             allContents.add(child.getAllContent(separator));
         }
         return String.join(separator, allContents);
+    }
+
+    public List<ContentNode> getChildren() {
+        return document.getPersistanceLayer().getChildNodes(this);
     }
 
     public ContentFeature addFeature(String featureType, String featureName) {

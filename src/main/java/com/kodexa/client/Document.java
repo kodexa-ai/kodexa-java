@@ -137,6 +137,10 @@ public class Document {
         return newDocument;
     }
 
+    protected SqlitePersistenceLayer getPersistanceLayer() {
+        return persistenceLayer;
+    }
+
     @SuppressWarnings("unchecked")
     public static Document fromUrl(String url) {
         Document newDocument = new Document();
@@ -234,7 +238,7 @@ public class Document {
     }
 
     public ContentNode createContentNode(String type, String content) {
-        ContentNode contentNode = new ContentNode();
+        ContentNode contentNode = new ContentNode(this);
         contentNode.setType(type);
         contentNode.setContent(content);
         return contentNode;
