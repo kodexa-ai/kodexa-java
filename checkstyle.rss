@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021 Kodexa</copyright>
     <item>
-      <title>File: 60,
-             Errors: 884,
+      <title>File: 58,
+             Errors: 869,
              Warnings: 0,
              Infos: 0
       </title>
@@ -102,20 +102,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentFeatureDeserializer.java">com/kodexa/client/ContentFeatureDeserializer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  14
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentNode.java">com/kodexa/client/ContentNode.java</a>
                 </td>
                 <td>
@@ -125,7 +111,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  15
+                  20
                 </td>
               </tr>
                           <tr>
@@ -364,20 +350,6 @@ under the License.
                 </td>
                 <td>
                   13
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentFeatureSerializer.java">com/kodexa/client/ContentFeatureSerializer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  9
                 </td>
               </tr>
                           <tr>
@@ -699,7 +671,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  138
+                  140
                 </td>
               </tr>
                           <tr>
@@ -783,7 +755,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  72
+                  73
                 </td>
               </tr>
                           <tr>
