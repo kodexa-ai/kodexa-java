@@ -266,25 +266,10 @@ public class SqlitePersistenceLayer {
     public byte[] toBytes() {
         try {
             flushMetadata();
-            replaceContent();
             return Files.readAllBytes(Path.of(dbPath));
         } catch (IOException e) {
             throw new KodexaException("Unable to read KDDB file from " + dbPath);
         }
-    }
-
-    private void replaceContent() {
-        jdbi.withHandle(handle -> {
-            handle.execute("delete from f_value");
-            handle.execute("delete from f");
-            handle.execute("delete from cnp");
-            handle.execute("delete from cn");
-
-            writeNode(handle, document.getContentNode(), null, true);
-
-            return null;
-        });
-
     }
 
     private void writeNode(Handle handle, ContentNode contentNode, Integer parentId, boolean includeChildren) {
