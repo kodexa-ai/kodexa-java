@@ -241,6 +241,8 @@ public class Document {
         ContentNode contentNode = new ContentNode(this);
         contentNode.setType(type);
         contentNode.setContent(content);
+
+        persistenceLayer.updateNode(contentNode);
         return contentNode;
     }
 

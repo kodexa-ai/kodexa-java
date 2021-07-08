@@ -17,6 +17,8 @@ public class ContentNode {
 
     private int index;
 
+    private ContentNode parent;
+
     private String uuid;
 
     @JsonProperty("node_type")
@@ -58,6 +60,16 @@ public class ContentNode {
         contentFeature.setFeatureType(featureType);
         contentFeature.setName(featureName);
         getFeatures().add(contentFeature);
+
+        document.getPersistanceLayer().updateNode(this);
         return contentFeature;
+    }
+
+    protected Integer getParentId() {
+        if (parent != null) {
+            return Integer.valueOf(parent.getUuid());
+        } else {
+            return null;
+        }
     }
 }

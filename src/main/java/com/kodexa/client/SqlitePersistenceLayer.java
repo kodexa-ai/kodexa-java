@@ -208,6 +208,13 @@ public class SqlitePersistenceLayer {
         });
     }
 
+    public void updateNode(ContentNode node) {
+        jdbi.withHandle(handle -> {
+            updateNode(handle, node, node.getParentId(), false);
+            return null;
+        });
+    }
+
     private ContentNode buildNode(Map<String, Object> contentNodeValues, Handle handle) {
         ContentNode contentNode = new ContentNode(this.document);
         contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));
@@ -272,13 +279,24 @@ public class SqlitePersistenceLayer {
         }
     }
 
-    private void writeNode(Handle handle, ContentNode contentNode, Integer parentId, boolean includeChildren) {
+    private void updateNode(Handle handle, ContentNode contentNode, Integer parentId, boolean includeChildren) {
         if (contentNode == null)
             return;
 
         int nodeTypeId = getNodeTypeId(handle, contentNode.getType());
-        int nodeId = (int) handle.createUpdate(CONTENT_NODE_INSERT).bind(0, parentId).bind(1, nodeTypeId).bind(2, contentNode.getIndex()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
-        contentNode.setUuid(String.valueOf(nodeId));
+
+        if (contentNode.getUuid() == null) {
+            int nodeId = (int) handle.createUpdate(CONTENT_NODE_INSERT).bind(0, parentId).bind(1, nodeTypeId).bind(2, contentNode.getIndex()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
+            contentNode.setUuid(String.valueOf(nodeId));
+        } else {
+            // We need to delete everything for the node to replace it
+            handle.execute("delete from f where cn_id=?", contentNode.getUuid());
+            handle.execute("delete from cnp where cn_id=?", contentNode.getUuid());
+            handle.execute("delete from cn  where id=?", contentNode.getUuid());
+
+            int nodeId = (int) handle.createUpdate(CONTENT_NODE_INSERT).bind(0, parentId).bind(1, nodeTypeId).bind(2, contentNode.getIndex()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
+            contentNode.setUuid(String.valueOf(nodeId));
+        }
 
         if (contentNode.getContentParts() == null || contentNode.getContentParts().isEmpty()) {
             if (contentNode.getContent() != null) {
@@ -289,9 +307,9 @@ public class SqlitePersistenceLayer {
         int pos = 0;
         for (Object contentPart : contentNode.getContentParts()) {
             if (contentPart instanceof String) {
-                handle.execute(CONTENT_NODE_PART_INSERT, nodeId, pos, contentPart, null);
+                handle.execute(CONTENT_NODE_PART_INSERT, contentNode.getUuid(), pos, contentPart, null);
             } else {
-                handle.execute(CONTENT_NODE_PART_INSERT, nodeId, pos, null, contentPart);
+                handle.execute(CONTENT_NODE_PART_INSERT, contentNode.getUuid(), pos, null, contentPart);
             }
             pos++;
         }
@@ -302,7 +320,7 @@ public class SqlitePersistenceLayer {
 
         if (includeChildren) {
             for (ContentNode child : contentNode.getChildren()) {
-                writeNode(handle, child, nodeId, true);
+                updateNode(handle, child, Integer.valueOf(contentNode.getUuid()), true);
             }
         }
     }
@@ -374,10 +392,13 @@ public class SqlitePersistenceLayer {
                             .list();
             List<ContentNode> children = new ArrayList<>();
             for (Map<String, Object> childNode : childNodes) {
-                children.add(buildNode(childNode, handle));
+                ContentNode child = buildNode(childNode, handle);
+                child.setParent(contentNode);
+                children.add(child);
             }
 
             return children;
         });
     }
+
 }
