@@ -175,6 +175,7 @@ public class SqlitePersistenceLayer {
                         .first().get("metadata");
 
                 Document baseDocument = OBJECT_MAPPER_MSGPACK.readValue(metadataPack, Document.class);
+                document.setUuid(baseDocument.getUuid());
                 document.setSource(baseDocument.getSource());
                 document.setClasses(baseDocument.getClasses());
                 document.setLabels(baseDocument.getLabels());
@@ -367,6 +368,7 @@ public class SqlitePersistenceLayer {
         jdbi.withHandle(handle -> {
             try {
                 Document copyDocument = new Document();
+                copyDocument.setUuid(document.getUuid());
                 copyDocument.setSource(document.getSource());
                 copyDocument.setClasses(document.getClasses());
                 copyDocument.setLabels(document.getLabels());
@@ -401,4 +403,7 @@ public class SqlitePersistenceLayer {
         });
     }
 
+    public String getAllContentForContentNode(ContentNode contentNode, String separator) {
+        return null;
+    }
 }
