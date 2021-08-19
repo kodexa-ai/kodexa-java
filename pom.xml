@@ -358,7 +358,7 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
-                            <failBuildOnCVSS>8</failBuildOnCVSS>
+<!--                            <failBuildOnCVSS>8</failBuildOnCVSS>-->
                         </configuration>
                     </execution>
                 </executions>
