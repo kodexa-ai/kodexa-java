@@ -414,7 +414,14 @@
 <a class="jxr_linenumber" name="L406" href="#L406">406</a>     <strong class="jxr_keyword">public</strong> String getAllContentForContentNode(<a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a> contentNode, String separator) {
 <a class="jxr_linenumber" name="L407" href="#L407">407</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L408" href="#L408">408</a>     }
-<a class="jxr_linenumber" name="L409" href="#L409">409</a> }
+<a class="jxr_linenumber" name="L409" href="#L409">409</a> 
+<a class="jxr_linenumber" name="L410" href="#L410">410</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getNodeCountByType(String type) {
+<a class="jxr_linenumber" name="L411" href="#L411">411</a>         <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">int</strong>) jdbi.withHandle(handle -&gt; handle.createQuery(<span class="jxr_string">"select count(1) as num from cn where nt=:nt"</span>).bind(<span class="jxr_string">"nt"</span>, nodeTypes.entrySet()
+<a class="jxr_linenumber" name="L412" href="#L412">412</a>                 .stream()
+<a class="jxr_linenumber" name="L413" href="#L413">413</a>                 .filter(entry -&gt; type.equals(entry.getValue()))
+<a class="jxr_linenumber" name="L414" href="#L414">414</a>                 .map(Map.Entry::getKey).findFirst().get()).mapToMap().first().get(<span class="jxr_string">"num"</span>));
+<a class="jxr_linenumber" name="L415" href="#L415">415</a>     }
+<a class="jxr_linenumber" name="L416" href="#L416">416</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>

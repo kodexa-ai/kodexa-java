@@ -406,5 +406,12 @@ public class SqlitePersistenceLayer {
     public String getAllContentForContentNode(ContentNode contentNode, String separator) {
 <span class="nc" id="L407">        return null;</span>
     }
+
+    public int getNodeCountByType(String type) {
+<span class="fc" id="L411">        return (int) jdbi.withHandle(handle -&gt; handle.createQuery(&quot;select count(1) as num from cn where nt=:nt&quot;).bind(&quot;nt&quot;, nodeTypes.entrySet()</span>
+<span class="fc" id="L412">                .stream()</span>
+<span class="fc" id="L413">                .filter(entry -&gt; type.equals(entry.getValue()))</span>
+<span class="fc" id="L414">                .map(Map.Entry::getKey).findFirst().get()).mapToMap().first().get(&quot;num&quot;));</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

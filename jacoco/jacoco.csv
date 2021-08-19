@@ -15,8 +15,8 @@ kodexa-java,com.kodexa.client.remote,AbstractKodexaConnection,40,0,0,0,11,0,3,0,
 kodexa-java,com.kodexa.client.remote,ProcessingException,177,0,30,0,6,0,27,0,12,0
 kodexa-java,com.kodexa.client.remote,CloudStore,155,0,30,0,4,0,26,0,11,0
 kodexa-java,com.kodexa.client.remote,CloudSession,75,0,14,0,2,0,14,0,7,0
-kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore.new TypeReference() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.store,StoredRow,386,0,72,0,10,0,59,0,23,0
+kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore.new TypeReference() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.store,JsonDocumentStore,62,0,0,0,17,0,6,0,6,0
 kodexa-java,com.kodexa.client.store,AbstractFileSystemDocumentStore,164,0,8,0,40,0,15,0,11,0
 kodexa-java,com.kodexa.client.store,RemoteTableDataStore.new TypeReference() {...},6,0,0,0,1,0,1,0,1,0
@@ -27,8 +27,8 @@ kodexa-java,com.kodexa.client.store,TableStore,150,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client,ContentFeature,151,36,34,0,0,5,21,9,4,9
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
-kodexa-java,com.kodexa.client,Document,590,264,93,1,39,43,64,31,17,31
-kodexa-java,com.kodexa.client,SqlitePersistenceLayer,200,1163,10,26,34,207,13,38,4,29
+kodexa-java,com.kodexa.client,Document,590,270,93,1,39,44,64,32,17,32
+kodexa-java,com.kodexa.client,SqlitePersistenceLayer,200,1201,10,26,34,211,13,41,4,32
 kodexa-java,com.kodexa.client,FeatureSet,8,0,0,0,2,0,1,0,1,0
 kodexa-java,com.kodexa.client,SourceMetadata,468,47,102,0,0,13,65,15,14,15
 kodexa-java,com.kodexa.client,ContentClassification,195,0,38,0,5,0,32,0,13,0
