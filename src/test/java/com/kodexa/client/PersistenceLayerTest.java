@@ -15,6 +15,13 @@ public class PersistenceLayerTest {
     }
 
     @Test
+    public void testGetNodeCounts() {
+        InputStream kddbInput = getClass().getClassLoader().getResourceAsStream("fax2.kddb");
+        Document document = Document.fromInputStream(kddbInput);
+        assert document.getNodeCountByType("line") == 18;
+    }
+
+    @Test
     public void newDocument() {
         Document document = new Document();
         byte[] bytes = document.toBytes();

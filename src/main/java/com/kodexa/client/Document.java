@@ -54,6 +54,10 @@ public class Document {
     @JsonIgnore
     private SqlitePersistenceLayer persistenceLayer;
 
+    public long getNodeCountByType(String type) {
+        return persistenceLayer.getNodeCountByType(type);
+    }
+
     private Map<String, Object> metadata = new HashMap<>();
 
     @JsonProperty("source")

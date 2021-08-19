@@ -406,4 +406,11 @@ public class SqlitePersistenceLayer {
     public String getAllContentForContentNode(ContentNode contentNode, String separator) {
         return null;
     }
+
+    public int getNodeCountByType(String type) {
+        return (int) jdbi.withHandle(handle -> handle.createQuery("select count(1) as num from cn where nt=:nt").bind("nt", nodeTypes.entrySet()
+                .stream()
+                .filter(entry -> type.equals(entry.getValue()))
+                .map(Map.Entry::getKey).findFirst().get()).mapToMap().first().get("num"));
+    }
 }
