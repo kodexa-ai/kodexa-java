@@ -420,7 +420,7 @@
 <span class="sourceLineNo">411</span><a id="line.411">        return (int) jdbi.withHandle(handle -&gt; handle.createQuery("select count(1) as num from cn where nt=:nt").bind("nt", nodeTypes.entrySet()</a>
 <span class="sourceLineNo">412</span><a id="line.412">                .stream()</a>
 <span class="sourceLineNo">413</span><a id="line.413">                .filter(entry -&gt; type.equals(entry.getValue()))</a>
-<span class="sourceLineNo">414</span><a id="line.414">                .map(Map.Entry::getKey).findFirst().get()).mapToMap().first().get("num"));</a>
+<span class="sourceLineNo">414</span><a id="line.414">                .map(Map.Entry::getKey).findFirst().orElse(-1)).mapToMap().first().get("num"));</a>
 <span class="sourceLineNo">415</span><a id="line.415">    }</a>
 <span class="sourceLineNo">416</span><a id="line.416">}</a>
 
