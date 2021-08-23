@@ -176,9 +176,13 @@ public class Document {
 <span class="fc" id="L176">        return persistenceLayer.toBytes();</span>
     }
 
+    public InputStream toInputStream() {
+<span class="nc" id="L180">        return persistenceLayer.toInputStream();</span>
+    }
+
     public void close() {
-<span class="fc" id="L180">        persistenceLayer.close();</span>
-<span class="fc" id="L181">    }</span>
+<span class="fc" id="L184">        persistenceLayer.close();</span>
+<span class="fc" id="L185">    }</span>
 
     /**
      * Add the given label to the document
@@ -187,8 +191,8 @@ public class Document {
      * @return the instance of the document
      */
     public Document addLabel(String label) {
-<span class="nc" id="L190">        labels.add(label);</span>
-<span class="nc" id="L191">        return this;</span>
+<span class="nc" id="L194">        labels.add(label);</span>
+<span class="nc" id="L195">        return this;</span>
     }
 
     /**
@@ -198,8 +202,8 @@ public class Document {
      * @return the instance of the document
      */
     public Document removeLabel(String label) {
-<span class="nc" id="L201">        labels.remove(label);</span>
-<span class="nc" id="L202">        return this;</span>
+<span class="nc" id="L205">        labels.remove(label);</span>
+<span class="nc" id="L206">        return this;</span>
     }
 
     /**
@@ -211,13 +215,13 @@ public class Document {
     @Deprecated
     public String toJson(boolean pretty) {
         try {
-<span class="nc bnc" id="L214" title="All 2 branches missed.">            if (pretty) {</span>
-<span class="nc" id="L215">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">            if (pretty) {</span>
+<span class="nc" id="L219">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
             } else {
-<span class="nc" id="L217">                return OBJECT_MAPPER.writeValueAsString(this);</span>
+<span class="nc" id="L221">                return OBJECT_MAPPER.writeValueAsString(this);</span>
             }
-<span class="nc" id="L219">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L220">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
+<span class="nc" id="L223">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L224">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
         }
     }
 
@@ -229,9 +233,9 @@ public class Document {
     @Deprecated
     public byte[] toMsgPack() {
         try {
-<span class="nc" id="L232">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
-<span class="nc" id="L233">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L234">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
+<span class="nc" id="L236">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
+<span class="nc" id="L237">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L238">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
         }
     }
 
@@ -242,21 +246,21 @@ public class Document {
      */
     @Deprecated
     public String toJson() {
-<span class="nc" id="L245">        return toJson(false);</span>
+<span class="nc" id="L249">        return toJson(false);</span>
     }
 
     public ContentNode createContentNode(String type, String content) {
-<span class="fc" id="L249">        ContentNode contentNode = new ContentNode(this);</span>
-<span class="fc" id="L250">        contentNode.setType(type);</span>
-<span class="fc" id="L251">        contentNode.setContent(content);</span>
+<span class="fc" id="L253">        ContentNode contentNode = new ContentNode(this);</span>
+<span class="fc" id="L254">        contentNode.setType(type);</span>
+<span class="fc" id="L255">        contentNode.setContent(content);</span>
 
-<span class="fc" id="L253">        persistenceLayer.updateNode(contentNode);</span>
-<span class="fc" id="L254">        return contentNode;</span>
+<span class="fc" id="L257">        persistenceLayer.updateNode(contentNode);</span>
+<span class="fc" id="L258">        return contentNode;</span>
     }
 
     public void addMixin(String spatial) {
-<span class="pc bpc" id="L258" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial))</span>
-<span class="fc" id="L259">            this.mixins.add(spatial);</span>
-<span class="fc" id="L260">    }</span>
+<span class="pc bpc" id="L262" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial))</span>
+<span class="fc" id="L263">            this.mixins.add(spatial);</span>
+<span class="fc" id="L264">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
