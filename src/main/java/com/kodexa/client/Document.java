@@ -160,6 +160,10 @@ public class Document {
         return newDocument;
     }
 
+    public static Document fromKddb(File file) {
+        return new Document(file);
+    }
+
     public static Document fromInputStream(InputStream inputStream) {
         return new Document(inputStream);
     }
