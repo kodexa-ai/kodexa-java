@@ -27,7 +27,7 @@ kodexa-java,com.kodexa.client.store,TableStore,150,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client,ContentFeature,151,36,34,0,0,5,21,9,4,9
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
-kodexa-java,com.kodexa.client,Document,590,270,93,1,39,44,64,32,17,32
+kodexa-java,com.kodexa.client,Document,595,270,93,1,40,44,65,32,18,32
 kodexa-java,com.kodexa.client,SqlitePersistenceLayer,200,1203,10,26,34,211,13,41,4,32
 kodexa-java,com.kodexa.client,FeatureSet,8,0,0,0,2,0,1,0,1,0
 kodexa-java,com.kodexa.client,SourceMetadata,468,47,102,0,0,13,65,15,14,15
