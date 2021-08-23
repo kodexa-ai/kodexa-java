@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
 
 import java.io.ByteArrayInputStream;
@@ -176,7 +177,7 @@ public class Document {
         return persistenceLayer.toBytes();
     }
 
-    public InputStream toInputStream() {
+    public ImmutablePair<InputStream, Long> toInputStream() {
         return persistenceLayer.toInputStream();
     }
 

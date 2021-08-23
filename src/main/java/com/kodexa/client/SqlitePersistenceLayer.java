@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
@@ -410,11 +411,11 @@ public class SqlitePersistenceLayer {
                 .filter(entry -> type.equals(entry.getValue()))
                 .map(Map.Entry::getKey).findFirst().orElse(-1)).mapToMap().first().get("num"));
     }
-    
-    public InputStream toInputStream() {
+
+    public ImmutablePair<InputStream, Long> toInputStream() {
         try {
             flushMetadata();
-            return new FileInputStream(dbPath);
+            return new ImmutablePair(new FileInputStream(dbPath), Files.size(Path.of(dbPath)));
         } catch (IOException e) {
             throw new KodexaException("Unable to read KDDB file from " + dbPath);
         }
