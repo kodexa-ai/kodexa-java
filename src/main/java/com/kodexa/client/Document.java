@@ -176,6 +176,10 @@ public class Document {
         return persistenceLayer.toBytes();
     }
 
+    public InputStream toInputStream() {
+        return persistenceLayer.toInputStream();
+    }
+
     public void close() {
         persistenceLayer.close();
     }

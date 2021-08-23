@@ -10,10 +10,7 @@ import org.jdbi.v3.core.Jdbi;
 import org.msgpack.jackson.dataformat.MessagePackFactory;
 import org.sqlite.SQLiteConfig;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -412,5 +409,14 @@ public class SqlitePersistenceLayer {
                 .stream()
                 .filter(entry -> type.equals(entry.getValue()))
                 .map(Map.Entry::getKey).findFirst().orElse(-1)).mapToMap().first().get("num"));
+    }
+    
+    public InputStream toInputStream() {
+        try {
+            flushMetadata();
+            return new FileInputStream(dbPath);
+        } catch (IOException e) {
+            throw new KodexaException("Unable to read KDDB file from " + dbPath);
+        }
     }
 }
