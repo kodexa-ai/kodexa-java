@@ -27,7 +27,7 @@ public class Document {
 
     private final static ObjectMapper OBJECT_MAPPER;
     private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
-    private static final String CURRENT_VERSION = "4.0.0";
+    public static final String CURRENT_VERSION = "4.0.1";
 
     static {
         OBJECT_MAPPER = new ObjectMapper();
@@ -50,6 +50,7 @@ public class Document {
     public Document(File kddbFile) {
         persistenceLayer = new SqlitePersistenceLayer(kddbFile, this);
         persistenceLayer.loadDocument();
+        this.setVersion(CURRENT_VERSION);
     }
 
     @JsonIgnore
@@ -73,7 +74,7 @@ public class Document {
     private List<ContentClassification> classes = new ArrayList<>();
 
     private String uuid = UUID.randomUUID().toString();
-    private String version = "2.0.0";
+    private String version = Document.CURRENT_VERSION;
 
     /**
      * Create a new instance of a Document from JSON string
