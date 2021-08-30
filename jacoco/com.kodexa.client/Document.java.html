@@ -60,21 +60,29 @@ public class Document {
 <span class="fc" id="L60">        return persistenceLayer.getNodeCountByType(type);</span>
     }
 
-<span class="pc" id="L63">    private Map&lt;String, Object&gt; metadata = new HashMap&lt;&gt;();</span>
+    public List&lt;ContentNode&gt; getTaggedNodes() {
+<span class="fc" id="L64">        return persistenceLayer.getTaggedNodes();</span>
+    }
 
-<span class="pc" id="L65">    @JsonProperty(&quot;source&quot;)</span>
-<span class="fc" id="L66">    private SourceMetadata source = new SourceMetadata();</span>
+    public List&lt;ContentNode&gt; getTaggedNodeByTagUuid(String tagUuid) {
+<span class="nc" id="L68">        return persistenceLayer.getTaggedNodeByTagUuid(tagUuid);</span>
+    }
+
+<span class="pc" id="L71">    private Map&lt;String, Object&gt; metadata = new HashMap&lt;&gt;();</span>
+
+<span class="pc" id="L73">    @JsonProperty(&quot;source&quot;)</span>
+<span class="fc" id="L74">    private SourceMetadata source = new SourceMetadata();</span>
 
     @JsonProperty(&quot;content_node&quot;)
-<span class="fc" id="L69">    private ContentNode contentNode;</span>
-<span class="pc" id="L70">    private boolean virtual = false;</span>
-<span class="pc" id="L71">    private List&lt;String&gt; mixins = new ArrayList&lt;&gt;();</span>
-<span class="pc" id="L72">    private List&lt;String&gt; labels = new ArrayList&lt;&gt;();</span>
-<span class="pc" id="L73">    private List&lt;String&gt; taxonomies = new ArrayList&lt;&gt;();</span>
-<span class="pc" id="L74">    private List&lt;ContentClassification&gt; classes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L77">    private ContentNode contentNode;</span>
+<span class="pc" id="L78">    private boolean virtual = false;</span>
+<span class="pc" id="L79">    private List&lt;String&gt; mixins = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L80">    private List&lt;String&gt; labels = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L81">    private List&lt;String&gt; taxonomies = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L82">    private List&lt;ContentClassification&gt; classes = new ArrayList&lt;&gt;();</span>
 
-<span class="pc" id="L76">    private String uuid = UUID.randomUUID().toString();</span>
-<span class="pc" id="L77">    private String version = Document.CURRENT_VERSION;</span>
+<span class="pc" id="L84">    private String uuid = UUID.randomUUID().toString();</span>
+<span class="pc" id="L85">    private String version = Document.CURRENT_VERSION;</span>
 
     /**
      * Create a new instance of a Document from JSON string
@@ -85,9 +93,9 @@ public class Document {
     @Deprecated
     public static Document fromJson(String json) {
         try {
-<span class="nc" id="L88">            return OBJECT_MAPPER.readValue(json, Document.class);</span>
-<span class="nc" id="L89">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L90">            throw new KodexaException(&quot;Unable to convert to Document from JSON&quot;, e);</span>
+<span class="nc" id="L96">            return OBJECT_MAPPER.readValue(json, Document.class);</span>
+<span class="nc" id="L97">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L98">            throw new KodexaException(&quot;Unable to convert to Document from JSON&quot;, e);</span>
         }
     }
 
@@ -100,9 +108,9 @@ public class Document {
     @Deprecated
     public static Document fromMsgPack(byte[] bytes) {
         try {
-<span class="nc" id="L103">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);</span>
-<span class="nc" id="L104">        } catch (IOException e) {</span>
-<span class="nc" id="L105">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
+<span class="nc" id="L111">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);</span>
+<span class="nc" id="L112">        } catch (IOException e) {</span>
+<span class="nc" id="L113">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
         }
     }
 
@@ -115,9 +123,9 @@ public class Document {
     @Deprecated
     public static Document fromMsgPack(InputStream is) {
         try {
-<span class="nc" id="L118">            return OBJECT_MAPPER_MSGPACK.readValue(is, Document.class);</span>
-<span class="nc" id="L119">        } catch (IOException e) {</span>
-<span class="nc" id="L120">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
+<span class="nc" id="L126">            return OBJECT_MAPPER_MSGPACK.readValue(is, Document.class);</span>
+<span class="nc" id="L127">        } catch (IOException e) {</span>
+<span class="nc" id="L128">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
         }
     }
 
@@ -130,61 +138,61 @@ public class Document {
     @Deprecated
     public static Document fromMsgPack(File file) {
         try {
-<span class="nc" id="L133">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);</span>
-<span class="nc" id="L134">        } catch (IOException e) {</span>
-<span class="nc" id="L135">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
+<span class="nc" id="L141">            return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);</span>
+<span class="nc" id="L142">        } catch (IOException e) {</span>
+<span class="nc" id="L143">            throw new KodexaException(&quot;Unable to convert to Document from message pack&quot;, e);</span>
         }
     }
 
     public static Document fromText(String text) {
-<span class="fc" id="L140">        Document newDocument = new Document();</span>
-<span class="fc" id="L141">        newDocument.setContentNode(newDocument.createContentNode(&quot;text&quot;, text));</span>
-<span class="fc" id="L142">        newDocument.getMixins().add(&quot;text&quot;);</span>
-<span class="fc" id="L143">        return newDocument;</span>
+<span class="fc" id="L148">        Document newDocument = new Document();</span>
+<span class="fc" id="L149">        newDocument.setContentNode(newDocument.createContentNode(&quot;text&quot;, text));</span>
+<span class="fc" id="L150">        newDocument.getMixins().add(&quot;text&quot;);</span>
+<span class="fc" id="L151">        return newDocument;</span>
     }
 
     protected SqlitePersistenceLayer getPersistanceLayer() {
-<span class="fc" id="L147">        return persistenceLayer;</span>
+<span class="fc" id="L155">        return persistenceLayer;</span>
     }
 
     @SuppressWarnings(&quot;unchecked&quot;)
     public static Document fromUrl(String url) {
-<span class="nc" id="L152">        Document newDocument = new Document();</span>
-<span class="nc" id="L153">        newDocument.getMetadata().put(&quot;connector&quot;, &quot;url&quot;);</span>
-<span class="nc" id="L154">        newDocument.getMetadata().put(&quot;connector_options&quot;, new HashMap&lt;String, Object&gt;());</span>
-<span class="nc" id="L155">        ((Map) newDocument.getMetadata().get(&quot;connector_options&quot;)).put(&quot;url&quot;, url);</span>
+<span class="nc" id="L160">        Document newDocument = new Document();</span>
+<span class="nc" id="L161">        newDocument.getMetadata().put(&quot;connector&quot;, &quot;url&quot;);</span>
+<span class="nc" id="L162">        newDocument.getMetadata().put(&quot;connector_options&quot;, new HashMap&lt;String, Object&gt;());</span>
+<span class="nc" id="L163">        ((Map) newDocument.getMetadata().get(&quot;connector_options&quot;)).put(&quot;url&quot;, url);</span>
 
-<span class="nc" id="L157">        SourceMetadata sourceMetadata = new SourceMetadata();</span>
-<span class="nc" id="L158">        sourceMetadata.setConnector(&quot;url&quot;);</span>
-<span class="nc" id="L159">        sourceMetadata.setOriginalPath(url);</span>
+<span class="nc" id="L165">        SourceMetadata sourceMetadata = new SourceMetadata();</span>
+<span class="nc" id="L166">        sourceMetadata.setConnector(&quot;url&quot;);</span>
+<span class="nc" id="L167">        sourceMetadata.setOriginalPath(url);</span>
 
-<span class="nc" id="L161">        newDocument.setSource(sourceMetadata);</span>
-<span class="nc" id="L162">        return newDocument;</span>
+<span class="nc" id="L169">        newDocument.setSource(sourceMetadata);</span>
+<span class="nc" id="L170">        return newDocument;</span>
     }
 
     public static Document fromKddb(File file) {
-<span class="nc" id="L166">        return new Document(file);</span>
+<span class="nc" id="L174">        return new Document(file);</span>
     }
 
     public static Document fromInputStream(InputStream inputStream) {
-<span class="fc" id="L170">        return new Document(inputStream);</span>
+<span class="fc" id="L178">        return new Document(inputStream);</span>
     }
 
     public static Document fromBytes(byte[] bytes) {
-<span class="fc" id="L174">        return new Document(new ByteArrayInputStream(bytes));</span>
+<span class="fc" id="L182">        return new Document(new ByteArrayInputStream(bytes));</span>
     }
 
     public byte[] toBytes() {
-<span class="fc" id="L178">        return persistenceLayer.toBytes();</span>
+<span class="fc" id="L186">        return persistenceLayer.toBytes();</span>
     }
 
     public ImmutablePair&lt;InputStream, Long&gt; toInputStream() {
-<span class="nc" id="L182">        return persistenceLayer.toInputStream();</span>
+<span class="nc" id="L190">        return persistenceLayer.toInputStream();</span>
     }
 
     public void close() {
-<span class="fc" id="L186">        persistenceLayer.close();</span>
-<span class="fc" id="L187">    }</span>
+<span class="fc" id="L194">        persistenceLayer.close();</span>
+<span class="fc" id="L195">    }</span>
 
     /**
      * Add the given label to the document
@@ -193,8 +201,8 @@ public class Document {
      * @return the instance of the document
      */
     public Document addLabel(String label) {
-<span class="nc" id="L196">        labels.add(label);</span>
-<span class="nc" id="L197">        return this;</span>
+<span class="nc" id="L204">        labels.add(label);</span>
+<span class="nc" id="L205">        return this;</span>
     }
 
     /**
@@ -204,8 +212,8 @@ public class Document {
      * @return the instance of the document
      */
     public Document removeLabel(String label) {
-<span class="nc" id="L207">        labels.remove(label);</span>
-<span class="nc" id="L208">        return this;</span>
+<span class="nc" id="L215">        labels.remove(label);</span>
+<span class="nc" id="L216">        return this;</span>
     }
 
     /**
@@ -217,13 +225,13 @@ public class Document {
     @Deprecated
     public String toJson(boolean pretty) {
         try {
-<span class="nc bnc" id="L220" title="All 2 branches missed.">            if (pretty) {</span>
-<span class="nc" id="L221">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">            if (pretty) {</span>
+<span class="nc" id="L229">                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span>
             } else {
-<span class="nc" id="L223">                return OBJECT_MAPPER.writeValueAsString(this);</span>
+<span class="nc" id="L231">                return OBJECT_MAPPER.writeValueAsString(this);</span>
             }
-<span class="nc" id="L225">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L226">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
+<span class="nc" id="L233">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L234">            throw new KodexaException(&quot;Unable to convert Document to JSON&quot;, e);</span>
         }
     }
 
@@ -235,9 +243,9 @@ public class Document {
     @Deprecated
     public byte[] toMsgPack() {
         try {
-<span class="nc" id="L238">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
-<span class="nc" id="L239">        } catch (JsonProcessingException e) {</span>
-<span class="nc" id="L240">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
+<span class="nc" id="L246">            return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);</span>
+<span class="nc" id="L247">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L248">            throw new KodexaException(&quot;Unable to write this document to message pack&quot;, e);</span>
         }
     }
 
@@ -248,21 +256,21 @@ public class Document {
      */
     @Deprecated
     public String toJson() {
-<span class="nc" id="L251">        return toJson(false);</span>
+<span class="nc" id="L259">        return toJson(false);</span>
     }
 
     public ContentNode createContentNode(String type, String content) {
-<span class="fc" id="L255">        ContentNode contentNode = new ContentNode(this);</span>
-<span class="fc" id="L256">        contentNode.setType(type);</span>
-<span class="fc" id="L257">        contentNode.setContent(content);</span>
+<span class="fc" id="L263">        ContentNode contentNode = new ContentNode(this);</span>
+<span class="fc" id="L264">        contentNode.setType(type);</span>
+<span class="fc" id="L265">        contentNode.setContent(content);</span>
 
-<span class="fc" id="L259">        persistenceLayer.updateNode(contentNode);</span>
-<span class="fc" id="L260">        return contentNode;</span>
+<span class="fc" id="L267">        persistenceLayer.updateNode(contentNode);</span>
+<span class="fc" id="L268">        return contentNode;</span>
     }
 
     public void addMixin(String spatial) {
-<span class="pc bpc" id="L264" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial))</span>
-<span class="fc" id="L265">            this.mixins.add(spatial);</span>
-<span class="fc" id="L266">    }</span>
+<span class="pc bpc" id="L272" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial))</span>
+<span class="fc" id="L273">            this.mixins.add(spatial);</span>
+<span class="fc" id="L274">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

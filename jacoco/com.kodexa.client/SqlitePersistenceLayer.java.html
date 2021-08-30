@@ -331,7 +331,7 @@ public class SqlitePersistenceLayer {
             }
 <span class="fc" id="L332">            String tagUuid = null;</span>
 
-<span class="pc bpc" id="L334" title="2 of 4 branches missed.">            if (&quot;tag&quot;.equals(feature.getFeatureType()) &amp;&amp; feature.getValue().size()&gt;0) {</span>
+<span class="pc bpc" id="L334" title="2 of 4 branches missed.">            if (&quot;tag&quot;.equals(feature.getFeatureType()) &amp;&amp; feature.getValue().size() &gt; 0) {</span>
 <span class="nc" id="L335">                tagUuid = (String) ((Map) feature.getValue().get(0)).get(&quot;uuid&quot;);</span>
             }
 
@@ -413,10 +413,42 @@ public class SqlitePersistenceLayer {
     public ImmutablePair&lt;InputStream, Long&gt; toInputStream() {
         try {
 <span class="nc" id="L415">            flushMetadata();</span>
-<span class="nc" id="L416">            return new ImmutablePair(new FileInputStream(dbPath), Files.size(Path.of(dbPath)));</span>
+<span class="nc" id="L416">            return new ImmutablePair&lt;&gt;(new FileInputStream(dbPath), Files.size(Path.of(dbPath)));</span>
 <span class="nc" id="L417">        } catch (IOException e) {</span>
 <span class="nc" id="L418">            throw new KodexaException(&quot;Unable to read KDDB file from &quot; + dbPath);</span>
         }
+    }
+
+    public List&lt;ContentNode&gt; getTaggedNodes() {
+
+        // Get all the feature types that are tags - then lets find all those nodes
+<span class="fc" id="L425">        return jdbi.withHandle(handle -&gt; {</span>
+<span class="fc" id="L426">            List&lt;ContentNode&gt; nodes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L427">            List&lt;Map&lt;String, Object&gt;&gt; contentNodesRaw =</span>
+<span class="fc" id="L428">                    handle.createQuery(&quot;select * from cn where id in (select cn_id from ft where f_type in (select id from f_type where name like 'tag:%'))&quot;)</span>
+<span class="fc" id="L429">                            .mapToMap()</span>
+<span class="fc" id="L430">                            .list();</span>
+<span class="pc bpc" id="L431" title="1 of 2 branches missed.">            for (Map&lt;String, Object&gt; contentNodeRaw : contentNodesRaw) {</span>
+<span class="nc" id="L432">                nodes.add(buildNode(contentNodeRaw, handle));</span>
+<span class="nc" id="L433">            }</span>
+<span class="fc" id="L434">            return nodes;</span>
+        });
+    }
+
+    public List&lt;ContentNode&gt; getTaggedNodeByTagUuid(String tagUuid) {
+        // Get all the feature types that are tags - then lets find all those nodes
+<span class="nc" id="L440">        return jdbi.withHandle(handle -&gt; {</span>
+<span class="nc" id="L441">            List&lt;ContentNode&gt; nodes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L442">            List&lt;Map&lt;String, Object&gt;&gt; contentNodesRaw =</span>
+<span class="nc" id="L443">                    handle.createQuery(&quot;select * from cn where id in (select cn_id from ft where tag_uuid = :tagUuid&quot;)</span>
+<span class="nc" id="L444">                            .bind(&quot;tagUuid&quot;, tagUuid)</span>
+<span class="nc" id="L445">                            .mapToMap()</span>
+<span class="nc" id="L446">                            .list();</span>
+<span class="nc bnc" id="L447" title="All 2 branches missed.">            for (Map&lt;String, Object&gt; contentNodeRaw : contentNodesRaw) {</span>
+<span class="nc" id="L448">                nodes.add(buildNode(contentNodeRaw, handle));</span>
+<span class="nc" id="L449">            }</span>
+<span class="nc" id="L450">            return nodes;</span>
+        });
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
