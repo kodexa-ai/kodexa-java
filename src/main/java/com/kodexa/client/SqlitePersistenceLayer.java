@@ -425,7 +425,7 @@ public class SqlitePersistenceLayer {
         return jdbi.withHandle(handle -> {
             List<ContentNode> nodes = new ArrayList<>();
             List<Map<String, Object>> contentNodesRaw =
-                    handle.createQuery("select * from cn where id in (select cn_id from f where f_type in (select id from f_type where name like 'tag:%'))")
+                    handle.createQuery("select * from cn where id in (select cn_id from ft where f_type in (select id from f_type where name like 'tag:%'))")
                             .mapToMap()
                             .list();
             for (Map<String, Object> contentNodeRaw : contentNodesRaw) {
@@ -440,7 +440,7 @@ public class SqlitePersistenceLayer {
         return jdbi.withHandle(handle -> {
             List<ContentNode> nodes = new ArrayList<>();
             List<Map<String, Object>> contentNodesRaw =
-                    handle.createQuery("select * from cn where id in (select cn_id from f where tag_uuid = :tagUuid")
+                    handle.createQuery("select * from cn where id in (select cn_id from ft where tag_uuid = :tagUuid")
                             .bind("tagUuid", tagUuid)
                             .mapToMap()
                             .list();
