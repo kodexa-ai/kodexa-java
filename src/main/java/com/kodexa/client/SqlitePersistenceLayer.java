@@ -331,7 +331,7 @@ public class SqlitePersistenceLayer {
             }
             String tagUuid = null;
 
-            if ("tag".equals(feature.getFeatureType()) && feature.getValue().size()>0) {
+            if ("tag".equals(feature.getFeatureType()) && feature.getValue().size() > 0) {
                 tagUuid = (String) ((Map) feature.getValue().get(0)).get("uuid");
             }
 
@@ -413,9 +413,41 @@ public class SqlitePersistenceLayer {
     public ImmutablePair<InputStream, Long> toInputStream() {
         try {
             flushMetadata();
-            return new ImmutablePair(new FileInputStream(dbPath), Files.size(Path.of(dbPath)));
+            return new ImmutablePair<>(new FileInputStream(dbPath), Files.size(Path.of(dbPath)));
         } catch (IOException e) {
             throw new KodexaException("Unable to read KDDB file from " + dbPath);
         }
+    }
+
+    public List<ContentNode> getTaggedNodes() {
+
+        // Get all the feature types that are tags - then lets find all those nodes
+        return jdbi.withHandle(handle -> {
+            List<ContentNode> nodes = new ArrayList<>();
+            List<Map<String, Object>> contentNodesRaw =
+                    handle.createQuery("select * from cn where id in (select cn_id from f where f_type in (select id from f_type where name like 'tag:%'))")
+                            .mapToMap()
+                            .list();
+            for (Map<String, Object> contentNodeRaw : contentNodesRaw) {
+                nodes.add(buildNode(contentNodeRaw, handle));
+            }
+            return nodes;
+        });
+    }
+
+    public List<ContentNode> getTaggedNodeByTagUuid(String tagUuid) {
+        // Get all the feature types that are tags - then lets find all those nodes
+        return jdbi.withHandle(handle -> {
+            List<ContentNode> nodes = new ArrayList<>();
+            List<Map<String, Object>> contentNodesRaw =
+                    handle.createQuery("select * from cn where id in (select cn_id from f where tag_uuid = :tagUuid")
+                            .bind("tagUuid", tagUuid)
+                            .mapToMap()
+                            .list();
+            for (Map<String, Object> contentNodeRaw : contentNodesRaw) {
+                nodes.add(buildNode(contentNodeRaw, handle));
+            }
+            return nodes;
+        });
     }
 }

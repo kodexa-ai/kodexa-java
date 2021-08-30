@@ -60,6 +60,14 @@ public class Document {
         return persistenceLayer.getNodeCountByType(type);
     }
 
+    public List<ContentNode> getTaggedNodes() {
+        return persistenceLayer.getTaggedNodes();
+    }
+
+    public List<ContentNode> getTaggedNodeByTagUuid(String tagUuid) {
+        return persistenceLayer.getTaggedNodeByTagUuid(tagUuid);
+    }
+
     private Map<String, Object> metadata = new HashMap<>();
 
     @JsonProperty("source")
