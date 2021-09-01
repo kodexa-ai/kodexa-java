@@ -459,7 +459,23 @@
 <span class="sourceLineNo">450</span><a id="line.450">            return nodes;</a>
 <span class="sourceLineNo">451</span><a id="line.451">        });</a>
 <span class="sourceLineNo">452</span><a id="line.452">    }</a>
-<span class="sourceLineNo">453</span><a id="line.453">}</a>
+<span class="sourceLineNo">453</span><a id="line.453"></a>
+<span class="sourceLineNo">454</span><a id="line.454">    public List&lt;ContentNode&gt; getNodesByType(String nodeType) {</a>
+<span class="sourceLineNo">455</span><a id="line.455">        // Get all the feature types that are tags - then lets find all those nodes</a>
+<span class="sourceLineNo">456</span><a id="line.456">        return jdbi.withHandle(handle -&gt; {</a>
+<span class="sourceLineNo">457</span><a id="line.457">            List&lt;ContentNode&gt; nodes = new ArrayList&lt;&gt;();</a>
+<span class="sourceLineNo">458</span><a id="line.458">            List&lt;Map&lt;String, Object&gt;&gt; contentNodesRaw =</a>
+<span class="sourceLineNo">459</span><a id="line.459">                    handle.createQuery("select * from cn where nt = :ntId")</a>
+<span class="sourceLineNo">460</span><a id="line.460">                            .bind("ntId", getNodeTypeId(handle, nodeType))</a>
+<span class="sourceLineNo">461</span><a id="line.461">                            .mapToMap()</a>
+<span class="sourceLineNo">462</span><a id="line.462">                            .list();</a>
+<span class="sourceLineNo">463</span><a id="line.463">            for (Map&lt;String, Object&gt; contentNodeRaw : contentNodesRaw) {</a>
+<span class="sourceLineNo">464</span><a id="line.464">                nodes.add(buildNode(contentNodeRaw, handle));</a>
+<span class="sourceLineNo">465</span><a id="line.465">            }</a>
+<span class="sourceLineNo">466</span><a id="line.466">            return nodes;</a>
+<span class="sourceLineNo">467</span><a id="line.467">        });</a>
+<span class="sourceLineNo">468</span><a id="line.468">    }</a>
+<span class="sourceLineNo">469</span><a id="line.469">}</a>
 
 
 

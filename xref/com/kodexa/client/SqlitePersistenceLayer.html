@@ -458,7 +458,23 @@
 <a class="jxr_linenumber" name="L450" href="#L450">450</a>             <strong class="jxr_keyword">return</strong> nodes;
 <a class="jxr_linenumber" name="L451" href="#L451">451</a>         });
 <a class="jxr_linenumber" name="L452" href="#L452">452</a>     }
-<a class="jxr_linenumber" name="L453" href="#L453">453</a> }
+<a class="jxr_linenumber" name="L453" href="#L453">453</a> 
+<a class="jxr_linenumber" name="L454" href="#L454">454</a>     <strong class="jxr_keyword">public</strong> List&lt;ContentNode&gt; getNodesByType(String nodeType) {
+<a class="jxr_linenumber" name="L455" href="#L455">455</a>         <em class="jxr_comment">// Get all the feature types that are tags - then lets find all those nodes</em>
+<a class="jxr_linenumber" name="L456" href="#L456">456</a>         <strong class="jxr_keyword">return</strong> jdbi.withHandle(handle -&gt; {
+<a class="jxr_linenumber" name="L457" href="#L457">457</a>             List&lt;ContentNode&gt; nodes = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
+<a class="jxr_linenumber" name="L458" href="#L458">458</a>             List&lt;Map&lt;String, Object&gt;&gt; contentNodesRaw =
+<a class="jxr_linenumber" name="L459" href="#L459">459</a>                     handle.createQuery(<span class="jxr_string">"select * from cn where nt = :ntId"</span>)
+<a class="jxr_linenumber" name="L460" href="#L460">460</a>                             .bind(<span class="jxr_string">"ntId"</span>, getNodeTypeId(handle, nodeType))
+<a class="jxr_linenumber" name="L461" href="#L461">461</a>                             .mapToMap()
+<a class="jxr_linenumber" name="L462" href="#L462">462</a>                             .list();
+<a class="jxr_linenumber" name="L463" href="#L463">463</a>             <strong class="jxr_keyword">for</strong> (Map&lt;String, Object&gt; contentNodeRaw : contentNodesRaw) {
+<a class="jxr_linenumber" name="L464" href="#L464">464</a>                 nodes.add(buildNode(contentNodeRaw, handle));
+<a class="jxr_linenumber" name="L465" href="#L465">465</a>             }
+<a class="jxr_linenumber" name="L466" href="#L466">466</a>             <strong class="jxr_keyword">return</strong> nodes;
+<a class="jxr_linenumber" name="L467" href="#L467">467</a>         });
+<a class="jxr_linenumber" name="L468" href="#L468">468</a>     }
+<a class="jxr_linenumber" name="L469" href="#L469">469</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>

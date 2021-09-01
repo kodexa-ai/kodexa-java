@@ -450,5 +450,21 @@ public class SqlitePersistenceLayer {
 <span class="nc" id="L450">            return nodes;</span>
         });
     }
+
+    public List&lt;ContentNode&gt; getNodesByType(String nodeType) {
+        // Get all the feature types that are tags - then lets find all those nodes
+<span class="nc" id="L456">        return jdbi.withHandle(handle -&gt; {</span>
+<span class="nc" id="L457">            List&lt;ContentNode&gt; nodes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L458">            List&lt;Map&lt;String, Object&gt;&gt; contentNodesRaw =</span>
+<span class="nc" id="L459">                    handle.createQuery(&quot;select * from cn where nt = :ntId&quot;)</span>
+<span class="nc" id="L460">                            .bind(&quot;ntId&quot;, getNodeTypeId(handle, nodeType))</span>
+<span class="nc" id="L461">                            .mapToMap()</span>
+<span class="nc" id="L462">                            .list();</span>
+<span class="nc bnc" id="L463" title="All 2 branches missed.">            for (Map&lt;String, Object&gt; contentNodeRaw : contentNodesRaw) {</span>
+<span class="nc" id="L464">                nodes.add(buildNode(contentNodeRaw, handle));</span>
+<span class="nc" id="L465">            }</span>
+<span class="nc" id="L466">            return nodes;</span>
+        });
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
