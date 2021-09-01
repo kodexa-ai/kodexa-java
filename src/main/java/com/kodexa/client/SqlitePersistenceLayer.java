@@ -450,4 +450,20 @@ public class SqlitePersistenceLayer {
             return nodes;
         });
     }
+
+    public List<ContentNode> getNodesByType(String nodeType) {
+        // Get all the feature types that are tags - then lets find all those nodes
+        return jdbi.withHandle(handle -> {
+            List<ContentNode> nodes = new ArrayList<>();
+            List<Map<String, Object>> contentNodesRaw =
+                    handle.createQuery("select * from cn where nt = :ntId")
+                            .bind("ntId", getNodeTypeId(handle, nodeType))
+                            .mapToMap()
+                            .list();
+            for (Map<String, Object> contentNodeRaw : contentNodesRaw) {
+                nodes.add(buildNode(contentNodeRaw, handle));
+            }
+            return nodes;
+        });
+    }
 }
