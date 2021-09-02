@@ -5,8 +5,8 @@ kodexa-java,com.kodexa.client.remote,CloudExecutionStep,155,0,30,0,4,0,26,0,11,0
 kodexa-java,com.kodexa.client.remote,Page,199,0,22,0,6,0,26,0,15,0
 kodexa-java,com.kodexa.client.remote,ProcessingStatus,34,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client.remote,RemotePipelineSession,4,0,0,0,2,0,1,0,1,0
-kodexa-java,com.kodexa.client.remote,ContentObject,240,0,46,0,6,0,38,0,15,0
 kodexa-java,com.kodexa.client.remote,RemotePipeline,170,0,2,0,39,0,13,0,12,0
+kodexa-java,com.kodexa.client.remote,ContentObject,240,0,46,0,6,0,38,0,15,0
 kodexa-java,com.kodexa.client.remote,KodexaPlatform,55,0,8,0,9,0,14,0,10,0
 kodexa-java,com.kodexa.client.remote,AbstractKodexaSession,521,0,28,0,119,0,23,0,9,0
 kodexa-java,com.kodexa.client.remote,CloudExceptionDetail,258,0,48,0,7,0,41,0,17,0
@@ -30,6 +30,7 @@ kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
 kodexa-java,com.kodexa.client,Document,607,274,93,1,43,45,67,33,20,33
 kodexa-java,com.kodexa.client,SqlitePersistenceLayer,297,1163,18,32,63,214,23,43,8,33
 kodexa-java,com.kodexa.client,FeatureSet,8,0,0,0,2,0,1,0,1,0
+kodexa-java,com.kodexa.client,AttachedFeature,115,0,22,0,3,0,20,0,9,0
 kodexa-java,com.kodexa.client,SourceMetadata,468,47,102,0,0,13,65,15,14,15
 kodexa-java,com.kodexa.client,ContentClassification,195,0,38,0,5,0,32,0,13,0
 kodexa-java,com.kodexa.client,SqlitePersistenceLayer.new TypeReference() {...},0,6,0,0,0,1,0,1,0,1
