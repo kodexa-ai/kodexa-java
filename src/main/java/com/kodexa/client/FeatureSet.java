@@ -11,6 +11,6 @@ import java.util.List;
  */
 public class FeatureSet {
 
-    private List<ContentFeature> features = new ArrayList<>();
+    private List<AttachedFeature> attachedFeatures = new ArrayList<>();
 
 }
