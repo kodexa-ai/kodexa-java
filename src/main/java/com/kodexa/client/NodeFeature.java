@@ -3,7 +3,7 @@ package com.kodexa.client;
 import lombok.Data;
 
 @Data
-public class AttachedFeature {
+public class NodeFeature {
 
     private String nodeUuid;
 
