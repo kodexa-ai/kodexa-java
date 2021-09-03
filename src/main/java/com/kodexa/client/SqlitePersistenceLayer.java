@@ -34,7 +34,6 @@ public class SqlitePersistenceLayer {
     private final String FEATURE_INSERT = "INSERT INTO ft (cn_id, f_type, binary_value, single, tag_uuid) VALUES (?,?,?,?,?)";
     private final String CONTENT_NODE_INSERT = "INSERT INTO cn (pid, nt, idx) VALUES (?,?,?)";
     private final String CONTENT_NODE_INSERT_WITH_ID = "INSERT INTO cn (id, pid, nt, idx) VALUES (?,?,?,?)";
-
     private final String CONTENT_NODE_PART_INSERT = "INSERT INTO cnp (cn_id, pos, content, content_idx) VALUES (?,?,?,?)";
 
     static {
@@ -353,11 +352,28 @@ public class SqlitePersistenceLayer {
     }
 
     private int getFeatureTypeName(Handle handle, String type) {
+
+        if (featureTypeNames!=null) {
+            Integer hit = featureTypeNames.entrySet().stream()
+                    .filter(e -> e.getValue().equals(type))
+                    .map(Map.Entry::getKey)
+                    .findFirst()
+                    .orElse(null);
+
+            if (hit != null)
+                return hit;
+        }
+
         Optional<Map<String, Object>> nodeType = handle.createQuery("SELECT id, name FROM f_type where name is :featureType").bind("featureType", type)
                 .mapToMap()
                 .findFirst();
+        Integer newId = nodeType.map(stringObjectMap -> (int) stringObjectMap.get("id")).orElseGet(() -> (Integer) handle.createUpdate("INSERT INTO f_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));
+        featureTypeNames =
+                handle.createQuery("SELECT id, name FROM f_type")
+                        .mapToMap()
+                        .collect(Collectors.toMap(x -> Integer.valueOf(String.valueOf(x.get("id"))), x -> String.valueOf(x.get("name"))));
 
-        return nodeType.map(stringObjectMap -> (int) stringObjectMap.get("id")).orElseGet(() -> (Integer) handle.createUpdate("INSERT INTO f_type(name) VALUES(?)").bind(0, type).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()"));
+        return newId;
     }
 
     private void flushMetadata() {
