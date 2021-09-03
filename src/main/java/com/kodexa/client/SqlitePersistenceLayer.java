@@ -243,7 +243,7 @@ public class SqlitePersistenceLayer {
             ContentFeature contentFeature = new ContentFeature();
             contentFeature.setFeatureType(featureTypeNames.get(feature.get("f_type")).split(":")[0]);
             contentFeature.setName(featureTypeNames.get(feature.get("f_type")).split(":")[1]);
-            contentFeature.setSingle(Integer.valueOf(1) == feature.get("single"));
+            contentFeature.setSingle(Integer.valueOf(1).equals(feature.get("single")));
             TypeReference<ArrayList<Object>> typeRef
                     = new TypeReference<>() {
             };
