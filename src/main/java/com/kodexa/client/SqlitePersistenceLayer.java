@@ -33,6 +33,8 @@ public class SqlitePersistenceLayer {
 
     private final String FEATURE_INSERT = "INSERT INTO ft (cn_id, f_type, binary_value, single, tag_uuid) VALUES (?,?,?,?,?)";
     private final String CONTENT_NODE_INSERT = "INSERT INTO cn (pid, nt, idx) VALUES (?,?,?)";
+    private final String CONTENT_NODE_INSERT_WITH_ID = "INSERT INTO cn (id, pid, nt, idx) VALUES (?,?,?,?)";
+
     private final String CONTENT_NODE_PART_INSERT = "INSERT INTO cnp (cn_id, pos, content, content_idx) VALUES (?,?,?,?)";
 
     static {
@@ -283,8 +285,12 @@ public class SqlitePersistenceLayer {
             handle.execute("delete from cnp where cn_id=?", contentNode.getUuid());
             handle.execute("delete from cn  where id=?", contentNode.getUuid());
 
-            int nodeId = (int) handle.createUpdate(CONTENT_NODE_INSERT).bind(0, parentId).bind(1, nodeTypeId).bind(2, contentNode.getIndex()).executeAndReturnGeneratedKeys("id").mapToMap().first().get("last_insert_rowid()");
-            contentNode.setUuid(String.valueOf(nodeId));
+            handle.createUpdate(CONTENT_NODE_INSERT_WITH_ID)
+                    .bind(0, contentNode.getUuid())
+                    .bind(1, parentId)
+                    .bind(2, nodeTypeId)
+                    .bind(3, contentNode.getIndex())
+                    .execute();
         }
 
         if (contentNode.getContentParts() == null || contentNode.getContentParts().isEmpty()) {
@@ -449,9 +455,8 @@ public class SqlitePersistenceLayer {
     public ContentNode getNodeByUuid(String nodeUuid) {
         // Get all the feature types that are tags - then lets find all those nodes
         return jdbi.withHandle(handle -> {
-            List<ContentNode> nodes = new ArrayList<>();
             Map<String, Object> contentNodeRaw =
-                    handle.createQuery("select * from cn where id= :nodeUuid")
+                    handle.createQuery("select * from cn where id = :nodeUuid")
                             .bind("nodeUuid", nodeUuid)
                             .mapToMap()
                             .first();
