@@ -251,7 +251,7 @@
 <a class="jxr_linenumber" name="L243" href="#L243">243</a>             <a name="ContentFeature" href="../../../com/kodexa/client/ContentFeature.<a name="ContentFeature" href="../../../com/kodexa/client/ContentFeature.html#ContentFeature">ContentFeature</a>ature">ContentFeature</a> contentFeature = <strong class="jxr_keyword">new</strong> <a name="ContentFeature" href="../../../com/kodexa/client/ContentFeature.html#ContentFeature">ContentFeature</a>();
 <a class="jxr_linenumber" name="L244" href="#L244">244</a>             contentFeature.setFeatureType(featureTypeNames.get(feature.get(<span class="jxr_string">"f_type"</span>)).split(<span class="jxr_string">":"</span>)[0]);
 <a class="jxr_linenumber" name="L245" href="#L245">245</a>             contentFeature.setName(featureTypeNames.get(feature.get(<span class="jxr_string">"f_type"</span>)).split(<span class="jxr_string">":"</span>)[1]);
-<a class="jxr_linenumber" name="L246" href="#L246">246</a>             contentFeature.setSingle(Integer.valueOf(1) == feature.get(<span class="jxr_string">"single"</span>));
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>             contentFeature.setSingle(Integer.valueOf(1).equals(feature.get(<span class="jxr_string">"single"</span>)));
 <a class="jxr_linenumber" name="L247" href="#L247">247</a>             TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef
 <a class="jxr_linenumber" name="L248" href="#L248">248</a>                     = <strong class="jxr_keyword">new</strong> TypeReference&lt;&gt;() {
 <a class="jxr_linenumber" name="L249" href="#L249">249</a>             };

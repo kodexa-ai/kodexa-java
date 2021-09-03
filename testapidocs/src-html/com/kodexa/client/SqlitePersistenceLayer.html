@@ -252,7 +252,7 @@
 <span class="sourceLineNo">243</span><a id="line.243">            ContentFeature contentFeature = new ContentFeature();</a>
 <span class="sourceLineNo">244</span><a id="line.244">            contentFeature.setFeatureType(featureTypeNames.get(feature.get("f_type")).split(":")[0]);</a>
 <span class="sourceLineNo">245</span><a id="line.245">            contentFeature.setName(featureTypeNames.get(feature.get("f_type")).split(":")[1]);</a>
-<span class="sourceLineNo">246</span><a id="line.246">            contentFeature.setSingle(Integer.valueOf(1) == feature.get("single"));</a>
+<span class="sourceLineNo">246</span><a id="line.246">            contentFeature.setSingle(Integer.valueOf(1).equals(feature.get("single")));</a>
 <span class="sourceLineNo">247</span><a id="line.247">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</a>
 <span class="sourceLineNo">248</span><a id="line.248">                    = new TypeReference&lt;&gt;() {</a>
 <span class="sourceLineNo">249</span><a id="line.249">            };</a>

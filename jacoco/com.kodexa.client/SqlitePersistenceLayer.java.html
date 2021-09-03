@@ -243,7 +243,7 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L243">            ContentFeature contentFeature = new ContentFeature();</span>
 <span class="fc" id="L244">            contentFeature.setFeatureType(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[0]);</span>
 <span class="fc" id="L245">            contentFeature.setName(featureTypeNames.get(feature.get(&quot;f_type&quot;)).split(&quot;:&quot;)[1]);</span>
-<span class="pc bpc" id="L246" title="1 of 2 branches missed.">            contentFeature.setSingle(Integer.valueOf(1) == feature.get(&quot;single&quot;));</span>
+<span class="fc" id="L246">            contentFeature.setSingle(Integer.valueOf(1).equals(feature.get(&quot;single&quot;)));</span>
 <span class="fc" id="L247">            TypeReference&lt;ArrayList&lt;Object&gt;&gt; typeRef</span>
 <span class="fc" id="L248">                    = new TypeReference&lt;&gt;() {</span>
             };
