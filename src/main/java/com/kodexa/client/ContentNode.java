@@ -66,6 +66,13 @@ public class ContentNode {
         return contentFeature;
     }
 
+    public ContentFeature addFeature(ContentFeature feature) {
+        getFeatures().add(feature);
+        document.getPersistanceLayer().updateNode(this);
+        return feature;
+    }
+
+
     public void removeFeature(ContentFeature feature) {
         setFeatures(getFeatures().stream()
                 .filter(f -> f.getFeatureType().equals(feature.getFeatureType()) && f.getName().equals(feature.getName()))
