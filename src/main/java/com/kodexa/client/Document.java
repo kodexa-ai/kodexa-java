@@ -64,6 +64,10 @@ public class Document {
         return persistenceLayer.getTaggedNodes();
     }
 
+    public ContentNode getNodeByUuid(String uuid) {
+        return persistenceLayer.getNodeByUuid(uuid);
+    }
+
     public List<ContentNode> getTaggedNodeByTagUuid(String tagUuid) {
         return persistenceLayer.getTaggedNodeByTagUuid(tagUuid);
     }

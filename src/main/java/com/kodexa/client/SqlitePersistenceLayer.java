@@ -12,17 +12,12 @@ import org.msgpack.jackson.dataformat.MessagePackFactory;
 import org.sqlite.SQLiteConfig;
 
 import java.io.*;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static com.kodexa.client.Document.CURRENT_VERSION;
-import static java.lang.Math.pow;
 
 /**
  * A Persistence Layer that works with the document to allow it to be interacted with
@@ -448,6 +443,19 @@ public class SqlitePersistenceLayer {
                 nodes.add(buildNode(contentNodeRaw, handle));
             }
             return nodes;
+        });
+    }
+
+    public ContentNode getNodeByUuid(String nodeUuid) {
+        // Get all the feature types that are tags - then lets find all those nodes
+        return jdbi.withHandle(handle -> {
+            List<ContentNode> nodes = new ArrayList<>();
+            Map<String, Object> contentNodeRaw =
+                    handle.createQuery("select * from cn where id= :nodeUuid")
+                            .bind("nodeUuid", nodeUuid)
+                            .mapToMap()
+                            .first();
+            return buildNode(contentNodeRaw, handle);
         });
     }
 
