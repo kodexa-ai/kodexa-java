@@ -20,7 +20,7 @@ public class ContentNode {
 
     private ContentNode parent;
 
-    private String parentId;
+    private Integer parentId;
 
     private String uuid;
 

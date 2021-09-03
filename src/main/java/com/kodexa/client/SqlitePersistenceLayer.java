@@ -206,7 +206,7 @@ public class SqlitePersistenceLayer {
 
     public void updateNode(ContentNode node) {
         jdbi.withHandle(handle -> {
-            updateNode(handle, node, Integer.valueOf(node.getParentId()), false);
+            updateNode(handle, node, node.getParentId(), false);
             return null;
         });
     }
@@ -215,7 +215,8 @@ public class SqlitePersistenceLayer {
         ContentNode contentNode = new ContentNode(this.document);
         contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));
         contentNode.setType(nodeTypes.get(contentNodeValues.get("nt")));
-        contentNode.setParentId(String.valueOf(contentNodeValues.get("pid")));
+        Object parentId = contentNodeValues.get("pid");
+        contentNode.setParentId(parentId != null ? Integer.valueOf(String.valueOf(parentId)) : null);
 
         List<Map<String, Object>> features =
                 handle.createQuery("SELECT id, f_type, binary_value, single FROM ft where cn_id = :nodeId").bind("nodeId", contentNode.getUuid())
