@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A node in a content tree
@@ -63,6 +64,13 @@ public class ContentNode {
 
         document.getPersistanceLayer().updateNode(this);
         return contentFeature;
+    }
+
+    public void removeFeature(ContentFeature feature) {
+        setFeatures(getFeatures().stream()
+                .filter(f -> f.getFeatureType().equals(feature.getFeatureType()) && f.getName().equals(feature.getName()))
+                .collect(Collectors.toList()));
+        document.getPersistanceLayer().updateNode(this);
     }
 
     protected Integer getParentId() {
