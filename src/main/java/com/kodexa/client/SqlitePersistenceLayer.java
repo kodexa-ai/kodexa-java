@@ -140,6 +140,7 @@ public class SqlitePersistenceLayer {
             Class.forName("org.sqlite.JDBC");
             SQLiteConfig config = new SQLiteConfig();
             config.setJournalMode(SQLiteConfig.JournalMode.OFF);
+            config.setTransactionMode(SQLiteConfig.TransactionMode.EXCLUSIVE);
             jdbi = Jdbi.create("jdbc:sqlite:" + dbPath, config.toProperties());
         } catch (ClassNotFoundException e) {
             throw new KodexaException("Unable to create persistence layer for KDDB object", e);
@@ -376,8 +377,6 @@ public class SqlitePersistenceLayer {
                 byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);
                 handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +
                         "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);
-
-                handle.commit();
             } catch (JsonProcessingException e) {
                 throw new KodexaException("Unable to flush metadata to KDDB", e);
             }
