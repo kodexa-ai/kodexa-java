@@ -34,7 +34,7 @@ kodexa-java,com.kodexa.client,FeatureSet,80,0,14,0,2,0,14,0,7,0
 kodexa-java,com.kodexa.client,SourceMetadata,468,47,102,0,0,13,65,15,14,15
 kodexa-java,com.kodexa.client,ContentClassification,195,0,38,0,5,0,32,0,13,0
 kodexa-java,com.kodexa.client,SqlitePersistenceLayer.new TypeReference() {...},0,6,0,0,0,1,0,1,0,1
-kodexa-java,com.kodexa.client,ContentNode,362,82,71,1,14,19,47,15,11,15
+kodexa-java,com.kodexa.client,ContentNode,374,82,71,1,17,19,48,15,12,15
 kodexa-java,com.kodexa.client.sink,InMemorySink,26,0,0,0,7,0,5,0,5,0
 kodexa-java,com.kodexa.client.registry,SourceRegistry,70,0,4,0,16,0,7,0,5,0
 kodexa-java,com.kodexa.client.registry,StoreRegistry,33,0,3,0,7,0,6,0,4,0
