@@ -75,7 +75,7 @@ public class ContentNode {
 
     public void removeFeature(ContentFeature feature) {
         setFeatures(getFeatures().stream()
-                .filter(f -> f.getFeatureType().equals(feature.getFeatureType()) && f.getName().equals(feature.getName()))
+                .filter(f -> (!f.getFeatureType().equals(feature.getFeatureType()) && f.getName().equals(feature.getName())))
                 .collect(Collectors.toList()));
         document.getPersistanceLayer().updateNode(this);
     }
