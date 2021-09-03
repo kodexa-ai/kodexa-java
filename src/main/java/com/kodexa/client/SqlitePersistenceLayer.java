@@ -376,6 +376,8 @@ public class SqlitePersistenceLayer {
                 byte[] metadataBytes = OBJECT_MAPPER_MSGPACK.writeValueAsBytes(copyDocument);
                 handle.execute("INSERT INTO metadata(metadata, id) VALUES(?, ?)\n" +
                         "  ON CONFLICT(id) DO UPDATE SET metadata=?", metadataBytes, 1, metadataBytes);
+
+                handle.commit();
             } catch (JsonProcessingException e) {
                 throw new KodexaException("Unable to flush metadata to KDDB", e);
             }
