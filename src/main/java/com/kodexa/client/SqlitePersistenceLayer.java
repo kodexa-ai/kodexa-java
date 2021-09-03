@@ -140,7 +140,6 @@ public class SqlitePersistenceLayer {
             Class.forName("org.sqlite.JDBC");
             SQLiteConfig config = new SQLiteConfig();
             config.setJournalMode(SQLiteConfig.JournalMode.OFF);
-            config.setTransactionMode(SQLiteConfig.TransactionMode.EXCLUSIVE);
             jdbi = Jdbi.create("jdbc:sqlite:" + dbPath, config.toProperties());
         } catch (ClassNotFoundException e) {
             throw new KodexaException("Unable to create persistence layer for KDDB object", e);
