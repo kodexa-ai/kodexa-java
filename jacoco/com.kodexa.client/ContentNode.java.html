@@ -7,34 +7,35 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A node in a content tree
  */
-<span class="pc bnc" id="L14" title="All 64 branches missed.">@Data</span>
+<span class="pc bnc" id="L15" title="All 64 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentNode {
 
-<span class="fc" id="L18">    private int index;</span>
+<span class="fc" id="L19">    private int index;</span>
 
-<span class="nc" id="L20">    private ContentNode parent;</span>
+<span class="nc" id="L21">    private ContentNode parent;</span>
 
-<span class="fc" id="L22">    private String uuid;</span>
+<span class="fc" id="L23">    private String uuid;</span>
 
     @JsonProperty(&quot;node_type&quot;)
-<span class="fc" id="L25">    private String type;</span>
-<span class="fc" id="L26">    private String content;</span>
+<span class="fc" id="L26">    private String type;</span>
+<span class="fc" id="L27">    private String content;</span>
 
     @JsonProperty(&quot;content_parts&quot;)
-<span class="fc" id="L29">    private List&lt;Object&gt; contentParts;</span>
+<span class="fc" id="L30">    private List&lt;Object&gt; contentParts;</span>
 
-<span class="fc" id="L31">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L32">    private List&lt;ContentFeature&gt; features = new ArrayList&lt;&gt;();</span>
 
-<span class="nc" id="L33">    private final Document document;</span>
+<span class="nc" id="L34">    private final Document document;</span>
 
-<span class="fc" id="L35">    public ContentNode(Document document) {</span>
-<span class="fc" id="L36">        this.document = document;</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L36">    public ContentNode(Document document) {</span>
+<span class="fc" id="L37">        this.document = document;</span>
+<span class="fc" id="L38">    }</span>
 
     /**
      * Returns all the contents from this node and all its children
@@ -43,33 +44,40 @@ public class ContentNode {
      * @return
      */
     public String getAllContent(String separator) {
-<span class="nc" id="L46">        List&lt;String&gt; allContents = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L47">        allContents.add(this.content);</span>
-<span class="nc bnc" id="L48" title="All 2 branches missed.">        for (ContentNode child : this.getChildren()) {</span>
-<span class="nc" id="L49">            allContents.add(child.getAllContent(separator));</span>
-<span class="nc" id="L50">        }</span>
-<span class="nc" id="L51">        return String.join(separator, allContents);</span>
+<span class="nc" id="L47">        List&lt;String&gt; allContents = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L48">        allContents.add(this.content);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        for (ContentNode child : this.getChildren()) {</span>
+<span class="nc" id="L50">            allContents.add(child.getAllContent(separator));</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">        return String.join(separator, allContents);</span>
     }
 
     public List&lt;ContentNode&gt; getChildren() {
-<span class="fc" id="L55">        return document.getPersistanceLayer().getChildNodes(this);</span>
+<span class="fc" id="L56">        return document.getPersistanceLayer().getChildNodes(this);</span>
     }
 
     public ContentFeature addFeature(String featureType, String featureName) {
-<span class="fc" id="L59">        ContentFeature contentFeature = new ContentFeature();</span>
-<span class="fc" id="L60">        contentFeature.setFeatureType(featureType);</span>
-<span class="fc" id="L61">        contentFeature.setName(featureName);</span>
-<span class="fc" id="L62">        getFeatures().add(contentFeature);</span>
+<span class="fc" id="L60">        ContentFeature contentFeature = new ContentFeature();</span>
+<span class="fc" id="L61">        contentFeature.setFeatureType(featureType);</span>
+<span class="fc" id="L62">        contentFeature.setName(featureName);</span>
+<span class="fc" id="L63">        getFeatures().add(contentFeature);</span>
 
-<span class="fc" id="L64">        document.getPersistanceLayer().updateNode(this);</span>
-<span class="fc" id="L65">        return contentFeature;</span>
+<span class="fc" id="L65">        document.getPersistanceLayer().updateNode(this);</span>
+<span class="fc" id="L66">        return contentFeature;</span>
     }
 
+    public void removeFeature(ContentFeature feature) {
+<span class="nc" id="L70">        setFeatures(getFeatures().stream()</span>
+<span class="nc bnc" id="L71" title="All 4 branches missed.">                .filter(f -&gt; f.getFeatureType().equals(feature.getFeatureType()) &amp;&amp; f.getName().equals(feature.getName()))</span>
+<span class="nc" id="L72">                .collect(Collectors.toList()));</span>
+<span class="nc" id="L73">        document.getPersistanceLayer().updateNode(this);</span>
+<span class="nc" id="L74">    }</span>
+
     protected Integer getParentId() {
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (parent != null) {</span>
-<span class="nc" id="L70">            return Integer.valueOf(parent.getUuid());</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (parent != null) {</span>
+<span class="nc" id="L78">            return Integer.valueOf(parent.getUuid());</span>
         } else {
-<span class="fc" id="L72">            return null;</span>
+<span class="fc" id="L80">            return null;</span>
         }
     }
 }
