@@ -20,6 +20,8 @@ public class ContentNode {
 
     private ContentNode parent;
 
+    private String parentId;
+
     private String uuid;
 
     @JsonProperty("node_type")
@@ -80,11 +82,4 @@ public class ContentNode {
         document.getPersistanceLayer().updateNode(this);
     }
 
-    protected Integer getParentId() {
-        if (parent != null) {
-            return Integer.valueOf(parent.getUuid());
-        } else {
-            return null;
-        }
-    }
 }
