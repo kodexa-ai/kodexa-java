@@ -75,7 +75,7 @@ public class ContentNode {
 
     public void removeFeature(ContentFeature feature) {
 <span class="nc" id="L77">        setFeatures(getFeatures().stream()</span>
-<span class="nc bnc" id="L78" title="All 4 branches missed.">                .filter(f -&gt; (!f.getFeatureType().equals(feature.getFeatureType()) &amp;&amp; f.getName().equals(feature.getName())))</span>
+<span class="nc bnc" id="L78" title="All 4 branches missed.">                .filter(f -&gt; !(f.getFeatureType().equals(feature.getFeatureType()) &amp;&amp; f.getName().equals(feature.getName())))</span>
 <span class="nc" id="L79">                .collect(Collectors.toList()));</span>
 <span class="nc" id="L80">        document.getPersistanceLayer().updateNode(this);</span>
 <span class="nc" id="L81">    }</span>
