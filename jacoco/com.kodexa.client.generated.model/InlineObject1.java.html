@@ -28,33 +28,33 @@ import java.io.IOException;
 /**
  * InlineObject1
  */
-@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T09:13:55.742572Z[Etc/UTC]&quot;)
+@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T10:07:04.361354Z[Etc/UTC]&quot;)
 <span class="nc" id="L32">public class InlineObject1 {</span>
-  public static final String SERIALIZED_NAME_DOCUMENT = &quot;document&quot;;
-  @SerializedName(SERIALIZED_NAME_DOCUMENT)
-  private File document;
+  public static final String SERIALIZED_NAME_FAMILY_ZIP = &quot;familyZip&quot;;
+  @SerializedName(SERIALIZED_NAME_FAMILY_ZIP)
+  private File familyZip;
 
 
-  public InlineObject1 document(File document) {
+  public InlineObject1 familyZip(File familyZip) {
     
-<span class="nc" id="L40">    this.document = document;</span>
+<span class="nc" id="L40">    this.familyZip = familyZip;</span>
 <span class="nc" id="L41">    return this;</span>
   }
 
    /**
-   * Get document
-   * @return document
+   * Get familyZip
+   * @return familyZip
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = &quot;&quot;)
 
-  public File getDocument() {
-<span class="nc" id="L52">    return document;</span>
+  public File getFamilyZip() {
+<span class="nc" id="L52">    return familyZip;</span>
   }
 
 
-  public void setDocument(File document) {
-<span class="nc" id="L57">    this.document = document;</span>
+  public void setFamilyZip(File familyZip) {
+<span class="nc" id="L57">    this.familyZip = familyZip;</span>
 <span class="nc" id="L58">  }</span>
 
 
@@ -67,19 +67,19 @@ import java.io.IOException;
 <span class="nc" id="L67">      return false;</span>
     }
 <span class="nc" id="L69">    InlineObject1 inlineObject1 = (InlineObject1) o;</span>
-<span class="nc" id="L70">    return Objects.equals(this.document, inlineObject1.document);</span>
+<span class="nc" id="L70">    return Objects.equals(this.familyZip, inlineObject1.familyZip);</span>
   }
 
   @Override
   public int hashCode() {
-<span class="nc" id="L75">    return Objects.hash(document);</span>
+<span class="nc" id="L75">    return Objects.hash(familyZip);</span>
   }
 
   @Override
   public String toString() {
 <span class="nc" id="L80">    StringBuilder sb = new StringBuilder();</span>
 <span class="nc" id="L81">    sb.append(&quot;class InlineObject1 {\n&quot;);</span>
-<span class="nc" id="L82">    sb.append(&quot;    document: &quot;).append(toIndentedString(document)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L82">    sb.append(&quot;    familyZip: &quot;).append(toIndentedString(familyZip)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L83">    sb.append(&quot;}&quot;);</span>
 <span class="nc" id="L84">    return sb.toString();</span>
   }

@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * PageOrganization
  */
-@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T09:13:55.742572Z[Etc/UTC]&quot;)
+@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T10:07:04.361354Z[Etc/UTC]&quot;)
 <span class="nc" id="L36">public class PageOrganization {</span>
   public static final String SERIALIZED_NAME_TOTAL_PAGES = &quot;totalPages&quot;;
   @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
@@ -46,14 +46,6 @@ import java.util.List;
   @SerializedName(SERIALIZED_NAME_PAGEABLE)
   private Pageable pageable;
 
-  public static final String SERIALIZED_NAME_FIRST = &quot;first&quot;;
-  @SerializedName(SERIALIZED_NAME_FIRST)
-  private Boolean first;
-
-  public static final String SERIALIZED_NAME_LAST = &quot;last&quot;;
-  @SerializedName(SERIALIZED_NAME_LAST)
-  private Boolean last;
-
   public static final String SERIALIZED_NAME_NUMBER_OF_ELEMENTS = &quot;numberOfElements&quot;;
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_ELEMENTS)
   private Integer numberOfElements;
@@ -65,6 +57,14 @@ import java.util.List;
   public static final String SERIALIZED_NAME_SORT = &quot;sort&quot;;
   @SerializedName(SERIALIZED_NAME_SORT)
   private Sort sort;
+
+  public static final String SERIALIZED_NAME_FIRST = &quot;first&quot;;
+  @SerializedName(SERIALIZED_NAME_FIRST)
+  private Boolean first;
+
+  public static final String SERIALIZED_NAME_LAST = &quot;last&quot;;
+  @SerializedName(SERIALIZED_NAME_LAST)
+  private Boolean last;
 
   public static final String SERIALIZED_NAME_SIZE = &quot;size&quot;;
   @SerializedName(SERIALIZED_NAME_SIZE)
@@ -148,56 +148,10 @@ import java.util.List;
 <span class="nc" id="L148">  }</span>
 
 
-  public PageOrganization first(Boolean first) {
-    
-<span class="nc" id="L153">    this.first = first;</span>
-<span class="nc" id="L154">    return this;</span>
-  }
-
-   /**
-   * Get first
-   * @return first
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = &quot;&quot;)
-
-  public Boolean getFirst() {
-<span class="nc" id="L165">    return first;</span>
-  }
-
-
-  public void setFirst(Boolean first) {
-<span class="nc" id="L170">    this.first = first;</span>
-<span class="nc" id="L171">  }</span>
-
-
-  public PageOrganization last(Boolean last) {
-    
-<span class="nc" id="L176">    this.last = last;</span>
-<span class="nc" id="L177">    return this;</span>
-  }
-
-   /**
-   * Get last
-   * @return last
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = &quot;&quot;)
-
-  public Boolean getLast() {
-<span class="nc" id="L188">    return last;</span>
-  }
-
-
-  public void setLast(Boolean last) {
-<span class="nc" id="L193">    this.last = last;</span>
-<span class="nc" id="L194">  }</span>
-
-
   public PageOrganization numberOfElements(Integer numberOfElements) {
     
-<span class="nc" id="L199">    this.numberOfElements = numberOfElements;</span>
-<span class="nc" id="L200">    return this;</span>
+<span class="nc" id="L153">    this.numberOfElements = numberOfElements;</span>
+<span class="nc" id="L154">    return this;</span>
   }
 
    /**
@@ -208,19 +162,19 @@ import java.util.List;
   @ApiModelProperty(value = &quot;&quot;)
 
   public Integer getNumberOfElements() {
-<span class="nc" id="L211">    return numberOfElements;</span>
+<span class="nc" id="L165">    return numberOfElements;</span>
   }
 
 
   public void setNumberOfElements(Integer numberOfElements) {
-<span class="nc" id="L216">    this.numberOfElements = numberOfElements;</span>
-<span class="nc" id="L217">  }</span>
+<span class="nc" id="L170">    this.numberOfElements = numberOfElements;</span>
+<span class="nc" id="L171">  }</span>
 
 
   public PageOrganization number(Integer number) {
     
-<span class="nc" id="L222">    this.number = number;</span>
-<span class="nc" id="L223">    return this;</span>
+<span class="nc" id="L176">    this.number = number;</span>
+<span class="nc" id="L177">    return this;</span>
   }
 
    /**
@@ -231,19 +185,19 @@ import java.util.List;
   @ApiModelProperty(value = &quot;&quot;)
 
   public Integer getNumber() {
-<span class="nc" id="L234">    return number;</span>
+<span class="nc" id="L188">    return number;</span>
   }
 
 
   public void setNumber(Integer number) {
-<span class="nc" id="L239">    this.number = number;</span>
-<span class="nc" id="L240">  }</span>
+<span class="nc" id="L193">    this.number = number;</span>
+<span class="nc" id="L194">  }</span>
 
 
   public PageOrganization sort(Sort sort) {
     
-<span class="nc" id="L245">    this.sort = sort;</span>
-<span class="nc" id="L246">    return this;</span>
+<span class="nc" id="L199">    this.sort = sort;</span>
+<span class="nc" id="L200">    return this;</span>
   }
 
    /**
@@ -254,12 +208,58 @@ import java.util.List;
   @ApiModelProperty(value = &quot;&quot;)
 
   public Sort getSort() {
-<span class="nc" id="L257">    return sort;</span>
+<span class="nc" id="L211">    return sort;</span>
   }
 
 
   public void setSort(Sort sort) {
-<span class="nc" id="L262">    this.sort = sort;</span>
+<span class="nc" id="L216">    this.sort = sort;</span>
+<span class="nc" id="L217">  }</span>
+
+
+  public PageOrganization first(Boolean first) {
+    
+<span class="nc" id="L222">    this.first = first;</span>
+<span class="nc" id="L223">    return this;</span>
+  }
+
+   /**
+   * Get first
+   * @return first
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = &quot;&quot;)
+
+  public Boolean getFirst() {
+<span class="nc" id="L234">    return first;</span>
+  }
+
+
+  public void setFirst(Boolean first) {
+<span class="nc" id="L239">    this.first = first;</span>
+<span class="nc" id="L240">  }</span>
+
+
+  public PageOrganization last(Boolean last) {
+    
+<span class="nc" id="L245">    this.last = last;</span>
+<span class="nc" id="L246">    return this;</span>
+  }
+
+   /**
+   * Get last
+   * @return last
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = &quot;&quot;)
+
+  public Boolean getLast() {
+<span class="nc" id="L257">    return last;</span>
+  }
+
+
+  public void setLast(Boolean last) {
+<span class="nc" id="L262">    this.last = last;</span>
 <span class="nc" id="L263">  }</span>
 
 
@@ -352,11 +352,11 @@ import java.util.List;
 <span class="nc bnc" id="L352" title="All 2 branches missed.">    return Objects.equals(this.totalPages, pageOrganization.totalPages) &amp;&amp;</span>
 <span class="nc bnc" id="L353" title="All 2 branches missed.">        Objects.equals(this.totalElements, pageOrganization.totalElements) &amp;&amp;</span>
 <span class="nc bnc" id="L354" title="All 2 branches missed.">        Objects.equals(this.pageable, pageOrganization.pageable) &amp;&amp;</span>
-<span class="nc bnc" id="L355" title="All 2 branches missed.">        Objects.equals(this.first, pageOrganization.first) &amp;&amp;</span>
-<span class="nc bnc" id="L356" title="All 2 branches missed.">        Objects.equals(this.last, pageOrganization.last) &amp;&amp;</span>
-<span class="nc bnc" id="L357" title="All 2 branches missed.">        Objects.equals(this.numberOfElements, pageOrganization.numberOfElements) &amp;&amp;</span>
-<span class="nc bnc" id="L358" title="All 2 branches missed.">        Objects.equals(this.number, pageOrganization.number) &amp;&amp;</span>
-<span class="nc bnc" id="L359" title="All 2 branches missed.">        Objects.equals(this.sort, pageOrganization.sort) &amp;&amp;</span>
+<span class="nc bnc" id="L355" title="All 2 branches missed.">        Objects.equals(this.numberOfElements, pageOrganization.numberOfElements) &amp;&amp;</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        Objects.equals(this.number, pageOrganization.number) &amp;&amp;</span>
+<span class="nc bnc" id="L357" title="All 2 branches missed.">        Objects.equals(this.sort, pageOrganization.sort) &amp;&amp;</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">        Objects.equals(this.first, pageOrganization.first) &amp;&amp;</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">        Objects.equals(this.last, pageOrganization.last) &amp;&amp;</span>
 <span class="nc bnc" id="L360" title="All 2 branches missed.">        Objects.equals(this.size, pageOrganization.size) &amp;&amp;</span>
 <span class="nc bnc" id="L361" title="All 2 branches missed.">        Objects.equals(this.content, pageOrganization.content) &amp;&amp;</span>
 <span class="nc bnc" id="L362" title="All 2 branches missed.">        Objects.equals(this.empty, pageOrganization.empty);</span>
@@ -364,7 +364,7 @@ import java.util.List;
 
   @Override
   public int hashCode() {
-<span class="nc" id="L367">    return Objects.hash(totalPages, totalElements, pageable, first, last, numberOfElements, number, sort, size, content, empty);</span>
+<span class="nc" id="L367">    return Objects.hash(totalPages, totalElements, pageable, numberOfElements, number, sort, first, last, size, content, empty);</span>
   }
 
   @Override
@@ -374,11 +374,11 @@ import java.util.List;
 <span class="nc" id="L374">    sb.append(&quot;    totalPages: &quot;).append(toIndentedString(totalPages)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L375">    sb.append(&quot;    totalElements: &quot;).append(toIndentedString(totalElements)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L376">    sb.append(&quot;    pageable: &quot;).append(toIndentedString(pageable)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L377">    sb.append(&quot;    first: &quot;).append(toIndentedString(first)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L378">    sb.append(&quot;    last: &quot;).append(toIndentedString(last)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L379">    sb.append(&quot;    numberOfElements: &quot;).append(toIndentedString(numberOfElements)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L380">    sb.append(&quot;    number: &quot;).append(toIndentedString(number)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L381">    sb.append(&quot;    sort: &quot;).append(toIndentedString(sort)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L377">    sb.append(&quot;    numberOfElements: &quot;).append(toIndentedString(numberOfElements)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L378">    sb.append(&quot;    number: &quot;).append(toIndentedString(number)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L379">    sb.append(&quot;    sort: &quot;).append(toIndentedString(sort)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L380">    sb.append(&quot;    first: &quot;).append(toIndentedString(first)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L381">    sb.append(&quot;    last: &quot;).append(toIndentedString(last)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L382">    sb.append(&quot;    size: &quot;).append(toIndentedString(size)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L383">    sb.append(&quot;    content: &quot;).append(toIndentedString(content)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L384">    sb.append(&quot;    empty: &quot;).append(toIndentedString(empty)).append(&quot;\n&quot;);</span>

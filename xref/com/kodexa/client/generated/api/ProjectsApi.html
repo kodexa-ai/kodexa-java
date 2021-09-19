@@ -38,7 +38,7 @@
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.Assistant;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.Dashboard;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.ExecutionEvent;
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.InlineObject1;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.InlineObject6;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.PageAssistant;
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.PageProject;
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> com.kodexa.client.generated.model.Project;
@@ -2015,7 +2015,7 @@
 <a class="jxr_linenumber" name="L2007" href="#L2007">2007</a> <em class="jxr_javadoccomment">     * @param assistantId  (required)</em>
 <a class="jxr_linenumber" name="L2008" href="#L2008">2008</a> <em class="jxr_javadoccomment">     * @param eventType  (optional)</em>
 <a class="jxr_linenumber" name="L2009" href="#L2009">2009</a> <em class="jxr_javadoccomment">     * @param options  (optional)</em>
-<a class="jxr_linenumber" name="L2010" href="#L2010">2010</a> <em class="jxr_javadoccomment">     * @param inlineObject1  (optional)</em>
+<a class="jxr_linenumber" name="L2010" href="#L2010">2010</a> <em class="jxr_javadoccomment">     * @param inlineObject6  (optional)</em>
 <a class="jxr_linenumber" name="L2011" href="#L2011">2011</a> <em class="jxr_javadoccomment">     * @param _callback Callback for upload/download progress</em>
 <a class="jxr_linenumber" name="L2012" href="#L2012">2012</a> <em class="jxr_javadoccomment">     * @return Call to execute</em>
 <a class="jxr_linenumber" name="L2013" href="#L2013">2013</a> <em class="jxr_javadoccomment">     * @throws ApiException If fail to serialize the request body object</em>
@@ -2025,8 +2025,8 @@
 <a class="jxr_linenumber" name="L2017" href="#L2017">2017</a> <em class="jxr_javadoccomment">        &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;</em>
 <a class="jxr_linenumber" name="L2018" href="#L2018">2018</a> <em class="jxr_javadoccomment">     &lt;/table&gt;</em>
 <a class="jxr_linenumber" name="L2019" href="#L2019">2019</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L2020" href="#L2020">2020</a>     <strong class="jxr_keyword">public</strong> okhttp3.Call processDocumentCall(String id, String assistantId, String eventType, String options, <a name="InlineObject1" href="../../../../../com/kodexa/client/generated/model/InlineObject1.html#InlineObject1">InlineObject1</a> inlineObject1, <strong class="jxr_keyword">final</strong> <a name="ApiCallback" href="../../../../../com/kodexa/client/generated/ApiCallback.html#ApiCallback">ApiCallback</a> _callback) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
-<a class="jxr_linenumber" name="L2021" href="#L2021">2021</a>         Object localVarPostBody = inlineObject1;
+<a class="jxr_linenumber" name="L2020" href="#L2020">2020</a>     <strong class="jxr_keyword">public</strong> okhttp3.Call processDocumentCall(String id, String assistantId, String eventType, String options, <a name="InlineObject6" href="../../../../../com/kodexa/client/generated/model/InlineObject6.html#InlineObject6">InlineObject6</a> inlineObject6, <strong class="jxr_keyword">final</strong> <a name="ApiCallback" href="../../../../../com/kodexa/client/generated/ApiCallback.html#ApiCallback">ApiCallback</a> _callback) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
+<a class="jxr_linenumber" name="L2021" href="#L2021">2021</a>         Object localVarPostBody = inlineObject6;
 <a class="jxr_linenumber" name="L2022" href="#L2022">2022</a> 
 <a class="jxr_linenumber" name="L2023" href="#L2023">2023</a>         <em class="jxr_comment">// create path and map variables</em>
 <a class="jxr_linenumber" name="L2024" href="#L2024">2024</a>         String localVarPath = <span class="jxr_string">"/api/projects/{id}/assistants/{assistantId}/execute"</span>
@@ -2066,7 +2066,7 @@
 <a class="jxr_linenumber" name="L2058" href="#L2058">2058</a>     }
 <a class="jxr_linenumber" name="L2059" href="#L2059">2059</a> 
 <a class="jxr_linenumber" name="L2060" href="#L2060">2060</a>     @SuppressWarnings(<span class="jxr_string">"rawtypes"</span>)
-<a class="jxr_linenumber" name="L2061" href="#L2061">2061</a>     <strong class="jxr_keyword">private</strong> okhttp3.Call processDocumentValidateBeforeCall(String id, String assistantId, String eventType, String options, <a name="InlineObject1" href="../../../../../com/kodexa/client/generated/model/InlineObject1.html#InlineObject1">InlineObject1</a> inlineObject1, <strong class="jxr_keyword">final</strong> <a name="ApiCallback" href="../../../../../com/kodexa/client/generated/ApiCallback.html#ApiCallback">ApiCallback</a> _callback) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
+<a class="jxr_linenumber" name="L2061" href="#L2061">2061</a>     <strong class="jxr_keyword">private</strong> okhttp3.Call processDocumentValidateBeforeCall(String id, String assistantId, String eventType, String options, <a name="InlineObject6" href="../../../../../com/kodexa/client/generated/model/InlineObject6.html#InlineObject6">InlineObject6</a> inlineObject6, <strong class="jxr_keyword">final</strong> <a name="ApiCallback" href="../../../../../com/kodexa/client/generated/ApiCallback.html#ApiCallback">ApiCallback</a> _callback) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
 <a class="jxr_linenumber" name="L2062" href="#L2062">2062</a>         
 <a class="jxr_linenumber" name="L2063" href="#L2063">2063</a>         <em class="jxr_comment">// verify the required parameter 'id' is set</em>
 <a class="jxr_linenumber" name="L2064" href="#L2064">2064</a>         <strong class="jxr_keyword">if</strong> (id == <strong class="jxr_keyword">null</strong>) {
@@ -2079,7 +2079,7 @@
 <a class="jxr_linenumber" name="L2071" href="#L2071">2071</a>         }
 <a class="jxr_linenumber" name="L2072" href="#L2072">2072</a>         
 <a class="jxr_linenumber" name="L2073" href="#L2073">2073</a> 
-<a class="jxr_linenumber" name="L2074" href="#L2074">2074</a>         okhttp3.Call localVarCall = processDocumentCall(id, assistantId, eventType, options, inlineObject1, _callback);
+<a class="jxr_linenumber" name="L2074" href="#L2074">2074</a>         okhttp3.Call localVarCall = processDocumentCall(id, assistantId, eventType, options, inlineObject6, _callback);
 <a class="jxr_linenumber" name="L2075" href="#L2075">2075</a>         <strong class="jxr_keyword">return</strong> localVarCall;
 <a class="jxr_linenumber" name="L2076" href="#L2076">2076</a> 
 <a class="jxr_linenumber" name="L2077" href="#L2077">2077</a>     }
@@ -2091,7 +2091,7 @@
 <a class="jxr_linenumber" name="L2083" href="#L2083">2083</a> <em class="jxr_javadoccomment">     * @param assistantId  (required)</em>
 <a class="jxr_linenumber" name="L2084" href="#L2084">2084</a> <em class="jxr_javadoccomment">     * @param eventType  (optional)</em>
 <a class="jxr_linenumber" name="L2085" href="#L2085">2085</a> <em class="jxr_javadoccomment">     * @param options  (optional)</em>
-<a class="jxr_linenumber" name="L2086" href="#L2086">2086</a> <em class="jxr_javadoccomment">     * @param inlineObject1  (optional)</em>
+<a class="jxr_linenumber" name="L2086" href="#L2086">2086</a> <em class="jxr_javadoccomment">     * @param inlineObject6  (optional)</em>
 <a class="jxr_linenumber" name="L2087" href="#L2087">2087</a> <em class="jxr_javadoccomment">     * @return ExecutionEvent</em>
 <a class="jxr_linenumber" name="L2088" href="#L2088">2088</a> <em class="jxr_javadoccomment">     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body</em>
 <a class="jxr_linenumber" name="L2089" href="#L2089">2089</a> <em class="jxr_javadoccomment">     * @http.response.details</em>
@@ -2100,8 +2100,8 @@
 <a class="jxr_linenumber" name="L2092" href="#L2092">2092</a> <em class="jxr_javadoccomment">        &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;</em>
 <a class="jxr_linenumber" name="L2093" href="#L2093">2093</a> <em class="jxr_javadoccomment">     &lt;/table&gt;</em>
 <a class="jxr_linenumber" name="L2094" href="#L2094">2094</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L2095" href="#L2095">2095</a>     <strong class="jxr_keyword">public</strong> <a name="ExecutionEvent" href="../../../../../com/kodexa/client/generated/model/ExecutionEvent.html#ExecutionEvent">ExecutionEvent</a> processDocument(String id, String assistantId, String eventType, String options, <a name="InlineObject1" href="../../../../../com/kodexa/client/generated/model/InlineObject1.html#InlineObject1">InlineObject1</a> inlineObject1) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
-<a class="jxr_linenumber" name="L2096" href="#L2096">2096</a>         ApiResponse&lt;ExecutionEvent&gt; localVarResp = processDocumentWithHttpInfo(id, assistantId, eventType, options, inlineObject1);
+<a class="jxr_linenumber" name="L2095" href="#L2095">2095</a>     <strong class="jxr_keyword">public</strong> <a name="ExecutionEvent" href="../../../../../com/kodexa/client/generated/model/ExecutionEvent.html#ExecutionEvent">ExecutionEvent</a> processDocument(String id, String assistantId, String eventType, String options, <a name="InlineObject6" href="../../../../../com/kodexa/client/generated/model/InlineObject6.html#InlineObject6">InlineObject6</a> inlineObject6) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
+<a class="jxr_linenumber" name="L2096" href="#L2096">2096</a>         ApiResponse&lt;ExecutionEvent&gt; localVarResp = processDocumentWithHttpInfo(id, assistantId, eventType, options, inlineObject6);
 <a class="jxr_linenumber" name="L2097" href="#L2097">2097</a>         <strong class="jxr_keyword">return</strong> localVarResp.getData();
 <a class="jxr_linenumber" name="L2098" href="#L2098">2098</a>     }
 <a class="jxr_linenumber" name="L2099" href="#L2099">2099</a> 
@@ -2112,7 +2112,7 @@
 <a class="jxr_linenumber" name="L2104" href="#L2104">2104</a> <em class="jxr_javadoccomment">     * @param assistantId  (required)</em>
 <a class="jxr_linenumber" name="L2105" href="#L2105">2105</a> <em class="jxr_javadoccomment">     * @param eventType  (optional)</em>
 <a class="jxr_linenumber" name="L2106" href="#L2106">2106</a> <em class="jxr_javadoccomment">     * @param options  (optional)</em>
-<a class="jxr_linenumber" name="L2107" href="#L2107">2107</a> <em class="jxr_javadoccomment">     * @param inlineObject1  (optional)</em>
+<a class="jxr_linenumber" name="L2107" href="#L2107">2107</a> <em class="jxr_javadoccomment">     * @param inlineObject6  (optional)</em>
 <a class="jxr_linenumber" name="L2108" href="#L2108">2108</a> <em class="jxr_javadoccomment">     * @return ApiResponse&amp;lt;ExecutionEvent&amp;gt;</em>
 <a class="jxr_linenumber" name="L2109" href="#L2109">2109</a> <em class="jxr_javadoccomment">     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body</em>
 <a class="jxr_linenumber" name="L2110" href="#L2110">2110</a> <em class="jxr_javadoccomment">     * @http.response.details</em>
@@ -2121,8 +2121,8 @@
 <a class="jxr_linenumber" name="L2113" href="#L2113">2113</a> <em class="jxr_javadoccomment">        &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;</em>
 <a class="jxr_linenumber" name="L2114" href="#L2114">2114</a> <em class="jxr_javadoccomment">     &lt;/table&gt;</em>
 <a class="jxr_linenumber" name="L2115" href="#L2115">2115</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L2116" href="#L2116">2116</a>     <strong class="jxr_keyword">public</strong> ApiResponse&lt;ExecutionEvent&gt; processDocumentWithHttpInfo(String id, String assistantId, String eventType, String options, <a name="InlineObject1" href="../../../../../com/kodexa/client/generated/model/InlineObject1.html#InlineObject1">InlineObject1</a> inlineObject1) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
-<a class="jxr_linenumber" name="L2117" href="#L2117">2117</a>         okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject1, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L2116" href="#L2116">2116</a>     <strong class="jxr_keyword">public</strong> ApiResponse&lt;ExecutionEvent&gt; processDocumentWithHttpInfo(String id, String assistantId, String eventType, String options, <a name="InlineObject6" href="../../../../../com/kodexa/client/generated/model/InlineObject6.html#InlineObject6">InlineObject6</a> inlineObject6) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
+<a class="jxr_linenumber" name="L2117" href="#L2117">2117</a>         okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject6, <strong class="jxr_keyword">null</strong>);
 <a class="jxr_linenumber" name="L2118" href="#L2118">2118</a>         Type localVarReturnType = <strong class="jxr_keyword">new</strong> TypeToken&lt;ExecutionEvent&gt;(){}.getType();
 <a class="jxr_linenumber" name="L2119" href="#L2119">2119</a>         <strong class="jxr_keyword">return</strong> localVarApiClient.execute(localVarCall, localVarReturnType);
 <a class="jxr_linenumber" name="L2120" href="#L2120">2120</a>     }
@@ -2134,7 +2134,7 @@
 <a class="jxr_linenumber" name="L2126" href="#L2126">2126</a> <em class="jxr_javadoccomment">     * @param assistantId  (required)</em>
 <a class="jxr_linenumber" name="L2127" href="#L2127">2127</a> <em class="jxr_javadoccomment">     * @param eventType  (optional)</em>
 <a class="jxr_linenumber" name="L2128" href="#L2128">2128</a> <em class="jxr_javadoccomment">     * @param options  (optional)</em>
-<a class="jxr_linenumber" name="L2129" href="#L2129">2129</a> <em class="jxr_javadoccomment">     * @param inlineObject1  (optional)</em>
+<a class="jxr_linenumber" name="L2129" href="#L2129">2129</a> <em class="jxr_javadoccomment">     * @param inlineObject6  (optional)</em>
 <a class="jxr_linenumber" name="L2130" href="#L2130">2130</a> <em class="jxr_javadoccomment">     * @param _callback The callback to be executed when the API call finishes</em>
 <a class="jxr_linenumber" name="L2131" href="#L2131">2131</a> <em class="jxr_javadoccomment">     * @return The request call</em>
 <a class="jxr_linenumber" name="L2132" href="#L2132">2132</a> <em class="jxr_javadoccomment">     * @throws ApiException If fail to process the API call, e.g. serializing the request body object</em>
@@ -2144,9 +2144,9 @@
 <a class="jxr_linenumber" name="L2136" href="#L2136">2136</a> <em class="jxr_javadoccomment">        &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;</em>
 <a class="jxr_linenumber" name="L2137" href="#L2137">2137</a> <em class="jxr_javadoccomment">     &lt;/table&gt;</em>
 <a class="jxr_linenumber" name="L2138" href="#L2138">2138</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L2139" href="#L2139">2139</a>     <strong class="jxr_keyword">public</strong> okhttp3.Call processDocumentAsync(String id, String assistantId, String eventType, String options, <a name="InlineObject1" href="../../../../../com/kodexa/client/generated/model/InlineObject1.html#InlineObject1">InlineObject1</a> inlineObject1, <strong class="jxr_keyword">final</strong> ApiCallback&lt;ExecutionEvent&gt; _callback) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
+<a class="jxr_linenumber" name="L2139" href="#L2139">2139</a>     <strong class="jxr_keyword">public</strong> okhttp3.Call processDocumentAsync(String id, String assistantId, String eventType, String options, <a name="InlineObject6" href="../../../../../com/kodexa/client/generated/model/InlineObject6.html#InlineObject6">InlineObject6</a> inlineObject6, <strong class="jxr_keyword">final</strong> ApiCallback&lt;ExecutionEvent&gt; _callback) <strong class="jxr_keyword">throws</strong> <a name="ApiException" href="../../../../../com/kodexa/client/generated/ApiException.html#ApiException">ApiException</a> {
 <a class="jxr_linenumber" name="L2140" href="#L2140">2140</a> 
-<a class="jxr_linenumber" name="L2141" href="#L2141">2141</a>         okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject1, _callback);
+<a class="jxr_linenumber" name="L2141" href="#L2141">2141</a>         okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject6, _callback);
 <a class="jxr_linenumber" name="L2142" href="#L2142">2142</a>         Type localVarReturnType = <strong class="jxr_keyword">new</strong> TypeToken&lt;ExecutionEvent&gt;(){}.getType();
 <a class="jxr_linenumber" name="L2143" href="#L2143">2143</a>         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
 <a class="jxr_linenumber" name="L2144" href="#L2144">2144</a>         <strong class="jxr_keyword">return</strong> localVarCall;

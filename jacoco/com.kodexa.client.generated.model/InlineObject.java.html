@@ -28,17 +28,44 @@ import java.io.IOException;
 /**
  * InlineObject
  */
-@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T09:13:55.742572Z[Etc/UTC]&quot;)
+@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T10:07:04.361354Z[Etc/UTC]&quot;)
 <span class="nc" id="L32">public class InlineObject {</span>
+  public static final String SERIALIZED_NAME_FILE = &quot;file&quot;;
+  @SerializedName(SERIALIZED_NAME_FILE)
+  private File file;
+
   public static final String SERIALIZED_NAME_DOCUMENT = &quot;document&quot;;
   @SerializedName(SERIALIZED_NAME_DOCUMENT)
   private File document;
 
 
+  public InlineObject file(File file) {
+    
+<span class="nc" id="L44">    this.file = file;</span>
+<span class="nc" id="L45">    return this;</span>
+  }
+
+   /**
+   * Get file
+   * @return file
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = &quot;&quot;)
+
+  public File getFile() {
+<span class="nc" id="L56">    return file;</span>
+  }
+
+
+  public void setFile(File file) {
+<span class="nc" id="L61">    this.file = file;</span>
+<span class="nc" id="L62">  }</span>
+
+
   public InlineObject document(File document) {
     
-<span class="nc" id="L40">    this.document = document;</span>
-<span class="nc" id="L41">    return this;</span>
+<span class="nc" id="L67">    this.document = document;</span>
+<span class="nc" id="L68">    return this;</span>
   }
 
    /**
@@ -49,39 +76,41 @@ import java.io.IOException;
   @ApiModelProperty(value = &quot;&quot;)
 
   public File getDocument() {
-<span class="nc" id="L52">    return document;</span>
+<span class="nc" id="L79">    return document;</span>
   }
 
 
   public void setDocument(File document) {
-<span class="nc" id="L57">    this.document = document;</span>
-<span class="nc" id="L58">  }</span>
+<span class="nc" id="L84">    this.document = document;</span>
+<span class="nc" id="L85">  }</span>
 
 
   @Override
   public boolean equals(Object o) {
-<span class="nc bnc" id="L63" title="All 2 branches missed.">    if (this == o) {</span>
-<span class="nc" id="L64">      return true;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L91">      return true;</span>
     }
-<span class="nc bnc" id="L66" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
-<span class="nc" id="L67">      return false;</span>
+<span class="nc bnc" id="L93" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L94">      return false;</span>
     }
-<span class="nc" id="L69">    InlineObject inlineObject = (InlineObject) o;</span>
-<span class="nc" id="L70">    return Objects.equals(this.document, inlineObject.document);</span>
+<span class="nc" id="L96">    InlineObject inlineObject = (InlineObject) o;</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">    return Objects.equals(this.file, inlineObject.file) &amp;&amp;</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        Objects.equals(this.document, inlineObject.document);</span>
   }
 
   @Override
   public int hashCode() {
-<span class="nc" id="L75">    return Objects.hash(document);</span>
+<span class="nc" id="L103">    return Objects.hash(file, document);</span>
   }
 
   @Override
   public String toString() {
-<span class="nc" id="L80">    StringBuilder sb = new StringBuilder();</span>
-<span class="nc" id="L81">    sb.append(&quot;class InlineObject {\n&quot;);</span>
-<span class="nc" id="L82">    sb.append(&quot;    document: &quot;).append(toIndentedString(document)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L83">    sb.append(&quot;}&quot;);</span>
-<span class="nc" id="L84">    return sb.toString();</span>
+<span class="nc" id="L108">    StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L109">    sb.append(&quot;class InlineObject {\n&quot;);</span>
+<span class="nc" id="L110">    sb.append(&quot;    file: &quot;).append(toIndentedString(file)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L111">    sb.append(&quot;    document: &quot;).append(toIndentedString(document)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L112">    sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L113">    return sb.toString();</span>
   }
 
   /**
@@ -89,10 +118,10 @@ import java.io.IOException;
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-<span class="nc bnc" id="L92" title="All 2 branches missed.">    if (o == null) {</span>
-<span class="nc" id="L93">      return &quot;null&quot;;</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">    if (o == null) {</span>
+<span class="nc" id="L122">      return &quot;null&quot;;</span>
     }
-<span class="nc" id="L95">    return o.toString().replace(&quot;\n&quot;, &quot;\n    &quot;);</span>
+<span class="nc" id="L124">    return o.toString().replace(&quot;\n&quot;, &quot;\n    &quot;);</span>
   }
 
 }

@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021 Kodexa</copyright>
     <item>
-      <title>File: 248,
-             Errors: 33211,
+      <title>File: 253,
+             Errors: 34088,
              Warnings: 0,
              Infos: 0
       </title>
@@ -452,6 +452,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject2.java">com/kodexa/client/generated/model/InlineObject2.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageExtensionPack.java">com/kodexa/client/generated/model/PageExtensionPack.java</a>
                 </td>
                 <td>
@@ -573,7 +587,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  4147
+                  4845
                 </td>
               </tr>
                           <tr>
@@ -993,7 +1007,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
+                  43
                 </td>
               </tr>
                           <tr>
@@ -1167,6 +1181,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.FavoriteLink.java">com/kodexa/client/generated/model/FavoriteLink.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject4.java">com/kodexa/client/generated/model/InlineObject4.java</a>
                 </td>
                 <td>
                   0
@@ -1400,6 +1428,20 @@ under the License.
                 </td>
                 <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject3.java">com/kodexa/client/generated/model/InlineObject3.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
                 </td>
               </tr>
                           <tr>
@@ -2071,7 +2113,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
+                  31
                 </td>
               </tr>
                           <tr>
@@ -2491,7 +2533,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  15
                 </td>
               </tr>
                           <tr>
@@ -2580,6 +2622,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject5.java">com/kodexa/client/generated/model/InlineObject5.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Label.java">com/kodexa/client/generated/model/Label.java</a>
                 </td>
                 <td>
@@ -2618,6 +2674,20 @@ under the License.
                 </td>
                 <td>
                   85
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject6.java">com/kodexa/client/generated/model/InlineObject6.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
                 </td>
               </tr>
                           <tr>

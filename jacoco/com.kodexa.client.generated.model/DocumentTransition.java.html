@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
  * Provides the definition of a transition for a document, where a change was applied by an assistant, user or external process
  */
 @ApiModel(description = &quot;Provides the definition of a transition for a document, where a change was applied by an assistant, user or external process&quot;)
-@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T09:13:55.742572Z[Etc/UTC]&quot;)
+@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2021-09-19T10:07:04.361354Z[Etc/UTC]&quot;)
 <span class="nc" id="L34">public class DocumentTransition {</span>
   public static final String SERIALIZED_NAME_ID = &quot;id&quot;;
   @SerializedName(SERIALIZED_NAME_ID)
@@ -105,13 +105,13 @@ import org.threeten.bp.OffsetDateTime;
   @SerializedName(SERIALIZED_NAME_LABEL)
   private String label;
 
-  public static final String SERIALIZED_NAME_SOURCE_CONTENT_OBJECT_ID = &quot;sourceContentObjectId&quot;;
-  @SerializedName(SERIALIZED_NAME_SOURCE_CONTENT_OBJECT_ID)
-  private String sourceContentObjectId;
-
   public static final String SERIALIZED_NAME_DESTINATION_CONTENT_OBJECT_ID = &quot;destinationContentObjectId&quot;;
   @SerializedName(SERIALIZED_NAME_DESTINATION_CONTENT_OBJECT_ID)
   private String destinationContentObjectId;
+
+  public static final String SERIALIZED_NAME_SOURCE_CONTENT_OBJECT_ID = &quot;sourceContentObjectId&quot;;
+  @SerializedName(SERIALIZED_NAME_SOURCE_CONTENT_OBJECT_ID)
+  private String sourceContentObjectId;
 
 
   public DocumentTransition id(String id) {
@@ -275,33 +275,10 @@ import org.threeten.bp.OffsetDateTime;
 <span class="nc" id="L275">  }</span>
 
 
-  public DocumentTransition sourceContentObjectId(String sourceContentObjectId) {
-    
-<span class="nc" id="L280">    this.sourceContentObjectId = sourceContentObjectId;</span>
-<span class="nc" id="L281">    return this;</span>
-  }
-
-   /**
-   * Get sourceContentObjectId
-   * @return sourceContentObjectId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = &quot;&quot;)
-
-  public String getSourceContentObjectId() {
-<span class="nc" id="L292">    return sourceContentObjectId;</span>
-  }
-
-
-  public void setSourceContentObjectId(String sourceContentObjectId) {
-<span class="nc" id="L297">    this.sourceContentObjectId = sourceContentObjectId;</span>
-<span class="nc" id="L298">  }</span>
-
-
   public DocumentTransition destinationContentObjectId(String destinationContentObjectId) {
     
-<span class="nc" id="L303">    this.destinationContentObjectId = destinationContentObjectId;</span>
-<span class="nc" id="L304">    return this;</span>
+<span class="nc" id="L280">    this.destinationContentObjectId = destinationContentObjectId;</span>
+<span class="nc" id="L281">    return this;</span>
   }
 
    /**
@@ -312,12 +289,35 @@ import org.threeten.bp.OffsetDateTime;
   @ApiModelProperty(value = &quot;&quot;)
 
   public String getDestinationContentObjectId() {
-<span class="nc" id="L315">    return destinationContentObjectId;</span>
+<span class="nc" id="L292">    return destinationContentObjectId;</span>
   }
 
 
   public void setDestinationContentObjectId(String destinationContentObjectId) {
-<span class="nc" id="L320">    this.destinationContentObjectId = destinationContentObjectId;</span>
+<span class="nc" id="L297">    this.destinationContentObjectId = destinationContentObjectId;</span>
+<span class="nc" id="L298">  }</span>
+
+
+  public DocumentTransition sourceContentObjectId(String sourceContentObjectId) {
+    
+<span class="nc" id="L303">    this.sourceContentObjectId = sourceContentObjectId;</span>
+<span class="nc" id="L304">    return this;</span>
+  }
+
+   /**
+   * Get sourceContentObjectId
+   * @return sourceContentObjectId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = &quot;&quot;)
+
+  public String getSourceContentObjectId() {
+<span class="nc" id="L315">    return sourceContentObjectId;</span>
+  }
+
+
+  public void setSourceContentObjectId(String sourceContentObjectId) {
+<span class="nc" id="L320">    this.sourceContentObjectId = sourceContentObjectId;</span>
 <span class="nc" id="L321">  }</span>
 
 
@@ -337,13 +337,13 @@ import org.threeten.bp.OffsetDateTime;
 <span class="nc bnc" id="L337" title="All 2 branches missed.">        Objects.equals(this.dateTime, documentTransition.dateTime) &amp;&amp;</span>
 <span class="nc bnc" id="L338" title="All 2 branches missed.">        Objects.equals(this.actor, documentTransition.actor) &amp;&amp;</span>
 <span class="nc bnc" id="L339" title="All 2 branches missed.">        Objects.equals(this.label, documentTransition.label) &amp;&amp;</span>
-<span class="nc bnc" id="L340" title="All 2 branches missed.">        Objects.equals(this.sourceContentObjectId, documentTransition.sourceContentObjectId) &amp;&amp;</span>
-<span class="nc bnc" id="L341" title="All 2 branches missed.">        Objects.equals(this.destinationContentObjectId, documentTransition.destinationContentObjectId);</span>
+<span class="nc bnc" id="L340" title="All 2 branches missed.">        Objects.equals(this.destinationContentObjectId, documentTransition.destinationContentObjectId) &amp;&amp;</span>
+<span class="nc bnc" id="L341" title="All 2 branches missed.">        Objects.equals(this.sourceContentObjectId, documentTransition.sourceContentObjectId);</span>
   }
 
   @Override
   public int hashCode() {
-<span class="nc" id="L346">    return Objects.hash(id, uuid, transitionType, index, dateTime, actor, label, sourceContentObjectId, destinationContentObjectId);</span>
+<span class="nc" id="L346">    return Objects.hash(id, uuid, transitionType, index, dateTime, actor, label, destinationContentObjectId, sourceContentObjectId);</span>
   }
 
   @Override
@@ -357,8 +357,8 @@ import org.threeten.bp.OffsetDateTime;
 <span class="nc" id="L357">    sb.append(&quot;    dateTime: &quot;).append(toIndentedString(dateTime)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L358">    sb.append(&quot;    actor: &quot;).append(toIndentedString(actor)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L359">    sb.append(&quot;    label: &quot;).append(toIndentedString(label)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L360">    sb.append(&quot;    sourceContentObjectId: &quot;).append(toIndentedString(sourceContentObjectId)).append(&quot;\n&quot;);</span>
-<span class="nc" id="L361">    sb.append(&quot;    destinationContentObjectId: &quot;).append(toIndentedString(destinationContentObjectId)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L360">    sb.append(&quot;    destinationContentObjectId: &quot;).append(toIndentedString(destinationContentObjectId)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L361">    sb.append(&quot;    sourceContentObjectId: &quot;).append(toIndentedString(sourceContentObjectId)).append(&quot;\n&quot;);</span>
 <span class="nc" id="L362">    sb.append(&quot;}&quot;);</span>
 <span class="nc" id="L363">    return sb.toString();</span>
   }

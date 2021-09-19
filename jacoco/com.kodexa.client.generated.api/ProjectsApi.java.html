@@ -30,7 +30,7 @@ import java.io.IOException;
 import com.kodexa.client.generated.model.Assistant;
 import com.kodexa.client.generated.model.Dashboard;
 import com.kodexa.client.generated.model.ExecutionEvent;
-import com.kodexa.client.generated.model.InlineObject1;
+import com.kodexa.client.generated.model.InlineObject6;
 import com.kodexa.client.generated.model.PageAssistant;
 import com.kodexa.client.generated.model.PageProject;
 import com.kodexa.client.generated.model.Project;
@@ -2007,7 +2007,7 @@ public class ProjectsApi {
      * @param assistantId  (required)
      * @param eventType  (optional)
      * @param options  (optional)
-     * @param inlineObject1  (optional)
+     * @param inlineObject6  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2017,8 +2017,8 @@ public class ProjectsApi {
         &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;
      &lt;/table&gt;
      */
-    public okhttp3.Call processDocumentCall(String id, String assistantId, String eventType, String options, InlineObject1 inlineObject1, final ApiCallback _callback) throws ApiException {
-<span class="nc" id="L2021">        Object localVarPostBody = inlineObject1;</span>
+    public okhttp3.Call processDocumentCall(String id, String assistantId, String eventType, String options, InlineObject6 inlineObject6, final ApiCallback _callback) throws ApiException {
+<span class="nc" id="L2021">        Object localVarPostBody = inlineObject6;</span>
 
         // create path and map variables
 <span class="nc" id="L2024">        String localVarPath = &quot;/api/projects/{id}/assistants/{assistantId}/execute&quot;</span>
@@ -2058,7 +2058,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings(&quot;rawtypes&quot;)
-    private okhttp3.Call processDocumentValidateBeforeCall(String id, String assistantId, String eventType, String options, InlineObject1 inlineObject1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call processDocumentValidateBeforeCall(String id, String assistantId, String eventType, String options, InlineObject6 inlineObject6, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
 <span class="nc bnc" id="L2064" title="All 2 branches missed.">        if (id == null) {</span>
@@ -2071,7 +2071,7 @@ public class ProjectsApi {
         }
         
 
-<span class="nc" id="L2074">        okhttp3.Call localVarCall = processDocumentCall(id, assistantId, eventType, options, inlineObject1, _callback);</span>
+<span class="nc" id="L2074">        okhttp3.Call localVarCall = processDocumentCall(id, assistantId, eventType, options, inlineObject6, _callback);</span>
 <span class="nc" id="L2075">        return localVarCall;</span>
 
     }
@@ -2083,7 +2083,7 @@ public class ProjectsApi {
      * @param assistantId  (required)
      * @param eventType  (optional)
      * @param options  (optional)
-     * @param inlineObject1  (optional)
+     * @param inlineObject6  (optional)
      * @return ExecutionEvent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2092,8 +2092,8 @@ public class ProjectsApi {
         &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;
      &lt;/table&gt;
      */
-    public ExecutionEvent processDocument(String id, String assistantId, String eventType, String options, InlineObject1 inlineObject1) throws ApiException {
-<span class="nc" id="L2096">        ApiResponse&lt;ExecutionEvent&gt; localVarResp = processDocumentWithHttpInfo(id, assistantId, eventType, options, inlineObject1);</span>
+    public ExecutionEvent processDocument(String id, String assistantId, String eventType, String options, InlineObject6 inlineObject6) throws ApiException {
+<span class="nc" id="L2096">        ApiResponse&lt;ExecutionEvent&gt; localVarResp = processDocumentWithHttpInfo(id, assistantId, eventType, options, inlineObject6);</span>
 <span class="nc" id="L2097">        return localVarResp.getData();</span>
     }
 
@@ -2104,7 +2104,7 @@ public class ProjectsApi {
      * @param assistantId  (required)
      * @param eventType  (optional)
      * @param options  (optional)
-     * @param inlineObject1  (optional)
+     * @param inlineObject6  (optional)
      * @return ApiResponse&amp;lt;ExecutionEvent&amp;gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2113,8 +2113,8 @@ public class ProjectsApi {
         &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;
      &lt;/table&gt;
      */
-    public ApiResponse&lt;ExecutionEvent&gt; processDocumentWithHttpInfo(String id, String assistantId, String eventType, String options, InlineObject1 inlineObject1) throws ApiException {
-<span class="nc" id="L2117">        okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject1, null);</span>
+    public ApiResponse&lt;ExecutionEvent&gt; processDocumentWithHttpInfo(String id, String assistantId, String eventType, String options, InlineObject6 inlineObject6) throws ApiException {
+<span class="nc" id="L2117">        okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject6, null);</span>
 <span class="nc" id="L2118">        Type localVarReturnType = new TypeToken&lt;ExecutionEvent&gt;(){}.getType();</span>
 <span class="nc" id="L2119">        return localVarApiClient.execute(localVarCall, localVarReturnType);</span>
     }
@@ -2126,7 +2126,7 @@ public class ProjectsApi {
      * @param assistantId  (required)
      * @param eventType  (optional)
      * @param options  (optional)
-     * @param inlineObject1  (optional)
+     * @param inlineObject6  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2136,9 +2136,9 @@ public class ProjectsApi {
         &lt;tr&gt;&lt;td&gt; 200 &lt;/td&gt;&lt;td&gt; OK &lt;/td&gt;&lt;td&gt;  -  &lt;/td&gt;&lt;/tr&gt;
      &lt;/table&gt;
      */
-    public okhttp3.Call processDocumentAsync(String id, String assistantId, String eventType, String options, InlineObject1 inlineObject1, final ApiCallback&lt;ExecutionEvent&gt; _callback) throws ApiException {
+    public okhttp3.Call processDocumentAsync(String id, String assistantId, String eventType, String options, InlineObject6 inlineObject6, final ApiCallback&lt;ExecutionEvent&gt; _callback) throws ApiException {
 
-<span class="nc" id="L2141">        okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject1, _callback);</span>
+<span class="nc" id="L2141">        okhttp3.Call localVarCall = processDocumentValidateBeforeCall(id, assistantId, eventType, options, inlineObject6, _callback);</span>
 <span class="nc" id="L2142">        Type localVarReturnType = new TypeToken&lt;ExecutionEvent&gt;(){}.getType();</span>
 <span class="nc" id="L2143">        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);</span>
 <span class="nc" id="L2144">        return localVarCall;</span>
