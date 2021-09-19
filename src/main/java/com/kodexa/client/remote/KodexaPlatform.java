@@ -1,9 +1,11 @@
 package com.kodexa.client.remote;
 
+import com.kodexa.client.generated.ApiClient;
 import lombok.Data;
 
 /**
- * The configuration object (static) for the connection to Kodexa
+ * The configuration object (static) for the connection to Kodexa, it also provides a
+ * way to get the API client
  */
 @Data
 public class KodexaPlatform {
@@ -27,4 +29,10 @@ public class KodexaPlatform {
         KodexaPlatform.url = url;
     }
 
+    public ApiClient getClient() {
+        ApiClient client = new ApiClient();
+        client.setAccessToken(getAccessToken());
+        client.setBasePath(getUrl());
+        return client;
+    }
 }

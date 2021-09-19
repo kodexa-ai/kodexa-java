@@ -724,7 +724,7 @@ paths:
       - Stores
       description: Get the document family for a path in the specific version of the
         store
-      operationId: getFamilyByPathWithVersion
+      operationId: browseFsByVersion
       parameters:
       - name: orgSlug
         in: path
@@ -741,6 +741,11 @@ paths:
         required: true
         schema:
           type: string
+      - name: queryContext
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/QueryContext'
       - name: path
         in: query
         required: false
@@ -753,7 +758,8 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/DocumentFamily'
+                type: string
+                format: binary
     put:
       tags:
       - Stores
@@ -786,6 +792,56 @@ paths:
         required: false
         schema:
           type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentFamily'
+    post:
+      tags:
+      - Stores
+      operationId: uploadToPathWithVersion
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: documentVersion
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                document:
+                  type: string
+                  format: binary
       responses:
         "200":
           description: OK
@@ -899,6 +955,42 @@ paths:
       responses:
         "200":
           description: OK
+    post:
+      tags:
+      - Stores
+      operationId: importFamily
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                familyZip:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentFamily'
     delete:
       tags:
       - Stores
@@ -1302,7 +1394,7 @@ paths:
       - Stores
       description: Get the document family for a path in the current version of the
         store
-      operationId: getFamilyByPath
+      operationId: browseFs
       parameters:
       - name: orgSlug
         in: path
@@ -1314,6 +1406,17 @@ paths:
         required: true
         schema:
           type: string
+      - name: queryContext
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/QueryContext'
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+          default: '*'
       - name: path
         in: query
         required: false
@@ -1326,7 +1429,8 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/DocumentFamily'
+                type: string
+                format: binary
     put:
       tags:
       - Stores
@@ -1352,6 +1456,51 @@ paths:
         required: false
         schema:
           type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentFamily'
+    post:
+      tags:
+      - Stores
+      operationId: uploadToPath
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: documentVersion
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                document:
+                  type: string
+                  format: binary
       responses:
         "200":
           description: OK
@@ -4021,6 +4170,69 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Store'
+  /api/stores/{orgSlug}/{slug}/{version}/families/{documentFamilyId}/objects:
+    post:
+      tags:
+      - Stores
+      description: Add a new content object to the family
+      operationId: createContentObjectWithVersion
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: transitionType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: document
+        in: query
+        required: true
+        schema:
+          type: boolean
+      - name: sourceContentObjectId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: documentVersion
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: documentFamilyId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContentObject'
   /api/stores/{orgSlug}/{slug}/{version}/dataObjects:
     get:
       tags:
@@ -4166,6 +4378,63 @@ paths:
       responses:
         "200":
           description: OK
+  /api/stores/{orgSlug}/{slug}/{documentFamilyId}/objects:
+    post:
+      tags:
+      - Stores
+      operationId: addContentObjectToFamily
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: document
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: transitionType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: sourceContentObjectId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: documentFamilyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentVersion
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContentObject'
   /api/stores/{orgSlug}/{slug}/dataObjects:
     get:
       tags:
@@ -5838,6 +6107,51 @@ paths:
             '*/*':
               schema:
                 type: string
+  /api/stores/{orgSlug}/{slug}/{version}/families/{documentFamilyId}/objects/{id}/content:
+    get:
+      tags:
+      - Stores
+      description: Get the contents of a specific object
+      operationId: getContentObjectContentWithVersion
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentFamilyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queryContext
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/QueryContext'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
   /api/stores/{orgSlug}/{slug}/{version}/families/_search:
     get:
       tags:
@@ -5879,6 +6193,35 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SearchContent'
+  /api/stores/{orgSlug}/{slug}/{version}/excel:
+    get:
+      tags:
+      - Stores
+      operationId: getExcelDownload
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
   /api/stores/{orgSlug}/{slug}/taxonomies:
     get:
       tags:
@@ -6079,6 +6422,45 @@ paths:
             '*/*':
               schema:
                 type: string
+  /api/stores/{orgSlug}/{slug}/families/{documentFamilyId}/objects/{id}/content:
+    get:
+      tags:
+      - Stores
+      operationId: getContentObjectContent
+      parameters:
+      - name: orgSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentFamilyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queryContext
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/QueryContext'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
   /api/stores/{orgSlug}/{slug}/families/_search:
     get:
       tags:
@@ -7808,9 +8190,9 @@ components:
           type: string
           description: A label for the transition (this can be used later if we want
             to prune based on a label)
-        sourceContentObjectId:
-          type: string
         destinationContentObjectId:
+          type: string
+        sourceContentObjectId:
           type: string
       description: "Provides the definition of a transition for a document, where\
         \ a change was applied by an assistant, user or external process"
@@ -8886,10 +9268,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -8898,6 +9276,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -8945,10 +9327,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -8957,6 +9335,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -8977,10 +9359,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -8989,6 +9367,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9009,10 +9391,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9021,6 +9399,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9041,10 +9423,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9053,6 +9431,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9112,10 +9494,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9124,6 +9502,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9204,10 +9586,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9216,6 +9594,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9236,10 +9618,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9248,6 +9626,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9268,10 +9650,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9280,6 +9658,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9300,10 +9682,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9312,6 +9690,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9332,10 +9714,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9344,6 +9722,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9364,10 +9746,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9376,6 +9754,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9396,10 +9778,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9408,6 +9786,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9428,10 +9810,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9440,6 +9818,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9460,10 +9842,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9472,6 +9850,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9492,10 +9874,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9504,6 +9882,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9524,10 +9906,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9536,6 +9914,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9556,10 +9938,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9568,6 +9946,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9588,10 +9970,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9600,6 +9978,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9620,10 +10002,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9632,6 +10010,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9652,10 +10034,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9664,6 +10042,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
@@ -9697,10 +10079,6 @@ components:
           format: int64
         pageable:
           $ref: '#/components/schemas/Pageable'
-        first:
-          type: boolean
-        last:
-          type: boolean
         numberOfElements:
           type: integer
           format: int32
@@ -9709,6 +10087,10 @@ components:
           format: int32
         sort:
           $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
         size:
           type: integer
           format: int32
