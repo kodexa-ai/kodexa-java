@@ -7,3 +7,4 @@ target
 .factorypath
 .project
 .settings
+/src/main/java/com/kodexa/client/generated/
