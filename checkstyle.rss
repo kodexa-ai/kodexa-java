@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021 Kodexa</copyright>
     <item>
-      <title>File: 59,
-             Errors: 914,
+      <title>File: 248,
+             Errors: 33211,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.KodexaPlatform.java">com/kodexa/client/remote/KodexaPlatform.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.BulkDelete.java">com/kodexa/client/generated/model/BulkDelete.java</a>
                 </td>
                 <td>
                   0
@@ -55,12 +55,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  35
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.AbstractFileSystemDocumentStore.java">com/kodexa/client/store/AbstractFileSystemDocumentStore.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PipelineExample.java">com/kodexa/client/generated/model/PipelineExample.java</a>
                 </td>
                 <td>
                   0
@@ -69,7 +69,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  43
+                  57
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DataAttribute.java">com/kodexa/client/generated/model/DataAttribute.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  329
                 </td>
               </tr>
                           <tr>
@@ -88,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.RemotePipelineSession.java">com/kodexa/client/remote/RemotePipelineSession.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageAccessToken.java">com/kodexa/client/generated/model/PageAccessToken.java</a>
                 </td>
                 <td>
                   0
@@ -97,12 +111,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  172
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentNode.java">com/kodexa/client/ContentNode.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DeploymentMetadata.java">com/kodexa/client/generated/model/DeploymentMetadata.java</a>
                 </td>
                 <td>
                   0
@@ -111,12 +125,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  29
+                  177
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.DictionaryStore.java">com/kodexa/client/store/DictionaryStore.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantImplementation.java">com/kodexa/client/generated/model/AssistantImplementation.java</a>
                 </td>
                 <td>
                   0
@@ -125,12 +139,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  50
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ProcessingStatus.java">com/kodexa/client/remote/ProcessingStatus.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Pageable.java">com/kodexa/client/generated/model/Pageable.java</a>
                 </td>
                 <td>
                   0
@@ -139,12 +153,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  97
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentClassification.java">com/kodexa/client/ContentClassification.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageExecution.java">com/kodexa/client/generated/model/PageExecution.java</a>
                 </td>
                 <td>
                   0
@@ -153,12 +167,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  171
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.RemoteDocumentStore.java">com/kodexa/client/store/RemoteDocumentStore.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PlatformEvent.java">com/kodexa/client/generated/model/PlatformEvent.java</a>
                 </td>
                 <td>
                   0
@@ -167,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  25
+                  218
                 </td>
               </tr>
                           <tr>
@@ -186,7 +200,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudExceptionDetail.java">com/kodexa/client/remote/CloudExceptionDetail.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.UserStorage.java">com/kodexa/client/generated/model/UserStorage.java</a>
                 </td>
                 <td>
                   0
@@ -195,35 +209,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  6
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.steps.package-info.java">com/kodexa/client/steps/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.Page.java">com/kodexa/client/remote/Page.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  6
+                  35
                 </td>
               </tr>
                           <tr>
@@ -242,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.package-info.java">com/kodexa/client/package-info.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectDashboard.java">com/kodexa/client/generated/model/ProjectDashboard.java</a>
                 </td>
                 <td>
                   0
@@ -251,12 +237,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  74
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.DocumentConnector.java">com/kodexa/client/pipeline/DocumentConnector.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.LoginRequest.java">com/kodexa/client/generated/model/LoginRequest.java</a>
                 </td>
                 <td>
                   0
@@ -265,12 +251,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  12
+                  43
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudSessionType.java">com/kodexa/client/remote/CloudSessionType.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DashboardAllOf.java">com/kodexa/client/generated/model/DashboardAllOf.java</a>
                 </td>
                 <td>
                   0
@@ -279,7 +265,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  52
                 </td>
               </tr>
                           <tr>
@@ -298,7 +284,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ContentObject.java">com/kodexa/client/remote/ContentObject.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.TaxonomiesApi.java">com/kodexa/client/generated/api/TaxonomiesApi.java</a>
                 </td>
                 <td>
                   0
@@ -307,12 +293,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  5
+                  503
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineContext.java">com/kodexa/client/pipeline/PipelineContext.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Project.java">com/kodexa/client/generated/model/Project.java</a>
                 </td>
                 <td>
                   0
@@ -321,12 +307,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  19
+                  137
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.StoredRow.java">com/kodexa/client/store/StoredRow.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DocumentAssignment.java">com/kodexa/client/generated/model/DocumentAssignment.java</a>
                 </td>
                 <td>
                   0
@@ -335,12 +321,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  9
+                  71
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.JsonDocumentStore.java">com/kodexa/client/store/JsonDocumentStore.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectTemplateMetadata.java">com/kodexa/client/generated/model/ProjectTemplateMetadata.java</a>
                 </td>
                 <td>
                   0
@@ -349,12 +335,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  148
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.package-info.java">com/kodexa/client/pipeline/package-info.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.UserActivation.java">com/kodexa/client/generated/model/UserActivation.java</a>
                 </td>
                 <td>
                   0
@@ -363,12 +349,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  57
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudSession.java">com/kodexa/client/remote/CloudSession.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PasswordChange.java">com/kodexa/client/generated/model/PasswordChange.java</a>
                 </td>
                 <td>
                   0
@@ -377,12 +363,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  45
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.package-info.java">com/kodexa/client/store/package-info.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectStore.java">com/kodexa/client/generated/model/ProjectStore.java</a>
                 </td>
                 <td>
                   0
@@ -391,21 +377,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.FolderConnector.java">com/kodexa/client/connectors/FolderConnector.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  25
+                  112
                 </td>
               </tr>
                           <tr>
@@ -424,7 +396,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.ClassBasedStep.java">com/kodexa/client/pipeline/ClassBasedStep.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.auth.Authentication.java">com/kodexa/client/generated/auth/Authentication.java</a>
                 </td>
                 <td>
                   0
@@ -433,12 +405,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  15
+                  3
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PipelineAllOf.java">com/kodexa/client/generated/model/PipelineAllOf.java</a>
                 </td>
                 <td>
                   0
@@ -447,12 +419,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  11
+                  49
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DocumentColumn.java">com/kodexa/client/generated/model/DocumentColumn.java</a>
                 </td>
                 <td>
                   0
@@ -461,12 +433,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  16
+                  43
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.InMemorySink.java">com/kodexa/client/sink/InMemorySink.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SavedFilter.java">com/kodexa/client/generated/model/SavedFilter.java</a>
                 </td>
                 <td>
                   0
@@ -475,7 +447,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  55
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageExtensionPack.java">com/kodexa/client/generated/model/PageExtensionPack.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  172
                 </td>
               </tr>
                           <tr>
@@ -494,34 +480,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.NodeFeatures.java">com/kodexa/client/NodeFeatures.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.OptionDrivenStep.java">com/kodexa/client/pipeline/OptionDrivenStep.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.store.DocumentStore.java">com/kodexa/client/store/DocumentStore.java</a>
                 </td>
                 <td>
@@ -532,6 +490,804 @@ under the License.
                 </td>
                 <td>
                   0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DocumentTransition.java">com/kodexa/client/generated/model/DocumentTransition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  156
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SourceMetadata.java">com/kodexa/client/generated/model/SourceMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  194
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.RolesApi.java">com/kodexa/client/generated/api/RolesApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  376
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Membership.java">com/kodexa/client/generated/model/Membership.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  152
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.User.java">com/kodexa/client/generated/model/User.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  211
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.StoresApi.java">com/kodexa/client/generated/api/StoresApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4147
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ProgressResponseBody.java">com/kodexa/client/generated/ProgressResponseBody.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PasswordReset.java">com/kodexa/client/generated/model/PasswordReset.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.OrganizationsApi.java">com/kodexa/client/generated/api/OrganizationsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  382
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DashboardRow.java">com/kodexa/client/generated/model/DashboardRow.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  60
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantMetadata.java">com/kodexa/client/generated/model/AssistantMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  81
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.RemoteAction.java">com/kodexa/client/remote/RemoteAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.CloudAssistantPipeline.java">com/kodexa/client/generated/model/CloudAssistantPipeline.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  95
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExtensionPackLimits.java">com/kodexa/client/generated/model/ExtensionPackLimits.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.Options.java">com/kodexa/client/pipeline/Options.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ScheduleDefinition.java">com/kodexa/client/generated/model/ScheduleDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  73
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.LabelSubscription.java">com/kodexa/client/generated/model/LabelSubscription.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  56
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Credential.java">com/kodexa/client/generated/model/Credential.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  59
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Organization.java">com/kodexa/client/generated/model/Organization.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  154
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.Document.java">com/kodexa/client/Document.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  89
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.BulkLock.java">com/kodexa/client/generated/model/BulkLock.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.package-info.java">com/kodexa/client/sink/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.StorePath.java">com/kodexa/client/generated/model/StorePath.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  156
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.CompletePasswordReset.java">com/kodexa/client/generated/model/CompletePasswordReset.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  44
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudExecutionStep.java">com/kodexa/client/remote/CloudExecutionStep.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PipelineStepMetadata.java">com/kodexa/client/generated/model/PipelineStepMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  117
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.RegisterUser.java">com/kodexa/client/generated/model/RegisterUser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  57
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DocumentStatus.java">com/kodexa/client/generated/model/DocumentStatus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  106
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SessionEvent.java">com/kodexa/client/generated/model/SessionEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  322
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.auth.HttpBasicAuth.java">com/kodexa/client/generated/auth/HttpBasicAuth.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Dashboard.java">com/kodexa/client/generated/model/Dashboard.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  74
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.DashboardsApi.java">com/kodexa/client/generated/api/DashboardsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  503
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ProcessingStatus.java">com/kodexa/client/remote/ProcessingStatus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageTaxonomy.java">com/kodexa/client/generated/model/PageTaxonomy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentClassification.java">com/kodexa/client/ContentClassification.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject.java">com/kodexa/client/generated/model/InlineObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.QueryContext.java">com/kodexa/client/generated/model/QueryContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  80
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.steps.package-info.java">com/kodexa/client/steps/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageDocumentFamily.java">com/kodexa/client/generated/model/PageDocumentFamily.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  172
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantSchedule.java">com/kodexa/client/generated/model/AssistantSchedule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  85
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.MembershipsApi.java">com/kodexa/client/generated/api/MembershipsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  380
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DockerSource.java">com/kodexa/client/generated/model/DockerSource.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  36
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.LabelSubscriptionAllOf.java">com/kodexa/client/generated/model/LabelSubscriptionAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectTemplateAllOf.java">com/kodexa/client/generated/model/ProjectTemplateAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  212
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantSubscription.java">com/kodexa/client/generated/model/AssistantSubscription.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  51
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SessionStore.java">com/kodexa/client/generated/model/SessionStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  101
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DashboardColumn.java">com/kodexa/client/generated/model/DashboardColumn.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  73
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ReprocessRequest.java">com/kodexa/client/generated/model/ReprocessRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  51
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.FavoriteLink.java">com/kodexa/client/generated/model/FavoriteLink.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ApiClient.java">com/kodexa/client/generated/ApiClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  272
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.auth.HttpBearerAuth.java">com/kodexa/client/generated/auth/HttpBearerAuth.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DataRelation.java">com/kodexa/client/generated/model/DataRelation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  83
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageAssistant.java">com/kodexa/client/generated/model/PageAssistant.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.TaxonomyAllOf.java">com/kodexa/client/generated/model/TaxonomyAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  119
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.TabGroup.java">com/kodexa/client/generated/model/TabGroup.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  69
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ApiResponse.java">com/kodexa/client/generated/ApiResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  25
                 </td>
               </tr>
                           <tr>
@@ -550,7 +1306,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineParameter.java">com/kodexa/client/pipeline/PipelineParameter.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageDashboard.java">com/kodexa/client/generated/model/PageDashboard.java</a>
                 </td>
                 <td>
                   0
@@ -559,12 +1315,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  171
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.Sink.java">com/kodexa/client/sink/Sink.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Session.java">com/kodexa/client/generated/model/Session.java</a>
                 </td>
                 <td>
                   0
@@ -573,12 +1329,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  106
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.MsgPackDocumentStore.java">com/kodexa/client/store/MsgPackDocumentStore.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Execution.java">com/kodexa/client/generated/model/Execution.java</a>
                 </td>
                 <td>
                   0
@@ -587,7 +1343,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  391
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.TeamsApi.java">com/kodexa/client/generated/api/TeamsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  369
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ProgressRequestBody.java">com/kodexa/client/generated/ProgressRequestBody.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
                 </td>
               </tr>
                           <tr>
@@ -620,7 +1404,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.AbstractKodexaSession.java">com/kodexa/client/remote/AbstractKodexaSession.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SearchContent.java">com/kodexa/client/generated/model/SearchContent.java</a>
                 </td>
                 <td>
                   0
@@ -629,12 +1413,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  74
+                  144
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.RemoteAction.java">com/kodexa/client/remote/RemoteAction.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PagePlatformEvent.java">com/kodexa/client/generated/model/PagePlatformEvent.java</a>
                 </td>
                 <td>
                   0
@@ -643,12 +1427,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
+                  172
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.AbstractKodexaConnection.java">com/kodexa/client/remote/AbstractKodexaConnection.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.PlatformEventsApi.java">com/kodexa/client/generated/api/PlatformEventsApi.java</a>
                 </td>
                 <td>
                   0
@@ -657,12 +1441,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  11
+                  176
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ProcessingException.java">com/kodexa/client/remote/ProcessingException.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.ProjectTemplatesApi.java">com/kodexa/client/generated/api/ProjectTemplatesApi.java</a>
                 </td>
                 <td>
                   0
@@ -671,7 +1455,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  505
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AccessToken.java">com/kodexa/client/generated/model/AccessToken.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  141
                 </td>
               </tr>
                           <tr>
@@ -690,7 +1488,469 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.Options.java">com/kodexa/client/pipeline/Options.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PagePipeline.java">com/kodexa/client/generated/model/PagePipeline.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.MetadataTag.java">com/kodexa/client/generated/model/MetadataTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.ExtensionPacksApi.java">com/kodexa/client/generated/api/ExtensionPacksApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  714
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageOrganization.java">com/kodexa/client/generated/model/PageOrganization.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  172
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AccessTokenDetails.java">com/kodexa/client/generated/model/AccessTokenDetails.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  76
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.FeatureSet.java">com/kodexa/client/FeatureSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.SourceMetadata.java">com/kodexa/client/SourceMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  12
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.CloudAssistant.java">com/kodexa/client/generated/model/CloudAssistant.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  256
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ChartWidgetAllOf.java">com/kodexa/client/generated/model/ChartWidgetAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.StepImplementation.java">com/kodexa/client/generated/model/StepImplementation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.steps.PipelineStep.java">com/kodexa/client/steps/PipelineStep.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantDefinition.java">com/kodexa/client/generated/model/AssistantDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  379
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PossibleValue.java">com/kodexa/client/generated/model/PossibleValue.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.GzipRequestInterceptor.java">com/kodexa/client/generated/GzipRequestInterceptor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.AbstractFileSystemDocumentStore.java">com/kodexa/client/store/AbstractFileSystemDocumentStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Assistant.java">com/kodexa/client/generated/model/Assistant.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  186
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExecutionEvent.java">com/kodexa/client/generated/model/ExecutionEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ContentFeature.java">com/kodexa/client/generated/model/ContentFeature.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  73
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.ContentNode.java">com/kodexa/client/ContentNode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  29
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Taxonomy.java">com/kodexa/client/generated/model/Taxonomy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  144
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SelectionOption.java">com/kodexa/client/generated/model/SelectionOption.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.DictionaryStore.java">com/kodexa/client/store/DictionaryStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.RemoteDocumentStore.java">com/kodexa/client/store/RemoteDocumentStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  25
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ContentObject.java">com/kodexa/client/generated/model/ContentObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  289
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectTemplate.java">com/kodexa/client/generated/model/ProjectTemplate.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  235
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PathSubscription.java">com/kodexa/client/generated/model/PathSubscription.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  67
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DataObject.java">com/kodexa/client/generated/model/DataObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  248
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ServerConfiguration.java">com/kodexa/client/generated/ServerConfiguration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.Page.java">com/kodexa/client/remote/Page.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.CellValidationMessage.java">com/kodexa/client/generated/model/CellValidationMessage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  52
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PlatformOverview.java">com/kodexa/client/generated/model/PlatformOverview.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  155
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.DocumentConnector.java">com/kodexa/client/pipeline/DocumentConnector.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  12
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.NodeFeatures.java">com/kodexa/client/generated/model/NodeFeatures.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  47
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DockerSourceAllOf.java">com/kodexa/client/generated/model/DockerSourceAllOf.java</a>
                 </td>
                 <td>
                   0
@@ -700,6 +1960,412 @@ under the License.
                 </td>
                 <td>
                   30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.AssistantsApi.java">com/kodexa/client/generated/api/AssistantsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  515
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Sort.java">com/kodexa/client/generated/model/Sort.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  56
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.package-info.java">com/kodexa/client/pipeline/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.StoreAllOf.java">com/kodexa/client/generated/model/StoreAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  140
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.JSON.java">com/kodexa/client/generated/JSON.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  341
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ContentClassification.java">com/kodexa/client/generated/model/ContentClassification.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  70
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.ProjectsApi.java">com/kodexa/client/generated/api/ProjectsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1230
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.InlineObject1.java">com/kodexa/client/generated/model/InlineObject1.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.FolderConnector.java">com/kodexa/client/connectors/FolderConnector.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  25
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageAssistantDefinition.java">com/kodexa/client/generated/model/PageAssistantDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  176
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DeploymentOptions.java">com/kodexa/client/generated/model/DeploymentOptions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  118
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageDataObject.java">com/kodexa/client/generated/model/PageDataObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  172
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.ClassBasedStep.java">com/kodexa/client/pipeline/ClassBasedStep.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageStore.java">com/kodexa/client/generated/model/PageStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.OptionDrivenStep.java">com/kodexa/client/pipeline/OptionDrivenStep.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineParameter.java">com/kodexa/client/pipeline/PipelineParameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PipelineStore.java">com/kodexa/client/generated/model/PipelineStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  69
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.MsgPackDocumentStore.java">com/kodexa/client/store/MsgPackDocumentStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.UsersApi.java">com/kodexa/client/generated/api/UsersApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  503
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.auth.ApiKeyAuth.java">com/kodexa/client/generated/auth/ApiKeyAuth.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  33
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.AbstractKodexaSession.java">com/kodexa/client/remote/AbstractKodexaSession.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  74
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.EventFilter.java">com/kodexa/client/generated/model/EventFilter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  58
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Option.java">com/kodexa/client/generated/model/Option.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.AbstractKodexaConnection.java">com/kodexa/client/remote/AbstractKodexaConnection.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.Configuration.java">com/kodexa/client/generated/Configuration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ProcessingException.java">com/kodexa/client/remote/ProcessingException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.MixinSubscription.java">com/kodexa/client/generated/model/MixinSubscription.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  56
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExtensionPackRequests.java">com/kodexa/client/generated/model/ExtensionPackRequests.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
                 </td>
               </tr>
                           <tr>
@@ -714,20 +2380,6 @@ under the License.
                 </td>
                 <td>
                   52
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.registry.StoreRegistry.java">com/kodexa/client/registry/StoreRegistry.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  10
                 </td>
               </tr>
                           <tr>
@@ -760,7 +2412,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.Document.java">com/kodexa/client/Document.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectTaxonomy.java">com/kodexa/client/generated/model/ProjectTaxonomy.java</a>
                 </td>
                 <td>
                   0
@@ -769,12 +2421,600 @@ under the License.
                   0
                 </td>
                 <td>
-                  89
+                  100
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.SourceMetadata.java">com/kodexa/client/SourceMetadata.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageProjectTemplate.java">com/kodexa/client/generated/model/PageProjectTemplate.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  172
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DocumentFamily.java">com/kodexa/client/generated/model/DocumentFamily.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  252
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantTaxonomy.java">com/kodexa/client/generated/model/AssistantTaxonomy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExecutionTarget.java">com/kodexa/client/generated/model/ExecutionTarget.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  116
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.KodexaPlatform.java">com/kodexa/client/remote/KodexaPlatform.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageAction.java">com/kodexa/client/generated/model/PageAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Store.java">com/kodexa/client/generated/model/Store.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  162
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AssistantDefinitionAllOf.java">com/kodexa/client/generated/model/AssistantDefinitionAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  360
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.RemotePipelineSession.java">com/kodexa/client/remote/RemotePipelineSession.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.StoreViewOptions.java">com/kodexa/client/generated/model/StoreViewOptions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  169
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DashboardWidget.java">com/kodexa/client/generated/model/DashboardWidget.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  75
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Label.java">com/kodexa/client/generated/model/Label.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  83
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ObjectMetadata.java">com/kodexa/client/generated/model/ObjectMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  50
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Team.java">com/kodexa/client/generated/model/Team.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  85
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExceptionDetails.java">com/kodexa/client/generated/model/ExceptionDetails.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  216
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudExceptionDetail.java">com/kodexa/client/remote/CloudExceptionDetail.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExtensionPack.java">com/kodexa/client/generated/model/ExtensionPack.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  237
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageProject.java">com/kodexa/client/generated/model/PageProject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.package-info.java">com/kodexa/client/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.SessionsApi.java">com/kodexa/client/generated/api/SessionsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  459
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageUser.java">com/kodexa/client/generated/model/PageUser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ApiException.java">com/kodexa/client/generated/ApiException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  62
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExtensionPackSource.java">com/kodexa/client/generated/model/ExtensionPackSource.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  34
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudSessionType.java">com/kodexa/client/remote/CloudSessionType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PipelineImplementationMetadata.java">com/kodexa/client/generated/model/PipelineImplementationMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  93
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ApiCallback.java">com/kodexa/client/generated/ApiCallback.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.ContentObject.java">com/kodexa/client/remote/ContentObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineContext.java">com/kodexa/client/pipeline/PipelineContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Role.java">com/kodexa/client/generated/model/Role.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  147
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.LabelsApi.java">com/kodexa/client/generated/api/LabelsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  370
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.Pair.java">com/kodexa/client/generated/Pair.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.StoredRow.java">com/kodexa/client/store/StoredRow.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.JsonDocumentStore.java">com/kodexa/client/store/JsonDocumentStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.TextboxWidget.java">com/kodexa/client/generated/model/TextboxWidget.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  64
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Taxon.java">com/kodexa/client/generated/model/Taxon.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  366
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageMembership.java">com/kodexa/client/generated/model/PageMembership.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  172
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.TaxonomyMetadata.java">com/kodexa/client/generated/model/TaxonomyMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  202
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudSession.java">com/kodexa/client/remote/CloudSession.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.store.package-info.java">com/kodexa/client/store/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.TextboxWidgetAllOf.java">com/kodexa/client/generated/model/TextboxWidgetAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  56
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.MixinSubscriptionAllOf.java">com/kodexa/client/generated/model/MixinSubscriptionAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ProjectAssistant.java">com/kodexa/client/generated/model/ProjectAssistant.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  133
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.StringUtil.java">com/kodexa/client/generated/StringUtil.java</a>
                 </td>
                 <td>
                   0
@@ -788,7 +3028,119 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.FeatureSet.java">com/kodexa/client/FeatureSet.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Action.java">com/kodexa/client/generated/model/Action.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  101
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ChartWidget.java">com/kodexa/client/generated/model/ChartWidget.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExecutionStep.java">com/kodexa/client/generated/model/ExecutionStep.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  370
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.InMemorySink.java">com/kodexa/client/sink/InMemorySink.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.NodeFeatures.java">com/kodexa/client/NodeFeatures.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageTeam.java">com/kodexa/client/generated/model/PageTeam.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExtensionPackAllOf.java">com/kodexa/client/generated/model/ExtensionPackAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  214
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Avatar.java">com/kodexa/client/generated/model/Avatar.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  44
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.Sink.java">com/kodexa/client/sink/Sink.java</a>
                 </td>
                 <td>
                   0
@@ -798,6 +3150,272 @@ under the License.
                 </td>
                 <td>
                   3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageRole.java">com/kodexa/client/generated/model/PageRole.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.AccountApi.java">com/kodexa/client/generated/api/AccountApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  663
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageSession.java">com/kodexa/client/generated/model/PageSession.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.CloudAssistantResponse.java">com/kodexa/client/generated/model/CloudAssistantResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  50
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.PlatformOverviewApi.java">com/kodexa/client/generated/api/PlatformOverviewApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ExecutionPipeline.java">com/kodexa/client/generated/model/ExecutionPipeline.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  108
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.ActionsApi.java">com/kodexa/client/generated/api/ActionsApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  500
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.PipelinesApi.java">com/kodexa/client/generated/api/PipelinesApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  503
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.api.AccessTokensApi.java">com/kodexa/client/generated/api/AccessTokensApi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  381
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.AuditEvent.java">com/kodexa/client/generated/model/AuditEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  72
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.Pipeline.java">com/kodexa/client/generated/model/Pipeline.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  73
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.registry.StoreRegistry.java">com/kodexa/client/registry/StoreRegistry.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.StoreMetadata.java">com/kodexa/client/generated/model/StoreMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  201
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PathSubscriptionAllOf.java">com/kodexa/client/generated/model/PathSubscriptionAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  58
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.PageLabel.java">com/kodexa/client/generated/model/PageLabel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  171
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.ServerVariable.java">com/kodexa/client/generated/ServerVariable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.EventType.java">com/kodexa/client/generated/model/EventType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  70
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DataLineage.java">com/kodexa/client/generated/model/DataLineage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  75
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ActionAllOf.java">com/kodexa/client/generated/model/ActionAllOf.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  76
                 </td>
               </tr>
                           <tr>
@@ -816,7 +3434,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.sink.package-info.java">com/kodexa/client/sink/package-info.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.DocumentActor.java">com/kodexa/client/generated/model/DocumentActor.java</a>
                 </td>
                 <td>
                   0
@@ -825,12 +3443,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  57
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.steps.PipelineStep.java">com/kodexa/client/steps/PipelineStep.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.ValidationError.java">com/kodexa/client/generated/model/ValidationError.java</a>
                 </td>
                 <td>
                   0
@@ -839,7 +3457,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  5
+                  83
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.FeatureSet.java">com/kodexa/client/generated/model/FeatureSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  36
                 </td>
               </tr>
                           <tr>
@@ -858,7 +3490,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.remote.CloudExecutionStep.java">com/kodexa/client/remote/CloudExecutionStep.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.CredentialAllOf.java">com/kodexa/client/generated/model/CredentialAllOf.java</a>
                 </td>
                 <td>
                   0
@@ -867,7 +3499,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.generated.model.SlugBasedMetadata.java">com/kodexa/client/generated/model/SlugBasedMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  215
                 </td>
               </tr>
                       </tbody>
