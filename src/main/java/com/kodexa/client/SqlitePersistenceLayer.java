@@ -215,7 +215,7 @@ public class SqlitePersistenceLayer {
         ContentNode contentNode = new ContentNode(this.document);
         contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));
         contentNode.setType(nodeTypes.get(contentNodeValues.get("nt")));
-        contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get("id"))));
+        contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get("idx"))));
 
         Object parentId = contentNodeValues.get("pid");
         contentNode.setParentId(parentId != null ? Integer.valueOf(String.valueOf(parentId)) : null);
