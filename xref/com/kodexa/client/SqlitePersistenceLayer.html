@@ -223,7 +223,7 @@
 <a class="jxr_linenumber" name="L215" href="#L215">215</a>         <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.<a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a>tNode">ContentNode</a> contentNode = <strong class="jxr_keyword">new</strong> <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a>(<strong class="jxr_keyword">this</strong>.document);
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>         contentNode.setUuid(String.valueOf(contentNodeValues.get(<span class="jxr_string">"id"</span>)));
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>         contentNode.setType(nodeTypes.get(contentNodeValues.get(<span class="jxr_string">"nt"</span>)));
-<a class="jxr_linenumber" name="L218" href="#L218">218</a>         contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get(<span class="jxr_string">"id"</span>))));
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>         contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get(<span class="jxr_string">"idx"</span>))));
 <a class="jxr_linenumber" name="L219" href="#L219">219</a> 
 <a class="jxr_linenumber" name="L220" href="#L220">220</a>         Object parentId = contentNodeValues.get(<span class="jxr_string">"pid"</span>);
 <a class="jxr_linenumber" name="L221" href="#L221">221</a>         contentNode.setParentId(parentId != <strong class="jxr_keyword">null</strong> ? Integer.valueOf(String.valueOf(parentId)) : <strong class="jxr_keyword">null</strong>);
