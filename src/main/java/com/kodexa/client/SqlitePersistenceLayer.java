@@ -193,7 +193,7 @@ public class SqlitePersistenceLayer {
             }
 
             List<Map<String, Object>> contentNodes =
-                    handle.createQuery("SELECT id, nt, pid FROM cn where pid is null")
+                    handle.createQuery("SELECT id, nt, pid, idx FROM cn where pid is null")
                             .mapToMap()
                             .list();
             for (Map<String, Object> contentNode : contentNodes) {
@@ -215,6 +215,8 @@ public class SqlitePersistenceLayer {
         ContentNode contentNode = new ContentNode(this.document);
         contentNode.setUuid(String.valueOf(contentNodeValues.get("id")));
         contentNode.setType(nodeTypes.get(contentNodeValues.get("nt")));
+        contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get("id"))));
+
         Object parentId = contentNodeValues.get("pid");
         contentNode.setParentId(parentId != null ? Integer.valueOf(String.valueOf(parentId)) : null);
 
@@ -404,7 +406,7 @@ public class SqlitePersistenceLayer {
     public List<ContentNode> getChildNodes(ContentNode contentNode) {
         return jdbi.withHandle(handle -> {
             List<Map<String, Object>> childNodes =
-                    handle.createQuery("SELECT id, nt, pid FROM cn where pid is :nodeId").bind("nodeId", contentNode.getUuid())
+                    handle.createQuery("SELECT id, nt, pid, idx FROM cn where pid is :nodeId").bind("nodeId", contentNode.getUuid())
                             .mapToMap()
                             .list();
             List<ContentNode> children = new ArrayList<>();
