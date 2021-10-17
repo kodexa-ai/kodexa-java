@@ -26,27 +26,27 @@ kodexa-java,com.kodexa.client.store,RemoteTableDataStore,115,0,2,0,23,0,5,0,4,0
 kodexa-java,com.kodexa.client.store,TableStore,150,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client,FeatureSet,80,0,14,0,2,0,14,0,7,0
-kodexa-java,com.kodexa.client,ContentNode,402,84,78,0,16,18,51,16,12,16
+kodexa-java,com.kodexa.client,ContentNode,398,88,78,0,16,18,50,17,11,17
 kodexa-java,com.kodexa.client,ContentFeature,151,36,34,0,0,5,21,9,4,9
 kodexa-java,com.kodexa.client,NodeFeatures,115,0,22,0,3,0,20,0,9,0
 kodexa-java,com.kodexa.client,Document,612,274,93,1,44,45,68,33,21,33
 kodexa-java,com.kodexa.client,ContentClassification,195,0,38,0,5,0,32,0,13,0
 kodexa-java,com.kodexa.client,SourceMetadata,468,47,102,0,0,13,65,15,14,15
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
-kodexa-java,com.kodexa.client,SqlitePersistenceLayer,347,1196,20,34,77,227,27,46,11,35
+kodexa-java,com.kodexa.client,SqlitePersistenceLayer,347,1204,20,34,77,228,27,46,11,35
 kodexa-java,com.kodexa.client,SqlitePersistenceLayer.new TypeReference() {...},0,6,0,0,0,1,0,1,0,1
 kodexa-java,com.kodexa.client.sink,InMemorySink,26,0,0,0,7,0,5,0,5,0
 kodexa-java,com.kodexa.client.generated.model,DocumentActor.ActorTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,MixinSubscription,165,0,16,0,37,0,20,0,12,0
 kodexa-java,com.kodexa.client.generated.model,DataObject,652,0,46,0,141,0,79,0,56,0
 kodexa-java,com.kodexa.client.generated.model,MixinSubscriptionAllOf,139,0,14,0,33,0,19,0,12,0
-kodexa-java,com.kodexa.client.generated.model,AccessTokenDetails,207,0,18,0,47,0,27,0,18,0
 kodexa-java,com.kodexa.client.generated.model,ProjectStore.StorePurposeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
-kodexa-java,com.kodexa.client.generated.model,PasswordChange,121,0,12,0,28,0,17,0,11,0
+kodexa-java,com.kodexa.client.generated.model,AccessTokenDetails,207,0,18,0,47,0,27,0,18,0
 kodexa-java,com.kodexa.client.generated.model,AssistantDefinitionAllOf.TheCategoryOfAssistantEnum,103,0,4,0,15,0,7,0,5,0
-kodexa-java,com.kodexa.client.generated.model,ProjectTemplate.TheCategoryOfProjectTemplateEnum.Adapter,15,0,0,0,5,0,3,0,3,0
+kodexa-java,com.kodexa.client.generated.model,PasswordChange,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,DocumentStatus.StatusTypeEnum,70,0,4,0,12,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,Taxon,756,0,54,0,165,0,91,0,64,0
+kodexa-java,com.kodexa.client.generated.model,ProjectTemplate.TheCategoryOfProjectTemplateEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,Pipeline,147,0,14,0,32,0,18,0,11,0
 kodexa-java,com.kodexa.client.generated.model,TaxonomyAllOf,275,0,22,0,61,0,35,0,24,0
 kodexa-java,com.kodexa.client.generated.model,ExtensionPackRequests,121,0,12,0,28,0,17,0,11,0
@@ -88,9 +88,9 @@ kodexa-java,com.kodexa.client.generated.model,DocumentTransition.TransitionTypeE
 kodexa-java,com.kodexa.client.generated.model,ContentFeature,207,0,18,0,47,0,27,0,18,0
 kodexa-java,com.kodexa.client.generated.model,PageLabel,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,DeploymentMetadata.DeploymentTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
-kodexa-java,com.kodexa.client.generated.model,ScheduleDefinition,189,0,16,0,42,0,25,0,17,0
-kodexa-java,com.kodexa.client.generated.model,AssistantDefinition,715,0,54,0,158,0,84,0,57,0
 kodexa-java,com.kodexa.client.generated.model,DataAttribute.DataTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
+kodexa-java,com.kodexa.client.generated.model,AssistantDefinition,715,0,54,0,158,0,84,0,57,0
+kodexa-java,com.kodexa.client.generated.model,ScheduleDefinition,189,0,16,0,42,0,25,0,17,0
 kodexa-java,com.kodexa.client.generated.model,AssistantDefinitionAllOf.TheCategoryOfAssistantEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,Assistant,482,0,36,0,106,0,59,0,41,0
 kodexa-java,com.kodexa.client.generated.model,PageUser,445,0,32,0,96,0,55,0,39,0
@@ -106,16 +106,16 @@ kodexa-java,com.kodexa.client.generated.model,ExtensionPackAllOf.StatusEnum,114,
 kodexa-java,com.kodexa.client.generated.model,DocumentStatus.StatusTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,Taxon.MetadataValueEnum,81,0,4,0,13,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,CellValidationMessage,140,0,14,0,33,0,19,0,12,0
-kodexa-java,com.kodexa.client.generated.model,Taxon.ValuePathEnum,114,0,4,0,16,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,SourceMetadata,480,0,34,0,103,0,59,0,42,0
+kodexa-java,com.kodexa.client.generated.model,Taxon.ValuePathEnum,114,0,4,0,16,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,AuditEvent,189,0,16,0,42,0,25,0,17,0
 kodexa-java,com.kodexa.client.generated.model,DeploymentOptions.DeploymentTypeEnum,92,0,4,0,14,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,PipelineStore,155,0,14,0,35,0,21,0,14,0
 kodexa-java,com.kodexa.client.generated.model,CredentialAllOf,83,0,8,0,21,0,12,0,8,0
 kodexa-java,com.kodexa.client.generated.model,DeploymentMetadata,393,0,28,0,84,0,49,0,35,0
 kodexa-java,com.kodexa.client.generated.model,DashboardRow,173,0,16,0,40,0,23,0,15,0
-kodexa-java,com.kodexa.client.generated.model,Organization,393,0,28,0,84,0,49,0,35,0
 kodexa-java,com.kodexa.client.generated.model,ExtensionPackSource,88,0,8,0,23,0,12,0,8,0
+kodexa-java,com.kodexa.client.generated.model,Organization,393,0,28,0,84,0,49,0,35,0
 kodexa-java,com.kodexa.client.generated.model,Avatar,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,ContentObject,739,0,52,0,160,0,89,0,63,0
 kodexa-java,com.kodexa.client.generated.model,ProjectTemplate,389,0,32,0,87,0,46,0,30,0
@@ -133,17 +133,17 @@ kodexa-java,com.kodexa.client.generated.model,PageRole,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,Credential,113,0,12,0,25,0,14,0,8,0
 kodexa-java,com.kodexa.client.generated.model,Execution.StatusEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,DashboardColumn,207,0,18,0,47,0,27,0,18,0
-kodexa-java,com.kodexa.client.generated.model,DashboardAllOf,139,0,14,0,33,0,19,0,12,0
 kodexa-java,com.kodexa.client.generated.model,User,529,0,36,0,112,0,65,0,47,0
+kodexa-java,com.kodexa.client.generated.model,DashboardAllOf,139,0,14,0,33,0,19,0,12,0
 kodexa-java,com.kodexa.client.generated.model,ExtensionPack,539,0,38,0,114,0,64,0,45,0
 kodexa-java,com.kodexa.client.generated.model,DocumentActor,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,InlineObject3,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,InlineObject4,83,0,8,0,21,0,12,0,8,0
-kodexa-java,com.kodexa.client.generated.model,NodeFeatures,139,0,14,0,33,0,19,0,12,0
 kodexa-java,com.kodexa.client.generated.model,InlineObject5,83,0,8,0,21,0,12,0,8,0
+kodexa-java,com.kodexa.client.generated.model,NodeFeatures,139,0,14,0,33,0,19,0,12,0
 kodexa-java,com.kodexa.client.generated.model,InlineObject6,83,0,8,0,21,0,12,0,8,0
-kodexa-java,com.kodexa.client.generated.model,InlineObject1,83,0,8,0,21,0,12,0,8,0
 kodexa-java,com.kodexa.client.generated.model,Dashboard,165,0,16,0,37,0,20,0,12,0
+kodexa-java,com.kodexa.client.generated.model,InlineObject1,83,0,8,0,21,0,12,0,8,0
 kodexa-java,com.kodexa.client.generated.model,InlineObject2,83,0,8,0,21,0,12,0,8,0
 kodexa-java,com.kodexa.client.generated.model,DocumentAssignment,189,0,16,0,42,0,25,0,17,0
 kodexa-java,com.kodexa.client.generated.model,ReprocessRequest,157,0,16,0,38,0,21,0,13,0
@@ -176,8 +176,8 @@ kodexa-java,com.kodexa.client.generated.model,ExtensionPackAllOf,513,0,36,0,110,
 kodexa-java,com.kodexa.client.generated.model,ProjectDashboard,207,0,18,0,47,0,27,0,18,0
 kodexa-java,com.kodexa.client.generated.model,DocumentActor.ActorTypeEnum,92,0,4,0,14,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,InlineObject,121,0,12,0,28,0,17,0,11,0
-kodexa-java,com.kodexa.client.generated.model,ProjectTaxonomy.TaxonomyTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,ProjectTemplateAllOf,363,0,30,0,83,0,45,0,30,0
+kodexa-java,com.kodexa.client.generated.model,ProjectTaxonomy.TaxonomyTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,SessionStore.StoreTypeEnum,92,0,4,0,14,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,SessionEvent.TypeEnum,92,0,4,0,14,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,Store.StoreTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
@@ -198,18 +198,18 @@ kodexa-java,com.kodexa.client.generated.model,Taxonomy,301,0,24,0,65,0,36,0,24,0
 kodexa-java,com.kodexa.client.generated.model,PageAction,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,ObjectMetadata,157,0,16,0,38,0,21,0,13,0
 kodexa-java,com.kodexa.client.generated.model,CloudAssistant.DeploymentTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
-kodexa-java,com.kodexa.client.generated.model,PagePlatformEvent,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,TextboxWidgetAllOf,155,0,14,0,35,0,21,0,14,0
+kodexa-java,com.kodexa.client.generated.model,PagePlatformEvent,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,SlugBasedMetadata,484,0,34,0,105,0,59,0,42,0
 kodexa-java,com.kodexa.client.generated.model,Store.StorePurposeEnum,70,0,4,0,12,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,PageProject,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,StoreAllOf.StoreTypeEnum,92,0,4,0,14,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,SelectionOption,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,PagePipeline,445,0,32,0,96,0,55,0,39,0
-kodexa-java,com.kodexa.client.generated.model,Taxon.TaxonTypeEnum,191,0,4,0,23,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,PipelineStore.StoreTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
-kodexa-java,com.kodexa.client.generated.model,PipelineAllOf,121,0,12,0,28,0,17,0,11,0
+kodexa-java,com.kodexa.client.generated.model,Taxon.TaxonTypeEnum,191,0,4,0,23,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,ChartWidgetAllOf,102,0,10,0,26,0,14,0,9,0
+kodexa-java,com.kodexa.client.generated.model,PipelineAllOf,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,ProjectTemplateAllOf.TheCategoryOfProjectTemplateEnum,103,0,4,0,15,0,7,0,5,0
 kodexa-java,com.kodexa.client.generated.model,PageOrganization,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,Sort,155,0,14,0,35,0,21,0,14,0
@@ -261,10 +261,10 @@ kodexa-java,com.kodexa.client.generated.model,StoreMetadata,513,0,36,0,110,0,63,
 kodexa-java,com.kodexa.client.generated.model,DocumentColumn,121,0,12,0,28,0,17,0,11,0
 kodexa-java,com.kodexa.client.generated.model,Taxon.TaxonTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,PossibleValue,121,0,12,0,28,0,17,0,11,0
-kodexa-java,com.kodexa.client.generated.model,StoreAllOf.StoreTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,PageMembership,445,0,32,0,96,0,55,0,39,0
-kodexa-java,com.kodexa.client.generated.model,PageAccessToken,445,0,32,0,96,0,55,0,39,0
+kodexa-java,com.kodexa.client.generated.model,StoreAllOf.StoreTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,Taxonomy.TaxonomyTypeEnum,81,0,4,0,13,0,7,0,5,0
+kodexa-java,com.kodexa.client.generated.model,PageAccessToken,445,0,32,0,96,0,55,0,39,0
 kodexa-java,com.kodexa.client.generated.model,TaxonomyAllOf.TaxonomyTypeEnum.Adapter,15,0,0,0,5,0,3,0,3,0
 kodexa-java,com.kodexa.client.generated.model,TabGroup,189,0,16,0,42,0,25,0,17,0
 kodexa-java,com.kodexa.client.generated.model,ContentObject.ContentTypeEnum,70,0,4,0,12,0,7,0,5,0
@@ -313,8 +313,8 @@ kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...}
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,SessionsApi,1239,0,66,0,260,0,72,0,39,0
+kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
@@ -386,12 +386,12 @@ kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,ExtensionPacksApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ExtensionPacksApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,ExtensionPacksApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ExtensionPacksApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
@@ -407,16 +407,16 @@ kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi,1356,0,60,0,285,0,74,0,44,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,UsersApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
@@ -457,25 +457,25 @@ kodexa-java,com.kodexa.client.generated.api,TeamsApi.new TypeToken() {...},6,0,0
 kodexa-java,com.kodexa.client.generated.api,TeamsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TeamsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,PlatformEventsApi,463,0,20,0,105,0,29,0,19,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TeamsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,OrganizationsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,PipelinesApi,1356,0,60,0,285,0,74,0,44,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
@@ -490,15 +490,15 @@ kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,RolesApi,814,0,28,0,185,0,48,0,34,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AssistantsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,ActionsApi,1356,0,60,0,285,0,74,0,44,0
 kodexa-java,com.kodexa.client.generated.api,PlatformOverviewApi,137,0,2,0,35,0,10,0,9,0
+kodexa-java,com.kodexa.client.generated.api,ActionsApi,1356,0,60,0,285,0,74,0,44,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
@@ -530,8 +530,8 @@ kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,MembershipsApi,814,0,28,0,185,0,48,0,34,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi,1356,0,60,0,285,0,74,0,44,0
@@ -563,24 +563,24 @@ kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,PlatformEventsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,PlatformEventsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,PlatformEventsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,PlatformEventsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,PlatformEventsApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,StoresApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,TaxonomiesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi,1992,0,54,0,439,0,106,0,79,0
@@ -612,12 +612,12 @@ kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
-kodexa-java,com.kodexa.client.generated.api,PlatformOverviewApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,ProjectTemplatesApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated.api,PlatformOverviewApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,PlatformOverviewApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
 kodexa-java,com.kodexa.client.generated.api,AccountApi.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
@@ -671,8 +671,8 @@ kodexa-java,com.kodexa.client.generated,JSON.new TypeSelector() {...},58,0,0,0,1
 kodexa-java,com.kodexa.client.generated,JSON.new TypeSelector() {...},58,0,0,0,13,0,2,0,2,0
 kodexa-java,com.kodexa.client.generated,ApiResponse,27,0,0,0,10,0,5,0,5,0
 kodexa-java,com.kodexa.client.generated,JSON.LocalDateTypeAdapter,50,0,4,0,16,0,7,0,5,0
-kodexa-java,com.kodexa.client.generated,JSON,271,0,8,0,68,0,17,0,13,0
 kodexa-java,com.kodexa.client.generated,ServerVariable,15,0,0,0,6,0,1,0,1,0
+kodexa-java,com.kodexa.client.generated,JSON,271,0,8,0,68,0,17,0,13,0
 kodexa-java,com.kodexa.client.generated,JSON.DateTypeAdapter,77,0,8,0,24,0,9,0,5,0
 kodexa-java,com.kodexa.client.generated,ProgressResponseBody,37,0,2,0,10,0,6,0,5,0
 kodexa-java,com.kodexa.client.generated,ApiClient.new Callback() {...},65,0,0,0,13,0,3,0,3,0
