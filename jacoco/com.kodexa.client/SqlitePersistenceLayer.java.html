@@ -296,9 +296,9 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L296">                    .execute();</span>
         }
 
-<span class="pc bpc" id="L299" title="1 of 4 branches missed.">        if (contentNode.getContentParts() == null || contentNode.getContentParts().isEmpty()) {</span>
-<span class="pc bpc" id="L300" title="1 of 2 branches missed.">            if (contentNode.getContent() != null) {</span>
-<span class="fc" id="L301">                contentNode.setContentParts(List.of(contentNode.getContent()));</span>
+<span class="pc bpc" id="L299" title="2 of 4 branches missed.">        if (contentNode.getContentParts() == null || contentNode.getContentParts().isEmpty()) {</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">            if (contentNode.getContent() != null) {</span>
+<span class="nc" id="L301">                contentNode.setContentParts(List.of(contentNode.getContent()));</span>
             }
         }
 

@@ -288,24 +288,25 @@ public class Document {
 <span class="fc" id="L288">        ContentNode contentNode = new ContentNode(this);</span>
 <span class="fc" id="L289">        contentNode.setType(type);</span>
 <span class="fc" id="L290">        contentNode.setContent(content);</span>
+<span class="fc" id="L291">        contentNode.setContentParts(List.of(content));</span>
 
-<span class="pc bpc" id="L292" title="1 of 2 branches missed.">        if (parent != null) {</span>
-<span class="nc" id="L293">            contentNode.setParent(parent);</span>
-<span class="nc" id="L294">            contentNode.setParentId(Integer.valueOf(parent.getUuid()));</span>
+<span class="pc bpc" id="L293" title="1 of 2 branches missed.">        if (parent != null) {</span>
+<span class="nc" id="L294">            contentNode.setParent(parent);</span>
+<span class="nc" id="L295">            contentNode.setParentId(Integer.valueOf(parent.getUuid()));</span>
         }
 
-<span class="fc" id="L297">        persistenceLayer.updateNode(contentNode);</span>
-<span class="fc" id="L298">        return contentNode;</span>
+<span class="fc" id="L298">        persistenceLayer.updateNode(contentNode);</span>
+<span class="fc" id="L299">        return contentNode;</span>
     }
 
     public ContentNode createContentNode(String type, String content) {
-<span class="fc" id="L302">        return createContentNode(type, content, null);</span>
+<span class="fc" id="L303">        return createContentNode(type, content, null);</span>
     }
 
     public void addMixin(String spatial) {
-<span class="pc bpc" id="L306" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial)) {</span>
-<span class="fc" id="L307">            this.mixins.add(spatial);</span>
+<span class="pc bpc" id="L307" title="1 of 2 branches missed.">        if (!this.mixins.contains(spatial)) {</span>
+<span class="fc" id="L308">            this.mixins.add(spatial);</span>
         }
-<span class="fc" id="L309">    }</span>
+<span class="fc" id="L310">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
