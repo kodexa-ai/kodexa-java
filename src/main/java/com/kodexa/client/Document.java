@@ -291,6 +291,7 @@ public class Document {
 
         if (parent != null) {
             contentNode.setParent(parent);
+            contentNode.setParentId(Integer.valueOf(parent.getUuid()));
         }
 
         persistenceLayer.updateNode(contentNode);
