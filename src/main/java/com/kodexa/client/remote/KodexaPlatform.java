@@ -1,6 +1,5 @@
 package com.kodexa.client.remote;
 
-import com.kodexa.client.generated.ApiClient;
 import lombok.Data;
 
 /**
@@ -11,6 +10,7 @@ import lombok.Data;
 public class KodexaPlatform {
 
     private static String accessToken = System.getenv("KODEXA_ACCESS_TOKEN");
+
     private static String url = System.getenv("KODEXA_URL") != null ? System.getenv("KODEXA_URL") : "https://platform.kodexa.com";
 
     public static String getAccessToken() {
@@ -29,10 +29,4 @@ public class KodexaPlatform {
         KodexaPlatform.url = url;
     }
 
-    public ApiClient getClient() {
-        ApiClient client = new ApiClient();
-        client.setAccessToken(getAccessToken());
-        client.setBasePath(getUrl());
-        return client;
-    }
 }
