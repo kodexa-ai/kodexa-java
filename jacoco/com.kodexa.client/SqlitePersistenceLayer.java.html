@@ -27,7 +27,7 @@ public class SqlitePersistenceLayer {
     private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
     private final Document document;
 
-    Map&lt;Integer, String&gt; nodeTypes;
+<span class="pc" id="L30">    Map&lt;Integer, String&gt; nodeTypes = new HashMap&lt;&gt;();</span>
 
     Map&lt;Integer, String&gt; featureTypeNames;
 
@@ -215,7 +215,7 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L215">        ContentNode contentNode = new ContentNode(this.document);</span>
 <span class="fc" id="L216">        contentNode.setUuid(String.valueOf(contentNodeValues.get(&quot;id&quot;)));</span>
 <span class="fc" id="L217">        contentNode.setType(nodeTypes.get(contentNodeValues.get(&quot;nt&quot;)));</span>
-<span class="fc" id="L218">        contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get(&quot;idx&quot;))));</span>
+<span class="fc" id="L218">        contentNode.setIndex(Integer.parseInt(String.valueOf(contentNodeValues.get(&quot;idx&quot;))));</span>
 
 <span class="fc" id="L220">        Object parentId = contentNodeValues.get(&quot;pid&quot;);</span>
 <span class="fc bfc" id="L221" title="All 2 branches covered.">        contentNode.setParentId(parentId != null ? Integer.valueOf(String.valueOf(parentId)) : null);</span>

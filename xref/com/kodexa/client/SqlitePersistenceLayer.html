@@ -35,7 +35,7 @@
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> ObjectMapper OBJECT_MAPPER_MSGPACK;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a name="Document" href="../../../com/kodexa/client/Document.html#Document">Document</a> document;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>      Map&lt;Integer, String&gt; nodeTypes;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      Map&lt;Integer, String&gt; nodeTypes = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>      Map&lt;Integer, String&gt; featureTypeNames;
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  
@@ -223,7 +223,7 @@
 <a class="jxr_linenumber" name="L215" href="#L215">215</a>         <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.<a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a>tNode">ContentNode</a> contentNode = <strong class="jxr_keyword">new</strong> <a name="ContentNode" href="../../../com/kodexa/client/ContentNode.html#ContentNode">ContentNode</a>(<strong class="jxr_keyword">this</strong>.document);
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>         contentNode.setUuid(String.valueOf(contentNodeValues.get(<span class="jxr_string">"id"</span>)));
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>         contentNode.setType(nodeTypes.get(contentNodeValues.get(<span class="jxr_string">"nt"</span>)));
-<a class="jxr_linenumber" name="L218" href="#L218">218</a>         contentNode.setIndex(Integer.valueOf(String.valueOf(contentNodeValues.get(<span class="jxr_string">"idx"</span>))));
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>         contentNode.setIndex(Integer.parseInt(String.valueOf(contentNodeValues.get(<span class="jxr_string">"idx"</span>))));
 <a class="jxr_linenumber" name="L219" href="#L219">219</a> 
 <a class="jxr_linenumber" name="L220" href="#L220">220</a>         Object parentId = contentNodeValues.get(<span class="jxr_string">"pid"</span>);
 <a class="jxr_linenumber" name="L221" href="#L221">221</a>         contentNode.setParentId(parentId != <strong class="jxr_keyword">null</strong> ? Integer.valueOf(String.valueOf(parentId)) : <strong class="jxr_keyword">null</strong>);
