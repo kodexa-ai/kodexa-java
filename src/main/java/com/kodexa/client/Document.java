@@ -288,6 +288,7 @@ public class Document {
         ContentNode contentNode = new ContentNode(this);
         contentNode.setType(type);
         contentNode.setContent(content);
+        contentNode.setContentParts(List.of(content));
 
         if (parent != null) {
             contentNode.setParent(parent);
