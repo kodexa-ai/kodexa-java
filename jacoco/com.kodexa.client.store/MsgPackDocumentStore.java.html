@@ -24,25 +24,13 @@ public class MsgPackDocumentStore extends AbstractFileSystemDocumentStore {
 <span class="nc" id="L24">    }</span>
 
     @Override
-    public void sink(Document document) {
-        try {
-<span class="nc" id="L29">            readIndex();</span>
-<span class="nc" id="L30">            FileUtils.writeByteArrayToFile(getFile(document.getUuid()), document.toMsgPack());</span>
-<span class="nc" id="L31">            index.add(document.getUuid());</span>
-<span class="nc" id="L32">            saveIndex();</span>
-<span class="nc" id="L33">        } catch (IOException e) {</span>
-<span class="nc" id="L34">            throw new KodexaException(&quot;Unable to write document to store&quot;, e);</span>
-<span class="nc" id="L35">        }</span>
-
-<span class="nc" id="L37">    }</span>
-
-    @Override
     public Document getDocument(int position) {
         try {
-<span class="nc" id="L42">            byte[] msgPack = FileUtils.readFileToByteArray(getFile(index.get(position)));</span>
-<span class="nc" id="L43">            return Document.fromMsgPack(msgPack);</span>
-<span class="nc" id="L44">        } catch (IOException e) {</span>
-<span class="nc" id="L45">            throw new KodexaException(&quot;Unable to read the document at index &quot; + position, e);</span>
+<span class="nc" id="L29">            byte[] msgPack = FileUtils.readFileToByteArray(getFile(index.get(position)));</span>
+<span class="nc" id="L30">            return Document.fromMsgPack(msgPack);</span>
+        }
+<span class="nc" id="L32">        catch (IOException e) {</span>
+<span class="nc" id="L33">            throw new KodexaException(&quot;Unable to read the document at index &quot; + position, e);</span>
         }
     }
 }

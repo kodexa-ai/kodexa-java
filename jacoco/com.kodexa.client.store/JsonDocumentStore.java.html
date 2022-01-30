@@ -25,24 +25,12 @@ public class JsonDocumentStore extends AbstractFileSystemDocumentStore {
 <span class="nc" id="L25">    }</span>
 
     @Override
-    public void sink(Document document) {
-        try {
-<span class="nc" id="L30">            readIndex();</span>
-<span class="nc" id="L31">            FileUtils.writeStringToFile(getFile(document.getUuid()), document.toJson(), Charset.defaultCharset());</span>
-<span class="nc" id="L32">            index.add(document.getUuid());</span>
-<span class="nc" id="L33">            saveIndex();</span>
-<span class="nc" id="L34">        } catch (IOException e) {</span>
-<span class="nc" id="L35">            throw new KodexaException(&quot;Unable to write document to store&quot;, e);</span>
-<span class="nc" id="L36">        }</span>
-
-<span class="nc" id="L38">    }</span>
-
-    @Override
     public Document getDocument(int position) {
         try {
-<span class="nc" id="L43">            return Document.fromJson(FileUtils.readFileToString(getFile(index.get(position)), Charset.defaultCharset()));</span>
-<span class="nc" id="L44">        } catch (IOException e) {</span>
-<span class="nc" id="L45">            throw new KodexaException(&quot;Unable to read the document at index &quot; + position, e);</span>
+<span class="nc" id="L30">            return Document.fromJson(FileUtils.readFileToString(getFile(index.get(position)), Charset.defaultCharset()));</span>
+        }
+<span class="nc" id="L32">        catch (IOException e) {</span>
+<span class="nc" id="L33">            throw new KodexaException(&quot;Unable to read the document at index &quot; + position, e);</span>
         }
     }
 }

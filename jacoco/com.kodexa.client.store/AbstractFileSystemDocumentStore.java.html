@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
 import com.kodexa.client.connectors.Connector;
-import com.kodexa.client.sink.Sink;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
@@ -15,93 +14,97 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-<span class="nc" id="L18">@Slf4j</span>
-public abstract class AbstractFileSystemDocumentStore implements Sink, Connector, DocumentStore {
-<span class="nc" id="L20">    protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();</span>
+<span class="nc" id="L17">@Slf4j</span>
+public abstract class AbstractFileSystemDocumentStore implements Connector, DocumentStore {
+<span class="nc" id="L19">    protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();</span>
+
     protected final String path;
+
     protected final boolean forceInitialize;
+
     protected final File storeFolder;
+
     protected final File indexFile;
-<span class="nc" id="L25">    protected List&lt;String&gt; index = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L26">    private int position = 0;</span>
+
+<span class="nc" id="L29">    protected List&lt;String&gt; index = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L31">    private int position = 0;</span>
 
     protected abstract String getExtension();
 
-<span class="nc" id="L30">    public AbstractFileSystemDocumentStore(String path, boolean forceInitialize) {</span>
-<span class="nc" id="L31">        this.path = path;</span>
-<span class="nc" id="L32">        this.forceInitialize = forceInitialize;</span>
+<span class="nc" id="L35">    public AbstractFileSystemDocumentStore(String path, boolean forceInitialize) {</span>
+<span class="nc" id="L36">        this.path = path;</span>
+<span class="nc" id="L37">        this.forceInitialize = forceInitialize;</span>
 
-<span class="nc" id="L34">        this.storeFolder = new File(path);</span>
-<span class="nc" id="L35">        this.indexFile = new File(path + File.separator + &quot;index.json&quot;);</span>
+<span class="nc" id="L39">        this.storeFolder = new File(path);</span>
+<span class="nc" id="L40">        this.indexFile = new File(path + File.separator + &quot;index.json&quot;);</span>
 
-<span class="nc bnc" id="L37" title="All 4 branches missed.">        if (forceInitialize || !storeFolder.exists()) {</span>
-<span class="nc" id="L38">            log.info(&quot;Initialize message pack store [&quot; + storeFolder + &quot;]&quot;);</span>
+<span class="nc bnc" id="L42" title="All 4 branches missed.">        if (forceInitialize || !storeFolder.exists()) {</span>
+<span class="nc" id="L43">            log.info(&quot;Initialize message pack store [&quot; + storeFolder + &quot;]&quot;);</span>
             try {
-<span class="nc bnc" id="L40" title="All 2 branches missed.">                if (storeFolder.exists()) {</span>
-<span class="nc" id="L41">                    FileUtils.deleteDirectory(storeFolder);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                if (storeFolder.exists()) {</span>
+<span class="nc" id="L46">                    FileUtils.deleteDirectory(storeFolder);</span>
                 }
-<span class="nc" id="L43">                FileUtils.forceMkdir(storeFolder);</span>
+<span class="nc" id="L48">                FileUtils.forceMkdir(storeFolder);</span>
 
-<span class="nc" id="L45">                saveIndex();</span>
-<span class="nc" id="L46">            } catch (IOException e) {</span>
-<span class="nc" id="L47">                throw new KodexaException(&quot;Unable to delete store folder [&quot; + path + &quot;]&quot;, e);</span>
-<span class="nc" id="L48">            }</span>
-        } else {
-<span class="nc" id="L50">            readIndex();</span>
+<span class="nc" id="L50">                saveIndex();</span>
+            }
+<span class="nc" id="L52">            catch (IOException e) {</span>
+<span class="nc" id="L53">                throw new KodexaException(&quot;Unable to delete store folder [&quot; + path + &quot;]&quot;, e);</span>
+<span class="nc" id="L54">            }</span>
         }
-<span class="nc" id="L52">    }</span>
+        else {
+<span class="nc" id="L57">            readIndex();</span>
+        }
+<span class="nc" id="L59">    }</span>
 
     public void readIndex() {
         try {
-<span class="nc" id="L56">            index = AbstractFileSystemDocumentStore.OBJECT_MAPPER.readValue(</span>
-<span class="nc" id="L57">                    indexFile, new TypeReference&lt;List&lt;String&gt;&gt;() {</span>
-                    });
-<span class="nc" id="L59">        } catch (IOException e) {</span>
-<span class="nc" id="L60">            throw new KodexaException(&quot;Unable to read index.json for store [&quot; + indexFile.getAbsolutePath() + &quot;]&quot;, e);</span>
-<span class="nc" id="L61">        }</span>
-<span class="nc" id="L62">    }</span>
+<span class="nc" id="L63">            index = AbstractFileSystemDocumentStore.OBJECT_MAPPER.readValue(indexFile, new TypeReference&lt;List&lt;String&gt;&gt;() {</span>
+            });
+        }
+<span class="nc" id="L66">        catch (IOException e) {</span>
+<span class="nc" id="L67">            throw new KodexaException(&quot;Unable to read index.json for store [&quot; + indexFile.getAbsolutePath() + &quot;]&quot;, e);</span>
+<span class="nc" id="L68">        }</span>
+<span class="nc" id="L69">    }</span>
 
     public void saveIndex() {
         try {
-<span class="nc" id="L66">            AbstractFileSystemDocumentStore.OBJECT_MAPPER.writeValue(indexFile, index);</span>
-<span class="nc" id="L67">        } catch (IOException e) {</span>
-<span class="nc" id="L68">            throw new KodexaException(&quot;Unable to write index.json for store [&quot; + indexFile.getAbsolutePath() + &quot;]&quot;, e);</span>
-<span class="nc" id="L69">        }</span>
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L73">            AbstractFileSystemDocumentStore.OBJECT_MAPPER.writeValue(indexFile, index);</span>
+        }
+<span class="nc" id="L75">        catch (IOException e) {</span>
+<span class="nc" id="L76">            throw new KodexaException(&quot;Unable to write index.json for store [&quot; + indexFile.getAbsolutePath() + &quot;]&quot;, e);</span>
+<span class="nc" id="L77">        }</span>
+<span class="nc" id="L78">    }</span>
 
     @Override
     public InputStream getSource(Document document) {
-<span class="nc" id="L74">        throw new UnsupportedOperationException(&quot;Unable to get source content from the message pack store&quot;);</span>
+<span class="nc" id="L82">        throw new UnsupportedOperationException(&quot;Unable to get source content from the message pack store&quot;);</span>
     }
 
     protected File getFile(String uuid) {
-<span class="nc" id="L78">        return new File(storeFolder.getAbsolutePath() + File.separator + uuid + &quot;.&quot;+getExtension());</span>
+<span class="nc" id="L86">        return new File(storeFolder.getAbsolutePath() + File.separator + uuid + &quot;.&quot; + getExtension());</span>
     }
 
     @Override
     public String getName() {
-<span class="nc" id="L83">        return &quot;Message Pack Document Store&quot;;</span>
-    }
-
-    @Override
-    public int getCount() {
-<span class="nc" id="L88">        return index.size();</span>
+<span class="nc" id="L91">        return &quot;Message Pack Document Store&quot;;</span>
     }
 
     public void resetConnector() {
-<span class="nc" id="L92">        this.position = 0;</span>
-<span class="nc" id="L93">    }</span>
+<span class="nc" id="L95">        this.position = 0;</span>
+<span class="nc" id="L96">    }</span>
 
     @Override
     public boolean hasNext() {
-<span class="nc bnc" id="L97" title="All 2 branches missed.">        return position &lt; index.size();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        return position &lt; index.size();</span>
     }
 
     @Override
     public Document next() {
-<span class="nc" id="L102">        Document document = getDocument(position);</span>
-<span class="nc" id="L103">        position++;</span>
-<span class="nc" id="L104">        return document;</span>
+<span class="nc" id="L105">        Document document = getDocument(position);</span>
+<span class="nc" id="L106">        position++;</span>
+<span class="nc" id="L107">        return document;</span>
     }
 
     public abstract Document getDocument(int position);
