@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kodexa.client.Document;
 import com.kodexa.client.KodexaException;
 import com.kodexa.client.connectors.Connector;
-import com.kodexa.client.sink.Sink;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
@@ -16,13 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public abstract class AbstractFileSystemDocumentStore implements Sink, Connector, DocumentStore {
+public abstract class AbstractFileSystemDocumentStore implements Connector, DocumentStore {
     protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     protected final String path;
+
     protected final boolean forceInitialize;
+
     protected final File storeFolder;
+
     protected final File indexFile;
+
     protected List<String> index = new ArrayList<>();
+
     private int position = 0;
 
     protected abstract String getExtension();
@@ -43,20 +48,22 @@ public abstract class AbstractFileSystemDocumentStore implements Sink, Connector
                 FileUtils.forceMkdir(storeFolder);
 
                 saveIndex();
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 throw new KodexaException("Unable to delete store folder [" + path + "]", e);
             }
-        } else {
+        }
+        else {
             readIndex();
         }
     }
 
     public void readIndex() {
         try {
-            index = AbstractFileSystemDocumentStore.OBJECT_MAPPER.readValue(
-                    indexFile, new TypeReference<List<String>>() {
-                    });
-        } catch (IOException e) {
+            index = AbstractFileSystemDocumentStore.OBJECT_MAPPER.readValue(indexFile, new TypeReference<List<String>>() {
+            });
+        }
+        catch (IOException e) {
             throw new KodexaException("Unable to read index.json for store [" + indexFile.getAbsolutePath() + "]", e);
         }
     }
@@ -64,7 +71,8 @@ public abstract class AbstractFileSystemDocumentStore implements Sink, Connector
     public void saveIndex() {
         try {
             AbstractFileSystemDocumentStore.OBJECT_MAPPER.writeValue(indexFile, index);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new KodexaException("Unable to write index.json for store [" + indexFile.getAbsolutePath() + "]", e);
         }
     }
@@ -75,17 +83,12 @@ public abstract class AbstractFileSystemDocumentStore implements Sink, Connector
     }
 
     protected File getFile(String uuid) {
-        return new File(storeFolder.getAbsolutePath() + File.separator + uuid + "."+getExtension());
+        return new File(storeFolder.getAbsolutePath() + File.separator + uuid + "." + getExtension());
     }
 
     @Override
     public String getName() {
         return "Message Pack Document Store";
-    }
-
-    @Override
-    public int getCount() {
-        return index.size();
     }
 
     public void resetConnector() {

@@ -25,23 +25,11 @@ public class JsonDocumentStore extends AbstractFileSystemDocumentStore {
     }
 
     @Override
-    public void sink(Document document) {
-        try {
-            readIndex();
-            FileUtils.writeStringToFile(getFile(document.getUuid()), document.toJson(), Charset.defaultCharset());
-            index.add(document.getUuid());
-            saveIndex();
-        } catch (IOException e) {
-            throw new KodexaException("Unable to write document to store", e);
-        }
-
-    }
-
-    @Override
     public Document getDocument(int position) {
         try {
             return Document.fromJson(FileUtils.readFileToString(getFile(index.get(position)), Charset.defaultCharset()));
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new KodexaException("Unable to read the document at index " + position, e);
         }
     }

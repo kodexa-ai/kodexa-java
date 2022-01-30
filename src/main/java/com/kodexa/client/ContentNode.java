@@ -3,7 +3,8 @@ package com.kodexa.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.stream.Collectors;
 /**
  * A node in a content tree
  */
-@Data
+@Getter
+@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentNode {
 
@@ -20,12 +22,20 @@ public class ContentNode {
 
     private ContentNode parent;
 
+    public void setParent(ContentNode parent) {
+        this.parent = parent;
+        this.parentId = Integer.valueOf(parent.getUuid());
+        document.getPersistanceLayer()
+                .updateNode(this);
+    }
+
     private Integer parentId;
 
     private String uuid;
 
     @JsonProperty("node_type")
     private String type;
+
     private String content;
 
     @JsonProperty("content_parts")
@@ -55,7 +65,8 @@ public class ContentNode {
     }
 
     public List<ContentNode> getChildren() {
-        return document.getPersistanceLayer().getChildNodes(this);
+        return document.getPersistanceLayer()
+                       .getChildNodes(this);
     }
 
     public ContentFeature addFeature(String featureType, String featureName) {
@@ -64,22 +75,27 @@ public class ContentNode {
         contentFeature.setName(featureName);
         getFeatures().add(contentFeature);
 
-        document.getPersistanceLayer().updateNode(this);
+        document.getPersistanceLayer()
+                .updateNode(this);
         return contentFeature;
     }
 
     public ContentFeature addFeature(ContentFeature feature) {
         getFeatures().add(feature);
-        document.getPersistanceLayer().updateNode(this);
+        document.getPersistanceLayer()
+                .updateNode(this);
         return feature;
     }
 
 
     public void removeFeature(ContentFeature feature) {
         setFeatures(getFeatures().stream()
-                .filter(f -> !(f.getFeatureType().equals(feature.getFeatureType()) && f.getName().equals(feature.getName())))
-                .collect(Collectors.toList()));
-        document.getPersistanceLayer().updateNode(this);
+                                 .filter(f -> !(f.getFeatureType()
+                                                 .equals(feature.getFeatureType()) && f.getName()
+                                                                                       .equals(feature.getName())))
+                                 .collect(Collectors.toList()));
+        document.getPersistanceLayer()
+                .updateNode(this);
     }
 
 }

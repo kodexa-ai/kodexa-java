@@ -7,7 +7,6 @@ import com.kodexa.client.connectors.InputStreamConnector;
 import com.kodexa.client.pipeline.Options;
 import com.kodexa.client.pipeline.Pipeline;
 import com.kodexa.client.pipeline.PipelineContext;
-import com.kodexa.client.sink.Sink;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStream;
@@ -20,8 +19,9 @@ import java.util.Map;
 public class RemotePipeline extends Pipeline {
 
     private final RemotePipelineSession session;
+
     private Options options = Options.start();
-    private Sink sink;
+
     private Map<String, Object> parameters;
 
     public RemotePipeline(String ref, Connector connector) {
@@ -61,25 +61,11 @@ public class RemotePipeline extends Pipeline {
             long endTime = System.currentTimeMillis();
             log.info("Pipeline processed in " + (endTime - startTime) + " ms");
 
-            if (sink != null) {
-                log.info("Writing to sink " + sink.getName());
-                sink.sink(document);
-            }
         });
 
         log.info("Pipeline completed");
         return pipelineContext;
 
-    }
-
-    /**
-     * Set the sink
-     *
-     * @param sink The sink to use for the documents
-     */
-    public Pipeline setSink(Sink sink) {
-        this.sink = sink;
-        return this;
     }
 
     /**
@@ -99,13 +85,15 @@ public class RemotePipeline extends Pipeline {
 
     public static RemotePipeline fromInputStream(String ref, InputStream inputStream) {
         RemotePipeline pipeline = new RemotePipeline(ref, new InputStreamConnector(inputStream));
-        pipeline.options(Options.start().attachSource());
+        pipeline.options(Options.start()
+                                .attachSource());
         return pipeline;
     }
 
     public static RemotePipeline fromFolder(String ref, String folderPath, String filenameFilter, boolean recursive) {
         RemotePipeline pipeline = new RemotePipeline(ref, new FolderConnector(folderPath, filenameFilter, recursive));
-        pipeline.options(Options.start().attachSource());
+        pipeline.options(Options.start()
+                                .attachSource());
         return pipeline;
     }
 }
