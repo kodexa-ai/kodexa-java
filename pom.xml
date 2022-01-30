@@ -283,60 +283,6 @@
         </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <!-- RELEASE_VERSION -->
-                <version>5.1.0</version>
-                <!-- /RELEASE_VERSION -->
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
-                            <output>${project.build.directory}/openapi</output>
-                            <addCompileSourceRoot>false</addCompileSourceRoot>
-                            <addTestCompileSourceRoot>false</addTestCompileSourceRoot>
-                            <generateApiTests>false</generateApiTests>
-                            <generatorName>java</generatorName>
-                            <configOptions>
-                                <sourceFolder>java</sourceFolder>
-                                <apiPackage>com.kodexa.client.generated.api</apiPackage>
-                                <modelPackage>com.kodexa.client.generated.model</modelPackage>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/openapi/java</directory>
-                                    <includes>
-                                        <include>**/*.*</include>
-                                    </includes>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <executions>
