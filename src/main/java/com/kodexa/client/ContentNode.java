@@ -21,14 +21,7 @@ public class ContentNode {
     private int index;
 
     private ContentNode parent;
-
-    public void setParent(ContentNode parent) {
-        this.parent = parent;
-        this.parentId = Integer.valueOf(parent.getUuid());
-        document.getPersistanceLayer()
-                .updateNode(this);
-    }
-
+    
     private Integer parentId;
 
     private String uuid;

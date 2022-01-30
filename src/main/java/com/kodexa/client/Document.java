@@ -26,7 +26,9 @@ import java.util.*;
 public class Document {
 
     private final static ObjectMapper OBJECT_MAPPER;
+
     private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
+
     public static final String CURRENT_VERSION = "4.0.1";
 
     static {
@@ -79,13 +81,20 @@ public class Document {
 
     @JsonProperty("content_node")
     private ContentNode contentNode;
+
     private boolean virtual = false;
+
     private List<String> mixins = new ArrayList<>();
+
     private List<String> labels = new ArrayList<>();
+
     private List<String> taxonomies = new ArrayList<>();
+
     private List<ContentClassification> classes = new ArrayList<>();
 
-    private String uuid = UUID.randomUUID().toString();
+    private String uuid = UUID.randomUUID()
+                              .toString();
+
     private String version = Document.CURRENT_VERSION;
 
     /**
@@ -98,7 +107,8 @@ public class Document {
     public static Document fromJson(String json) {
         try {
             return OBJECT_MAPPER.readValue(json, Document.class);
-        } catch (JsonProcessingException e) {
+        }
+        catch (JsonProcessingException e) {
             throw new KodexaException("Unable to convert to Document from JSON", e);
         }
     }
@@ -113,7 +123,8 @@ public class Document {
     public static Document fromMsgPack(byte[] bytes) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(bytes), Document.class);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new KodexaException("Unable to convert to Document from message pack", e);
         }
     }
@@ -128,7 +139,8 @@ public class Document {
     public static Document fromMsgPack(InputStream is) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(is, Document.class);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new KodexaException("Unable to convert to Document from message pack", e);
         }
     }
@@ -143,7 +155,8 @@ public class Document {
     public static Document fromMsgPack(File file) {
         try {
             return OBJECT_MAPPER_MSGPACK.readValue(new ByteArrayInputStream(FileUtils.readFileToByteArray(file)), Document.class);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new KodexaException("Unable to convert to Document from message pack", e);
         }
     }
@@ -151,7 +164,8 @@ public class Document {
     public static Document fromText(String text) {
         Document newDocument = new Document();
         newDocument.setContentNode(newDocument.createContentNode("text", text));
-        newDocument.getMixins().add("text");
+        newDocument.getMixins()
+                   .add("text");
         return newDocument;
     }
 
@@ -162,9 +176,12 @@ public class Document {
     @SuppressWarnings("unchecked")
     public static Document fromUrl(String url) {
         Document newDocument = new Document();
-        newDocument.getMetadata().put("connector", "url");
-        newDocument.getMetadata().put("connector_options", new HashMap<String, Object>());
-        ((Map) newDocument.getMetadata().get("connector_options")).put("url", url);
+        newDocument.getMetadata()
+                   .put("connector", "url");
+        newDocument.getMetadata()
+                   .put("connector_options", new HashMap<String, Object>());
+        ((Map) newDocument.getMetadata()
+                          .get("connector_options")).put("url", url);
 
         SourceMetadata sourceMetadata = new SourceMetadata();
         sourceMetadata.setConnector("url");
@@ -230,11 +247,14 @@ public class Document {
     public String toJson(boolean pretty) {
         try {
             if (pretty) {
-                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);
-            } else {
+                return OBJECT_MAPPER.writerWithDefaultPrettyPrinter()
+                                    .writeValueAsString(this);
+            }
+            else {
                 return OBJECT_MAPPER.writeValueAsString(this);
             }
-        } catch (JsonProcessingException e) {
+        }
+        catch (JsonProcessingException e) {
             throw new KodexaException("Unable to convert Document to JSON", e);
         }
     }
@@ -248,7 +268,8 @@ public class Document {
     public byte[] toMsgPack() {
         try {
             return OBJECT_MAPPER_MSGPACK.writeValueAsBytes(this);
-        } catch (JsonProcessingException e) {
+        }
+        catch (JsonProcessingException e) {
             throw new KodexaException("Unable to write this document to message pack", e);
         }
     }
@@ -263,17 +284,26 @@ public class Document {
         return toJson(false);
     }
 
-    public ContentNode createContentNode(String type, String content) {
+    public ContentNode createContentNode(String type, String content, ContentNode parent) {
         ContentNode contentNode = new ContentNode(this);
         contentNode.setType(type);
         contentNode.setContent(content);
+
+        if (parent != null) {
+            contentNode.setParent(parent);
+        }
 
         persistenceLayer.updateNode(contentNode);
         return contentNode;
     }
 
+    public ContentNode createContentNode(String type, String content) {
+        return createContentNode(type, content, null);
+    }
+
     public void addMixin(String spatial) {
-        if (!this.mixins.contains(spatial))
+        if (!this.mixins.contains(spatial)) {
             this.mixins.add(spatial);
+        }
     }
 }
