@@ -28,13 +28,13 @@ kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
 kodexa-java,com.kodexa.client,NodeFeatures,115,0,22,0,3,0,20,0,9,0
 kodexa-java,com.kodexa.client,ContentFeature,151,36,34,0,0,5,21,9,4,9
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
-kodexa-java,com.kodexa.client,Document,612,274,93,1,44,45,68,33,21,33
-kodexa-java,com.kodexa.client,SqlitePersistenceLayer,327,1238,16,38,70,236,23,50,10,36
+kodexa-java,com.kodexa.client,Document,615,282,94,2,49,49,69,34,21,34
+kodexa-java,com.kodexa.client,SqlitePersistenceLayer,352,1213,20,34,77,229,27,46,11,35
 kodexa-java,com.kodexa.client,FeatureSet,80,0,14,0,2,0,14,0,7,0
 kodexa-java,com.kodexa.client,SourceMetadata,468,47,102,0,0,13,65,15,14,15
 kodexa-java,com.kodexa.client,ContentClassification,195,0,38,0,5,0,32,0,13,0
 kodexa-java,com.kodexa.client,SqlitePersistenceLayer.new TypeReference() {...},0,6,0,0,0,1,0,1,0,1
-kodexa-java,com.kodexa.client,ContentNode,86,98,6,0,20,25,10,17,7,17
+kodexa-java,com.kodexa.client,ContentNode,86,88,6,0,20,20,10,17,7,17
 kodexa-java,com.kodexa.client.registry,SourceRegistry,70,0,4,0,16,0,7,0,5,0
 kodexa-java,com.kodexa.client.registry,StoreRegistry,33,0,3,0,7,0,6,0,4,0
 kodexa-java,com.kodexa.client.connectors,FolderConnector.WildcardMatcher,106,0,9,0,21,0,8,0,3,0
