@@ -284,10 +284,11 @@ public class Document {
         return toJson(false);
     }
 
-    public ContentNode createContentNode(String type, String content, ContentNode parent) {
+    public ContentNode createContentNode(String type, String content, ContentNode parent, int index) {
         ContentNode contentNode = new ContentNode(this);
         contentNode.setType(type);
         contentNode.setContent(content);
+        contentNode.setIndex(index);
         contentNode.setContentParts(List.of(content));
 
         if (parent != null) {
@@ -300,7 +301,7 @@ public class Document {
     }
 
     public ContentNode createContentNode(String type, String content) {
-        return createContentNode(type, content, null);
+        return createContentNode(type, content, null,0);
     }
 
     public void addMixin(String spatial) {
