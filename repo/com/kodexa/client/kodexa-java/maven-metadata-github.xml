@@ -3,8 +3,8 @@
   <groupId>com.kodexa.client</groupId>
   <artifactId>kodexa-java</artifactId>
   <versioning>
-    <latest>4.0.72</latest>
-    <release>4.0.72</release>
+    <latest>4.0.73</latest>
+    <release>4.0.73</release>
     <versions>
       <version>0.1.39</version>
       <version>0.1.40</version>
@@ -113,7 +113,8 @@
       <version>4.0.70</version>
       <version>4.0.71</version>
       <version>4.0.72</version>
+      <version>4.0.73</version>
     </versions>
-    <lastUpdated>20220327172844</lastUpdated>
+    <lastUpdated>20220327173409</lastUpdated>
   </versioning>
 </metadata>
