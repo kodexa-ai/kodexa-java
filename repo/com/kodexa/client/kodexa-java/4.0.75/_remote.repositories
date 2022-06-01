@@ -1,3 +1,4 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Wed Jun 01 21:55:43 UTC 2022
-maven-metadata-github.xml.lastUpdated=1654120543241
+#Wed Jun 01 21:55:36 UTC 2022
+kodexa-java-4.0.75.pom>=
+kodexa-java-4.0.75.jar>=
