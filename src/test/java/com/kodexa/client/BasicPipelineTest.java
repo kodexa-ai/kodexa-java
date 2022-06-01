@@ -6,6 +6,8 @@ import com.kodexa.client.pipeline.PipelineContext;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.InputStream;
+
 /**
  * Basic set of test cases to validate the pipeline functionality is in place
  */
@@ -40,6 +42,16 @@ public class BasicPipelineTest {
         pipeline.addStep(MetadataSetStep.class, Options.start().set("key", "foo").set("value", "bar").enabled(false));
         PipelineContext context = pipeline.run();
         Assert.assertFalse(context.getOutputDocument().getMetadata().containsKey("foo"));
+    }
+
+    @Test
+    public void testExceptions() {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("exception.kddb");
+        assert is != null;
+        Document document = Document.fromInputStream(is);
+        document.getContentExceptions().forEach(e -> {
+            System.out.println(e.getMessage());
+        });
     }
 
 }

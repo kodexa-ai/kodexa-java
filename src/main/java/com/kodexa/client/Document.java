@@ -55,6 +55,10 @@ public class Document {
         this.setVersion(CURRENT_VERSION);
     }
 
+    public List<ContentException> getContentExceptions() {
+        return persistenceLayer.getContentExceptions();
+    }
+
     @JsonIgnore
     private SqlitePersistenceLayer persistenceLayer;
 

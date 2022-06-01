@@ -499,4 +499,30 @@ public class SqlitePersistenceLayer {
             return nodes;
         });
     }
+
+    public List<ContentException> getContentExceptions() {
+
+        return jdbi.withHandle(handle -> {
+            List<ContentException> exceptions = new ArrayList<>();
+            List<Map<String, Object>> rawExceptions =
+                    handle.createQuery("select * from excpts")
+                            .mapToMap()
+                            .list();
+            for (Map<String, Object> exception : rawExceptions) {
+                exceptions.add(buildException(exception, handle));
+            }
+            return exceptions;
+        });
+    }
+
+    private ContentException buildException(Map<String, Object> rawException, Handle handle) {
+        ContentException contentException = new ContentException();
+        contentException.setId(String.valueOf(rawException.get("id")));
+        contentException.setMessage((String) rawException.get("message"));
+        contentException.setExceptionDetails((String) rawException.get("exception_details"));
+        contentException.setGroupUuid((String) rawException.get("group_uuid"));
+        contentException.setTagUuid((String) rawException.get("tag_uuid"));
+        contentException.setTag((String) rawException.get("tag"));
+        return contentException;
+    }
 }
