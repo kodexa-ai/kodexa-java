@@ -86,6 +86,7 @@ public class SqlitePersistenceLayer {
             handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id, pos);");
             handle.execute("CREATE INDEX f_perf ON ft(cn_id);");
             handle.execute("CREATE INDEX f_perf2 ON ft(tag_uuid);");
+            handle.execute("CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)");
 
             return handle;
         });
@@ -164,6 +165,7 @@ public class SqlitePersistenceLayer {
                 document.setUuid(baseDocument.getUuid());
                 document.setMixins(baseDocument.getMixins());
                 document.setVersion(baseDocument.getVersion());
+                handle.execute("CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)");
 
 
                 if (document.getVersion().equals("4.0.0") || document.getVersion().equals("2.0.0")) {
@@ -177,6 +179,7 @@ public class SqlitePersistenceLayer {
                     document.setVersion("4.0.1");
                     flushMetadata();
                 }
+
 
                 // Lets get all the node types and feature type/name combinations
                 nodeTypes =
@@ -357,7 +360,7 @@ public class SqlitePersistenceLayer {
 
     private int getFeatureTypeName(Handle handle, String type) {
 
-        if (featureTypeNames!=null) {
+        if (featureTypeNames != null) {
             Integer hit = featureTypeNames.entrySet().stream()
                     .filter(e -> e.getValue().equals(type))
                     .map(Map.Entry::getKey)
