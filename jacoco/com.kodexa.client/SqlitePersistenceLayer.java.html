@@ -86,7 +86,7 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L86">            handle.execute(&quot;CREATE INDEX cnp_perf ON cnp(cn_id, pos);&quot;);</span>
 <span class="fc" id="L87">            handle.execute(&quot;CREATE INDEX f_perf ON ft(cn_id);&quot;);</span>
 <span class="fc" id="L88">            handle.execute(&quot;CREATE INDEX f_perf2 ON ft(tag_uuid);&quot;);</span>
-<span class="fc" id="L89">            handle.execute(&quot;CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)&quot;);</span>
+<span class="fc" id="L89">            handle.execute(&quot;CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid, text)&quot;);</span>
 
 <span class="fc" id="L91">            return handle;</span>
         });
@@ -165,7 +165,7 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L165">                document.setUuid(baseDocument.getUuid());</span>
 <span class="fc" id="L166">                document.setMixins(baseDocument.getMixins());</span>
 <span class="fc" id="L167">                document.setVersion(baseDocument.getVersion());</span>
-<span class="fc" id="L168">                handle.execute(&quot;CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)&quot;);</span>
+<span class="fc" id="L168">                handle.execute(&quot;CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid text)&quot;);</span>
 
 
 <span class="pc bpc" id="L171" title="1 of 4 branches missed.">                if (document.getVersion().equals(&quot;4.0.0&quot;) || document.getVersion().equals(&quot;2.0.0&quot;)) {</span>
@@ -508,25 +508,28 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L508">        return jdbi.withHandle(handle -&gt; {</span>
 <span class="fc" id="L509">            List&lt;ContentException&gt; exceptions = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L510">            List&lt;Map&lt;String, Object&gt;&gt; rawExceptions =</span>
-<span class="fc" id="L511">                    handle.createQuery(&quot;select * from excpts&quot;)</span>
+<span class="fc" id="L511">                    handle.createQuery(&quot;select * from content_exceptions&quot;)</span>
 <span class="fc" id="L512">                            .mapToMap()</span>
 <span class="fc" id="L513">                            .list();</span>
-<span class="fc bfc" id="L514" title="All 2 branches covered.">            for (Map&lt;String, Object&gt; exception : rawExceptions) {</span>
-<span class="fc" id="L515">                exceptions.add(buildException(exception, handle));</span>
-<span class="fc" id="L516">            }</span>
+<span class="pc bpc" id="L514" title="1 of 2 branches missed.">            for (Map&lt;String, Object&gt; exception : rawExceptions) {</span>
+<span class="nc" id="L515">                exceptions.add(buildException(exception, handle));</span>
+<span class="nc" id="L516">            }</span>
 <span class="fc" id="L517">            return exceptions;</span>
         });
     }
 
     private ContentException buildException(Map&lt;String, Object&gt; rawException, Handle handle) {
-<span class="fc" id="L522">        ContentException contentException = new ContentException();</span>
-<span class="fc" id="L523">        contentException.setId(String.valueOf(rawException.get(&quot;id&quot;)));</span>
-<span class="fc" id="L524">        contentException.setMessage((String) rawException.get(&quot;message&quot;));</span>
-<span class="fc" id="L525">        contentException.setExceptionDetails((String) rawException.get(&quot;exception_details&quot;));</span>
-<span class="fc" id="L526">        contentException.setGroupUuid((String) rawException.get(&quot;group_uuid&quot;));</span>
-<span class="fc" id="L527">        contentException.setTagUuid((String) rawException.get(&quot;tag_uuid&quot;));</span>
-<span class="fc" id="L528">        contentException.setTag((String) rawException.get(&quot;tag&quot;));</span>
-<span class="fc" id="L529">        return contentException;</span>
+<span class="nc" id="L522">        ContentException contentException = new ContentException();</span>
+<span class="nc" id="L523">        contentException.setId(String.valueOf(rawException.get(&quot;id&quot;)));</span>
+<span class="nc" id="L524">        contentException.setMessage((String) rawException.get(&quot;message&quot;));</span>
+<span class="nc" id="L525">        contentException.setExceptionDetails((String) rawException.get(&quot;exception_details&quot;));</span>
+<span class="nc" id="L526">        contentException.setGroupUuid((String) rawException.get(&quot;group_uuid&quot;));</span>
+<span class="nc" id="L527">        contentException.setTagUuid((String) rawException.get(&quot;tag_uuid&quot;));</span>
+<span class="nc" id="L528">        contentException.setTag((String) rawException.get(&quot;tag&quot;));</span>
+<span class="nc" id="L529">        contentException.setExceptionType((String) rawException.get(&quot;exception_type&quot;));</span>
+<span class="nc" id="L530">        contentException.setSeverity((String) rawException.get(&quot;severity&quot;));</span>
+<span class="nc" id="L531">        contentException.setNodeUuid((String) rawException.get(&quot;node_uuid&quot;));</span>
+<span class="nc" id="L532">        return contentException;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

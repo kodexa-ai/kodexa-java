@@ -94,7 +94,7 @@
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>              handle.execute(<span class="jxr_string">"CREATE INDEX cnp_perf ON cnp(cn_id, pos);"</span>);
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>              handle.execute(<span class="jxr_string">"CREATE INDEX f_perf ON ft(cn_id);"</span>);
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>              handle.execute(<span class="jxr_string">"CREATE INDEX f_perf2 ON ft(tag_uuid);"</span>);
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>              handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)"</span>);
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid, text)"</span>);
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>  
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>              <strong class="jxr_keyword">return</strong> handle;
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>          });
@@ -173,7 +173,7 @@
 <a class="jxr_linenumber" name="L165" href="#L165">165</a>                 document.setUuid(baseDocument.getUuid());
 <a class="jxr_linenumber" name="L166" href="#L166">166</a>                 document.setMixins(baseDocument.getMixins());
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>                 document.setVersion(baseDocument.getVersion());
-<a class="jxr_linenumber" name="L168" href="#L168">168</a>                 handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)"</span>);
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>                 handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid text)"</span>);
 <a class="jxr_linenumber" name="L169" href="#L169">169</a> 
 <a class="jxr_linenumber" name="L170" href="#L170">170</a> 
 <a class="jxr_linenumber" name="L171" href="#L171">171</a>                 <strong class="jxr_keyword">if</strong> (document.getVersion().equals(<span class="jxr_string">"4.0.0"</span>) || document.getVersion().equals(<span class="jxr_string">"2.0.0"</span>)) {
@@ -516,7 +516,7 @@
 <a class="jxr_linenumber" name="L508" href="#L508">508</a>         <strong class="jxr_keyword">return</strong> jdbi.withHandle(handle -&gt; {
 <a class="jxr_linenumber" name="L509" href="#L509">509</a>             List&lt;ContentException&gt; exceptions = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L510" href="#L510">510</a>             List&lt;Map&lt;String, Object&gt;&gt; rawExceptions =
-<a class="jxr_linenumber" name="L511" href="#L511">511</a>                     handle.createQuery(<span class="jxr_string">"select * from excpts"</span>)
+<a class="jxr_linenumber" name="L511" href="#L511">511</a>                     handle.createQuery(<span class="jxr_string">"select * from content_exceptions"</span>)
 <a class="jxr_linenumber" name="L512" href="#L512">512</a>                             .mapToMap()
 <a class="jxr_linenumber" name="L513" href="#L513">513</a>                             .list();
 <a class="jxr_linenumber" name="L514" href="#L514">514</a>             <strong class="jxr_keyword">for</strong> (Map&lt;String, Object&gt; exception : rawExceptions) {
@@ -534,9 +534,12 @@
 <a class="jxr_linenumber" name="L526" href="#L526">526</a>         contentException.setGroupUuid((String) rawException.get(<span class="jxr_string">"group_uuid"</span>));
 <a class="jxr_linenumber" name="L527" href="#L527">527</a>         contentException.setTagUuid((String) rawException.get(<span class="jxr_string">"tag_uuid"</span>));
 <a class="jxr_linenumber" name="L528" href="#L528">528</a>         contentException.setTag((String) rawException.get(<span class="jxr_string">"tag"</span>));
-<a class="jxr_linenumber" name="L529" href="#L529">529</a>         <strong class="jxr_keyword">return</strong> contentException;
-<a class="jxr_linenumber" name="L530" href="#L530">530</a>     }
-<a class="jxr_linenumber" name="L531" href="#L531">531</a> }
+<a class="jxr_linenumber" name="L529" href="#L529">529</a>         contentException.setExceptionType((String) rawException.get(<span class="jxr_string">"exception_type"</span>));
+<a class="jxr_linenumber" name="L530" href="#L530">530</a>         contentException.setSeverity((String) rawException.get(<span class="jxr_string">"severity"</span>));
+<a class="jxr_linenumber" name="L531" href="#L531">531</a>         contentException.setNodeUuid((String) rawException.get(<span class="jxr_string">"node_uuid"</span>));
+<a class="jxr_linenumber" name="L532" href="#L532">532</a>         <strong class="jxr_keyword">return</strong> contentException;
+<a class="jxr_linenumber" name="L533" href="#L533">533</a>     }
+<a class="jxr_linenumber" name="L534" href="#L534">534</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2022 <a href="https://www.kodexa.com">Kodexa</a>. All rights reserved.</div>
