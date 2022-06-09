@@ -23,4 +23,10 @@ public class ContentException {
 
     private String tagUuid;
 
+    private String exceptionType;
+
+    private String severity;
+
+    private String nodeUuid;
+
 }

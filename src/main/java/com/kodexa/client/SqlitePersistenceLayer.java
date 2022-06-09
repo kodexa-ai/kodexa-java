@@ -86,7 +86,7 @@ public class SqlitePersistenceLayer {
             handle.execute("CREATE INDEX cnp_perf ON cnp(cn_id, pos);");
             handle.execute("CREATE INDEX f_perf ON ft(cn_id);");
             handle.execute("CREATE INDEX f_perf2 ON ft(tag_uuid);");
-            handle.execute("CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)");
+            handle.execute("CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid, text)");
 
             return handle;
         });
@@ -165,7 +165,7 @@ public class SqlitePersistenceLayer {
                 document.setUuid(baseDocument.getUuid());
                 document.setMixins(baseDocument.getMixins());
                 document.setVersion(baseDocument.getVersion());
-                handle.execute("CREATE TABLE IF NOT EXISTS excpts (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text)");
+                handle.execute("CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid text)");
 
 
                 if (document.getVersion().equals("4.0.0") || document.getVersion().equals("2.0.0")) {
@@ -508,7 +508,7 @@ public class SqlitePersistenceLayer {
         return jdbi.withHandle(handle -> {
             List<ContentException> exceptions = new ArrayList<>();
             List<Map<String, Object>> rawExceptions =
-                    handle.createQuery("select * from excpts")
+                    handle.createQuery("select * from content_exceptions")
                             .mapToMap()
                             .list();
             for (Map<String, Object> exception : rawExceptions) {
@@ -526,6 +526,9 @@ public class SqlitePersistenceLayer {
         contentException.setGroupUuid((String) rawException.get("group_uuid"));
         contentException.setTagUuid((String) rawException.get("tag_uuid"));
         contentException.setTag((String) rawException.get("tag"));
+        contentException.setExceptionType((String) rawException.get("exception_type"));
+        contentException.setSeverity((String) rawException.get("severity"));
+        contentException.setNodeUuid((String) rawException.get("node_uuid"));
         return contentException;
     }
 }
