@@ -21,7 +21,7 @@ public class ContentNode {
     private int index;
 
     private ContentNode parent;
-    
+
     private Integer parentId;
 
     private String uuid;
@@ -57,9 +57,18 @@ public class ContentNode {
         return String.join(separator, allContents);
     }
 
+    public ContentNode getParent() {
+        if (parent != null || parentId == null) {
+            return parent;
+        }
+
+        parent = document.getPersistanceLayer().getNodeByUuid(String.valueOf(parentId));
+        return parent;
+    }
+
     public List<ContentNode> getChildren() {
         return document.getPersistanceLayer()
-                       .getChildNodes(this);
+                .getChildNodes(this);
     }
 
     public ContentFeature addFeature(String featureType, String featureName) {
@@ -83,10 +92,10 @@ public class ContentNode {
 
     public void removeFeature(ContentFeature feature) {
         setFeatures(getFeatures().stream()
-                                 .filter(f -> !(f.getFeatureType()
-                                                 .equals(feature.getFeatureType()) && f.getName()
-                                                                                       .equals(feature.getName())))
-                                 .collect(Collectors.toList()));
+                .filter(f -> !(f.getFeatureType()
+                        .equals(feature.getFeatureType()) && f.getName()
+                        .equals(feature.getName())))
+                .collect(Collectors.toList()));
         document.getPersistanceLayer()
                 .updateNode(this);
     }
