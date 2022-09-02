@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2022 Kodexa</copyright>
     <item>
       <title>File: 57,
-             Errors: 923,
+             Errors: 922,
              Warnings: 0,
              Infos: 0
       </title>
@@ -494,7 +494,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.NodeFeatures.java">com/kodexa/client/NodeFeatures.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.OptionDrivenStep.java">com/kodexa/client/pipeline/OptionDrivenStep.java</a>
                 </td>
                 <td>
                   0
@@ -508,7 +508,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.OptionDrivenStep.java">com/kodexa/client/pipeline/OptionDrivenStep.java</a>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.NodeFeatures.java">com/kodexa/client/NodeFeatures.java</a>
                 </td>
                 <td>
                   0
@@ -671,7 +671,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  166
+                  165
                 </td>
               </tr>
                           <tr>
@@ -704,20 +704,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.KodexaException.java">com/kodexa/client/KodexaException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  6
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.registry.StoreRegistry.java">com/kodexa/client/registry/StoreRegistry.java</a>
                 </td>
                 <td>
@@ -728,6 +714,20 @@ under the License.
                 </td>
                 <td>
                   10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.KodexaException.java">com/kodexa/client/KodexaException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
                 </td>
               </tr>
                           <tr>
@@ -760,20 +760,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.FeatureSet.java">com/kodexa/client/FeatureSet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.SourceMetadata.java">com/kodexa/client/SourceMetadata.java</a>
                 </td>
                 <td>
@@ -784,6 +770,20 @@ under the License.
                 </td>
                 <td>
                   12
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.FeatureSet.java">com/kodexa/client/FeatureSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
                 </td>
               </tr>
                           <tr>
