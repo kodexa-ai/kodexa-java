@@ -248,8 +248,14 @@ public class SqlitePersistenceLayer {
 
         for (Map<String, Object> feature : features) {
             ContentFeature contentFeature = new ContentFeature();
-            contentFeature.setFeatureType(featureTypeNames.get(feature.get("f_type")).split(":")[0]);
-            contentFeature.setName(featureTypeNames.get(feature.get("f_type")).split(":")[1]);
+
+            String[] featureParts = featureTypeNames.get(feature.get("f_type")).split(":");
+            contentFeature.setFeatureType(featureParts[0]);
+            if (featureParts.length > 1) {
+                contentFeature.setName(featureParts[1]);
+            } else {
+                contentFeature.setName("");
+            }
             contentFeature.setSingle(Integer.valueOf(1).equals(feature.get("single")));
             TypeReference<ArrayList<Object>> typeRef
                     = new TypeReference<>() {
