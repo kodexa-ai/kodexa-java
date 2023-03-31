@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.jdbi.v3.core.Handle;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 /**
  * A Persistence Layer that works with the document to allow it to be interacted with
  */
+@Slf4j
 public class SqlitePersistenceLayer {
 
     private final static ObjectMapper OBJECT_MAPPER_MSGPACK;
@@ -53,7 +55,7 @@ public class SqlitePersistenceLayer {
             md = MessageDigest.getInstance("SHA-1");
 
             this.document = document;
-            file = File.createTempFile("kdx", "kddb");
+            file = File.createTempFile("kdxa", "kddb");
             this.dbPath = file.getAbsolutePath();
             this.tempFile = true;
             file.deleteOnExit();
@@ -108,12 +110,13 @@ public class SqlitePersistenceLayer {
             md = MessageDigest.getInstance("SHA-1");
 
             this.document = document;
-            tempFile = File.createTempFile("kodexa", "kddb");
+            tempFile = File.createTempFile("kdxa", "kddb");
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
                 IOUtils.copy(kddbInputStream, out);
             }
             this.dbPath = tempFile.getAbsolutePath();
+            this.tempFile = true;
             this.initializeLayer();
             this.loadDocument();
         } catch (IOException | NoSuchAlgorithmException e) {

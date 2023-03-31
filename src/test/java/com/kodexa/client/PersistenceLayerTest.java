@@ -32,4 +32,19 @@ public class PersistenceLayerTest {
 
         Document doc2 = new Document(new ByteArrayInputStream(bytes));
     }
+
+    @Test
+    public void testMemoryConsumption() {
+
+        // Test for faster counts
+
+        while (true) {
+            InputStream kddbInput = getClass().getClassLoader().getResourceAsStream("fax2.kddb");
+            Document document = Document.fromInputStream(kddbInput);
+            document.close();
+            System.out.println("Memory: " + Runtime.getRuntime().totalMemory() + " / " + Runtime.getRuntime().freeMemory() + " / " + Runtime.getRuntime().maxMemory());
+            System.out.println(
+                    System.getProperty("java.io.tmpdir"));
+        }
+    }
 }
