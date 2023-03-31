@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>kodexa-java - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2022 Kodexa</copyright>
+    <copyright>&#169;2023 Kodexa</copyright>
     <item>
       <title>File: 57,
              Errors: 922,
@@ -452,20 +452,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  16
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.kodexa.client.connectors.InputStreamConnector.java">com/kodexa/client/connectors/InputStreamConnector.java</a>
                 </td>
                 <td>
@@ -476,6 +462,20 @@ under the License.
                 </td>
                 <td>
                   11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.kodexa.client.pipeline.PipelineStepWrapper.java">com/kodexa/client/pipeline/PipelineStepWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
                 </td>
               </tr>
                           <tr>
