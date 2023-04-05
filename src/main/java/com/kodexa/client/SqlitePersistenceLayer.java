@@ -89,7 +89,7 @@ public class SqlitePersistenceLayer {
             handle.execute("CREATE INDEX f_perf ON ft(cn_id);");
             handle.execute("CREATE INDEX f_perf2 ON ft(tag_uuid);");
             handle.execute("CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid, text)");
-
+            handle.execute("CREATE TABLE IF NOT EXISTS model_insights (id integer primary key,model_insight text)");
             return handle;
         });
     }
