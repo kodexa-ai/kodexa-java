@@ -169,6 +169,7 @@ public class SqlitePersistenceLayer {
                 document.setMixins(baseDocument.getMixins());
                 document.setVersion(baseDocument.getVersion());
                 handle.execute("CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid text)");
+                handle.execute("CREATE TABLE IF NOT EXISTS model_insights (id integer primary key,model_insight text)");
 
 
                 if (document.getVersion().equals("4.0.0") || document.getVersion().equals("2.0.0")) {
