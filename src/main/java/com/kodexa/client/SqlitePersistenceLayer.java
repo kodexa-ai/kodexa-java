@@ -540,4 +540,8 @@ public class SqlitePersistenceLayer {
         contentException.setNodeUuid((String) rawException.get("node_uuid"));
         return contentException;
     }
+
+    public int getNumberOfInsights() {
+        return (int) jdbi.withHandle(handle -> handle.createQuery("select count(1) as num from model_insights").mapToMap().first().get("num"));
+    }
 }

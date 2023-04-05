@@ -313,4 +313,8 @@ public class Document {
             this.mixins.add(spatial);
         }
     }
+
+    public int getNumberOfInsights() {
+        return persistenceLayer.getNumberOfInsights();
+    }
 }
