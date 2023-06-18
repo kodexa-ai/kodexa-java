@@ -96,7 +96,7 @@
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>              handle.execute(<span class="jxr_string">"CREATE INDEX cnp_perf ON cnp(cn_id, pos);"</span>);
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>              handle.execute(<span class="jxr_string">"CREATE INDEX f_perf ON ft(cn_id);"</span>);
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>              handle.execute(<span class="jxr_string">"CREATE INDEX f_perf2 ON ft(tag_uuid);"</span>);
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>              handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid, text)"</span>);
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>              handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid text)"</span>);
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>              handle.execute(<span class="jxr_string">"CREATE TABLE IF NOT EXISTS model_insights (id integer primary key,model_insight text)"</span>);
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>              <strong class="jxr_keyword">return</strong> handle;
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>          });

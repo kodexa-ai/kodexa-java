@@ -25,8 +25,8 @@ kodexa-java,com.kodexa.client.store,MsgPackDocumentStore,36,0,0,0,10,0,5,0,5,0
 kodexa-java,com.kodexa.client.store,RemoteTableDataStore,115,0,2,0,23,0,5,0,4,0
 kodexa-java,com.kodexa.client.store,TableStore,150,0,22,0,8,0,21,0,10,0
 kodexa-java,com.kodexa.client.store,DictionaryStore,14,0,0,0,4,0,1,0,1,0
-kodexa-java,com.kodexa.client,NodeFeatures,115,0,22,0,3,0,20,0,9,0
 kodexa-java,com.kodexa.client,ContentFeature,151,36,34,0,0,5,21,9,4,9
+kodexa-java,com.kodexa.client,NodeFeatures,115,0,22,0,3,0,20,0,9,0
 kodexa-java,com.kodexa.client,ContentException,395,0,78,0,10,0,62,0,23,0
 kodexa-java,com.kodexa.client,KodexaException,9,0,0,0,4,0,2,0,2,0
 kodexa-java,com.kodexa.client,Document,620,298,94,2,50,53,69,36,21,36

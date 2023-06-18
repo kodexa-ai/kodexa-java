@@ -88,7 +88,7 @@ public class SqlitePersistenceLayer {
 <span class="fc" id="L88">            handle.execute(&quot;CREATE INDEX cnp_perf ON cnp(cn_id, pos);&quot;);</span>
 <span class="fc" id="L89">            handle.execute(&quot;CREATE INDEX f_perf ON ft(cn_id);&quot;);</span>
 <span class="fc" id="L90">            handle.execute(&quot;CREATE INDEX f_perf2 ON ft(tag_uuid);&quot;);</span>
-<span class="fc" id="L91">            handle.execute(&quot;CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid, text)&quot;);</span>
+<span class="fc" id="L91">            handle.execute(&quot;CREATE TABLE IF NOT EXISTS content_exceptions (id integer primary key,tag text,message text,exception_details text,group_uuid text,tag_uuid text, exception_type text, severity text, node_uuid text)&quot;);</span>
 <span class="fc" id="L92">            handle.execute(&quot;CREATE TABLE IF NOT EXISTS model_insights (id integer primary key,model_insight text)&quot;);</span>
 <span class="fc" id="L93">            return handle;</span>
         });
