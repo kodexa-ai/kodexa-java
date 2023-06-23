@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Submit Dependency Snapshot
+        uses: advanced-security/maven-dependency-submission-action@v3
       - name: Increment version
         id: version
         uses: pdodds/Bump-N-Tag-Version@master
