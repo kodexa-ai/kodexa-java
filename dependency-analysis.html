@@ -31,7 +31,7 @@
       <li class=""><a href="https://developer.kodexa.com" class="externalLink" title="Developer Portal">Developer Portal</a><span class="divider">/</span></li>
     <li class="active ">Dependencies Report</li>
         <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2023-06-23</li>
-          <li id="projectVersion" class="pull-right">Version: 6.2.9</li>
+          <li id="projectVersion" class="pull-right">Version: 6.2.10</li>
           </ul>
         </div>
       </header>
@@ -96,7 +96,7 @@
 <tr class="a">
 <td>org.jdbi</td>
 <td>jdbi3-core</td>
-<td>3.38.3</td>
+<td>3.39.1</td>
 <td>compile</td>
 <td></td>
 <td>jar</td>
@@ -134,14 +134,6 @@
 <td>jar</td>
 <td>false</td></tr>
 <tr class="b">
-<td>org.apache.httpcomponents</td>
-<td>httpclient</td>
-<td>4.5.14</td>
-<td>compile</td>
-<td></td>
-<td>jar</td>
-<td>false</td></tr>
-<tr class="a">
 <td>org.slf4j</td>
 <td>slf4j-api</td>
 <td>2.0.5</td>
@@ -149,7 +141,7 @@
 <td></td>
 <td>jar</td>
 <td>false</td></tr>
-<tr class="b">
+<tr class="a">
 <td>commons-io</td>
 <td>commons-io</td>
 <td>2.11.0</td>
@@ -157,7 +149,7 @@
 <td></td>
 <td>jar</td>
 <td>false</td></tr>
-<tr class="a">
+<tr class="b">
 <td>org.apache.httpcomponents</td>
 <td>httpmime</td>
 <td>4.5.14</td>
@@ -165,7 +157,7 @@
 <td></td>
 <td>jar</td>
 <td>false</td></tr>
-<tr class="b">
+<tr class="a">
 <td>junit</td>
 <td>junit</td>
 <td>4.13.2</td>
@@ -175,7 +167,7 @@
 <td>false</td></tr></table><hr /></section><section>
 <h3><a name="Used_but_undeclared_dependencies"></a>Used but undeclared dependencies</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <td><b>GroupId</b></td>
 <td><b>ArtifactId</b></td>
 <td><b>Version</b></td>
@@ -183,7 +175,7 @@
 <td><b>Classifier</b></td>
 <td><b>Type</b></td>
 <td><b>Optional</b></td></tr>
-<tr class="b">
+<tr class="a">
 <td>org.apache.httpcomponents</td>
 <td>httpcore</td>
 <td>4.4.16</td>
@@ -191,10 +183,18 @@
 <td></td>
 <td>jar</td>
 <td>false</td></tr>
-<tr class="a">
+<tr class="b">
 <td>com.fasterxml.jackson.core</td>
 <td>jackson-annotations</td>
 <td>2.14.2</td>
+<td>compile</td>
+<td></td>
+<td>jar</td>
+<td>false</td></tr>
+<tr class="a">
+<td>org.apache.httpcomponents</td>
+<td>httpclient</td>
+<td>4.5.14</td>
 <td>compile</td>
 <td></td>
 <td>jar</td>
@@ -228,12 +228,20 @@
 <tr class="a">
 <td>org.msgpack</td>
 <td>msgpack-core</td>
-<td>0.9.1</td>
+<td>0.9.3</td>
 <td>compile</td>
 <td></td>
 <td>jar</td>
 <td>false</td></tr>
 <tr class="b">
+<td>org.apache.httpcomponents.client5</td>
+<td>httpclient5</td>
+<td>5.2.1</td>
+<td>compile</td>
+<td></td>
+<td>jar</td>
+<td>false</td></tr>
+<tr class="a">
 <td>ch.qos.logback</td>
 <td>logback-classic</td>
 <td>1.4.6</td>
@@ -241,7 +249,7 @@
 <td></td>
 <td>jar</td>
 <td>false</td></tr>
-<tr class="a">
+<tr class="b">
 <td>de.vandermeer</td>
 <td>asciitable</td>
 <td>0.3.2</td>
