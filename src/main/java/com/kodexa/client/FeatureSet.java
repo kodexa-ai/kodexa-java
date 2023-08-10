@@ -14,6 +14,8 @@ import java.util.List;
 @Data
 public class FeatureSet {
 
+    private String ownerUri;
+
     private List<NodeFeatures> nodeFeatures = new ArrayList<>();
 
 }
