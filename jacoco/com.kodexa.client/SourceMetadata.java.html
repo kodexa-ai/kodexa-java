@@ -4,39 +4,40 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Map;
 
-<span class="pc bnc" id="L9" title="All 102 branches missed.">@Data</span>
+<span class="pc bnc" id="L10" title="All 102 branches missed.">@Data</span>
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SourceMetadata {
+public class SourceMetadata implements Serializable {
 
     @JsonProperty(&quot;original_filename&quot;)
-<span class="fc" id="L14">    private String originalFilename;</span>
+<span class="fc" id="L15">    private String originalFilename;</span>
 
     @JsonProperty(&quot;original_path&quot;)
-<span class="fc" id="L17">    private String originalPath;</span>
-<span class="fc" id="L18">    private String checksum;</span>
+<span class="fc" id="L18">    private String originalPath;</span>
+<span class="fc" id="L19">    private String checksum;</span>
 
     @JsonProperty(&quot;last_modified&quot;)
-<span class="fc" id="L21">    private String lastModified;</span>
-<span class="fc" id="L22">    private String created;</span>
-<span class="fc" id="L23">    private String connector;</span>
+<span class="fc" id="L22">    private String lastModified;</span>
+<span class="fc" id="L23">    private String created;</span>
+<span class="fc" id="L24">    private String connector;</span>
 
     @JsonProperty(&quot;mime_type&quot;)
-<span class="fc" id="L26">    private String mimeType;</span>
+<span class="fc" id="L27">    private String mimeType;</span>
 
-<span class="fc" id="L28">    private String cid;</span>
+<span class="fc" id="L29">    private String cid;</span>
 
     @JsonProperty(&quot;lineage_document_uuid&quot;)
-<span class="fc" id="L31">    private String lineageDocumentUuid;</span>
+<span class="fc" id="L32">    private String lineageDocumentUuid;</span>
 
     @JsonProperty(&quot;document_family_id&quot;)
-<span class="fc" id="L34">    private String documentFamilyId;</span>
+<span class="fc" id="L35">    private String documentFamilyId;</span>
 
     @JsonProperty(&quot;source_document_uuid&quot;)
-<span class="fc" id="L37">    private String sourceDocumentUuid;</span>
+<span class="fc" id="L38">    private String sourceDocumentUuid;</span>
 
-<span class="fc" id="L39">    private Map&lt;String, Object&gt; headers;</span>
+<span class="fc" id="L40">    private Map&lt;String, Object&gt; headers;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
