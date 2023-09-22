@@ -2,6 +2,7 @@
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +12,12 @@ import java.util.List;
  * &lt;p&gt;
  * This is a lightweight way to think about moving just features, when the structure of the document has not been modified
  */
-<span class="nc bnc" id="L14" title="All 22 branches missed.">@Data</span>
-public class FeatureSet {
+<span class="nc bnc" id="L15" title="All 22 branches missed.">@Data</span>
+public class FeatureSet implements Serializable {
 
-<span class="nc" id="L17">    private String ownerUri;</span>
+<span class="nc" id="L18">    private String ownerUri;</span>
 
-<span class="nc" id="L19">    private List&lt;NodeFeatures&gt; nodeFeatures = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L20">    private List&lt;NodeFeatures&gt; nodeFeatures = new ArrayList&lt;&gt;();</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
