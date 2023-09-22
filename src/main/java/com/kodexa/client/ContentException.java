@@ -2,6 +2,7 @@ package com.kodexa.client;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * A content exception
  */
 @Data
-public class ContentException {
+public class ContentException implements Serializable {
 
     private String id;
 

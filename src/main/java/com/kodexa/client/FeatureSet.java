@@ -2,6 +2,7 @@ package com.kodexa.client;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * This is a lightweight way to think about moving just features, when the structure of the document has not been modified
  */
 @Data
-public class FeatureSet {
+public class FeatureSet implements Serializable {
 
     private String ownerUri;
 

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ContentNode {
+public class ContentNode implements Serializable {
 
     private int index;
 
