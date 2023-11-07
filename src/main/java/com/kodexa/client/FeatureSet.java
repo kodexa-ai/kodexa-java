@@ -15,8 +15,10 @@ import java.util.List;
 @Data
 public class FeatureSet implements Serializable {
 
+    // The URI of the owner for this feature set
     private String ownerUri;
 
+    // The features that have been applied to the document
     private List<NodeFeatures> nodeFeatures = new ArrayList<>();
 
 }
